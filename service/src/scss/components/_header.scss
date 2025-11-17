@@ -1,0 +1,114 @@
+@use "@scss/abstract/vars" as *;
+@use "@scss/abstract/mixin" as *;
+
+
+.header {
+    position: fixed;
+    width: 100%;
+    background-color: $primary;
+    z-index: 50;
+
+    .container {
+        @include flex-sc;
+        width: 100%;
+        max-width: 1200px;
+        margin: auto;
+        padding: 1.0rem 2rem;
+
+        @media (width < 768px) {
+            padding: 0.5rem 2rem;
+        }
+
+        .logo-container {
+            @include flex-se;
+            padding: 0;
+
+            &:hover {
+                cursor: pointer;
+            }
+
+            span:first-of-type {
+                margin-right: 10px;
+                font-size: 4.0rem;
+                font-weight: 900;
+                color: white;
+            }
+
+            span:last-of-type {
+                font-size: 2.0rem;
+                font-weight: 300;
+                color: white;
+                padding-bottom: 7px;
+            }
+
+            @media (width < 768px) {
+                span:first-of-type {
+                    font-size: 2.0rem;
+                }
+
+                span:last-of-type {
+                    font-size: 1.5rem;
+                    padding-bottom: 3px;
+                }
+            }
+        }
+
+        nav {
+            display: none;
+            color: white;
+            margin: auto;
+
+            @media (min-width: 768px) {
+                display: flex;
+                gap: 1rem;
+            }
+
+            a {
+                width: 100px;
+                text-decoration: none;
+                color: inherit;
+                padding: 0 3%;
+            }
+        }
+
+        .sign {
+            display: none;
+            margin-left: auto;
+            color: white;
+            font-weight: 700;
+
+            @media (min-width: 768px) {
+                display: block;
+
+            }
+        }
+
+        .appointment-button {
+            display: none;
+            margin-left: 50px;
+
+            @media (min-width: 768px) {
+                display: block;
+                background-color: #3b82f6;
+                color: white;
+                padding: 0.5rem 2rem;
+                border-radius: 0.25rem;
+            }
+        }
+
+        .mobile-menu-button {
+            display: block;
+            margin-left: auto;
+
+            @media (min-width: 768px) {
+                display: none;
+            }
+
+            svg {
+                width: 3.5rem;
+                height: 3.5rem;
+            }
+        }
+    }
+
+}

@@ -1,0 +1,37 @@
+@use "../../abstract/mixin" as *;
+@use "../../abstract/vars" as *;
+
+.notice-list {
+    @include flex-sc;
+    @include shadowDark;
+    width: 100%;
+    padding: 15px 0;
+    margin-bottom: 10px;
+    background-color: white;
+    border: solid 1px $outLine;
+    border-radius: 10px;
+
+    .no {
+        width: 80px;
+        text-align: center;
+        color: $textThird;
+    }
+
+    .title {
+        color: $textMain;
+        font-size: 15px;
+        font-family: $font3;
+    }
+
+    .writer {
+        text-align: right;
+        margin-left: auto;
+        font-weight: bold;
+    }
+
+    .wday {
+        width: 120px;
+        color: $textThird;
+        text-align: center;
+    }
+}

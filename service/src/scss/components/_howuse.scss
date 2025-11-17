@@ -1,0 +1,129 @@
+@use "@scss/abstract/vars" as *;
+@use "@scss/abstract/mixin" as *;
+
+.howuse {
+  background-color: white;
+  padding: 5rem 0;
+
+  @media (width < 768px) {
+    padding: 1.0rem 0;
+  }
+
+
+
+  .section-header {
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 4rem;
+
+    h2 {
+      font-size: 4.0rem;
+      font-family: $font2;
+      color: $textMain;
+      font-weight: 300;
+
+      >span {
+        color: $accent;
+      }
+
+      >div {
+        font-size: 2.8rem;
+        font-family: $font3;
+
+        span {
+          color: $red;
+        }
+      }
+    }
+
+    @media (width < 768px) {
+      margin-bottom: 15px;
+
+      h2 {
+        font-size: 7vw;
+
+        >div {
+          font-size: 6vw;
+        }
+      }
+    }
+  }
+
+  .doctors-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 3rem;
+
+    @media (width < 768px) {
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    @media (width < 500px) {
+      flex-direction: column;
+      gap: 1rem;
+    }
+  }
+
+  .doctor-card {
+    width: 25%;
+    box-shadow: 0px 2px 30px #e6e8e9;
+    background-color: white;
+    padding: 2.5rem;
+    border-radius: 2.05rem;
+    text-align: center;
+
+    img {
+      width: 9rem;
+      height: 9rem;
+      border-radius: 50%;
+      border: solid 5px #f3f5f8;
+      margin: 0 auto 1rem;
+      object-fit: contain;
+    }
+
+    section {
+      h3 {
+        font-family: $font2;
+        font-size: 1.8rem;
+        font-weight: 300;
+        color: $textSub;
+        margin: 15px 0;
+      }
+
+      p {
+        font-family: $font3;
+        font-weight: 300;
+        color: $textThird;
+      }
+    }
+
+    @media (width < 768px) {
+      width: 90%;
+      box-shadow: 0px 2px 8px #e6e8e9;
+      @include flex-sc;
+      padding: 1.5rem;
+      border-radius: 1.0rem;
+
+      img {
+        margin: 0 2.0rem 0 0;
+        width: 7rem;
+        height: 7rem;
+      }
+
+      section {
+        text-align: left;
+
+        h3 {
+          font-size: 4vw;
+        }
+
+        p {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}

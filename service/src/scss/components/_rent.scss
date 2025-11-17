@@ -1,0 +1,85 @@
+@use "@scss/abstract/vars" as *;
+@use "@scss/abstract/mixin" as *;
+
+.rent {
+	padding: 5rem 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+
+	@media (width < 768px) {
+		flex-direction: column;
+		justify-content: center;
+		gap: 1.5rem;
+	}
+
+	.container {
+		@include flex-c-cc;
+		width: 49%;
+		gap: 2rem;
+		border-radius: 10px;
+		background-color: #f0f3f7;
+		padding: 2rem;
+
+		@media (width < 768px) {
+			width: 100%;
+		}
+	}
+
+	h1 {
+		font-size: clamp(2.0rem, 5vw, 2.50rem);
+		color: $textThird;
+		font-weight: 100;
+		padding: 20px 0;
+
+		@media (width < 768px) {
+			padding: 1%;
+		}
+	}
+
+	h2 {
+		font-size: clamp(1.5rem, 5vw, 2.8rem);
+		font-weight: 300;
+		font-family: $font2;
+		color: $textMain;
+		margin-bottom: 1%;
+	}
+
+	p {
+		color: $textSub;
+		font-family: $font3;
+		font-size: clamp(1.2rem, 3vw, 1.8rem);
+		text-align: center;
+		margin-bottom: 1rem;
+	}
+
+	button {
+		@include flex-cc;
+		font-size: clamp(1.2rem, 5vw, 2.0rem);
+		background-color: #3b82f6;
+		color: white;
+		padding: 2.5rem 3.0rem;
+		border-radius: 0.375rem;
+		margin-bottom: 3.0rem;
+
+		@media (width < 768px) {
+			padding: 3.0rem 2.0rem;
+			margin-bottom: 5%;
+		}
+
+		@media (width < 400px) {
+			padding: 2.5rem 2.0rem;
+		}
+
+		&:hover {
+			background-color: #2563eb;
+		}
+	}
+
+	img {
+		width: 100%;
+		border-radius: 7px;
+		margin: auto;
+		object-fit: cover;
+	}
+}

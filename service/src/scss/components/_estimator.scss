@@ -1,0 +1,127 @@
+@use "@scss/abstract/vars" as *;
+@use "@scss/abstract/mixin" as *;
+
+.estimator {
+  padding: 5rem 0;
+
+  @media (width < 768px) {
+    padding: 3.0rem 0;
+  }
+
+  .container {
+    .section-header {
+      text-align: center;
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+      font-weight: 800;
+      font-family: $font;
+      color: $outLine;
+    }
+
+    .service-card {
+      width: 70%;
+      @include shadowGray;
+      border: solid 1px #fafbff;
+      background-color: white;
+      padding: 3.5rem;
+      margin: auto;
+      border-radius: 10px;
+      text-align: center;
+
+      @media (width < 810px) {
+        width: 85%;
+        padding: 2.0rem;
+      }
+
+      @media (width < 768px) {
+        @include shadowDark;
+      }
+
+      div {
+        @include flex-sc;
+
+        &:first-of-type {
+          margin-bottom: 15px;
+
+          img {
+            width: 40px;
+            margin-right: 20px;
+          }
+
+          span {
+            font-size: 2.0rem;
+            font-family: $font3;
+
+            &:first-of-type {
+              color: black;
+              font-weight: 700;
+              margin-right: 10px;
+            }
+
+            &:last-of-type {
+              color: $textThird;
+            }
+          }
+
+          @media (width < 768px) {
+            img {
+              width: 30px;
+              margin-right: 3%;
+            }
+
+            span {
+              font-size: 2.75vw;
+
+              &:first-of-type {
+                margin-right: 3%;
+              }
+            }
+          }
+
+          @media (width < 400px) {
+            span {
+              font-size: 2.7vw;
+            }
+          }
+        }
+
+        &:last-of-type {
+          input {
+            width: 40%;
+            margin-right: 2%;
+          }
+
+          select {
+            width: 40%;
+          }
+
+          button {
+            width: 15%;
+            margin-left: auto;
+          }
+
+          @media (width < 610px) {
+            @include flex-c-cc;
+
+            input {
+              width: 100%;
+              margin: 0;
+            }
+
+            select {
+              width: 100%;
+              margin: 2% 0 4%;
+            }
+
+            button {
+              width: 100%;
+              height: 40px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+
+}

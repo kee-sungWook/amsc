@@ -1,0 +1,119 @@
+@use "@scss/abstract/vars" as *;
+@use "@scss/abstract/mixin" as *;
+
+
+.services {
+	width: 100%;
+	max-width: 1200px;
+	margin: 10.0rem auto 8.0rem;
+
+	@media (width < 768px) {
+		margin: 3.0rem 0;
+	}
+
+	.txtArea {
+		width: 100%;
+		max-width: 1200px;
+		margin: auto;
+		text-align: center;
+
+		.title {
+			font-size: 3.0rem;
+			font-family: $font2;
+			color: $accent;
+			margin-bottom: 10px;
+
+			span {
+				font-family: $font2;
+				font-weight: 800;
+				color: $textMain
+			}
+
+			@media(width < 768px) {
+				font-size: 5vw;
+			}
+
+			@media(width < 450px) {
+				font-size: 6vw;
+				margin-bottom: 2%;
+			}
+		}
+
+		.content {
+			margin-bottom: 15px;
+			font-family: $font3;
+			color: $textThird;
+			font-weight: 500;
+			font-size: 1.6rem;
+
+			@media(width < 768px) {
+				font-size: 3.2vw;
+			}
+		}
+	}
+
+	.container {
+		@include flex-cc;
+		width: 100%;
+		padding: 4.0rem 0;
+		margin: auto;
+
+		@media (width < 768px) {
+			padding: 1% 0;
+		}
+
+		figure {
+			@include flex-c-cc;
+			@include shadowGray;
+			box-sizing: content-box;
+			width: 7%;
+			height: 100%;
+			border: 2px solid #e8ebee;
+			border-radius: 1.0rem;
+			padding: 25px;
+			margin: 0 2%;
+			background-color: white;
+
+			img {
+				width: 70%;
+				height: 70%;
+				object-fit: cover;
+			}
+
+			figcaption {
+				font-family: $font3;
+				font-weight: 300;
+				font-size: 1.8rem;
+				padding-top: 15px;
+			}
+
+			@media (width < 768px) {
+				padding: 0.5%;
+				width: 20%;
+				@include shadowDark;
+
+				img {
+					width: 50%;
+					padding: 10% 0;
+
+				}
+
+				figcaption {
+					font-size: 2.5vw;
+					padding-top: 5%;
+				}
+			}
+
+			@media (width < 500px) {
+				border-radius: 8px;
+
+				figcaption {
+					font-size: 3vw;
+					padding-top: 5%;
+				}
+			}
+
+		}
+	}
+
+}

@@ -1,0 +1,63 @@
+@use "@scss/abstract/vars" as *;
+@use "@scss/abstract/mixin" as *;
+
+.counselPage {
+	@include flex-c-cc;
+	width: 100%;
+	max-width: 1200px;
+	padding: 0 10px;
+	margin: auto;
+
+	section:first-of-type {
+		@include flex-bc;
+		width: 100%;
+		margin-bottom: 2%;
+		padding: 50px 25px 2%;
+		border-bottom: dashed 1px $placeHolder;
+
+		div {
+			width: 30px;
+
+			&:first-of-type {
+				cursor: pointer;
+			}
+		}
+
+		p {
+			span {
+				font-size: 2.5rem;
+
+				&:nth-of-type(1) {
+					font-weight: 800;
+					color: black;
+					margin-right: 15px;
+				}
+
+				&:nth-of-type(2) {
+					font-weight: 600;
+					color: $primary;
+				}
+
+				@media (width < 768px) {
+					font-size: 4vw;
+				}
+			}
+
+
+		}
+	}
+
+	section:last-of-type {
+		width: 100%;
+		overflow: hidden;
+		aspect-ratio: 16/10;
+
+		iframe {
+			width: 2560px;
+			aspect-ratio: 16/10;
+			transform: scale(0.46);
+			transform-origin: top left;
+			overflow: hidden;
+		}
+	}
+}

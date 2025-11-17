@@ -1,0 +1,91 @@
+@use "@scss/abstract/vars" as *;
+@use "@scss/abstract/mixin" as *;
+
+.cc {
+	width: 100%;
+	margin: 50px 0;
+
+	.container {
+		width: 100%;
+		max-width: 1200px;
+		margin: auto;
+		text-align: center;
+
+		.txtArea {
+			div {
+				font-size: 3.0rem;
+				font-family: $font2;
+				margin: 0 auto 10px;
+				color: black;
+
+				>span {
+					color: $accent;
+				}
+
+				@media(width < 768px) {
+					font-size: 5vw;
+				}
+
+				@media(width < 450px) {
+					font-size: 6vw;
+					margin-bottom: 2%;
+				}
+			}
+
+			>span {
+				font-size: clamp(1.2rem, 10vw, 1.6rem);
+				font-family: $font3;
+				color: $textThird;
+			}
+		}
+
+		.menuArea {
+			@include flex-cc;
+			width: 100%;
+			padding: 4.0rem 0;
+			margin: auto;
+
+			figure {
+				width: 15%;
+				margin: 0 2%;
+
+				&:hover {
+					cursor: pointer;
+				}
+
+				img {
+					object-fit: cover;
+					margin-bottom: 10px;
+				}
+
+				figcaption {
+					width: 100%;
+					font-family: $font3;
+					font-weight: 300;
+					font-size: 1.8rem;
+				}
+
+				@media (width < 768px) {
+					width: 25%;
+
+					figcaption {
+						font-size: 2vw;
+						padding-top: 5%;
+					}
+
+					img {
+						width: 70%;
+					}
+				}
+
+				@media (width < 500px) {
+					figcaption {
+						font-size: 2.5vw;
+						padding-top: 5%;
+					}
+				}
+
+			}
+		}
+	}
+}
