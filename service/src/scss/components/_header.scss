@@ -9,7 +9,7 @@
     z-index: 50;
 
     .container {
-        @include flex-sc;
+        @include flex-cc;
         width: 100%;
         max-width: 1200px;
         margin: auto;
@@ -20,7 +20,7 @@
         }
 
         .logo-container {
-            @include flex-se;
+            @include flex-sc;
             padding: 0;
 
             &:hover {
@@ -38,7 +38,6 @@
                 font-size: 2.0rem;
                 font-weight: 300;
                 color: white;
-                padding-bottom: 7px;
             }
 
             @media (width < 768px) {
@@ -54,47 +53,53 @@
         }
 
         nav {
-            display: none;
+            @include flex-cc;
+            width: calc(100% - 185px);
             color: white;
             margin: auto;
 
-            @media (min-width: 768px) {
-                display: flex;
-                gap: 1rem;
+            @media (width < 768px) {
+                display: none;
             }
 
-            a {
-                width: 100px;
-                text-decoration: none;
-                color: inherit;
-                padding: 0 3%;
+            .naviMenu {
+                @include flex-vc;
+                width: 65%;
+
+                div {
+                    &:hover {
+                        color: aqua;
+                        font-weight: bold;
+                        cursor: pointer;
+                    }
+                }
+            }
+
+            .join-login {
+                @include flex-ec;
+                width: 35%;
+
+                .join-btn {
+                    margin-left: auto;
+                    color: white;
+                    font-weight: 700;
+                }
+
+                .login-btn {
+                    background-color: #3b82f6;
+                    color: white;
+                    padding: 0.5rem 2rem;
+                    border-radius: 0.25rem;
+                    margin-left: 50px;
+
+                    &:hover {
+                        background-color: $accent;
+                    }
+                }
             }
         }
 
-        .sign {
-            display: none;
-            margin-left: auto;
-            color: white;
-            font-weight: 700;
 
-            @media (min-width: 768px) {
-                display: block;
-
-            }
-        }
-
-        .appointment-button {
-            display: none;
-            margin-left: 50px;
-
-            @media (min-width: 768px) {
-                display: block;
-                background-color: #3b82f6;
-                color: white;
-                padding: 0.5rem 2rem;
-                border-radius: 0.25rem;
-            }
-        }
 
         .mobile-menu-button {
             display: block;

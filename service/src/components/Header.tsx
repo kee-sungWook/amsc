@@ -13,13 +13,17 @@ const Header: React.FC = () => {
                 </div>
 
                 <nav>
-                    <div>서비스신청</div>
-                    <div>사용방법</div>
-                    <div onClick={() => navigate("/notice")}>문의하기</div>
-                    <div className='sign'>회원가입</div>
-                    <button type='button' className='appointment-button'>
-                        로그인
-                    </button>
+                    <section className="naviMenu">
+                        <div>서비스신청</div>
+                        <div>사용방법</div>
+                        <div onClick={() => navigate("/notice")}>문의하기</div>
+                    </section>
+                    <section className="join-login">
+                        <div className='join-btn'>회원가입</div>
+                        <button type='button' className='login-btn'>
+                            로그인
+                        </button>
+                    </section>
                 </nav>
 
                 <button type='button' className='mobile-menu-button'>
