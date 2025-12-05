@@ -1,6 +1,6 @@
 import { RowDataPacket } from "mysql2";
 
-export interface NoticeList extends RowDataPacket {
+export interface Notice extends RowDataPacket {
     seq: number;
     title: string;
     body: string | null;

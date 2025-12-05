@@ -1,10 +1,10 @@
 import { Request, Response } from "express";
 import { modifyQuery, selectQuery } from "@connect/query.js";
-import { NoticeList } from "@models/NoticeList.js";
+import { Notice } from "@models/Notice.js";
 
 export async function getNotice(req: Request, res: Response): Promise<void> {
     try {
-        const result = await selectQuery<NoticeList[]>(
+        const result = await selectQuery<Notice[]>(
             `SELECT * FROM notice_proto ORDER BY seq DESC`
         );
         res.json({ success: true, message: result });

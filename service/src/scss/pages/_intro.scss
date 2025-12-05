@@ -1,0 +1,56 @@
+@use "../abstract/mixin" as *;
+@use "../abstract/vars" as *;
+
+.intro {
+    @include flex-c-ac;
+    width: 100%;
+    height: 100vh;
+    max-width: 1000px;
+    margin: auto;
+    background-color: none;
+
+    .head {
+        @include flex-c-sc;
+        width: 100%;
+        padding-top: 2%;
+
+        .textContent {
+            @include flex-c-sc;
+            gap: 5px;
+
+            .line1 {
+                font-size: clamp(12px, 1.8vw, 20px);
+                font-family: $font3;
+                color: black;
+
+                span {
+                    font-family: $font2;
+                    color: $accent;
+                }
+            }
+
+            .line2 {
+                font-size: clamp(15px, 2.5vw, 40px);
+                // font-size: 2vw;
+                font-family: $font2;
+                color: $textThird;
+            }
+        }
+    }
+
+    img {
+        width: 70%;
+        max-width: 800px;
+    }
+
+    .btnArea {
+        @include flex-c-sc;
+        gap: 10px;
+        width: 100%;
+
+        button {
+            width: 80%;
+        }
+
+    }
+}

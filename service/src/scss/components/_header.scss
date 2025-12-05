@@ -9,7 +9,7 @@
     z-index: 50;
 
     .container {
-        @include flex-cc;
+        @include flex-bc;
         width: 100%;
         max-width: 1200px;
         margin: auto;
@@ -27,74 +27,76 @@
                 cursor: pointer;
             }
 
-            span:first-of-type {
+            span {
                 margin-right: 10px;
-                font-size: 4.0rem;
+                font-size: clamp(25px, 4vw, 40px);
                 font-weight: 900;
                 color: white;
             }
-
-            span:last-of-type {
-                font-size: 2.0rem;
-                font-weight: 300;
-                color: white;
-            }
-
-            @media (width < 768px) {
-                span:first-of-type {
-                    font-size: 2.0rem;
-                }
-
-                span:last-of-type {
-                    font-size: 1.5rem;
-                    padding-bottom: 3px;
-                }
-            }
         }
 
-        nav {
+        .naviMenu {
             @include flex-cc;
-            width: calc(100% - 185px);
+            flex: 1;
+            width: auto;
             color: white;
-            margin: auto;
 
             @media (width < 768px) {
                 display: none;
             }
 
-            .naviMenu {
-                @include flex-vc;
-                width: 65%;
+            div {
+                margin: 0 6%;
 
-                div {
-                    &:hover {
-                        color: aqua;
-                        font-weight: bold;
-                        cursor: pointer;
-                    }
+                &:hover {
+                    color: $accent;
+                    font-weight: 800;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        .join-login {
+            @include flex-ec;
+
+            @media (width < 768px) {
+                display: none;
+            }
+
+            .join-btn {
+                margin-left: auto;
+                color: white;
+                font-weight: 700;
+
+                &:hover {
+                    color: $accent;
+                    font-weight: 800;
+                    cursor: pointer;
                 }
             }
 
-            .join-login {
+            .login-after {
                 @include flex-ec;
-                width: 35%;
+                color: white;
 
-                .join-btn {
-                    margin-left: auto;
-                    color: white;
-                    font-weight: 700;
+                span {
+                    color: $btnBlue;
+                    font-weight: bold;
+                    margin-right: 10px;
+                    line-height: 150%;
                 }
 
-                .login-btn {
-                    background-color: #3b82f6;
-                    color: white;
-                    padding: 0.5rem 2rem;
-                    border-radius: 0.25rem;
-                    margin-left: 50px;
+            }
 
-                    &:hover {
-                        background-color: $accent;
-                    }
+            button {
+                background-color: #3b82f6;
+                color: white;
+                padding: 0.5rem 2rem;
+                border-radius: 0.25rem;
+                margin-left: 50px;
+
+                &:hover {
+                    background-color: $accent;
                 }
             }
         }

@@ -1,0 +1,22 @@
+@use "../abstract/mixin" as *;
+@use "../abstract/vars" as *;
+
+.logoArea {
+    @include flex-c-sc;
+    width: 100%;
+
+    .logo {
+        font-size: clamp(70px, 11.5vw, 115px);
+        font-weight: 800;
+        font-family: $font;
+        color: $primary;
+        line-height: 100%;
+    }
+
+    .logoSub {
+        font-size: clamp(0.65em, 1.4vw, 1em);
+        font-family: $font3;
+        color: $placeHolder;
+        margin-bottom: 3%;
+    }
+}

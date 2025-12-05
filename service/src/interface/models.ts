@@ -9,9 +9,10 @@ export interface Notice {
 
 export interface User {
     seq: number;
-    memType: string;
+    type: string;
     manager: number;
     id: string;
+    name: string;
     email: string;
     phone: string;
     jday: string;

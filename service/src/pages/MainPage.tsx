@@ -1,17 +1,17 @@
 import Header from "@components/Header";
-import Intrance from "@components/Intrance";
-import Estimator from "@components/Estimator";
-import Services from "@components/Services";
-import Howuse from "@components/Howuse";
-import Findfix from "@components/Findfix";
-import Taksong from "@components/Taksong";
+import Intrance from "@components/main/Intrance";
+import Services from "@components/main/Services";
+import Howuse from "@components/main/Howuse";
+import Findfix from "@components/main/Findfix";
+import Taksong from "@components/main/Taksong";
 import Footer from "@components/Footer";
-import Rent from "@components/Rent";
-import Cc from "@components/Cc";
-import NoticeWindow from "@components/NoticeWindow.tsx"
-import { usePublicState } from "@store/publicState.ts";
+import Rent from "@components/main/Rent";
+import Cc from "@components/main/Cc";
+import NoticeWindow from "@components/NoticeWindow";
+import { usePublicState, useUserStore } from "@store/publicState";
 const MainPage: React.FC = () => {
-    const { noticeOn, user } = usePublicState();
+    const { noticeOn } = usePublicState();
+    const { user } = useUserStore();
 
     async function insertData(noticeTitle: string, noticeContent: string) {
         try {
@@ -37,7 +37,7 @@ const MainPage: React.FC = () => {
             <Header />
             <div style={{ width: "100%", maxWidth: "1200px", margin: "0 auto", padding: "50px 3% 0" }}>
                 <Intrance />
-                <Estimator />
+                {/* <Estimator /> */}
                 <Services />
                 <Cc />
                 <Howuse />

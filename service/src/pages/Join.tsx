@@ -1,0 +1,115 @@
+import "@scss/pages/_join.scss";
+import Header from "@components/Header";
+import React, { useEffect, useRef, useState } from "react";
+import { useUserStore } from "@store/publicState";
+import { useNavigate } from "react-router-dom";
+
+const Join = () => {
+    const { setLoggedIn, setUser } = useUserStore();
+    const navigate = useNavigate();
+    const { loggedIn } = useUserStore();
+    const [userData, setUserData] = useState({
+        userId: "",
+        userPw: "",
+        userPhone1: "010",
+        userPhone2: "",
+        userPhone3: "",
+        userName: "",
+        userEmailHead: "",
+        userEmailTail: "",
+    });
+    const refs = useRef<Record<string, HTMLInputElement | null>>({
+        id: null,
+        pw: null,
+        phone2: null,
+        phone3: null,
+    });
+
+    useEffect(() => {
+        if (loggedIn) navigate("/main");
+        refs.current.id!.focus();
+    }, [loggedIn]);
+
+    function handleChange(e: EventTarget & HTMLInputElement) {
+        const newData = { ...userData, [e.name]: e.value };
+        setUserData(newData);
+    }
+
+    async function handleJoin(e: React.FormEvent) {
+        e.preventDefault();
+        const headers = { "Content-Type": "application/json" };
+        for (const [_, el] of Object.entries(refs.current)) {
+            if (!el) continue;
+
+            if (!el.value) {
+                alert(`${el.dataset.define} 항목을 입력해 주세요`);
+                el.focus();
+                return;
+            }
+        }
+        try {
+            const checkValid = await fetch(`/api/user/checkValid/${userData.userId.trim()}`);
+            const checkValidResult = await checkValid.json();
+            if (checkValidResult.success) throw new Error(checkValidResult.message);
+
+            const userPhone = `${userData.userPhone1}-${userData.userPhone2}-${userData.userPhone3}`;
+            const userEmail = `${userData.userEmailHead}@${userData.userEmailTail}`;
+            const sendData = {
+                userId: userData.userId.trim(),
+                userPw: userData.userPw.trim(),
+                userName: userData.userName.trim(),
+                userEmail: userEmail.trim(),
+                userPhone: userPhone.trim(),
+            }
+
+            const res = await fetch("/api/user/join", {
+                method: "post",
+                headers: headers,
+                body: JSON.stringify(sendData),
+            });
+            const result = await res.json();
+            if (!result.success) throw new Error(result.message);
+            setLoggedIn(true);
+            setUser(result.message);
+            navigate("/main");
+        } catch (error) {
+            console.error(`[Join handleJoin Err] - ${error}`);
+            if (error === 'id') alert('이미 사용중인 아이디 입니다');
+        }
+    }
+
+    return (
+        <>
+            <Header />
+            <article className="join">
+                <section className="title">회원가입.</section>
+                <form className="pannel" onSubmit={handleJoin}>
+                    <div>아이디 입력<span>(필수입력)</span></div>
+                    <input type="text" value={userData.userId} ref={(el) => { refs.current.id = el }} name="userId" data-define={"아이디"} onChange={(e) => handleChange(e.target)} />
+                    <br />
+                    <div>패스워드 입력<span>(필수입력)</span></div>
+                    <input type="password" value={userData.userPw} ref={(el) => { refs.current.pw = el }} name="userPw" data-define={"패스워드"} onChange={(e) => handleChange(e.target)} />
+                    <br />
+                    <div>연락처<span>(필수입력)</span></div>
+                    <div className="three-p">
+                        <input type="text" value={userData.userPhone1} />-
+                        <input type="number" value={userData.userPhone2} ref={(el) => { refs.current.phone2 = el }} name="userPhone2" data-define={"연락처 앞자리"} onChange={(e) => handleChange(e.target)} maxLength={4} />-
+                        <input type="number" value={userData.userPhone3} ref={(el) => { refs.current.phone3 = el }} name="userPhone3" data-define={"연락처 뒷자리"} onChange={(e) => handleChange(e.target)} maxLength={4} />
+                    </div>
+                    <br />
+                    <div>이름 또는 닉네임</div>
+                    <input type="text" value={userData.userName} name="userName" onChange={(e) => handleChange(e.target)} />
+                    <br />
+                    <div>이메일</div>
+                    <div className="two-p">
+                        <input type="text" value={userData.userEmailHead} name="userEmailHead" onChange={(e) => handleChange(e.target)} />@
+                        <input type="text" value={userData.userEmailTail} name="userEmailTail" onChange={(e) => handleChange(e.target)} />
+                    </div>
+                    <button>회원가입</button>
+                </form>
+            </article>
+        </>
+    );
+}
+
+export default Join;
