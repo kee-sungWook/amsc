@@ -3,6 +3,9 @@ import Header from "@components/Header";
 import { useServiceChoose } from "@store/serviceChoose";
 import { SERVICE_LIST, type AllowServiceVal } from "@interface/others";
 import { useEffect } from "react";
+import { PiPhoneDuotone, PiUserDuotone, PiAddressBookTabsDuotone } from "react-icons/pi";
+import { IoBuild, IoCarSport, IoLocationSharp } from "react-icons/io5";
+import { FaStarOfLife } from "react-icons/fa6";
 
 const ServiceApply = () => {
     const { applyList, setApplyList } = useServiceChoose();
@@ -43,66 +46,84 @@ const ServiceApply = () => {
             <Header />
             <article className="service-apply">
                 <section className="top">
-                    <img src="/img/document.png" />
+                    <img src="/img/crash.png" />
                     <div className="title-area">
-                        <div className="main">
-                            <h2>메인텍스트 한글</h2>
-                            <h3>mainText Eng</h3>
+                        <div className='title'>
+                            <span>OneStop</span>SERVICE
                         </div>
-                        <h4 className="sub">subtext</h4>
+                        <div className='content'>
+                            사고가 났을때~ 복잡한 절차 없이 간편하게
+                        </div>
                     </div>
                 </section>
 
                 <ul className="service-check-area">
                     <li>
                         <figure>
-                            <img src="/img/document.png" />
+                            <img src="/img/mem_serviceALL.png" />
                             <figcaption>통합서비스</figcaption>
                         </figure>
                         <input type="checkbox" value="all" checked={applyList.includes("all")} onChange={() => handleChange("all")} />
                     </li>
                     <li>
                         <figure>
-                            <img src="/img/document.png" />
-                            <figcaption>렌트</figcaption>
+                            <img src="/img/mem_serviceFX.png" />
+                            <figcaption>수리신청</figcaption>
+                        </figure>
+                        <input type="checkbox" value="all" checked={applyList.includes("all") || applyList.includes("FX")} onChange={() => handleChange("FX")} />
+                    </li>
+                    <li>
+                        <figure>
+                            <img src="/img/mem_serviceRT.png" />
+                            <figcaption>대차신청</figcaption>
                         </figure>
                         <input type="checkbox" value="RT" checked={applyList.includes("all") || applyList.includes("RT")} onChange={() => handleChange("RT")} />
                     </li>
                     <li>
                         <figure>
-                            <img src="/img/document.png" />
-                            <figcaption>탁송</figcaption>
+                            <img src="/img/mem_serviceDE.png" />
+                            <figcaption>탁송신청</figcaption>
                         </figure>
                         <input type="checkbox" value="DE" checked={applyList.includes("all") || applyList.includes("DE")} onChange={() => handleChange("DE")} />
                     </li>
                 </ul>
 
-                <div className="default user-info">
-                    <section className="title">기본정보</section>
+                <div className="default">
+                    <section className="title"><PiAddressBookTabsDuotone className="icon" /><span>신청자정보</span></section>
                     <section className="content">
-                        <input type="text" placeholder="고객명 입력" />
-                        <input type="text" placeholder="연락처 입력" />
+                        <div className="user-row"><PiUserDuotone className="icon" />신청자 : <span>홍길동</span></div>
+                        <div className="user-row"><PiPhoneDuotone className="icon" />연락처 : <span>010-1234-5678</span></div>
                     </section>
                 </div>
 
+                {(applyList.includes("all") || applyList.includes("FX")) &&
+                    <div className="default">
+                        <section className="title"><IoBuild className="icon blue" /><span>수리신청</span></section>
+                        <section className="content">
+                            <p><FaStarOfLife className="icon" />차종 입력</p>
+                            <input type="text" placeholder="차종 입력" />
+                            <p><FaStarOfLife className="icon" />차량번호 입력</p>
+                            <input type="text" placeholder="차량번호 입력" />
+                            <p><FaStarOfLife className="icon" />보험접수번호 입력</p>
+                            <input type="text" placeholder="보험접수번호 입력" />
+                            <p><FaStarOfLife className="icon" />과실비율 입력</p>
+                            <input type="text" placeholder="과실비율 입력" />
+                        </section>
+                    </div>
+                }
+
                 {(applyList.includes("all") || applyList.includes("RT")) &&
                     <div className="default">
-                        <section className="title">렌트</section>
+                        <section className="title"><IoCarSport className="icon blue" /><span>대차신청</span></section>
                         <section className="content">
-                            <div className="select">
-                                <label><input type="radio" /> 대차신청</label>
-                                <label><input type="radio" /> 장기렌트</label>
-                            </div>
-                            <div className="inps">
-                                <input type="text" placeholder="차종 입력" />
-                                <input type="text" placeholder="차량번호 입력" />
-                                <input type="text" placeholder="보험접수번호 입력" />
-                                <input type="text" placeholder="과실비율 입력" />
-                            </div>
-                            <div className="inps">
-                                <input type="text" placeholder=" 희망차종 입력" />
-                                <input type="text" placeholder="희망배차주소 입력" />
-                            </div>
+                            <p><FaStarOfLife className="icon" />차종 입력</p>
+                            <input type="text" placeholder="차종 입력" />
+                            <p><FaStarOfLife className="icon" />차량번호 입력</p>
+                            <input type="text" placeholder="차량번호 입력" />
+                            <p><FaStarOfLife className="icon" />보험접수번호 입력</p>
+                            <input type="text" placeholder="보험접수번호 입력" />
+                            <p><FaStarOfLife className="icon" />과실비율 입력</p>
+                            <input type="text" placeholder="과실비율 입력" />
                         </section>
                     </div>
                 }
@@ -110,10 +131,34 @@ const ServiceApply = () => {
 
                 {(applyList.includes("all") || applyList.includes("DE")) &&
                     <div className="default">
-                        <section className="title">탁송</section>
+                        <section className="title"><IoLocationSharp className="icon blue" /><span>탁송신청</span></section>
                         <section className="content">
-                            <input type="text" placeholder="도착지 연락처 입력" />
-                            <input type="text" placeholder="도찾기 주소 입력" />
+                            <p><FaStarOfLife className="icon" />차량번호</p>
+                            <input type="text" placeholder="차량번호" />
+                            <p><FaStarOfLife className="icon" />예약시간</p>
+                            <input type="text" placeholder="예약시간" />
+                            <p><FaStarOfLife className="icon" />출발지 연락처</p>
+                            <div className="group">
+                                <input type="text" className="centerContent" value="010" /><span>-</span>
+                                <input type="text" className="centerContent" /><span>-</span>
+                                <input type="text" className="centerContent" />
+                            </div>
+                            <p><FaStarOfLife className="icon" />출발지주소</p>
+                            <div className="group">
+                                <input type="text" placeholder="출발지 주소" />
+                                <button type="button" className="addr">주소검색</button>
+                            </div>
+                            <p><FaStarOfLife className="icon" />도착지 연락처</p>
+                            <div className="group">
+                                <input type="text" className="centerContent" value="010" /><span>-</span>
+                                <input type="text" className="centerContent" /><span>-</span>
+                                <input type="text" className="centerContent" />
+                            </div>
+                            <p><FaStarOfLife className="icon" />도착지 주소</p>
+                            <div className="group">
+                                <input type="text" placeholder="도착지 주소" />
+                                <button type="button" className="addr">주소검색</button>
+                            </div>
                         </section>
                     </div>
                 }

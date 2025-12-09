@@ -6,49 +6,85 @@
     max-width: 1200px;
     min-height: 100vh;
     margin: auto;
-    padding: 80px 0 100px;
+    padding: 80px 0 50px;
 
     .top {
-        @include flex-cc;
+        @include flex-ce;
         width: 100%;
-        padding: 30px 0;
+        padding: 40px 0;
 
         img {
-            width: 100px;
             margin-right: 20px;
         }
 
         .title-area {
+            @include flex-c-ec;
 
-            .main {
-                @include flex-se;
+            .title {
+                font-size: 3.0rem;
+                font-family: $font2;
+                color: $accent;
+                margin-bottom: 10px;
 
-                h2 {
-                    font-size: 30px;
+                span {
                     font-family: $font2;
-                    font-weight: normal;
-                    color: $accent;
+                    font-weight: 800;
+                    color: $textMain
                 }
-
-                h3 {
-                    font-family: $font;
-                    color: $textThird;
-                    font-size: 15px;
-                    font-weight: 300;
-                    padding-bottom: 2px;
-                }
-
             }
 
-            .sub {
-                font-weight: 400;
+            .content {
+                font-family: $font3;
+                color: $textThird;
+                font-weight: 500;
+                font-size: 1.8rem;
             }
         }
+
+        @media (width < 768px) {
+            padding: 10px 0 5%;
+
+            img {
+                width: 50%;
+            }
+
+            .title-area {
+                .title {
+                    font-size: 2.0rem;
+                }
+
+                .content {
+                    font-size: 1.2rem
+                }
+            }
+        }
+
+        @media (width < 530px) {
+            @include flex-c-bc;
+            padding: 0 0 5%;
+
+            img {
+                width: 80%;
+                margin: 0;
+                padding-bottom: 20px;
+            }
+
+            .title-area {
+                .title {
+                    font-size: clamp(5vw, 6vw, 30px);
+                }
+
+                .content {
+                    font-size: 4vw
+                }
+            }
+        }
+
     }
 
     .service-check-area {
         @include flex-vc;
-        width: 600px;
+        width: 80%;
         margin: auto;
         padding: 20px;
 
@@ -58,43 +94,130 @@
             figure {
                 text-align: center;
 
+                figcaption {
+                    color: $textSub;
+                    font-family: $font3;
+                    font-size: 14px;
+                    padding: 5px 0 15px;
+                }
+
                 img {
-                    width: 80px;
-                    height: 80px;
-                    border-radius: 50%;
-                    object-fit: cover;
+                    width: 45px;
                 }
             }
 
             input {
                 zoom: 2.0;
+                accent-color: $primary;
+            }
+        }
+
+        @media (width < 768px) {
+            width: 95%;
+        }
+
+        @media (width < 530px) {
+            padding: 5% 10px;
+
+            li {
+                width: 25%;
+
+                figure {
+                    figcaption {
+                        font-size: clamp(11px, 3vw, 14px);
+                    }
+                }
+
+                input {
+                    zoom: 1.8;
+                }
+            }
+        }
+
+        @media (width < 400px) {
+            li {
+                figure {
+                    img {
+                        width: 50%;
+                    }
+                }
             }
         }
     }
 
     .default {
-        @include flex-sc;
+        @include flex-c-ss;
         @include shadowDark;
         width: 90%;
-        max-width: 600px;
+        max-width: 800px;
         margin: auto;
-        padding: 20px;
+        padding: 20px 3% 30px;
         border: solid 1px $outLine;
         border-radius: 10px;
         background-color: white;
         margin-bottom: 20px;
 
+        @media (width < 500px) {
+            padding: 15px 3% 10px;
+        }
+
         .title {
+            @include flex-cc;
+            width: 100%;
+            padding: 0 0 20px;
             font-size: 20px;
             font-family: $font3;
             text-align: center;
-            width: 15%;
+            border-bottom: solid 1px $btnSub;
+
+            .icon {
+                font-size: 30px;
+                margin-right: 8px;
+                color: $textSub;
+            }
+
+            .blue {
+                color: $primary;
+                opacity: 0.8;
+            }
+
+            span {
+                padding-top: 7px;
+            }
+
+            @media (width < 500px) {
+                padding: 0 0 10px;
+            }
         }
 
         .content {
             @include flex-c-ss;
-            width: 85%;
-            padding-left: 30px;
+            width: 100%;
+
+            .user-row {
+                @include flex-sc;
+                width: 100%;
+                height: 40px;
+                padding: 0 10px;
+                border-bottom: solid 1px $btnSub;
+
+                &:last-of-type {
+                    border-bottom: none;
+                }
+
+                .icon {
+                    padding-top: 2px;
+                    font-size: 17px;
+                    color: $textThird;
+                    margin-right: 5px;
+                }
+
+                span {
+                    color: $textSub;
+                    padding: 5px 0 0 10px;
+                    font-family: $font3;
+                }
+            }
 
             .select {
                 @include flex-sc;
@@ -112,12 +235,52 @@
                 }
             }
 
-            .inps {
+            >.group {
+                @include flex-ss;
                 width: 100%;
+
+                &:last-child {
+                    margin-bottom: 20px
+                }
+
+                span {
+                    display: block;
+                    padding-top: 10px;
+                    margin: 0 10px;
+                }
+
+                input {
+                    width: 100%;
+                    margin: 0;
+
+                    &.centerContent {
+                        text-align: center;
+                        padding: 0;
+                    }
+                }
+
+                button.addr {
+                    min-width: 70px;
+                    font-size: 12px;
+                    margin: 0 0 0 10px;
+                    box-shadow: none;
+                }
+            }
+
+            >p {
+                width: 100%;
+                padding: 10px 5px 5px;
+
+                .icon {
+                    color: $primary;
+                    font-size: 10px;
+                    margin-right: 5px;
+                }
             }
 
             input {
-                width: 95%;
+                width: 100%;
+                margin-bottom: 20px;
 
                 &:not(:last-child) {
                     margin-bottom: 10px;
@@ -132,6 +295,10 @@
         button {
             width: 150px;
             margin: 20px 10px;
+
+            @media (width < 500px) {
+                width: 100px;
+            }
         }
     }
 }

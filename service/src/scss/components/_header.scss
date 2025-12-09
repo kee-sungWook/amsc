@@ -10,6 +10,7 @@
 
     .container {
         @include flex-bc;
+        position: relative;
         width: 100%;
         max-width: 1200px;
         margin: auto;
@@ -114,6 +115,49 @@
             svg {
                 width: 3.5rem;
                 height: 3.5rem;
+            }
+        }
+
+        .mobile-menu-drawer {
+            position: absolute;
+            top: 100%;
+            right: 10px;
+
+            .mobile-naviMenu {
+                // display: block;
+                flex-direction: column;
+                // height: auto;
+                padding: 20px;
+                background-color: white;
+                border-radius: 0.25rem;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+                z-index: 100;
+                overflow: hidden;
+
+                div {
+                    @include flex-sc;
+                    padding: 10px;
+                    border-radius: 5px;
+                    font-size: 16px;
+
+                    &:last-child {
+                        border-bottom: none;
+                    }
+
+                    &:hover {
+                        background-color: $accent;
+                        cursor: pointer;
+                    }
+
+                    .icon {
+                        font-size: 18px;
+                        margin-right: 8px;
+                    }
+
+                    .blue {
+                        color: $primary;
+                    }
+                }
             }
         }
     }

@@ -39,11 +39,11 @@ const MainPage: React.FC = () => {
                 <Intrance />
                 {/* <Estimator /> */}
                 <Services />
+                <Rent />
                 <Cc />
                 <Howuse />
                 <Findfix />
                 <Taksong />
-                <Rent />
             </div>
             <Footer />
             {noticeOn && <NoticeWindow insertData={insertData} />}

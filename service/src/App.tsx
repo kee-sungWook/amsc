@@ -7,6 +7,7 @@ import ServiceApply from "@pages/ServiceApply";
 import Intro from "@pages/Intro";
 import Login from "@pages/Login";
 import Join from "@pages/Join";
+import RentalCar from "@pages/RentalCar";
 
 function MyRoute() {
     return (
@@ -18,6 +19,7 @@ function MyRoute() {
             <Route path="/main" element={<MainPage />} />
             <Route path="/notice" element={<NoticePage />} />
             <Route path="/service" element={<ServiceApply />} />
+            <Route path="/rental" element={<RentalCar />} />
             <Route path="/cc/common" element={<CCsystemg />} />
             <Route path="/cc/electric" element={<CCsystemg />} />
             <Route path="/cc/systemg" element={<CCsystemg />} />

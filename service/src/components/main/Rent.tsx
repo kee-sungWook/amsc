@@ -1,10 +1,13 @@
 import React from "react";
 import "@scss/components/_rent.scss";
+import { IoCarSport } from "react-icons/io5";
+import { useNavigate } from "react-router-dom";
 
 const Rent: React.FC = () => {
-   return (
-      <section className='rent'>
-         <div className='container'>
+    const navigate = useNavigate();
+    return (
+        <section className='rent'>
+            {/* <div className='container'>
             <h1>Car Rental Service</h1>
             <h2>차가 바뀌면, 하루도 달라집니다</h2>
             <p>
@@ -26,9 +29,23 @@ const Rent: React.FC = () => {
             </p>
             <button>중고 렌트 서비스 신청</button>
             <img src='/img/rent2.jpg' alt='car Illustration' />
-         </div>
-      </section>
-   );
+         </div> */}
+
+
+            <div className='rent-container'>
+                <img src='/img/rent_apply.jpg' alt='rent Illustration' />
+                <div className='txt-btn'>
+                    <div className='title'>
+                        <span>Car</span> RENTAL
+                    </div>
+                    <div className='content'>
+                        차가 바뀌면, 하루도 달라집니다
+                    </div>
+                    <div className="rent-btn" onClick={() => navigate("/rental")}><IoCarSport className="icon" />렌트신청</div>
+                </div>
+            </div>
+        </section>
+    );
 };
 
 export default Rent;

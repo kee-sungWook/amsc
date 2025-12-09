@@ -23,6 +23,7 @@ const Join = () => {
         pw: null,
         phone2: null,
         phone3: null,
+        name: null,
     });
 
     useEffect(() => {
@@ -35,18 +36,49 @@ const Join = () => {
         setUserData(newData);
     }
 
+    function handleFocus(e: React.FocusEvent<HTMLInputElement>) {
+        e.target.style.border = "1px solid #dce2ea";
+    }
+
     async function handleJoin(e: React.FormEvent) {
         e.preventDefault();
-        const headers = { "Content-Type": "application/json" };
-        for (const [_, el] of Object.entries(refs.current)) {
-            if (!el) continue;
+
+        // for (const [_, el] of Object.entries(refs.current)) {
+        //     if (!el) continue;
+
+        //     if (!el.value) {
+        //         alert(`${el.dataset.define} 항목을 입력해 주세요`);
+        //         el.focus();
+        //         return;
+        //     }
+        // }
+        let validate: boolean = true;
+        Object.entries(refs.current).forEach(([_, el]) => {
+            if (!el) return;
+
+            if (el.name === 'userPhone2' && el.value.length < 3) {
+                el.style.border = "1px solid #dd3aa3";
+                validate = false;
+            }
+
+            if (el.name === 'userPhone3' && el.value.length < 4) {
+                el.style.border = "1px solid #dd3aa3";
+                validate = false;
+            }
+
+            if (el.name === "userName" && el.value.length < 2) {
+                el.style.border = "1px solid #dd3aa3";
+                validate = false;
+            }
 
             if (!el.value) {
-                alert(`${el.dataset.define} 항목을 입력해 주세요`);
-                el.focus();
-                return;
+                el.style.border = "1px solid #dd3aa3";
+                validate = false;
             }
-        }
+        });
+
+        if (!validate) return;
+
         try {
             const checkValid = await fetch(`/api/user/checkValid/${userData.userId.trim()}`);
             const checkValidResult = await checkValid.json();
@@ -62,6 +94,7 @@ const Join = () => {
                 userPhone: userPhone.trim(),
             }
 
+            const headers = { "Content-Type": "application/json" };
             const res = await fetch("/api/user/join", {
                 method: "post",
                 headers: headers,
@@ -85,20 +118,33 @@ const Join = () => {
                 <section className="title">회원가입.</section>
                 <form className="pannel" onSubmit={handleJoin}>
                     <div>아이디 입력<span>(필수입력)</span></div>
-                    <input type="text" value={userData.userId} ref={(el) => { refs.current.id = el }} name="userId" data-define={"아이디"} onChange={(e) => handleChange(e.target)} />
+                    <input type="text" value={userData.userId} ref={(el) => { refs.current.id = el }} name="userId" data-define={"아이디"}
+                        onChange={(e) => handleChange(e.target)}
+                        onFocus={handleFocus}
+                    />
                     <br />
                     <div>패스워드 입력<span>(필수입력)</span></div>
-                    <input type="password" value={userData.userPw} ref={(el) => { refs.current.pw = el }} name="userPw" data-define={"패스워드"} onChange={(e) => handleChange(e.target)} />
+                    <input type="password" value={userData.userPw} ref={(el) => { refs.current.pw = el }} name="userPw" data-define={"패스워드"}
+                        onChange={(e) => handleChange(e.target)}
+                        onFocus={handleFocus}
+                    />
                     <br />
                     <div>연락처<span>(필수입력)</span></div>
                     <div className="three-p">
                         <input type="text" value={userData.userPhone1} />-
-                        <input type="number" value={userData.userPhone2} ref={(el) => { refs.current.phone2 = el }} name="userPhone2" data-define={"연락처 앞자리"} onChange={(e) => handleChange(e.target)} maxLength={4} />-
-                        <input type="number" value={userData.userPhone3} ref={(el) => { refs.current.phone3 = el }} name="userPhone3" data-define={"연락처 뒷자리"} onChange={(e) => handleChange(e.target)} maxLength={4} />
+                        <input type="number" value={userData.userPhone2} ref={(el) => { refs.current.phone2 = el }} name="userPhone2" data-define={"연락처 앞자리"}
+                            onChange={(e) => handleChange(e.target)} maxLength={4}
+                            onFocus={handleFocus} />-
+                        <input type="number" value={userData.userPhone3} ref={(el) => { refs.current.phone3 = el }} name="userPhone3" data-define={"연락처 뒷자리"}
+                            onChange={(e) => handleChange(e.target)} maxLength={4}
+                            onFocus={handleFocus} />
                     </div>
                     <br />
-                    <div>이름 또는 닉네임</div>
-                    <input type="text" value={userData.userName} name="userName" onChange={(e) => handleChange(e.target)} />
+                    <div>이름<span>(필수입력)</span></div>
+                    <input type="text" value={userData.userName} ref={(el) => { refs.current.name = el }} name="userName" data-define={"이름"}
+                        onChange={(e) => handleChange(e.target)}
+                        onFocus={handleFocus}
+                    />
                     <br />
                     <div>이메일</div>
                     <div className="two-p">

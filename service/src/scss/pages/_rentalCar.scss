@@ -1,0 +1,176 @@
+@use "@scss/abstract/vars" as *;
+@use "@scss/abstract/mixin" as *;
+
+
+.rental-car {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    min-height: 100vh;
+    margin: auto;
+    padding: 80px 0 50px;
+
+    .top {
+        @include flex-ce;
+        width: 100%;
+        padding: 50px 0 0;
+        margin-bottom: -2px;
+
+        img {
+            margin-right: 2%;
+        }
+
+        .top-txt {
+            @include flex-c-es;
+            margin-bottom: 10px;
+
+            .title {
+                font-size: 3.0rem;
+                font-family: $font2;
+                color: $accent;
+
+                span {
+                    font-family: $font2;
+                    font-weight: 800;
+                    color: $textMain
+                }
+
+                @media(width < 768px) {
+                    font-size: 5vw;
+                    margin-bottom: 1%;
+                }
+
+                @media(width < 450px) {
+                    font-size: 6vw;
+
+                }
+            }
+
+            .content {
+                margin-bottom: 15px;
+                font-family: $font3;
+                color: $textThird;
+                font-weight: 500;
+                font-size: 1.6rem;
+
+                @media(width < 768px) {
+                    font-size: 3.2vw;
+                }
+
+                @media(width < 550px) {
+                    margin-bottom: 11px;
+                }
+
+                @media(width < 400px) {
+                    margin-bottom: 8px;
+                }
+
+            }
+
+            .content2 {
+                font-size: 12px;
+                color: $textSub;
+            }
+        }
+    }
+
+    .user-form {
+        position: relative;
+        z-index: 200;
+        @include shadowDark;
+        width: 90%;
+        max-width: 600px;
+        margin: auto;
+        padding: 20px 4%;
+        border: solid 1px $outLine;
+        border-radius: 10px;
+        background-color: white;
+        margin-bottom: 20px;
+
+        .user {
+            padding: 10px 0 20px;
+            margin-bottom: 10px;
+
+
+            .user-row {
+                @include flex-sc;
+                width: 100%;
+                height: 40px;
+                border-bottom: solid 1px $btnSub;
+
+                .icon {
+                    padding-top: 2px;
+                    font-size: 17px;
+                    color: $textThird;
+                    margin-right: 5px;
+                }
+
+                span {
+                    color: $textSub;
+                    padding: 5px 0 0 10px;
+                    font-family: $font3;
+                }
+            }
+        }
+
+        >form {
+
+            .form-row {
+                @include flex-c-ss;
+                width: 100%;
+                margin: 5px 0 15px;
+
+                >p {
+                    width: 100%;
+                    padding: 0 5px 5px;
+
+                    .icon {
+                        color: $primary;
+                        font-size: 10px;
+                        margin-right: 5px;
+                    }
+                }
+
+                input[type='text'] {
+                    width: 100%;
+                }
+
+                .group {
+                    @include flex-sc;
+                    width: 100%;
+
+                    &:not(:last-of-type) {
+                        margin-bottom: 5px;
+                    }
+
+                    span {
+                        margin: 0 10px;
+                    }
+
+                    input {
+                        width: 100%;
+                    }
+
+                    button.addr {
+                        min-width: 80px;
+                        font-size: 12px;
+                        margin: 0 0 0 5px;
+                        padding: 0 10px;
+                        box-shadow: none;
+                    }
+                }
+            }
+
+            .btnArea {
+                width: 100%;
+                text-align: center;
+
+                button {
+                    width: 150px;
+                    height: 50px;
+                    margin: 20px 10px;
+                }
+            }
+        }
+    }
+}
