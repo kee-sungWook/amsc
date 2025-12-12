@@ -1,0 +1,91 @@
+@use "../abstract/_vars" as *;
+@use "../abstract/_mixin" as *;
+
+.log-suggest {
+    @include flex-c-cc;
+    width: 100%;
+    height: 100vh;
+    max-width: 800px;
+    margin: 0 auto;
+
+    .info {
+        @include flex-c-cc;
+        width: 100%;
+        padding-top: 40px;
+        margin-bottom: 6%;
+        text-align: center;
+        font-size: 25px;
+        font-family: $font3;
+
+        img {
+            width: 60%;
+            max-width: 250px;
+            margin-bottom: 10px;
+        }
+
+        span {
+            font-size: clamp(14px, 4vw, 22px);
+        }
+    }
+
+    .go-group {
+        @include flex-vc;
+        width: 100%;
+        max-width: 450px;
+        padding: 20px 0;
+        margin-bottom: 12%;
+
+        button {
+            @include flex-c-cc;
+            width: 35%;
+            height: auto;
+            padding: 5% 0;
+            border-radius: 10px;
+            font-size: clamp(14px, 4.5vw, 20px);
+            color: white;
+            background-color: $primary;
+
+            &:hover {
+                background-color: $accent;
+            }
+
+            .icon {
+                font-size: 40px;
+                margin-bottom: 10px;
+            }
+        }
+
+    }
+
+    .go-browse {
+        @include flex-cc;
+        @include shadowGray;
+        width: auto;
+        max-width: 450px;
+        margin: 0 auto;
+        border: solid 1px #eaecf2;
+        padding: 12px 30px;
+        background-color: $bg;
+        border-radius: 30px;
+        font-size: 18px;
+        font-weight: bold;
+        color: $textSub;
+
+        &:hover {
+            @include shadowBlue;
+            cursor: pointer;
+            color: $accent;
+
+            .icon {
+                color: $accent;
+            }
+        }
+
+
+        .icon {
+            color: $textSub;
+            font-size: 25px;
+            margin-right: 10px;
+        }
+    }
+}

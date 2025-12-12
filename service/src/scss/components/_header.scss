@@ -123,22 +123,21 @@
             top: 100%;
             right: 10px;
 
+
             .mobile-naviMenu {
-                // display: block;
                 flex-direction: column;
-                // height: auto;
                 padding: 20px;
                 background-color: white;
-                border-radius: 0.25rem;
-                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+                border-radius: 1rem;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
                 z-index: 100;
                 overflow: hidden;
 
                 div {
                     @include flex-sc;
-                    padding: 10px;
+                    padding: 20px;
                     border-radius: 5px;
-                    font-size: 16px;
+                    font-size: 18px;
 
                     &:last-child {
                         border-bottom: none;
@@ -150,8 +149,8 @@
                     }
 
                     .icon {
-                        font-size: 18px;
-                        margin-right: 8px;
+                        font-size: 25px;
+                        margin-right: 10px;
                     }
 
                     .blue {

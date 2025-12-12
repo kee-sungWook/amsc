@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import "@scss/components/_header.scss";
 import { PiChatCircleDots, PiFileText, PiGearSixFill, PiPowerBold } from "react-icons/pi";
+import { AiOutlineHome } from "react-icons/ai";
 import { FiUserPlus } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 import { useUserStore } from "@store/publicState";
@@ -78,6 +79,7 @@ const Header: React.FC = () => {
                         className='mobile-menu-drawer'
                     >
                         <nav ref={ref} className='mobile-naviMenu'>
+                            <div onClick={() => navigate("/main")}><AiOutlineHome className="icon" />HOME</div>
                             <div onClick={() => navigate("/login")}><PiPowerBold className="icon" />로그인</div>
                             <div onClick={() => navigate("/join")}><FiUserPlus className="icon" />회원가입</div>
                             <div onClick={() => navigate("/notice")}><PiChatCircleDots className="icon" />문의하기</div>

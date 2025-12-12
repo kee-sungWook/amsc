@@ -8,6 +8,7 @@ import Intro from "@pages/Intro";
 import Login from "@pages/Login";
 import Join from "@pages/Join";
 import RentalCar from "@pages/RentalCar";
+import LogSuggest from "@pages/LogSuggest";
 
 function MyRoute() {
     return (
@@ -16,6 +17,7 @@ function MyRoute() {
             <Route path="/intro" element={<Intro />} />
             <Route path="/login" element={<Login />} />
             <Route path="/join" element={<Join />} />
+            <Route path="/suggest" element={<LogSuggest />} />
             <Route path="/main" element={<MainPage />} />
             <Route path="/notice" element={<NoticePage />} />
             <Route path="/service" element={<ServiceApply />} />
