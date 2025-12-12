@@ -33,6 +33,7 @@ export async function join(req: Request, res: Response) {
         const insertResult = await modifyQuery(query, [userId, userPw, userName, userEmail, userPhone]);
         if (insertResult.affectedRows < 1) throw new Error('insert fail');
         const insertId = insertResult.insertId;
+        console.log('Insert ID:', insertId);
 
         query = `SELECT 
         seq, 

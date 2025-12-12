@@ -37,17 +37,18 @@
         }
 
         .naviMenu {
-            @include flex-cc;
+            @include flex-ec;
             flex: 1;
             width: auto;
             color: white;
+            margin-right: 40px;
 
             @media (width < 768px) {
                 display: none;
             }
 
             div {
-                margin: 0 6%;
+                margin: 0 3%;
 
                 &:hover {
                     color: $accent;
@@ -80,6 +81,11 @@
                 @include flex-ec;
                 color: white;
 
+                .icon {
+                    font-size: 25px;
+                    margin-right: 5px;
+                }
+
                 span {
                     color: $btnBlue;
                     font-weight: bold;
@@ -94,7 +100,7 @@
                 color: white;
                 padding: 0.5rem 2rem;
                 border-radius: 0.25rem;
-                margin-left: 50px;
+                margin-left: 20px;
 
                 &:hover {
                     background-color: $accent;
@@ -159,6 +165,21 @@
                 }
             }
         }
+    }
+
+    .log-info-header {
+        width: 100%;
+        background-color: $bg;
+    }
+
+
+
+    .log-info {
+        width: 100%;
+        max-width: 1200px;
+        margin: auto;
+        padding: 5px 20px;
+        border-bottom: solid 1px $outLine;
     }
 
 }

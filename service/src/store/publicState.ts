@@ -1,6 +1,6 @@
 import type { User } from "@interface/models";
 import { create } from "zustand";
-import { persist } from "zustand/middleware";
+import { createJSONStorage, persist } from "zustand/middleware";
 
 interface PublicState {
     noticeOn: boolean;
@@ -37,7 +37,8 @@ export const useUserStore = create<UserStore>()(
             }),
         }),
         {
-            name: "ams-user"
+            name: "ams-user",
+            storage: createJSONStorage(() => sessionStorage)
         }
 
     )

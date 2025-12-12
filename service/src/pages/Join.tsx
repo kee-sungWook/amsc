@@ -42,16 +42,6 @@ const Join = () => {
 
     async function handleJoin(e: React.FormEvent) {
         e.preventDefault();
-
-        // for (const [_, el] of Object.entries(refs.current)) {
-        //     if (!el) continue;
-
-        //     if (!el.value) {
-        //         alert(`${el.dataset.define} 항목을 입력해 주세요`);
-        //         el.focus();
-        //         return;
-        //     }
-        // }
         let validate: boolean = true;
         Object.entries(refs.current).forEach(([_, el]) => {
             if (!el) return;
