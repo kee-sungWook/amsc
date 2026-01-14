@@ -17,25 +17,26 @@ const MyOrder: React.FC = () => {
     const [compleOrders, setCompleOrders] = React.useState<OrderWithWorker[]>([]);
 
     React.useEffect(() => {
-        const fetchOrders = async () => {
-            setLoading(true);
-            try {
-                const response = await fetch(`/api/order/getOrderForC/${user?.seq}`);
-                const data = await response.json();
-                if (!data.success) throw new Error(data.message);
-                const myOrders: OrderWithWorker[] = data.message;
-                setPlayOrders(myOrders.filter(order => order.situation !== 'finish'));
-                setCompleOrders(myOrders.filter(order => order.situation === 'finish'));
-
-            } catch (error) {
-                console.error("Failed to fetch orders:", error);
-            } finally {
-                setLoading(false);
-            }
-        };
-
         fetchOrders();
+
     }, []);
+
+    async function fetchOrders() {
+        setLoading(true);
+        try {
+            const response = await fetch(`/api/order/getOrderForC/${user?.seq}`);
+            const data = await response.json();
+            if (!data.success) throw new Error(data.message);
+            const myOrders: OrderWithWorker[] = data.message;
+            setPlayOrders(myOrders.filter(order => order.situation !== 'finish'));
+            setCompleOrders(myOrders.filter(order => order.situation === 'finish'));
+
+        } catch (error) {
+            console.error("Failed to fetch orders:", error);
+        } finally {
+            setLoading(false);
+        }
+    };
 
     function handleOpenToggle(seq: number) {
         setSelList((prev) => {
@@ -46,7 +47,6 @@ const MyOrder: React.FC = () => {
             }
         });
     };
-
     return (
         <>
             <Header />
@@ -71,12 +71,24 @@ const MyOrder: React.FC = () => {
                         ? playOrders.length === 0
                             ? <div className="no-data">No Data.</div>
                             : playOrders.map((order: OrderWithWorker, index: number) => (
-                                <MyOrderList key={order.seq} order={order} index={playOrders.length - index} selList={selList} handleOpenToggle={handleOpenToggle} />
+                                <MyOrderList
+                                    key={order.seq}
+                                    order={order}
+                                    index={playOrders.length - index}
+                                    selList={selList}
+                                    handleOpenToggle={handleOpenToggle}
+                                    fetchOrders={fetchOrders}
+                                />
                             ))
                         : compleOrders.length === 0
                             ? <div className="no-data">No Data.</div>
                             : compleOrders.map((order: OrderWithWorker, index: number) => (
-                                <MyOrderList order={order} index={compleOrders.length - index} selList={selList} handleOpenToggle={handleOpenToggle} />
+                                <MyOrderList
+                                    order={order}
+                                    index={compleOrders.length - index}
+                                    selList={selList}
+                                    handleOpenToggle={handleOpenToggle}
+                                />
                             ))
                 }
             </article>

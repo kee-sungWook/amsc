@@ -7,30 +7,32 @@ import Taksong from "@components/main/Taksong";
 import Footer from "@components/Footer";
 import Rent from "@components/main/Rent";
 import Cc from "@components/main/Cc";
-import NoticeWindow from "@components/QnaWindow";
-import { usePublicState, useUserStore } from "@store/publicState";
-const MainPage: React.FC = () => {
-    const { noticeOn } = usePublicState();
-    const { user } = useUserStore();
+// import QnaWindow from "@components/QnaWindow";
+// import { usePublicState, useUserStore } from "@store/publicState";
+import React from "react";
 
-    async function insertData(noticeTitle: string, noticeContent: string) {
-        try {
-            const response = await fetch("/api/notice/insertNotice", {
-                method: "post",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    title: noticeTitle,
-                    content: noticeContent,
-                    writer: user?.email.split("@").shift() ?? 'GUEST'
-                }),
-            });
-            const result = await response.json();
-            if (!result.success) throw new Error(result.message);
-            alert("문의사항이 등록되었습니다.");
-        } catch (error) {
-            console.error(`[NoticeWindow insertNotice Error] ${error}`);
-        }
-    }
+const MainPage: React.FC = () => {
+    // const { qnaOn } = usePublicState();
+    // const { user } = useUserStore();
+
+    // async function insertData(qnaTitle: string, qnaContent: string) {
+    //     try {
+    //         const response = await fetch("/api/notice/insertNotice", {
+    //             method: "post",
+    //             headers: { "Content-Type": "application/json" },
+    //             body: JSON.stringify({
+    //                 title: qnaTitle,
+    //                 content: qnaContent,
+    //                 writer: user?.email.split("@").shift() ?? 'GUEST'
+    //             }),
+    //         });
+    //         const result = await response.json();
+    //         if (!result.success) throw new Error(result.message);
+    //         alert("문의사항이 등록되었습니다.");
+    //     } catch (error) {
+    //         console.error(`[NoticeWindow insertNotice Error] ${error}`);
+    //     }
+    // }
 
     return (
         <>
@@ -46,7 +48,7 @@ const MainPage: React.FC = () => {
                 <Taksong />
             </div>
             <Footer />
-            {noticeOn && <NoticeWindow insertData={insertData} />}
+            {/* {qnaOn && <QnaWindow insertData={insertData} />} */}
         </>
     );
 };

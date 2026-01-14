@@ -8,7 +8,6 @@ interface MsgType {
 }
 
 export async function sendFcmMsg({ token, title, body, data = {} }: MsgType) {
-    console.log('Sending FCM message to token:', token, title, body, data);
     const message = {
         token,
         notification: { title, body },

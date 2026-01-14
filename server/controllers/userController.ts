@@ -42,6 +42,7 @@ export async function checkValid(req: Request, res: Response) {
 export async function signIn(req: Request, res: Response) {
     try {
         const { userId, userPw } = req.body;
+        console.log('signIn : ', userId, userPw);
         const query = 'SELECT * FROM ams_user WHERE id = ? AND pw = ?';
         const row = await selectQuery<User[]>(query, [userId, userPw]);
         if (row.length < 1) throw new Error('no user');
