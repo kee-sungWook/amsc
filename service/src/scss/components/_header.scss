@@ -136,7 +136,7 @@
                 background-color: white;
                 border-radius: 1rem;
                 box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-                z-index: 100;
+                z-index: 150;
                 overflow: hidden;
 
                 div {
@@ -162,24 +162,68 @@
                     .blue {
                         color: $primary;
                     }
+
+                    .red {
+                        color: $red;
+                    }
                 }
             }
         }
     }
 
     .log-info-header {
+        display: none;
         width: 100%;
-        background-color: $bg;
+        background-color: white;
+        // padding: 1%;
+
+        @media (width < 768px) {
+            display: block;
+        }
+
+        .log-info {
+            @include shadowDark;
+            @include flex-cc;
+            width: 100%;
+            max-width: 1200px;
+            margin: auto;
+            padding: 7px 15px;
+            border: solid 1px $outLine;
+            border-radius: 3px;
+            background-color: $bg;
+            font-size: 12px;
+            color: $textSub;
+
+            .icon {
+                font-size: 18px;
+                margin-right: 5px;
+            }
+
+            span {
+                color: $primary;
+                font-weight: bold;
+                margin-right: 5px;
+            }
+
+            button {
+                @include flex-cc;
+                height: auto;
+                font-size: 11px;
+                margin-right: 3px;
+                margin-left: auto;
+                padding: 5px 10px;
+
+                .icon {
+                    color: white;
+                    font-size: 14px;
+                    margin: 0;
+                }
+            }
+        }
+
     }
 
 
 
-    .log-info {
-        width: 100%;
-        max-width: 1200px;
-        margin: auto;
-        padding: 5px 20px;
-        border-bottom: solid 1px $outLine;
-    }
 
 }

@@ -1,6 +1,6 @@
 import "@scss/components/_services.scss";
 import { useServiceChoose } from "@store/serviceChoose";
-import type { AllowServiceVal } from "@interface/others";
+import { SERVICE_LIST, type AllowServiceVal } from "@interface/others";
 import { useNavigate } from "react-router-dom";
 
 const Services = () => {
@@ -8,8 +8,14 @@ const Services = () => {
     const navigate = useNavigate();
 
     function handleApplyList(addName: AllowServiceVal) {
-        const newList: AllowServiceVal[] = [addName];
-        setApplyList(newList);
+        let allowList: AllowServiceVal[] = [];
+        if (addName === "all") {
+            allowList = ["all", ...SERVICE_LIST];
+            setApplyList(allowList);
+        } else {
+            allowList = [addName];
+            setApplyList(allowList);
+        }
         navigate("/service");
     }
     return (

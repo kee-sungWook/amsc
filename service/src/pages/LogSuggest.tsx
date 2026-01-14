@@ -1,11 +1,23 @@
 import Header from "@components/Header";
 import "@scss/pages/_logSuggest.scss";
+import { useUserStore } from "@store/publicState";
+import React from "react";
 import { FiUserPlus } from "react-icons/fi";
 import { PiBackspaceDuotone, PiPowerBold } from "react-icons/pi";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const LogSuggest = () => {
+    const { loggedIn } = useUserStore()
     const navigate = useNavigate();
+    const location = useLocation();
+    const fromPath = location.state?.from || "/main";
+
+    React.useEffect(() => {
+        if (loggedIn) {
+            navigate(fromPath);
+        }
+    }, [loggedIn]);
+
     return (
         <>
             <Header />
@@ -16,11 +28,11 @@ const LogSuggest = () => {
                 </section>
 
                 <section className="go-group">
-                    <button type="button" onClick={() => navigate("/login")}><PiPowerBold className="icon" />로그인</button>
+                    <button type="button" onClick={() => navigate("/login", { state: { from: fromPath } })}><PiPowerBold className="icon" />로그인</button>
                     <button type="button" onClick={() => navigate("/join")}><FiUserPlus className="icon" />회원가입</button>
                 </section>
 
-                <section className="go-browse" onClick={() => navigate(-1)}><PiBackspaceDuotone className="icon" />BACK</section>
+                <section className="go-browse" onClick={() => navigate("/main")}><PiBackspaceDuotone className="icon" />HOME</section>
             </article>
         </>
     );

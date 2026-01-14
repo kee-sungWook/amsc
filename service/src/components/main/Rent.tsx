@@ -33,7 +33,7 @@ const Rent: React.FC = () => {
 
 
             <div className='rent-container'>
-                <img src='/img/rent_apply.jpg' alt='rent Illustration' />
+                <img src='/img/titlePic_rent.jpg' alt='rent Illustration' />
                 <div className='txt-btn'>
                     <div className='title'>
                         <span>Car</span> RENTAL

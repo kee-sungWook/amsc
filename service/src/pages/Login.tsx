@@ -3,7 +3,7 @@ import type { User } from "@interface/models";
 import "@scss/pages/_login.scss";
 import { useUserStore } from "@store/publicState";
 import { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Login: React.FC = () => {
     const [userId, setUserid] = useState<string>("");
@@ -12,9 +12,11 @@ const Login: React.FC = () => {
     const pwRef = useRef<HTMLInputElement>(null);
     const { loggedIn, setLoggedIn, setUser } = useUserStore();
     const navigate = useNavigate();
+    const location = useLocation();
+    const fromPath = location.state?.from || "/main";
 
     useEffect(() => {
-        if (loggedIn) navigate("/main");
+        if (loggedIn) navigate(fromPath, { replace: true });
         idRef.current?.focus();
     }, [loggedIn]);
 
@@ -41,13 +43,12 @@ const Login: React.FC = () => {
             const userData: User = result.message;
             setLoggedIn(true);
             setUser(userData);
-            navigate("/main");
+            navigate(fromPath, { replace: true });
         } catch (error) {
             console.error(`[handleLogin err] ${error}`);
             alert("아이디 또는 패스워드가 맞지 않습니다");
         }
     }
-
 
     return (
         <>

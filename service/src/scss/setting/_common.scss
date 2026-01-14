@@ -10,6 +10,14 @@ body {
     background-color: white;
 }
 
+article.mainContainer {
+    padding-top: 90px;
+
+    @media (width < 768px) {
+        padding-top: 125px;
+    }
+}
+
 // 버튼 기본
 button {
     height: 35px;

@@ -77,11 +77,12 @@ const Join = () => {
             const userPhone = `${userData.userPhone1}-${userData.userPhone2}-${userData.userPhone3}`;
             const userEmail = `${userData.userEmailHead}@${userData.userEmailTail}`;
             const sendData = {
-                userId: userData.userId.trim(),
-                userPw: userData.userPw.trim(),
-                userName: userData.userName.trim(),
-                userEmail: userEmail.trim(),
-                userPhone: userPhone.trim(),
+                type: 'c',
+                id: userData.userId.trim(),
+                passW: userData.userPw.trim(),
+                name: userData.userName.trim(),
+                email: userEmail.trim(),
+                phone: userPhone.trim(),
             }
 
             const headers = { "Content-Type": "application/json" };
@@ -121,7 +122,7 @@ const Join = () => {
                     <br />
                     <div>연락처<span>(필수입력)</span></div>
                     <div className="three-p">
-                        <input type="text" value={userData.userPhone1} />-
+                        <input type="text" defaultValue={userData.userPhone1} />-
                         <input type="number" value={userData.userPhone2} ref={(el) => { refs.current.phone2 = el }} name="userPhone2" data-define={"연락처 앞자리"}
                             onChange={(e) => handleChange(e.target)} maxLength={4}
                             onFocus={handleFocus} />-

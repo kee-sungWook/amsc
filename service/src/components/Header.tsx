@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import "@scss/components/_header.scss";
-import { PiChatCircleDots, PiFileText, PiGearSixFill, PiPowerBold, PiUser } from "react-icons/pi";
+import { PiArticle, PiCarSimple, PiChatCircleDots, PiGearSixFill, PiPowerBold, PiUser } from "react-icons/pi";
 import { MdLogout } from "react-icons/md";
 import { AiOutlineHome } from "react-icons/ai";
 import { FiUserPlus } from "react-icons/fi";
@@ -8,7 +8,6 @@ import { useNavigate } from "react-router-dom";
 import { useUserStore } from "@store/publicState";
 import { motion } from "motion/react";
 import useMeasure from "react-use-measure";
-import { logout } from "@utils/logout";
 
 const Header: React.FC = () => {
     const { loggedIn, user, setUserClear } = useUserStore();
@@ -30,6 +29,12 @@ const Header: React.FC = () => {
         };
     }, []);
 
+    function logout() {
+        setUserClear();
+        sessionStorage.clear();
+        window.location.replace("/main");
+    }
+
     return (
         <>
             <div className='header'>
@@ -39,8 +44,15 @@ const Header: React.FC = () => {
                     </section>
 
                     <nav className="naviMenu">
-                        {loggedIn && <div onClick={() => navigate("/notice")}>문의하기</div>}
-                        <div onClick={() => navigate("/faq")}>FAQ</div>
+                        {/* <div onClick={() => navigate("/faq")}>FAQ</div> */}
+                        {loggedIn &&
+                            <>
+                                <div onClick={() => navigate("/mypage")}>마이페이지</div>
+                                <div onClick={() => navigate("/service")}>서비스신청</div>
+                                <div onClick={() => navigate("/notice")}>1:1 문의</div>
+                                <div onClick={() => navigate("/myOrder")}>주문현황</div>
+                            </>
+                        }
                     </nav>
 
                     <section className="join-login">
@@ -49,7 +61,7 @@ const Header: React.FC = () => {
                                 <div className="login-after">
                                     <PiUser className="icon" />
                                     <span>{user!.name}</span> 로그인중.
-                                    <button type="button" onClick={setUserClear}>LOGOUT</button>
+                                    <button type="button" onClick={logout}>LOGOUT</button>
                                 </div>
                             </>
                             : <>
@@ -83,27 +95,38 @@ const Header: React.FC = () => {
                             className='mobile-menu-drawer'
                         >
                             <nav ref={ref} className='mobile-naviMenu'>
-                                {loggedIn && <div onClick={() => navigate("/mypage")}><PiGearSixFill className="icon blue" />마이페이지</div>}
                                 <div onClick={() => navigate("/main")}><AiOutlineHome className="icon" />HOME</div>
-                                {!loggedIn && <div onClick={() => navigate("/login")}><PiPowerBold className="icon" />로그인</div>}
-                                {!loggedIn && <div onClick={() => navigate("/join")}><FiUserPlus className="icon" />회원가입</div>}
-                                {loggedIn && <div onClick={() => navigate("/notice")}><PiChatCircleDots className="icon" />문의하기</div>}
-                                <div onClick={() => navigate("/faq")}><PiFileText className="icon" />FAQ</div>
-                                {loggedIn && <div onClick={() => {
-                                    logout();
-                                    setMobileMenuOpen(false);
-                                    navigate("/main");
+                                {!loggedIn &&
+                                    <>
+                                        <div onClick={() => navigate("/login")}><PiPowerBold className="icon" />로그인</div>
+                                        <div onClick={() => navigate("/join")}><FiUserPlus className="icon" />회원가입</div>
+                                    </>
                                 }
-                                }><MdLogout className="icon" />로그아웃</div>}
+                                {loggedIn &&
+                                    <>
+                                        <div onClick={() => navigate("/mypage")}><PiGearSixFill className="icon blue" />마이페이지</div>
+                                        <div onClick={() => navigate("/service")}><PiCarSimple className="icon" />서비스신청</div>
+                                        <div onClick={() => navigate("/notice")}><PiChatCircleDots className="icon" />1:1 문의</div>
+                                        <div onClick={() => navigate("/myOrder")}><PiArticle className="icon" />주문현황</div>
+                                        <div onClick={() => {
+                                            setMobileMenuOpen(false);
+                                            logout();
+                                        }}><MdLogout className="icon red" />로그아웃</div>
+                                    </>
+                                }
                             </nav>
                         </motion.div>
                     </div>
                 </div>
-                {/* {loggedIn &&
+                {loggedIn &&
                     <div className="log-info-header">
-                        <section className="log-info">test</section>
+                        <section className="log-info">
+                            <PiUser className="icon" />
+                            <span>{user!.name}</span>로그인중.
+                            <button type="button" onClick={() => navigate("/mypage")}><PiGearSixFill className="icon" /></button>
+                        </section>
                     </div>
-                } */}
+                }
             </div>
 
         </>

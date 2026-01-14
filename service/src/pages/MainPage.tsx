@@ -7,7 +7,7 @@ import Taksong from "@components/main/Taksong";
 import Footer from "@components/Footer";
 import Rent from "@components/main/Rent";
 import Cc from "@components/main/Cc";
-import NoticeWindow from "@components/NoticeWindow";
+import NoticeWindow from "@components/QnaWindow";
 import { usePublicState, useUserStore } from "@store/publicState";
 const MainPage: React.FC = () => {
     const { noticeOn } = usePublicState();
@@ -35,7 +35,7 @@ const MainPage: React.FC = () => {
     return (
         <>
             <Header />
-            <div style={{ width: "100%", maxWidth: "1200px", margin: "0 auto", padding: "50px 3% 0" }}>
+            <div style={{ width: "100%", maxWidth: "1200px", margin: "0 auto", padding: "100px 3% 0" }}>
                 <Intrance />
                 {/* <Estimator /> */}
                 <Services />

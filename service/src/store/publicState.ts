@@ -3,13 +3,13 @@ import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 
 interface PublicState {
-    noticeOn: boolean;
-    setNoticeOn: (noticeOn: boolean) => void;
+    qnaOn: boolean;
+    setQnaOn: (qnaOn: boolean) => void;
 };
 
 export const usePublicState = create<PublicState>((set) => ({
-    noticeOn: false,
-    setNoticeOn: (noticeOn: boolean) => set({ noticeOn }),
+    qnaOn: false,
+    setQnaOn: (qnaOn: boolean) => set({ qnaOn }),
 }));
 
 interface UserStore {

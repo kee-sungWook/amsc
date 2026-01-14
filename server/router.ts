@@ -1,14 +1,14 @@
 import { Router } from "express";
-import noticeRouter from "@routes/noticeRouter.js";
+import qnaRouter from "@routes/qnaRouter.js";
 import userRouter from "@routes/userRouter.js";
-import memberRouter from "@routes/memberRouter.js";
+import orderRouter from "@routes/orderRouter.js";
 
 const apiRouter = Router();
 
 const routeModules: { path: string, router: Router }[] = [
-    { path: "/notice", router: noticeRouter },
+    { path: "/qna", router: qnaRouter },
     { path: "/user", router: userRouter },
-    { path: "/member", router: memberRouter },
+    { path: "/order", router: orderRouter },
 ];
 
 routeModules.forEach((route) => apiRouter.use(route.path, route.router))
