@@ -13,13 +13,24 @@ const selectQueryForC = `
     LEFT JOIN ams_user w ON o.worker = w.seq
     WHERE o.requester = ? ORDER BY o.wday DESC
 `;
-const selectQueryForFx = `
+// const selectQueryForFx = `
+//     SELECT o.* 
+//     FROM ams_order o 
+//     WHERE o.industry = ? 
+//     AND o.sido = ? AND o.sigungu = ? AND (o.worker = ? OR o.worker IS NULL)
+//     ORDER BY o.wday DESC
+// `;
+
+// 일단 정비, 렌트는 시도만 비교
+const selectQueryForFxRt = `
     SELECT o.* 
     FROM ams_order o 
     WHERE o.industry = ? 
-    AND o.sido = ? AND o.sigungu = ? AND (o.worker = ? OR o.worker IS NULL)
+    AND o.sido = ? AND (o.worker = ? OR o.worker IS NULL)
     ORDER BY o.wday DESC
 `;
+
+// 모든 지역 대상 조회
 const selectQueryForAllLocation = `
     SELECT o.* 
     FROM ams_order o 
@@ -68,12 +79,14 @@ export async function insertOrder(req: Request, res: Response) {
                 //업체 대상 알림
                 let where = '';
                 let prepared: any[] = [];
-                if (industry === 'FX') {
-                    where = `type='b' AND industry = ? AND sido = ? AND sigungu = ?`;
-                    prepared = [industry, sido, sigungu];
-                } else {
+                if (industry === 'DE') {
                     where = `type='b' AND industry = ?`;
                     prepared = [industry];
+                } else {
+                    where = `type='b' AND industry = ? AND sido = ?`;
+                    prepared = [industry, sido];
+                    // where = `type='b' AND industry = ? AND sido = ? AND sigungu = ?`;
+                    // prepared = [industry, sido, sigungu];
                 }
 
                 const fcmTokenRows = await selectQuery<SimpleRow<{ fcmToken: string }>[]>(
@@ -113,11 +126,12 @@ export async function getOrderForB(req: Request, res: Response) {
     console.log('getOrderForB : ', bseq, industry, sido, sigungu);
     let queryStr = '';
     let prepared: any[] = [];
-    if (industry === 'FX') {
-        queryStr = selectQueryForFx;
-        prepared = [industry, sido, sigungu, bseq];
+    if (industry === 'FX' || industry === 'RT') {
+        queryStr = selectQueryForFxRt;
+        // prepared = [industry, sido, sigungu, bseq];
+        prepared = [industry, sido, bseq];
     }
-    if (industry === 'RT' || industry === 'DE') {
+    if (industry === 'DE') {
         queryStr = selectQueryForAllLocation;
         prepared = [industry, bseq];
     }
@@ -139,11 +153,6 @@ export async function updateOrder(req: Request, res: Response) {
     }
     updateData.fday = new Date();
 
-    console.log('updateOrder : ', seq, updateData);
-    console.log('typeof seq : ', typeof seq);
-    console.log('typeof updateData : ', typeof updateData);
-    console.log('imgFileName : ', imgFile?.filename);
-
     const columns = Object.keys(updateData);
     const values: any[] = Object.values(updateData);
     const placeholders = columns.map(col => `${col} = ?`).join(', ');
@@ -153,7 +162,41 @@ export async function updateOrder(req: Request, res: Response) {
         if (result.affectedRows < 1) throw new Error('update fail');
         const updatedOrder = await selectQuery<Order[]>(`SELECT * FROM ams_order WHERE seq = ?`, [Number(seq)]);
         res.json({ success: true, message: updatedOrder[0] });
+
+        //처리 완료시 fcm 알림 전송
+        if (updateData.situation === 'finish') {
+            try {
+                const requesterSeq = updatedOrder[0].requester;
+                const fcmTokenRows = await selectQuery<SimpleRow<{ fcmToken: string }>[]>(
+                    `SELECT fcmToken FROM ams_user WHERE seq = ? AND fcmToken IS NOT NULL AND fcmToken != ''`,
+                    [requesterSeq]
+                );
+
+                if (fcmTokenRows.length > 0 && fcmTokenRows[0].fcmToken) {
+                    const fcmToken = fcmTokenRows[0].fcmToken;
+                    const title = '주문하신 서비스가 완료되었습니다.';
+                    const body = `서비스명: ${updatedOrder[0].title}`;
+                    const dataPayload = { title, body, type: 'finish' };
+                    const fcmSendResult = await sendFcmMsg({ token: fcmToken, title, body, data: dataPayload });
+                    console.log('FCM send result to customer:', fcmSendResult);
+                }
+            } catch (fcmError) {
+                console.error(`Failed to send FCM for order completion ${seq}:`, fcmError);
+            }
+        }
     } catch (error) {
         res.json({ success: false, message: `<api updateOrder> ${error}` });
+    }
+}
+
+
+export async function deleteOrder(req: Request, res: Response) {
+    const { orderSeq } = req.params;
+    try {
+        const result = await modifyQuery('DELETE FROM ams_order WHERE seq = ?', [orderSeq]);
+        if (result.affectedRows < 1) throw new Error('delete fail');
+        res.json({ success: true, message: 'delete OK' });
+    } catch (error) {
+        res.json({ success: false, message: `<api deleteOrder> ${error}` });
     }
 }

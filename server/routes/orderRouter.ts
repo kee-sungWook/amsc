@@ -8,5 +8,6 @@ router.post("/insertOrder", orderController.insertOrder);
 router.post("/updateOrder", uploadModule.single("img"), orderController.updateOrder);
 router.get("/getOrderForC/:userSeq", orderController.getOrderForC);
 router.get("/getOrderForB/:bseq/:industry/:sido/:sigungu", orderController.getOrderForB);
+router.get("/deleteOrder/:orderSeq", orderController.deleteOrder);
 
 export default router;

@@ -13,7 +13,7 @@
     .top {
         @include flex-ce;
         width: 100%;
-        padding: 50px 0 0;
+        padding: 20px 0 0;
         margin-bottom: 15px;
         border-bottom: solid 1px #fef2e2;
 
@@ -280,6 +280,21 @@
                 width: 70px;
                 font-weight: 400;
                 color: $textSub;
+            }
+
+            input {
+                width: 100%;
+            }
+        }
+
+        .btn-area {
+            @include flex-cc;
+            gap: 20px;
+            width: 100%;
+            padding: 15px 0 10px;
+
+            button {
+                width: 100px;
             }
         }
     }

@@ -22,6 +22,7 @@ const ServiceApply = () => {
     const [dummyUserData, setDummyUserData] = React.useState<DummyUser>({ name: user?.name, phone: user?.phone });
     const { applyList, setApplyList } = useServiceChoose();
     const serviceList: AllowServiceVal[] = [...SERVICE_LIST];
+
     const [fxrt, setFxrt] = React.useState<Fxrt>({ 차종: '', 차량번호: '', 보험접수번호: '', 과실비율: '' });
     const [fxRtSidogunguVal, setFxRtSidogunguVal] = React.useState<SidogunguVal>({ sido: '0', sigungu: '0' });
     const [de, setDe] = React.useState<De>({ 차량번호: '', 예약시간: '', 출발지연락처: '', 출발지주소: '', 도착지연락처: '', 도착지주소: '', 결재방식: '' });
@@ -41,6 +42,10 @@ const ServiceApply = () => {
     const rtRefs = React.useRef<(HTMLInputElement | HTMLSelectElement | null)[]>([null, null, null, null, null, null]);
     const deRefs = React.useRef<Record<string, HTMLInputElement | null>>({ carNum: null, time: null, startJuso: null, endJuso: null, payType: null });
     const phoneRefs = React.useRef<(HTMLInputElement | null)[]>([null, null, null, null, null, null]);
+
+    //정비전용 - 입고일자
+    const [ibgoDay, setibgoDay] = React.useState<string>('');
+    const ibgoRef = React.useRef<HTMLInputElement | null>(null);
 
 
 
@@ -140,6 +145,11 @@ const ServiceApply = () => {
         }
 
         if (applyList.includes("FX")) {
+            if (ibgoDay === "") {
+                alert(`수리신청 : 입고일자 항목을 입력해 주세요`);
+                ibgoRef.current && ibgoRef.current.focus();
+                return false;
+            }
             for (const el of fxRefs.current) {
                 if (!el) {
                     console.error(`!el`);
@@ -217,6 +227,7 @@ const ServiceApply = () => {
             setLoading(true);
             const sendData = applyList.map((list) => {
                 if (list === "FX") {
+                    const detail = { 입고일자: ibgoDay, ...fxrt };
                     return {
                         requester: user?.seq,
                         userName: dummyUserData.name,
@@ -225,7 +236,7 @@ const ServiceApply = () => {
                         service: 'FXA',
                         title: `사고수리: ${fxrt['차종']} (${dummyUserData.name})`,
                         num: `FXA-${makeOrderNum()}`,
-                        detail: JSON.stringify(fxrt),
+                        detail: JSON.stringify(detail),
                         sido: fxRtSidogunguVal.sido.substring(0, 2),
                         sigungu: fxRtSidogunguVal.sigungu.substring(2, 5),
                     };
@@ -372,6 +383,14 @@ const ServiceApply = () => {
                             <div className="default">
                                 <section className="title"><IoBuild className="icon blue" /><span>수리신청</span></section>
                                 <section className="content">
+                                    <p><FaStarOfLife className="icon" />입고일자 입력</p>
+                                    <input
+                                        type="text"
+                                        placeholder={`입고일자 입력`}
+                                        value={ibgoDay}
+                                        ref={ibgoRef}
+                                        onChange={(e) => setibgoDay(e.target.value)}
+                                    />
                                     {Object.entries(fxrt).map(([key, val], idx) =>
                                         <Fragment key={idx}>
                                             <p><FaStarOfLife className="icon" />{key} 입력</p>
