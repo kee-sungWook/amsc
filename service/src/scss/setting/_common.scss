@@ -179,3 +179,14 @@ footer {
         font-weight: 600;
     }
 }
+
+.common-no-data {
+    @include flex-cc;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+    padding: 10% 0;
+    font-size: 25px;
+    color: $textThird;
+    font-weight: 800;
+}

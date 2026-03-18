@@ -1,0 +1,47 @@
+@use "@scss/abstract/vars" as *;
+@use "@scss/abstract/mixin" as *;
+
+
+.admin-login {
+
+    @include flex-c-sc;
+    width: 100%;
+    max-width: 500px;
+    margin: auto;
+    padding-top: 10%;
+
+    form {
+        @include flex-c-sc;
+        @include shadowGray;
+        gap: 8px;
+        width: 90%;
+        padding: 5%;
+        border: solid 1px $outLine;
+        border-radius: 8px;
+
+        h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+
+            span {
+                color: $primary;
+                font-weight: 900;
+            }
+        }
+
+        div {
+            font-size: 15px;
+            font-weight: 600;
+            padding: 10px 0;
+        }
+
+        input {
+            width: 95%;
+        }
+
+        button {
+            width: 95%;
+            margin: 15px 0 10px;
+        }
+    }
+}

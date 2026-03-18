@@ -1,13 +1,14 @@
 import type { OrderWithWorker } from "@interface/models";
 import { motion } from "framer-motion";
 import useMeasure from "react-use-measure";
-import { formatDate } from "@utils/supporters";
+import { currencyComma, formatDate } from "@utils/supporters";
 import { FaCheck, FaRegPlayCircle, FaStarOfLife } from "react-icons/fa";
 import { LuClockAlert } from "react-icons/lu";
 import { Fragment } from "react/jsx-runtime";
-import { PiBuildingOfficeDuotone } from "react-icons/pi";
+import { PiBuildingOfficeDuotone, PiPhoneDuotone, PiUserDuotone } from "react-icons/pi";
 import React from "react";
 import LoadingIndicator from "@components/LoadingIndicator";
+import { FiEdit } from "react-icons/fi";
 
 interface Props {
     order: OrderWithWorker;
@@ -24,13 +25,15 @@ const MyOrderList: React.FC<Props> = ({ order, index, selList, handleOpenToggle,
     const [loading, setLoading] = React.useState(false);
     const [detailData, setDetailData] = React.useState<Record<string, any>>(JSON.parse(order.detail));
     const [title, setTitle] = React.useState(order.title);
+    const submitUserOrigin = { userName: order.userName, userPhone: order.userPhone };
+    const [submitUser, setSubmitUser] = React.useState<{ userName: string, userPhone: string }>(submitUserOrigin);
 
     async function handleModifyOrder() {
         setLoading(true);
         try {
             const sendData = {
                 seq: order.seq,
-                updateData: { title: title, detail: JSON.stringify(detailData) }
+                updateData: { title: title, detail: JSON.stringify(detailData), userName: submitUser.userName, userPhone: submitUser.userPhone }
             };
 
             const response = await fetch('/api/order/updateOrder', {
@@ -68,6 +71,8 @@ const MyOrderList: React.FC<Props> = ({ order, index, selList, handleOpenToggle,
         }
     }
 
+
+
     return (
         <motion.div
             initial={{ height: 82 }}
@@ -81,7 +86,7 @@ const MyOrderList: React.FC<Props> = ({ order, index, selList, handleOpenToggle,
                     ? <LoadingIndicator size={60} />
                     : <>
                         <section className="list-head" onClick={() => {
-                            if (!modifyMode) handleOpenToggle(order.seq)
+                            !modifyMode && handleOpenToggle(order.seq)
                         }}>
                             <img src={`/img/mem_service${order.industry}.png`} />
                             <div className="str">
@@ -101,6 +106,7 @@ const MyOrderList: React.FC<Props> = ({ order, index, selList, handleOpenToggle,
                                     }
                                 </section>
                             </div>
+                            {order.payOk === 1 && <div className="payOk">포인트 지급</div>}
                             {order.situation !== 'finish'
                                 ? <div className={`pictogram ${order.situation === 'wait' ? 'red' : 'blue'}`}>
                                     {order.situation === 'wait'
@@ -115,6 +121,51 @@ const MyOrderList: React.FC<Props> = ({ order, index, selList, handleOpenToggle,
                             }
                         </section>
 
+                        <section className="submit-user">
+                            <div className="info">
+                                <div>
+                                    <h4><PiUserDuotone className="icon" />신청자 :</h4>
+                                    <p>{modifyMode
+                                        ? <input
+                                            type="text"
+                                            value={submitUser.userName}
+                                            onChange={(e) => setSubmitUser(prev => ({ ...prev, ['userName']: e.target.value }))}
+                                        />
+                                        : submitUser.userName
+                                    }</p>
+                                </div>
+                                <div>
+                                    <h4><PiPhoneDuotone className="icon" />연락처 :</h4>
+                                    <p>{modifyMode
+                                        ? <input
+                                            type="text"
+                                            value={submitUser.userPhone}
+                                            onChange={(e) => setSubmitUser(prev => ({ ...prev, ['userPhone']: e.target.value }))}
+                                        />
+                                        : submitUser.userPhone
+                                    }</p>
+                                </div>
+                            </div>
+                            {order.situation === 'play' &&
+                                <div className="support">
+                                    {modifyMode
+                                        ? <div className="ok-cancel">
+                                            <button
+                                                type="button"
+                                                onClick={handleModifyOrder}
+                                            >확인</button>
+                                            <button
+                                                type="button"
+                                                className="cancel"
+                                                onClick={() => { setModifyMode(false); setSubmitUser(submitUserOrigin) }}
+                                            >취소</button>
+                                        </div>
+                                        : <div className="edit" onClick={() => setModifyMode(true)}><FiEdit className="icon" /></div>
+                                    }
+                                </div>
+                            }
+                        </section>
+
                         <section className="list-content">
                             {Object.entries(detailData).map(([key, value], idx) => (
                                 <Fragment key={idx}>
@@ -122,12 +173,15 @@ const MyOrderList: React.FC<Props> = ({ order, index, selList, handleOpenToggle,
                                         <div><FaStarOfLife className="icon" />{key}</div>
                                         {!modifyMode
                                             ? <span>{`${value}`}</span>
-                                            : <input
-                                                type="text"
-                                                value={value}
-                                                name={key}
-                                                onChange={(e) => (setDetailData((prev) => ({ ...prev, [e.target.name]: e.target.value })))}
-                                            />
+                                            : order.situation === 'wait'
+                                                ? <input
+                                                    type="text"
+                                                    value={value}
+                                                    name={key}
+                                                    onChange={(e) => (setDetailData((prev) => ({ ...prev, [e.target.name]: e.target.value })))}
+                                                />
+                                                : <span>{`${value}`}</span>
+
                                         }
                                     </div>
                                 </Fragment>
@@ -174,8 +228,16 @@ const MyOrderList: React.FC<Props> = ({ order, index, selList, handleOpenToggle,
                         {order.situation === 'finish' &&
                             <section className="about-point">
                                 <img src="/img/mypageCon_point.png" />
-                                <h3>예상포인트</h3>
-                                <div>{new Intl.NumberFormat("ko-KR").format(Math.floor(order.price * 0.1))} <span>pt.</span></div>
+                                <h3>{order.payOk ? `포인트 지급완료 : ` : order.point ? '지급할 포인트' : '예상 포인트 : '}</h3>
+                                <div>
+                                    {order.payOk
+                                        ? currencyComma(order.point!)
+                                        : order.industry === "DE"
+                                            ? new Intl.NumberFormat("ko-KR").format(Math.floor(order.price * 0.05))
+                                            : new Intl.NumberFormat("ko-KR").format(Math.floor(order.price * 0.1))
+                                    }
+                                    <span>pt.</span>
+                                </div>
                             </section>
                         }
 

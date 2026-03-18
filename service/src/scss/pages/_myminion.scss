@@ -1,0 +1,201 @@
+@use "@scss/abstract/vars" as *;
+@use "@scss/abstract/mixin" as *;
+
+
+.my-minion {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    min-height: 100vh;
+    margin: 0 auto;
+    padding: 0 2% 50px;
+
+    .top {
+        @include flex-ce;
+        width: 100%;
+        margin-top: 0;
+        margin-bottom: 5px;
+        border-bottom: solid 1px #fef2e2;
+
+        @media (width < 768px) {
+            margin-top: -25px;
+        }
+
+
+        img {
+            margin-right: 2%;
+
+            @media (width < 768px) {
+                width: 40%;
+            }
+
+            @media (width < 500px) {
+                width: 45%;
+            }
+        }
+
+        .top-txt {
+            @include flex-c-ss;
+            margin-bottom: 15px;
+            letter-spacing: -0.05em;
+            align-items: stretch;
+
+            @media(width < 500px) {
+                margin: 20px 0 10px;
+            }
+
+            .title {
+                margin-bottom: 10px;
+                font-size: 3.0rem;
+                font-family: $font2;
+                color: $accent;
+
+                span {
+                    font-family: $font2;
+                    font-weight: 800;
+                    color: $textMain
+                }
+
+                @media(width < 768px) {
+                    font-size: 3.5vw;
+                    margin-bottom: 1%;
+                }
+
+                @media(width < 500px) {
+                    font-size: clamp(18px, 5vw, 32px);
+
+                }
+            }
+
+            .content {
+                p {
+                    @include flex-bc;
+                    width: 100%;
+                    padding: 3px;
+                    font-size: 15px;
+                    font-weight: 500;
+                    color: $textSub;
+
+                    &:last-of-type>span {
+                        color: $textThird;
+                    }
+
+                    @media (width < 500px) {
+                        font-size: 13px;
+                        padding: 0 3px;
+                    }
+
+                    span {
+                        font-size: 15px;
+                        color: $accent;
+                        font-weight: 800;
+
+                        @media (width < 500px) {
+                            font-size: 13px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .main-content {
+
+        .tree {
+            @include flex-cc;
+        }
+
+        .tree,
+        .tree ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* 모든 노드에 기본적으로 선을 설정 */
+        .tree-node {
+            position: relative;
+            padding-left: 65px;
+
+            @media (width < 500px) {
+                padding-left: 40px;
+            }
+        }
+
+        /* 수직선 */
+        .tree-node::before {
+            content: "";
+            position: absolute;
+            left: 30px;
+            top: -15px;
+            bottom: 0;
+            border-left: 1px solid #ccc;
+
+            @media (width < 500px) {
+                left: 15px;
+            }
+        }
+
+        /* 수평선 */
+        .tree-node::after {
+            content: "";
+            position: absolute;
+            left: 30px;
+            top: 16px;
+            width: 35px;
+            border-top: 1px solid #ccc;
+
+            @media (width < 500px) {
+                left: 15px;
+                width: 25px;
+            }
+        }
+
+        /* [핵심] 최상위 레벨 노드의 선과 여백 제거 */
+        .tree>.tree-node {
+            padding-left: 0;
+        }
+
+        div.descendant-0 {
+            background-color: $primary;
+            width: 200px;
+            margin-top: 20px;
+            font-size: 18px;
+            border: 0;
+            color: white;
+            font-weight: 800;
+
+            @media (width < 500px) {
+                width: 150px;
+                font-size: 15px;
+            }
+        }
+
+        div.descendant-1 {
+            background-color: $accent;
+            border: 0;
+            font-weight: 700;
+        }
+
+        .tree>.tree-node::before,
+        .tree>.tree-node::after {
+            display: none;
+        }
+
+        /* 마지막 자식 노드의 수직선이 밑으로 삐져나오지 않게 처리 */
+        .tree-node:last-child::before {
+            height: 32px;
+            bottom: auto;
+        }
+
+        .node-content {
+            @include flex-cc;
+            @include shadowDark;
+            width: 120px;
+            padding: 5px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            background-color: $btnSub;
+        }
+    }
+}

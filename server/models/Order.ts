@@ -20,9 +20,18 @@ export interface Order extends RowDataPacket {
     img: string | null;
     wday: string;
     fday: string | null;
+    point: number | null;
+    payOk: number;
+    taxInvoice: string | null;
+    deposit: string | null;
 }
 
 export interface OrderWithWorker extends Order {
     workerCompany: string | null;
     workerPhone: string | null;
+}
+
+export interface OrderWithPoint extends OrderWithWorker {
+    requesterName: string | null;
+    requesterPhone: string | null;
 }

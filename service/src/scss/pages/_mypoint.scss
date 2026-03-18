@@ -1,0 +1,569 @@
+@use "@scss/abstract/vars" as *;
+@use "@scss/abstract/mixin" as *;
+
+
+.my-point {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    min-height: 100vh;
+    margin: 0 auto;
+    padding: 0 2% 50px;
+
+    .top {
+        @include flex-ce;
+        width: 100%;
+        margin-top: 0;
+        margin-bottom: 5px;
+        border-bottom: solid 1px #fef2e2;
+
+        @media (width < 768px) {
+            margin-top: -25px;
+        }
+
+
+        img {
+            margin-right: 2%;
+
+            @media (width < 768px) {
+                width: 40%;
+            }
+
+            @media (width < 500px) {
+                width: 45%;
+            }
+        }
+
+        .top-txt {
+            @include flex-c-cc;
+            margin-bottom: 15px;
+            letter-spacing: -0.05em;
+
+            @media(width < 500px) {
+                align-items: center;
+                margin: 20px 0 10px;
+            }
+
+            .title {
+                font-size: 3.0rem;
+                font-family: $font2;
+                color: $accent;
+
+                span {
+                    font-family: $font2;
+                    font-weight: 800;
+                    color: $textMain
+                }
+
+                @media(width < 768px) {
+                    font-size: 3.5vw;
+                    margin-bottom: 1%;
+                }
+
+                @media(width < 500px) {
+                    font-size: clamp(20px, 5vw, 32px);
+
+                }
+            }
+
+            .content {
+                font-size: 25px;
+                font-weight: 800;
+
+                color: $red;
+                padding-left: 20px;
+
+                span {
+                    font-size: 12px;
+                    color: black;
+                    font-weight: 400;
+                }
+
+                @media (width < 768px) {
+                    font-size: 18px;
+
+                    span {
+                        font-size: 11px;
+                    }
+                }
+            }
+        }
+    }
+
+    .point-menu {
+        @include flex-cc;
+        gap: 10px;
+        width: 100%;
+        max-width: 800px;
+        margin: 20px auto;
+
+        >div {
+            @include flex-cc;
+            width: 50%;
+            height: 30px;
+            border-radius: 15px;
+            background-color: $primary;
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+
+            &.deselect {
+                background-color: $btnSub;
+                color: $textThird;
+
+                &:hover {
+                    color: $primary;
+                    cursor: pointer;
+
+                    .pointCon {
+                        border: solid 1px $primary;
+                        color: $primary;
+                    }
+
+                    .icon {
+                        color: $primary;
+                    }
+                }
+
+                .pointCon {
+                    border: solid 1px $textThird;
+                    color: $textThird;
+                }
+
+                .icon {
+                    color: $textThird;
+                }
+            }
+
+            .pointCon {
+                @include flex-cc;
+                width: 18px;
+                height: 18px;
+                margin-right: 10px;
+                border-radius: 50%;
+                border: solid 1px white;
+                color: white;
+                font-size: 11px;
+                font-weight: 700;
+                line-height: 100%;
+            }
+
+            .icon {
+                margin-right: 10px;
+                font-size: 20px;
+                color: white;
+            }
+        }
+    }
+
+    .filter-area {
+        @include flex-cc;
+        @include shadowDark;
+        width: 100%;
+        padding: 2%;
+        border: solid 1px $outLine;
+        border-radius: 8px;
+        background-color: white;
+    }
+
+    .bank-account-area {
+        @include flex-cc;
+        @include shadowDark;
+        width: 100%;
+        padding: 15px;
+        margin: 0 auto 20px;
+        border: solid 1px $outLine;
+        border-radius: 8px;
+        background-color: white;
+
+        img {
+            width: 85px;
+            margin-right: 20px;
+
+            @media (width < 500px) {
+                width: 65px;
+                margin-right: 10px;
+            }
+        }
+
+        .account-info {
+            @include flex-c-bs;
+            color: $textSub;
+
+            h4 {
+                font-size: 15px;
+                color: $textMain;
+                margin-bottom: 5px;
+            }
+
+            div {
+                font-size: 13px;
+                font-weight: 500;
+
+                &.no-account {
+                    color: $textThird;
+                }
+
+                span {
+                    margin-left: 8px;
+                    font-weight: 700;
+                }
+
+                @media (width < 500px) {
+                    font-size: 12px;
+
+                    span {
+                        margin-left: 3px;
+                    }
+                }
+
+            }
+
+            >button {
+                font-size: 13px;
+                padding: 0 10px;
+                margin-top: 8px;
+            }
+
+
+        }
+
+        >button {
+            @include flex-c-cc;
+            width: 80px;
+            height: stretch;
+            margin-left: auto;
+
+            .icon {
+                font-size: 30px;
+                color: white;
+            }
+
+            @media (width < 500px) {
+                width: 70px;
+                font-size: 13px;
+
+                .icon {
+                    font-size: 24px;
+                }
+            }
+        }
+    }
+
+    .point-list {
+        @include shadowDark;
+        @include flex-sc;
+        padding: 8px 0;
+        margin-bottom: 10px;
+        border: solid 1px $outLine;
+        border-radius: 8px;
+        overflow: hidden;
+        background-color: white;
+
+        .no {
+            width: 50px;
+            text-align: center;
+            font-size: 0.8em;
+            font-weight: 700;
+            color: $textThird;
+        }
+
+        .content {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            flex: 1;
+
+            @media (width < 700px) {
+                flex-direction: column;
+                align-items: flex-start;
+                padding-right: 10px;
+            }
+
+            .day-amount {
+                @include flex-sc;
+                font-size: 14px;
+
+                .day {
+                    font-size: 0.85em;
+                    margin-right: 30px;
+
+                    @media (width < 500px) {
+                        margin-right: 15px;
+                    }
+                }
+
+                .utilize {
+                    margin-right: 10px;
+                    font-size: 1.2em;
+                    font-weight: 700;
+
+                    @media (width < 500px) {
+                        font-size: 1.0em;
+                    }
+                }
+
+                .amount {
+                    font-size: 1.2em;
+                    font-weight: 600;
+
+                    @media (width < 500px) {
+                        font-size: 1.0em;
+                    }
+                }
+
+                .blue {
+                    color: $primary;
+                }
+
+                .red {
+                    color: $red;
+                }
+
+                .green {
+                    color: $green;
+                }
+            }
+
+            .subject {
+                font-size: 13px;
+                font-weight: 400;
+                color: $textThird;
+                padding: 5px 0 0;
+
+                span {
+                    margin-right: 15px;
+                }
+
+                @media (width < 700px) {
+                    @include flex-c-ss;
+                    padding: 5px 0;
+                    font-size: 12px;
+                }
+            }
+
+            p {
+                font-size: 18px;
+                margin-left: auto;
+                margin-right: 3%;
+
+                @media (width < 700px) {
+                    margin-left: 0;
+                    font-size: 16px;
+                }
+
+                span {
+                    color: $red;
+                    font-weight: 900;
+                }
+            }
+        }
+    }
+}
+
+.bank-register-area {
+    @include flex-cc;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 100;
+
+    .register-box {
+        @include flex-c-cc;
+        position: relative;
+        width: 90%;
+        max-width: 400px;
+        padding: 20px;
+        border-radius: 8px;
+        background-color: white;
+
+        >h3 {
+            width: 100%;
+            text-align: center;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 15px;
+
+            .withdrawal-info {
+                width: 100%;
+                margin-top: 15px;
+                font-size: 13px;
+                letter-spacing: -0.05em;
+                font-weight: 600;
+                color: $textThird;
+                text-align: center;
+
+            }
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            font-size: 24px;
+            color: $textThird;
+
+            &:hover {
+                color: $primary;
+                cursor: pointer;
+            }
+        }
+
+        .point-display {
+            @include flex-bc;
+            width: 100%;
+            padding: 15px;
+            border-top: solid 1px $btnSub;
+
+            section {
+                font-size: 13px;
+                font-weight: 500;
+                color: $textMain;
+
+                span {
+                    font-size: 18px;
+                    font-weight: 700;
+                    color: $red;
+
+                    &.blue {
+                        color: $primary;
+                    }
+                }
+            }
+        }
+
+        .input-area {
+            @include flex-c-ss;
+            width: 100%;
+            margin-bottom: 15px;
+
+            label {
+                font-size: 14px;
+                color: $textMain;
+                font-weight: 600;
+                margin-bottom: 5px;
+                padding-left: 5px;
+
+                &.amount-title {
+                    @include flex-cc;
+                    width: 100%;
+                }
+
+                span {
+                    margin-left: 10px;
+                    font-size: 12px;
+                    color: $primary;
+                }
+            }
+
+            input {
+                width: 100%;
+                padding: 8px;
+                border: solid 1px $outLine;
+                border-radius: 4px;
+
+                &.amount-input {
+                    text-align: right;
+                    background-color: azure;
+                }
+            }
+
+            p {
+                width: 100%;
+                padding: 5px 10px;
+                text-align: right;
+                font-size: 11px;
+                color: $textSub;
+                border-bottom: solid 1px $btnSub;
+            }
+        }
+
+        .input-area-withdrawal {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 15px;
+            border: solid 1px $outLine;
+            border-radius: 8px;
+            background-color: $inputBg;
+
+            label {
+                @include flex-cc;
+                width: 100%;
+                font-size: 14px;
+                color: $textMain;
+                font-weight: 600;
+                padding-bottom: 10px;
+                border-bottom: 1px dashed $btnSub;
+            }
+
+            .total-amount {
+                @include flex-sc;
+                width: 100%;
+                padding: 10px 3px 0;
+
+                h6 {
+                    font-size: 12px;
+                    color: $textSub;
+                    font-weight: 500;
+                }
+
+                input {
+                    width: 100px;
+                    margin-left: auto;
+                    text-align: right;
+                    padding-left: 0;
+                    padding-right: 10px;
+                    background-color: white;
+                }
+
+                span {
+                    font-size: 15px;
+                    color: $primary;
+                    font-weight: 600;
+                    margin-left: 8px;
+                }
+            }
+
+
+        }
+
+        .amount-btns-area {
+            @include flex-ec;
+            width: 100%;
+            gap: 10px;
+            margin-bottom: 15px;
+
+            button {
+                width: 60px;
+                height: 22px;
+                font-size: 12px;
+                background-color: $btnSub;
+                color: $textMain;
+                border-radius: 4px;
+                border: solid 1px $outLine;
+                box-shadow: none;
+
+                &:hover {
+                    background-color: $primary;
+                    color: white;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        .btn-area {
+            @include flex-cc;
+            width: 100%;
+            gap: 15px;
+
+            button {
+                flex: 1;
+                height: 40px;
+                margin: 30px 0;
+            }
+        }
+    }
+}

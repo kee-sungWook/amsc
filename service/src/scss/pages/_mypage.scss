@@ -18,6 +18,7 @@
         border-bottom: solid 1px #fef2e2;
 
         @media(width < 500px) {
+            margin-top: -20px;
             flex-direction: column;
             justify-content: flex-start;
             align-items: center;
@@ -103,7 +104,7 @@
     .rectForm {
         @include shadowDark;
         max-width: 700px;
-        margin: 0 auto 15px;
+        margin: 0 auto 10px;
         padding: 10px;
         border-radius: 10px;
         border: solid 1px $outLine;
@@ -115,21 +116,21 @@
     }
 
     .head-group {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: flex-start;
-        gap: 15px;
+        @include flex-c-sc;
         width: 100%;
         max-width: 700px;
         margin: auto;
 
-        .order-area {
+        .order-minion {
             @include flex-ac;
-            width: 70%;
+            width: 100%;
 
             >figure {
                 padding: 0 3%;
+
+                @media (width < 400px) {
+                    padding: 0 1%;
+                }
 
                 figcaption {
                     font-weight: bold;
@@ -145,6 +146,11 @@
                     @include flex-bc;
                     width: 100%;
                     padding: 5px 8px;
+
+                    @media (width < 400px) {
+                        padding: 3px 4px;
+                        font-size: 12px;
+                    }
 
                     &:first-of-type {
                         border-bottom: dashed 1px $outLine;
@@ -165,21 +171,30 @@
                 aspect-ratio: 1/1;
                 margin-left: 3%;
                 padding: 1%;
-                font-size: 12px;
+                font-size: 10px;
 
                 .icon {
-                    font-size: 30px;
+                    font-size: 25px;
                     margin-bottom: 5px;
+
+                    @media (width < 500px) {
+                        font-size: 18px;
+                        margin-bottom: 2px;
+                    }
                 }
             }
         }
 
         .point-area {
-            @include flex-bc;
-            width: 30%;
+            @include flex-ac;
+            width: 100%;
 
             >figure {
                 padding: 0 3%;
+
+                @media (width < 400px) {
+                    padding: 0 1%;
+                }
 
                 figcaption {
                     font-weight: bold;
@@ -188,16 +203,44 @@
             }
 
             .point-num {
-                margin-right: 5%;
-                text-align: center;
+                width: 100%;
+                margin: 0 5%;
+                text-align: right;
+                padding-right: 8px;
                 font-size: 25px;
                 font-weight: bold;
                 color: $red;
 
                 span {
-                    font-size: 14px;
-                    font-weight: normal;
+                    font-weight: 500;
                     color: black;
+                    font-size: 12px;
+                    margin-left: 5px;
+                }
+
+                @media (width < 500px) {
+                    font-size: 18px;
+                    letter-spacing: -0.05em;
+                }
+            }
+
+            button {
+                @include flex-c-cc;
+                width: 100px;
+                height: auto;
+                aspect-ratio: 1/1;
+                margin-left: 3%;
+                padding: 1%;
+                font-size: 10px;
+
+                .icon {
+                    font-size: 25px;
+                    margin-bottom: 5px;
+
+                    @media (width < 500px) {
+                        font-size: 18px;
+                        margin-bottom: 2px;
+                    }
                 }
             }
         }

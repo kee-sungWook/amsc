@@ -1,0 +1,90 @@
+@use "@scss/abstract/vars" as *;
+@use "@scss/abstract/mixin" as *;
+
+.admin-layout {
+    display: flex;
+    align-items: stretch;
+    width: 100%;
+
+    background-color: white;
+
+    .admin-menus {
+        @include flex-c-sc;
+        padding: 20px;
+        min-height: 100vh;
+        background-color: $bg;
+
+        header {
+            width: 200px;
+            text-align: center;
+            margin: 0 auto;
+
+            font-size: 20px;
+            font-weight: 500;
+
+            .logo {
+                color: $primary;
+                font-weight: 900;
+            }
+        }
+
+        nav {
+            margin-top: 10%;
+            width: 90%;
+
+            ul {
+                li {
+                    @include flex-sc;
+                    @include shadowDark;
+                    font-size: 14px;
+                    font-weight: 600;
+                    padding: 8px 20px;
+                    margin: 15px 0;
+                    border: solid 1px $btnSub;
+                    background-color: white;
+                    border-radius: 5px;
+
+                    &:hover {
+                        cursor: pointer;
+                        color: $primary;
+                        border-color: $primary;
+
+                        .icon {
+                            color: $primary;
+                        }
+                    }
+
+                    &.selected {
+                        color: white;
+                        background-color: $primary;
+
+                        .icon {
+                            color: white;
+                        }
+
+                        pointer-events: none;
+                    }
+
+                    .icon {
+                        color: $textSub;
+                        font-size: 18px;
+                        margin-right: 5px;
+                    }
+
+                    .badge {
+                        @include flex-cc;
+                        width: 20px;
+                        height: 20px;
+                        margin-left: auto;
+                        background-color: $red;
+                        color: white;
+                        font-weight: 600;
+                        font-size: 13px;
+                        line-height: 80%;
+                        border-radius: 10px;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,113 @@
+@use "@scss/abstract/vars" as *;
+@use "@scss/abstract/mixin" as *;
+
+.admin-withdrawal {
+    @include flex-c-sc;
+    width: 100%;
+    min-width: 900px;
+    padding: 20px;
+
+    h3 {
+        padding: 5px 0 20px;
+        font-size: 20px;
+    }
+
+    .withdrawal-list {
+        @include flex-bc;
+        @include shadowDark;
+        width: 100%;
+        padding: 15px;
+        border: solid 1px $outLine;
+        border-radius: 8px;
+        margin-bottom: 15px;
+
+        >section {
+            @include flex-c-ss;
+            flex: 1;
+            font-size: 14px;
+            font-weight: 600;
+            color: $textMain;
+
+            div {
+                padding: 5px 0;
+
+                .head {
+                    display: inline-block;
+                    width: 65px;
+                    text-align: right;
+                    margin-right: 10px;
+                    font-weight: 500;
+                    color: $textSub;
+                }
+
+                .user {
+                    font-weight: 700;
+                    color: $primary;
+                }
+
+                .bank {
+                    font-size: 15px;
+                    color: black;
+                    font-weight: 700;
+                }
+            }
+
+            .amount {
+                b {
+                    font-size: 20px;
+                    color: $green;
+                }
+
+                .balance {
+                    margin-left: 15px;
+                    font-weight: 400;
+                    color: $textThird;
+                }
+            }
+        }
+
+        >button {
+            height: stretch;
+            padding: 0 20px;
+        }
+    }
+
+    .remittance-list {
+        @include flex-sc;
+        @include shadowDark;
+        width: 100%;
+        padding: 10px 20px;
+        border: solid 1px $outLine;
+        border-radius: 8px;
+        margin-bottom: 8px;
+
+        .amount {
+            width: 150px;
+            font-size: 20px;
+            font-weight: 700;
+            color: $green
+        }
+
+        .head {
+            font-size: 13px;
+            color: $textSub;
+        }
+
+        .user {
+            color: $primary;
+        }
+
+        .eday {
+            margin-left: auto;
+            font-size: 13px;
+            font-weight: 500;
+            color: $textThird;
+
+            span {
+                color: $green;
+                font-weight: 700;
+            }
+        }
+    }
+
+}

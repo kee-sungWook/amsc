@@ -1,0 +1,163 @@
+@use "@scss/abstract/vars" as *;
+@use "@scss/abstract/mixin" as *;
+
+.admin-qna {
+    @include flex-c-sc;
+    width: 100%;
+    min-width: 900px;
+    padding: 20px;
+
+    h3 {
+        padding: 5px 0 20px;
+        font-size: 20px;
+    }
+
+    .list-area {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        min-height: 300px;
+
+        .nodata {
+            font-size: 20px;
+            font-weight: bold;
+            font-family: $font;
+            color: $textThird;
+        }
+
+        .admin-qna-list {
+            @include shadowDark;
+            width: 95%;
+            margin-bottom: 10px;
+            border: solid 1px $outLine;
+            border-radius: 5px;
+            overflow: hidden;
+
+            >div {
+                padding: 0 15px;
+
+                header {
+                    @include flex-c-ss;
+                    width: 100%;
+
+                    .head {
+                        @include flex-sc;
+                        width: 100%;
+                        padding: 10px 5px 0;
+                        font-size: 0.9em;
+
+                        >span {
+                            color: $textThird;
+                            margin-left: 10px;
+                        }
+
+                    }
+
+                    .title {
+                        @include flex-ss;
+                        width: 100%;
+                        color: $textMain;
+                        padding: 0 5px 12px;
+                        border-bottom: 1px dashed $outLine;
+
+                        >span {
+                            margin-right: 5px;
+                            font-family: $font3;
+                            font-weight: 700;
+                            color: $red;
+                        }
+
+                        >p {
+                            flex: 1;
+                            color: black;
+                            font-family: $font3;
+                            white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                        }
+
+                        >b {
+                            margin-left: auto;
+                            font-size: 13px;
+                            font-weight: 700;
+                            color: $accent;
+                        }
+                    }
+                }
+
+                .list-body {
+                    padding: 10px 5px;
+                    font-size: 0.95em;
+
+                    >div {
+                        @include flex-ss;
+                        width: 100%;
+                        margin-bottom: 10px;
+
+                        font-size: inherit;
+
+                        >span {
+                            margin-right: 5px;
+                            font-family: $font3;
+                            font-weight: 700;
+                            color: $primary;
+
+                            &.question {
+                                color: $red;
+                            }
+                        }
+
+                        >p {
+                            flex: 1;
+                            color: $textSub;
+                            font-size: inherit;
+                            font-weight: 500;
+
+                            &.question {
+                                color: $textMain;
+                                font-family: $font3;
+                            }
+
+                            &.aday {
+                                color: $textThird;
+                                font-size: 12px;
+                                font-weight: 600;
+                                padding-left: 25px;
+                            }
+                        }
+
+                        >textarea {
+                            flex: 1;
+                            height: 120px;
+                        }
+                    }
+                }
+
+                .btn-area {
+                    @include flex-cc;
+                    gap: 30%;
+                    text-align: center;
+                    padding-bottom: 20px;
+
+                    button {
+                        width: 30%;
+                        min-width: 150px;
+                        max-width: 250px;
+                        height: 30px;
+                        border-radius: 3px;
+                        box-shadow: none;
+                        font-size: 13px;
+
+                        &.close {
+                            background-color: $red;
+                        }
+
+                    }
+                }
+            }
+        }
+    }
+
+
+}

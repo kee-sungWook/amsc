@@ -2,12 +2,15 @@ import React, { useEffect } from "react";
 import "@scss/components/_header.scss";
 import { PiArticle, PiCarSimple, PiChatCircleDots, PiGearSixFill, PiPowerBold, PiUser } from "react-icons/pi";
 import { MdLogout } from "react-icons/md";
-import { AiOutlineHome } from "react-icons/ai";
-import { FiUserPlus } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 import { useUserStore } from "@store/publicState";
 import { motion } from "motion/react";
 import useMeasure from "react-use-measure";
+import { isPwaInstalled } from "../pwaInstall";
+
+// import { TbDeviceDesktopPlus } from "react-icons/tb";
+import { AiOutlineHome } from "react-icons/ai";
+import { FiUserPlus } from "react-icons/fi";
 
 const Header: React.FC = () => {
     const { loggedIn, user, setUserClear } = useUserStore();
@@ -15,6 +18,16 @@ const Header: React.FC = () => {
     const [mobileMenuOpen, setMobileMenuOpen] = React.useState<boolean>(false);
     const insideRef = React.useRef<HTMLDivElement>(null);
     const [ref] = useMeasure();
+    const [_, setPwaInstalled] = React.useState(false);
+
+    useEffect(() => {
+        setPwaInstalled(isPwaInstalled());
+
+        const handler = () => setPwaInstalled(true);
+        window.addEventListener("appinstalled", handler);
+
+        return () => window.removeEventListener("appinstalled", handler);
+    }, []);
 
     useEffect(() => {
         const handleClickOutSide = (e: MouseEvent) => {
@@ -35,12 +48,25 @@ const Header: React.FC = () => {
         window.location.replace("/main");
     }
 
+    // const handlePWAInstall = async () => {
+    //     const installed = await triggerPwaInstall();
+    //     if (installed) {
+    //         setPwaInstalled(true);
+    //         alert("설치 완료");
+    //     }
+    // };
+
     return (
         <>
             <div className='header'>
                 <div className='container'>
-                    <section className='logo-container' onClick={() => navigate("/main")}>
-                        <span>AMS</span>
+                    <section className='logo-container'>
+                        <span onClick={() => navigate("/main")}>AMS</span>
+                        {/* {!pwaInstalled && (
+                            <div className="mobile-favorite" onClick={handlePWAInstall}>
+                                <TbDeviceDesktopPlus className="icon" /> 바로가기
+                            </div>
+                        )} */}
                     </section>
 
                     <nav className="naviMenu">
@@ -71,7 +97,6 @@ const Header: React.FC = () => {
                                 </button>
                             </>
                         }
-
                     </section>
 
                     <div ref={insideRef}>

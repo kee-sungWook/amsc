@@ -2,23 +2,56 @@ import Header from "@components/Header";
 import "@scss/pages/_mypage.scss";
 import { PiMagnifyingGlassBold, PiAddressBookDuotone, PiLockKeyDuotone, PiEnvelopeDuotone, PiPhoneDuotone, PiBookmarksSimpleDuotone } from "react-icons/pi";
 import { FiEdit } from "react-icons/fi";
-import { LuCopyPlus } from "react-icons/lu";
 import React from "react";
 import { useUserStore } from "@store/publicState";
 import { useNavigate } from "react-router-dom";
 import type { OrderWithWorker } from "@interface/models";
 import LoadingIndicator from "@components/LoadingIndicator";
+import { currencyComma } from "@utils/supporters";
 
 
 const MyPage: React.FC = () => {
-    const [loading, setLoading] = React.useState<boolean>(false);
     const { user, setUser } = useUserStore();
+    const [loading, setLoading] = React.useState<boolean>(false);
+    const [modifyMode, setModifyMode] = React.useState<boolean>(false);
     const [joinNetwork, setJoinNetwork] = React.useState<string>('');
     const [myOrder, setMyOrder] = React.useState<OrderWithWorker[]>([]); // 진행중인 주문 수
+    const [myDescendant, setMyDescendant] = React.useState<Record<string, any>[]>([]); // 진행중인 주문 수
     const [userInfo, setUserInfo] = React.useState<Record<string, string>>({ name: user?.name || '', phone: user?.phone || '', email: user?.email || '' });
     const ref = React.useRef<Record<string, HTMLInputElement | null>>({ nameRef: null, phoneRef: null, emailRef: null });
-    const [modifyMode, setModifyMode] = React.useState<boolean>(false);
     const navigate = useNavigate();
+
+    React.useEffect(() => {
+        if (!user) return;
+        const refreshPoint = async () => {
+            try {
+                const res = await fetch(`/api/user/getPoint/${user.seq}`);
+                const json = await res.json();
+                if (!json.success) throw new Error(json.message);
+                console.log(`point : ${JSON.stringify(json.message)}`);
+                setUser({ ...user, point: json.message.point });
+            } catch (err) {
+                console.error(`getPoint err : ${err}`);
+            }
+        };
+        if (user.seq) refreshPoint();
+    }, []);
+
+    React.useEffect(() => {
+        if (!user) return;
+        const getDescendant = async () => {
+            try {
+                const res = await fetch(`/api/user/getDescendant/${user?.seq}`);
+                const json = await res.json();
+                if (!json.success) throw new Error(json.message);
+                console.log(`descendant : ${JSON.stringify(json.message)}`);
+                setMyDescendant(json.message);
+            } catch (err) {
+                console.error(`getDescendant err : ${err}`);
+            }
+        };
+        getDescendant();
+    }, []);
 
     React.useEffect(() => {
         const fetchMyOrders = async () => {
@@ -40,47 +73,47 @@ const MyPage: React.FC = () => {
     }, [user]);
 
 
-    async function handleCopy() {
-        if (!joinNetwork) return;
+    // async function handleCopy() {
+    //     if (!joinNetwork) return;
 
-        // 최신 브라우저 (HTTPS 환경)
-        if (navigator.clipboard && window.isSecureContext) {
-            try {
-                await navigator.clipboard.writeText(joinNetwork);
-                alert("주소를 복사 했습니다.");
-                return;
-            } catch (e) {
-                // 실패 시 fallback 진행
-            }
-        }
+    //     // 최신 브라우저 (HTTPS 환경)
+    //     if (navigator.clipboard && window.isSecureContext) {
+    //         try {
+    //             await navigator.clipboard.writeText(joinNetwork);
+    //             alert("주소를 복사 했습니다.");
+    //             return;
+    //         } catch (e) {
+    //             // 실패 시 fallback 진행
+    //         }
+    //     }
 
-        // iOS Safari 및 구형 모바일 브라우저 fallback
-        try {
-            const textarea = document.createElement("textarea");
-            textarea.value = joinNetwork;
+    //     // iOS Safari 및 구형 모바일 브라우저 fallback
+    //     try {
+    //         const textarea = document.createElement("textarea");
+    //         textarea.value = joinNetwork;
 
-            // iOS 대응
-            textarea.style.position = "fixed";
-            textarea.style.top = "0";
-            textarea.style.left = "0";
-            textarea.style.opacity = "0";
+    //         // iOS 대응
+    //         textarea.style.position = "fixed";
+    //         textarea.style.top = "0";
+    //         textarea.style.left = "0";
+    //         textarea.style.opacity = "0";
 
-            document.body.appendChild(textarea);
-            textarea.focus();
-            textarea.select();
+    //         document.body.appendChild(textarea);
+    //         textarea.focus();
+    //         textarea.select();
 
-            const successful = document.execCommand("copy");
-            document.body.removeChild(textarea);
+    //         const successful = document.execCommand("copy");
+    //         document.body.removeChild(textarea);
 
-            if (successful) {
-                alert("주소를 복사 했습니다.");
-            } else {
-                alert("복사에 실패했습니다.");
-            }
-        } catch (err) {
-            alert("복사 기능을 지원하지 않는 환경입니다.");
-        }
-    }
+    //         if (successful) {
+    //             alert("주소를 복사 했습니다.");
+    //         } else {
+    //             alert("복사에 실패했습니다.");
+    //         }
+    //     } catch (err) {
+    //         alert("복사 기능을 지원하지 않는 환경입니다.");
+    //     }
+    // }
 
     async function handleModifyUserInfo() {
         setLoading(true);
@@ -135,7 +168,7 @@ const MyPage: React.FC = () => {
                     ? <LoadingIndicator size={120} />
                     : <>
                         <div className="head-group">
-                            <section className="rectForm order-area">
+                            <section className="rectForm order-minion">
                                 <figure>
                                     <img src="/img/mypageCon_order.png" />
                                     <figcaption>ORDER</figcaption>
@@ -147,12 +180,30 @@ const MyPage: React.FC = () => {
                                 <button onClick={() => navigate("/myOrder")}><PiMagnifyingGlassBold className="icon" />상세보기</button>
                             </section>
 
+                            {user?.type === 'y' && <section className="rectForm order-minion">
+                                <figure>
+                                    <img src="/img/mypageCon_minion.png" />
+                                    <figcaption>MINION</figcaption>
+                                </figure>
+                                <div className="row">
+                                    <div>직속 영업자<span style={{ color: `#00ccff` }}>
+                                        {myDescendant.length > 0 ? myDescendant.filter((list) => list.depth === 1).length : 0}
+                                    </span></div>
+                                    <div>네트워크 영업자<span style={{ color: `#acadb8` }}>
+                                        {myDescendant.length > 0 ? myDescendant.filter((list) => list.depth > 1).length : 0}
+                                    </span></div>
+                                </div>
+                                <button onClick={() => navigate("/myMinion", { state: myDescendant })}><PiMagnifyingGlassBold className="icon" />상세보기</button>
+                            </section>
+                            }
+
                             <section className="rectForm point-area">
                                 <figure>
                                     <img src="/img/mypageCon_point.png" />
                                     <figcaption>POINT</figcaption>
                                 </figure>
-                                <div className="point-num">{user?.point ?? ''} <span>pt.</span></div>
+                                <div className="point-num">{currencyComma(user?.point ?? 0)}<span>pt.</span></div>
+                                <button onClick={() => navigate("/myPoint")}><PiMagnifyingGlassBold className="icon" />상세보기</button>
                             </section>
                         </div>
 
@@ -232,7 +283,7 @@ const MyPage: React.FC = () => {
                                     <p>{joinNetwork}</p>
                                     <span>직속 영업자 회원가입용 주소를 복사하여 상대방에게 전송합니다.</span>
                                 </div>
-                                <div className="copy-area"><LuCopyPlus className="icon" onClick={handleCopy} />주소복사</div>
+                                {/* <div className="copy-area"><LuCopyPlus className="icon" onClick={handleCopy} />주소복사</div> */}
                             </section>
                         }
                     </>
