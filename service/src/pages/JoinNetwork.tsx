@@ -126,7 +126,7 @@ const JoinNetwork = () => {
             if (checkValidResult.success) throw new Error(checkValidResult.message);
 
             const userPhone = `${userData.userPhone1}-${userData.userPhone2}-${userData.userPhone3}`;
-            const userEmail = `${userData.userEmailHead}@${userData.userEmailTail}`;
+            const userEmail = (userData.userEmailHead.trim() !== '' && userData.userEmailTail.trim() !== '') ? `${userData.userEmailHead}@${userData.userEmailTail}` : '';
             const sendData = {
                 managerId: manager,
                 userIndustry: userData.userIndustry,

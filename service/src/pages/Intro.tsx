@@ -1,8 +1,10 @@
 import LogoArea from "@components/LogoArea";
 import "@scss/pages/_intro.scss";
+import { useUserStore } from "@store/publicState";
 import { useNavigate } from "react-router-dom";
 
 const Intro = () => {
+    const { loggedIn } = useUserStore();
     const navigate = useNavigate();
     return (
         <article className="intro">
@@ -19,8 +21,8 @@ const Intro = () => {
             </section>
             <img src="/img/intro_img.png" />
             <section className="btnArea">
-                <button type="button" onClick={() => navigate("/login")}>로그인</button>
-                <button type="button" onClick={() => navigate("/join")}>회원가입</button>
+                {!loggedIn && <button type="button" onClick={() => navigate("/login")}>로그인</button>}
+                {!loggedIn && <button type="button" onClick={() => navigate("/join")}>회원가입</button>}
                 <button type="button" onClick={() => navigate("/service")}>서비스신청</button>
                 <button type="button" onClick={() => navigate("/main")}>둘러보기</button>
             </section>

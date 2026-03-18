@@ -8,11 +8,11 @@ const Taksong: React.FC = () => {
             <div className='text-content'>
                <h1>+α</h1>
                <h2>
-                  <div>탁송으로 편하게,</div> <div><span>3%</span> 더 돌려받자</div>
+                  <div>최상급 차량 운송 서비스</div> <div><span>VIP</span> DELIVERY</div>
                </h2>
                <p>
-                  편리함은 기본, 추가 혜택은 보너스! <span>탁송 이용만 해도 캐시백에 3%가 더!</span>
-                  탁송 이용 고객께 3% 적립금을 추가로 지급합니다.
+                  편리함은 기본, 추가 혜택은 보너스! <span>수천 건의 경험, 단 하나의 기준. 프리미엄 탁송</span>
+                  아무에게나 맡기지 마십시오. 탁송도 급이 다릅니다.
                </p>
                <button>탁송서비스 신청하기</button>
             </div>

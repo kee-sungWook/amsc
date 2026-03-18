@@ -1,0 +1,67 @@
+@use "@scss/abstract/vars" as *;
+@use "@scss/abstract/mixin" as *;
+
+.admin-home {
+    @include flex-c-sc;
+    width: 100%;
+    min-width: 900px;
+    padding: 20px;
+
+    h3 {
+        padding: 5px 0 20px;
+        font-size: 20px;
+    }
+
+    .admin-pannel-area {
+        @include flex-cs;
+        width: 100%;
+        gap: 15px;
+
+        .admin-pannel {
+            @include shadowGray;
+            width: 30%;
+            padding: 20px;
+            border: solid 1px $outLine;
+            border-radius: 10px;
+            text-align: center;
+
+            img {
+                height: 120px
+            }
+
+            .pannel-head {
+                @include flex-bc;
+                @include shadowDark;
+                width: 100%;
+                padding: 3%;
+                border: solid 1px $outLine;
+                border-radius: 5px;
+
+                h4 {
+                    color: $textMain;
+                }
+
+                span {
+                    color: $primary;
+                    font-weight: 900;
+                }
+            }
+
+            .pannel-list {
+                @include flex-bc;
+                width: 100%;
+                padding: 4%;
+                border-bottom: 1px dashed $outLine;
+
+                &:last-of-type {
+                    border: none;
+                }
+
+                h5 {
+                    font-weight: 400;
+                }
+            }
+        }
+    }
+
+}

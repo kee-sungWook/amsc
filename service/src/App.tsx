@@ -14,14 +14,35 @@ import JoinNetwork from "@pages/JoinNetwork";
 import MyOrder from "@pages/MyOrder";
 import JoinBusiness from "@pages/JoinBusiness";
 import Qna from "@pages/Qna";
+import AdminLayout from "@pages/AdminLayout";
+import AdminLogin from "@pages/AdminLogin";
+import AdminUsers from "@pages/AdminUsers";
+import AdminOrders from "@pages/AdminOrders";
+import AdminHome from "@pages/AdminHome";
+import MyPoint from "@pages/MyPoint";
+import MyMinion from "@pages/MyMinion";
+import Test from "@pages/Test";
+import AdminUserView from "@pages/AdminUserView";
+import AdminUserPoint from "@pages/AdminUserPoint";
+import AdminUserOrders from "@pages/AdminUserOrders";
+import AdminQna from "@pages/AdminQna";
+import AdminWithdrawal from "@pages/AdminWithdrawal";
+import AdminRemittance from "@pages/AdminRemittance";
 
-function PrivateRoute() {
-    const location = useLocation();
+const PrivateRoute: React.FC = () => {
     const { loggedIn } = useUserStore();
+    const location = useLocation();
     return loggedIn ? <Outlet /> : <Navigate to="/suggest" state={{ from: location.pathname }} replace />;
 }
 
+const AdminRoute: React.FC = () => {
+    return <Outlet />
+    // return (logOk && user?.type === 'a') ? <Outlet /> : <Navigate to="admin/login" />;
+}
+
 function MyRoute() {
+
+
     return (
         <Routes>
             <Route path="/" element={<Intro />} />
@@ -43,6 +64,25 @@ function MyRoute() {
                 <Route path="rental" element={<RentalCar />} />
                 <Route path="mypage" element={<MyPage />} />
                 <Route path="myOrder" element={<MyOrder />} />
+                <Route path="myPoint" element={<MyPoint />} />
+                <Route path="myMinion" element={<MyMinion />} />
+            </Route>
+
+            <Route path="admin" element={<AdminRoute />}>
+                <Route index element={<AdminLogin />} />
+                <Route path="login" element={<AdminLogin />} />
+                <Route element={<AdminLayout />}>
+                    <Route path="home" element={<AdminHome />} />
+                    <Route path="users" element={<AdminUsers />} />
+                    <Route path="userView" element={<AdminUserView />} />
+                    <Route path="userPoint" element={<AdminUserPoint />} />
+                    <Route path="userOrder" element={<AdminUserOrders />} />
+                    <Route path="orders" element={<AdminOrders />} />
+                    <Route path="qna" element={<AdminQna />} />
+                    <Route path="withdrawal" element={<AdminWithdrawal />} />
+                    <Route path="remittance" element={<AdminRemittance />} />
+                    <Route path="test" element={<Test />} />
+                </Route>
             </Route>
         </Routes>
     );

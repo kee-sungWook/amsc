@@ -8,4 +8,5 @@ export interface Qna extends RowDataPacket {
     pic: string | null;
     writer: number;
     wday: string;
+    aday: string | null;
 }

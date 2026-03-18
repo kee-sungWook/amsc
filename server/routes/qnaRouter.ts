@@ -3,8 +3,9 @@ import * as qnaController from "@controllers/qnaController.js";
 const router = Router();
 
 router.get('/getQna/:seq', qnaController.getQna);
+router.get('/getQnaAll', qnaController.getQnaAll);
 router.post('/insertQna', qnaController.insertQna);
-router.post('/answer', qnaController.updateAnswer);
+router.post('/updateAnswer', qnaController.updateAnswer);
 
 
 export default router;

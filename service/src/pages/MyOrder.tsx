@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "@components/Header";
-import "@scss/pages/_myOrder.scss";
+import "@scss/pages/_myorder.scss";
 import { FaCheck } from "react-icons/fa";
 import { FaPlay } from "react-icons/fa6";
 import LoadingIndicator from "@components/LoadingIndicator";
@@ -69,7 +69,7 @@ const MyOrder: React.FC = () => {
                     ? <LoadingIndicator size={120} />
                     : playMode
                         ? playOrders.length === 0
-                            ? <div className="no-data">No Data.</div>
+                            ? <div className="common-no-data">No Data.</div>
                             : playOrders.map((order: OrderWithWorker, index: number) => (
                                 <MyOrderList
                                     key={order.seq}
@@ -84,6 +84,7 @@ const MyOrder: React.FC = () => {
                             ? <div className="no-data">No Data.</div>
                             : compleOrders.map((order: OrderWithWorker, index: number) => (
                                 <MyOrderList
+                                    key={order.seq}
                                     order={order}
                                     index={compleOrders.length - index}
                                     selList={selList}

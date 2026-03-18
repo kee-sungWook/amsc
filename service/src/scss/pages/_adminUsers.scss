@@ -1,0 +1,379 @@
+@use "@scss/abstract/vars" as *;
+@use "@scss/abstract/mixin" as *;
+
+.user-title {
+    @include flex-cc;
+    width: 100%;
+    padding: 5px 15px 20px;
+    font-size: 20px;
+
+    .icon {
+        &:first-of-type {
+            margin-right: auto;
+        }
+
+        &:last-of-type {
+            opacity: 0;
+            pointer-events: none;
+            margin-left: auto;
+        }
+
+        color: $primary;
+        font-size: 30px;
+
+        &:hover {
+            color: $accent;
+            cursor: pointer;
+        }
+    }
+}
+
+.admin-users {
+    @include flex-c-sc;
+    width: 100%;
+    min-width: 900px;
+    padding: 20px;
+
+    table {
+        tr {
+            &:hover {
+                cursor: pointer;
+                background-color: $accent;
+                color: white;
+            }
+        }
+
+        td {
+            font-size: 12px;
+        }
+    }
+}
+
+
+.admin-user-view {
+    @include flex-c-sc;
+    width: 100%;
+    min-width: 900px;
+    padding: 20px;
+
+    .main-container {
+        @include shadowDark;
+        width: 100%;
+        padding: 20px;
+        border: solid 1px $outLine;
+        border-radius: 10px;
+
+        >div {
+            padding: 12px 10px;
+            border-bottom: dashed 1px $outLine;
+            font-weight: 600;
+            color: $textSub;
+
+            &:last-child {
+                border: 0;
+            }
+
+            &.flexType {
+                @include flex-sc;
+            }
+
+            >span {
+                color: $textMain;
+                margin-left: 15px;
+
+                &.red {
+                    color: $red;
+                    font-size: 18px;
+                    font-weight: 900;
+                }
+
+                &.pt {
+                    font-size: 11px;
+                    margin-left: 5px;
+                }
+            }
+
+            >button {
+                &.red {
+                    background-color: $red;
+                }
+
+                box-shadow: none;
+                font-size: 12px;
+                padding: 0 15px;
+                margin-left: 30px;
+
+            }
+
+            .pannel {
+                @include flex-bc;
+                width: 300px;
+                height: stretch;
+                margin-left: 15px;
+                padding: 0 12px;
+                border: solid 1px $btnSub;
+                border-radius: 8px;
+                background-color: $bg;
+
+                >div {
+                    @include flex-c-ss;
+                    flex: 1;
+
+                    p {
+                        @include flex-bc;
+                        width: 100%;
+                        padding: 10px;
+
+                        &:first-of-type {
+                            border-bottom: 1px solid $outLine
+                        }
+                    }
+                }
+
+                button {
+                    @include flex-c-cc;
+                    gap: 8px;
+                    height: 80%;
+                    margin-left: 25px;
+                    padding: 0 10px;
+                    font-size: 12px;
+
+                    .icon {
+                        font-size: 20px;
+                    }
+                }
+            }
+        }
+
+        .tree {
+            @include flex-cc;
+        }
+
+        .tree,
+        .tree ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* 모든 노드에 기본적으로 선을 설정 */
+        .tree-node {
+            position: relative;
+            padding-left: 65px;
+
+            @media (width < 500px) {
+                padding-left: 40px;
+            }
+        }
+
+        /* 수직선 */
+        .tree-node::before {
+            content: "";
+            position: absolute;
+            left: 30px;
+            top: -15px;
+            bottom: 0;
+            border-left: 1px solid #ccc;
+
+            @media (width < 500px) {
+                left: 15px;
+            }
+        }
+
+        /* 수평선 */
+        .tree-node::after {
+            content: "";
+            position: absolute;
+            left: 30px;
+            top: 16px;
+            width: 35px;
+            border-top: 1px solid #ccc;
+
+            @media (width < 500px) {
+                left: 15px;
+                width: 25px;
+            }
+        }
+
+        /* [핵심] 최상위 레벨 노드의 선과 여백 제거 */
+        .tree>.tree-node {
+            padding-left: 0;
+        }
+
+        div.descendant-0 {
+            background-color: $primary;
+            width: 200px;
+            margin-top: 20px;
+            font-size: 18px;
+            border: 0;
+            color: white;
+            font-weight: 800;
+
+            @media (width < 500px) {
+                width: 150px;
+                font-size: 15px;
+            }
+        }
+
+        div.descendant-1 {
+            background-color: $accent;
+            border: 0;
+            font-weight: 700;
+        }
+
+        .tree>.tree-node::before,
+        .tree>.tree-node::after {
+            display: none;
+        }
+
+        /* 마지막 자식 노드의 수직선이 밑으로 삐져나오지 않게 처리 */
+        .tree-node:last-child::before {
+            height: 32px;
+            bottom: auto;
+        }
+
+        .node-content {
+            @include flex-cc;
+            @include shadowDark;
+            width: 120px;
+            padding: 5px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            background-color: $btnSub;
+        }
+    }
+
+    .goList {
+        width: 150px;
+        height: 40px;
+        margin-top: 50px;
+    }
+
+
+}
+
+.admin-user-point {
+    @include flex-c-sc;
+    width: 100%;
+    min-width: 900px;
+    padding: 20px;
+
+    .user-info {
+        @include shadowDark;
+        width: 100%;
+        padding: 10px 20px;
+        border: solid 1px $outLine;
+        border-radius: 10px;
+
+        >div {
+            padding: 5px 10px;
+            border-bottom: dashed 1px $outLine;
+            font-size: 13px;
+            font-weight: 600;
+            color: $textSub;
+
+            &:last-child {
+                border: 0;
+            }
+
+            &.flexType {
+                @include flex-sc;
+            }
+
+            >span {
+                color: $textMain;
+                margin-left: 15px;
+
+                &.id {
+                    color: $textThird;
+                }
+
+                &.red {
+                    color: $red;
+                    font-size: 18px;
+                    font-weight: 900;
+                }
+
+                &.pt {
+                    font-size: 11px;
+                    margin-left: 5px;
+                }
+            }
+
+            >button {
+                box-shadow: none;
+                background-color: $red;
+                font-size: 12px;
+                padding: 0 15px;
+                margin-left: 30px;
+            }
+        }
+    }
+
+    .point-log {
+        width: 100%;
+        margin-top: 20px;
+        flex: 1;
+    }
+
+}
+
+.admin-user-order {
+    @include flex-c-sc;
+    width: 100%;
+    min-width: 900px;
+    padding: 20px;
+
+    .user-info {
+        @include shadowDark;
+        width: 100%;
+        padding: 10px 20px;
+        border: solid 1px $outLine;
+        border-radius: 10px;
+
+        >div {
+            padding: 5px 10px;
+            border-bottom: dashed 1px $outLine;
+            font-size: 13px;
+            font-weight: 600;
+            color: $textSub;
+
+            &:last-child {
+                border: 0;
+            }
+
+            &.flexType {
+                @include flex-sc;
+            }
+
+            >span {
+                color: $textMain;
+                margin-left: 15px;
+
+                &.id {
+                    color: $textThird;
+                }
+
+                &.red {
+                    color: $red;
+                    font-size: 18px;
+                    font-weight: 900;
+                }
+
+                &.pt {
+                    font-size: 11px;
+                    margin-left: 5px;
+                }
+            }
+
+            >button {
+                box-shadow: none;
+                background-color: $red;
+                font-size: 12px;
+                padding: 0 15px;
+                margin-left: 30px;
+            }
+        }
+    }
+
+}

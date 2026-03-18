@@ -184,56 +184,126 @@
 }
 
 .qna-list {
-    @include flex-sc;
     @include shadowDark;
     width: 95%;
-    padding: 5px 0 6px;
     margin-bottom: 10px;
-    background-color: white;
     border: solid 1px $outLine;
     border-radius: 5px;
+    overflow: hidden;
 
-    .no {
-        min-width: 30px;
-        margin: 0 1.5%;
-        text-align: center;
-        color: $textThird;
-    }
+    >div {
+        padding: 0 15px;
 
-    .title {
-        color: $textMain;
-        font-size: 15px;
-        padding-top: 5px;
-        font-family: $font3;
-    }
+        header {
+            @include flex-c-ss;
+            width: 100%;
 
-    .wday {
-        margin: 0 2% 0 auto;
-        color: $textThird;
-        text-align: center;
-    }
+            .head {
+                @include flex-sc;
+                width: 100%;
+                padding: 10px 5px 0;
+                font-size: 0.9em;
 
-    @media(width < 768px) {
+                >span {
+                    color: $textThird;
+                    margin-left: 10px;
+                }
 
-        .no,
-        .wday {
-            font-size: 12px
+            }
+
+            .title {
+                @include flex-ss;
+                width: 100%;
+                color: $textMain;
+                padding: 0 5px 12px;
+                border-bottom: 1px dashed $outLine;
+
+                >span {
+                    margin-right: 5px;
+                    font-family: $font3;
+                    font-weight: 700;
+                    color: $red;
+                }
+
+                >p {
+                    flex: 1;
+                    color: black;
+                    font-family: $font3;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+
+                >b {
+                    margin-left: auto;
+                    font-size: 13px;
+                    font-weight: 700;
+                    color: $accent;
+                }
+            }
         }
 
-        .title {
-            font-size: 13px;
+        .list-body {
+            padding: 10px 5px;
+            font-size: 0.95em;
+
+            >div {
+                @include flex-ss;
+                width: 100%;
+                margin-bottom: 10px;
+
+                font-size: inherit;
+
+                >span {
+                    margin-right: 5px;
+                    font-family: $font3;
+                    font-weight: 700;
+                    color: $primary;
+
+                    &.question {
+                        color: $red;
+                    }
+                }
+
+                >p {
+                    flex: 1;
+                    color: $textSub;
+                    font-size: inherit;
+                    font-weight: 500;
+
+                    &.question {
+                        color: $textMain;
+                        font-family: $font3;
+                    }
+
+                    &.aday {
+                        color: $textThird;
+                        font-size: 12px;
+                        font-weight: 600;
+                        padding-left: 25px;
+                    }
+                }
+            }
         }
-    }
 
-    @media(width < 500px) {
+        .btn-area {
+            text-align: center;
+            padding-bottom: 20px;
 
-        .no,
-        .wday {
-            font-size: 11px
-        }
+            button {
+                width: 30%;
+                min-width: 150px;
+                max-width: 250px;
+                height: 30px;
+                border-radius: 3px;
+                box-shadow: none;
+                font-size: 13px;
+                background-color: $accent;
 
-        .title {
-            font-size: 12px;
+                &:hover {
+                    background-color: $primary;
+                }
+            }
         }
     }
 }

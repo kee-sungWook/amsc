@@ -13,6 +13,7 @@ export const pool: Pool = createPool({
     queueLimit: 0,
     enableKeepAlive: true,
     keepAliveInitialDelay: 0,
+    timezone: '+09:00'
 });
 
 //재시도 유틸
@@ -33,6 +34,7 @@ export async function executeWithRety<T>(fn: () => Promise<T>, maxRetry = 3): Pr
 export async function withTransaction<T>(fn: (conn: PoolConnection) => Promise<T>): Promise<T> {
     const conn = await pool.getConnection();
     try {
+        await conn.query('SET TRANSACTION ISOLATION LEVEL READ COMMITTED');
         await conn.beginTransaction();
         const result = await fn(conn);
         await conn.commit();
@@ -57,7 +59,7 @@ export async function selectQuery<T extends RowDataPacket[]>(
 
 export async function modifyQuery(
     sql: string, //
-    params: (string | number | null)[] = [],
+    params: (string | number | Date | null)[] = [],
     conn?: PoolConnection
 ): Promise<ResultSetHeader> {
     const executor = conn ?? pool;

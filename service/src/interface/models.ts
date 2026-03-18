@@ -6,34 +6,50 @@ export interface QnaType {
     pic: string | null;
     writer: number;
     wday: string;
+    aday: string | null;
 }
 
 export interface User {
     seq: number;
     type: string;
     industry: string;
-    service: string;
+    service: string | undefined | null;
     id: string;
     name: string;
     email: string;
     phone: string;
-    company: string;
-    businessNum: string;
-    fcmToken: string;
-    addr1: string;
-    addr2: string;
-    sido: string;
-    sigungu: string;
-    addrX: string;
-    addrY: string;
-    point: number;
+    company: string | undefined | null;
+    businessNum: string | undefined | null;
+    fcmToken: string | undefined | null;
+    addr1: string | undefined | null;
+    addr2: string | undefined | null;
+    sido: string | undefined | null;
+    sigungu: string | undefined | null;
+    addrX: string | undefined | null;
+    addrY: string | undefined | null;
+    point: number | undefined | null;
     jday: string;
+}
+
+export interface UserWithP extends User {
+    pw: string;
+    childCount: number;
+    descendantCount: number;
+    activeOrderCount: number;
+    payReadyCount: number;
 }
 
 export interface DummyUser {
     name: string | undefined;
     phone: string | undefined;
 }
+
+export interface Minion {
+    parentSeq: number;
+    parentName: string;
+    childSeq: number;
+    childName: string;
+};
 
 export interface AddrData {
     addr?: string;
@@ -64,7 +80,6 @@ export interface SidogunguVal {
     sigungu: string;
 };
 
-
 export interface Order {
     seq: number;
     requester: number;
@@ -85,10 +100,43 @@ export interface Order {
     img: string | null;
     wday: string;
     fday: string | null;
-    company: string | null;
-    companyPhone: string | null;
-}
+    point: number | null;
+    payOk: number;
+    taxInvoice: string | null;
+    deposit: string | null;
+};
 export interface OrderWithWorker extends Order {
     workerCompany: string | null;
     workerPhone: string | null;
+};
+export interface OrderWithPoint extends OrderWithWorker {
+    requesterName: string | null;
+    requesterPhone: string | null;
+
+};
+
+export interface PointLog {
+    seq: number;
+    userSeq: number;
+    utilize: string;
+    subject: string;
+    amount: number;
+    balance: number;
+    wday: string;
+    eday: string | null;
+};
+
+export interface Withdrawal extends PointLog {
+    name: string;
+    owner: string;
+    bankName: string;
+    accountNum: string;
+}
+
+
+export interface TreeNode {
+    id: number;
+    name: string;
+    depth: number;
+    children: TreeNode[];
 }

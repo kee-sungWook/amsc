@@ -6,11 +6,14 @@ import QnaWindow from "@components/QnaWindow";
 import QnaLists from "@components/lists/QnaLists";
 import type { QnaType } from "@interface/models";
 import { useEffect, useState } from "react";
+import LoadingIndicator from "@components/LoadingIndicator";
 
 const Qna: React.FC = () => {
+    const [loading, setLoading] = useState<boolean>(false);
     const { qnaOn, setQnaOn } = usePublicState();
     const { user } = useUserStore();
     const [qnaList, setQnaList] = useState<QnaType[]>([]);
+    const [selList, setSelList] = useState<number[]>([]);
 
     useEffect(() => {
         getQnaList();
@@ -18,6 +21,7 @@ const Qna: React.FC = () => {
 
     async function getQnaList() {
         try {
+            setLoading(true);
             const response = await fetch(`/api/qna/getQna/${user?.seq}`);
             const result = await response.json();
             if (!result.success) throw new Error(`${result.message}`);
@@ -25,11 +29,12 @@ const Qna: React.FC = () => {
             setQnaList(data);
         } catch (error) {
             console.error(`getQnaList Error : ${error}`);
+        } finally {
+            setLoading(false);
         }
     }
 
     async function insertData(qnaTitle: string, qnaContent: string) {
-        console.log(`QnaPage - insertData()`);
         try {
             const response = await fetch("/api/qna/insertQna", {
                 method: "post",
@@ -65,20 +70,31 @@ const Qna: React.FC = () => {
                         </div>
                     </section>
 
-                    <section className="list-area" style={qnaList.length > 0 ? { "justifyContent": "start" } : { "justifyContent": "center" }}>
-                        {
-                            qnaList.length > 0
-                                ? qnaList.map((list, idx) => <QnaLists key={list.seq} list={list} number={qnaList.length - idx} />)
-                                : <section className="nodata">등록된 목록이 없습니다.</section>
-                        }
-                    </section>
+                    {loading
+                        ? <LoadingIndicator size={120} />
+                        : <>
+                            <section className="list-area" style={qnaList.length > 0 ? { "justifyContent": "start" } : { "justifyContent": "center" }}>
+                                {
+                                    qnaList.length > 0
+                                        ? qnaList.map((list, idx) => <QnaLists
+                                            key={list.seq}
+                                            list={list}
+                                            number={qnaList.length - idx}
+                                            selList={selList}
+                                            setSelList={setSelList}
+                                        />)
+                                        : <section className="nodata">등록된 목록이 없습니다.</section>
+                                }
+                            </section>
 
-                    <section className="write-btn-area">
-                        <div onClick={() => setQnaOn(true)}>
-                            <FaRegEdit className="icon" />
-                            <span>문의작성</span>
-                        </div>
-                    </section>
+                            <section className="write-btn-area">
+                                <div onClick={() => setQnaOn(true)}>
+                                    <FaRegEdit className="icon" />
+                                    <span>문의작성</span>
+                                </div>
+                            </section>
+                        </>
+                    }
                 </div>
             </article>
 

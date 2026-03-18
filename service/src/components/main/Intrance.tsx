@@ -7,13 +7,13 @@ const Intrance: React.FC = () => {
          <div className='container'>
             <div className='text-content'>
                <h4>
-                  이미 쓰는 <span>사고대차</span>
+                  사고수리 <span>사고대차</span>
                </h4>
-               <h4>캐시백은 왜 안 받으세요? </h4>
+               <h4>탁송 서비스까지 한번에.. </h4>
                <h1>
-                  사고수리 하고
+                  품격있는 서비스
                   <br />
-                  <span>캐시백도</span> 받고
+                  <span>리워드를</span> 더하다
                </h1>
             </div>
             <div className='image-content'>

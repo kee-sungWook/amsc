@@ -34,6 +34,24 @@
                 font-weight: 900;
                 color: white;
             }
+
+            .mobile-favorite {
+                display: none;
+                color: white;
+                font-weight: 400;
+                font-size: 13px;
+                margin-left: 15px;
+
+                .icon {
+                    padding-top: 2px;
+                    font-size: 18px;
+                    margin-right: 5px;
+                }
+
+                @media (width < 480px) {
+                    @include flex-sc;
+                }
+            }
         }
 
         .naviMenu {
