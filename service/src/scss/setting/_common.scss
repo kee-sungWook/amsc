@@ -43,6 +43,14 @@ button {
         }
     }
 
+    &.del {
+        background-color: $red;
+
+        &:hover {
+            background-color: $orange;
+        }
+    }
+
     &.cancel {
         @include shadowDark;
         color: $textSub;

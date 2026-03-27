@@ -50,7 +50,11 @@ const Menus: React.FC = () => {
                     </li>
 
                     <li className={`${isActive("user")}`} onClick={() => navigate("users")}>
-                        <TiLocationArrowOutline className={`icon`} /> 가입자현황
+                        <TiLocationArrowOutline className={`icon`} /> 회원현황
+                    </li>
+
+                    <li className={`${isActive("member")}`} onClick={() => navigate("members")}>
+                        <TiLocationArrowOutline className={`icon`} /> 업체현황
                     </li>
 
                     <li className={`${isActive("orders")}`} onClick={() => navigate("orders")}>
