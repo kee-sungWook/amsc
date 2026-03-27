@@ -74,23 +74,49 @@ const AdminUserView: React.FC = () => {
                             </>
                             : <>
                                 <section className="main-container">
-                                    <div>유저타입 :<span>{decodeType(userData.type)}</span></div>
-                                    <div>업종 :<span>{decodeIndustry(userData.industry)}</span></div>
-                                    <div>ID :<span>{userData.id}</span></div>
-                                    <div>PW :<span>{userData.pw}</span></div>
-                                    <div>이름 :<span>{userData.name}</span></div>
-                                    <div>업체명 :<span>{userData.company || ''}</span></div>
-                                    <div>주소 :<span>{userData.addr1 || ''} {userData.addr2 || ''}</span></div>
-                                    <div>가입일자 :<span>{formatDateTime(userData.jday)}</span></div>
+                                    <div>
+                                        <h5>유저타입 :</h5>
+                                        <span>{decodeType(userData.type)}</span>
+                                    </div>
+                                    <div>
+                                        <h5>업종 :</h5>
+                                        <span>{decodeIndustry(userData.industry)}</span>
+                                    </div>
+                                    <div>
+                                        <h5>ID :</h5>
+                                        <span>{userData.id}</span>
+                                    </div>
+                                    <div>
+                                        <h5>PW :</h5>
+                                        <span>{userData.pw}</span>
+                                    </div>
+                                    <div>
+                                        <h5>이름 :</h5>
+                                        <span>{userData.name}</span>
+                                    </div>
+                                    <div>
+                                        <h5>업체명 :</h5>
+                                        <span>{userData.company || ''}</span>
+                                    </div>
+                                    <div>
+                                        <h5>주소 :</h5>
+                                        <span>{userData.addr1 || ''} {userData.addr2 || ''}</span>
+                                    </div>
+                                    <div>
+                                        <h5>가입일자 :</h5>
+                                        <span>{formatDateTime(userData.jday)}</span>
+                                    </div>
                                     {userData.type !== "b" &&
                                         <>
-                                            <div>포인트 :
+                                            <div>
+                                                <h5>포인트 :</h5>
                                                 <span className="red">{currencyComma(userData.point || 0)}</span>
                                                 <span className="pt">pt</span>
                                                 <button type="button" className="red">캐시지급</button>
                                                 <button type="button" onClick={() => navigate("/admin/userPoint", { state: userData })}>포인트 로그</button>
                                             </div>
-                                            <div className="flexType">주문현황 :
+                                            <div className="flexType">
+                                                <h5>주문현황 :</h5>
                                                 <section className="pannel">
                                                     <div>
                                                         <p>대기 및 진행중 <span>{userData.activeOrderCount}</span></p>
@@ -101,7 +127,8 @@ const AdminUserView: React.FC = () => {
                                                     </button>
                                                 </section>
                                             </div>
-                                            <div className="flexType">자손현황 :
+                                            <div className="flexType">
+                                                <h5>자손현황 :</h5>
                                                 <section className="pannel">
                                                     <div>
                                                         <p>직속 영업자 <span>{userData.childCount}</span></p>

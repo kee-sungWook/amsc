@@ -26,3 +26,5 @@ dist-ssr
 #My Collection
 .env
 public
+uploads
+.env

@@ -28,7 +28,8 @@ import AdminUserOrders from "@pages/AdminUserOrders";
 import AdminQna from "@pages/AdminQna";
 import AdminWithdrawal from "@pages/AdminWithdrawal";
 import AdminRemittance from "@pages/AdminRemittance";
-
+import AdminMembers from "@pages/AdminMembers"
+import AdminMemberView from "@pages/AdminMemberView";
 const PrivateRoute: React.FC = () => {
     const { loggedIn } = useUserStore();
     const location = useLocation();
@@ -75,6 +76,8 @@ function MyRoute() {
                     <Route path="home" element={<AdminHome />} />
                     <Route path="users" element={<AdminUsers />} />
                     <Route path="userView" element={<AdminUserView />} />
+                    <Route path="members" element={<AdminMembers />} />
+                    <Route path="memberView" element={<AdminMemberView />} />
                     <Route path="userPoint" element={<AdminUserPoint />} />
                     <Route path="userOrder" element={<AdminUserOrders />} />
                     <Route path="orders" element={<AdminOrders />} />
