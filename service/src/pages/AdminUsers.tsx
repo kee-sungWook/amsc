@@ -34,36 +34,40 @@ const AdminLogin: React.FC = () => {
                 {loading
                     ? <LoadingIndicator />
                     : <table>
-                        <tr>
-                            <th>No.</th>
-                            <th>TYPE</th>
-                            <th>업종</th>
-                            <th>ID</th>
-                            <th>이름</th>
-                            <th>업체명</th>
-                            <th>주소</th>
-                            <th>자손</th>
-                            <th>진행주문</th>
-                            <th>포인트대기</th>
-                            <th>포인트</th>
-                            <th>가입일자</th>
-                        </tr>
-                        {amsUsers.map((user, idx) => (
-                            <tr key={user.seq} onClick={() => navigate("/admin/userView", { state: user })}>
-                                <td>{amsUsers.length - idx}</td>
-                                <td>{decodeType(user.type)}</td>
-                                <td>{decodeIndustry(user.industry)}</td>
-                                <td>{user.id}</td>
-                                <td>{user.name}</td>
-                                <td>{user.company || '-'}</td>
-                                <td>{`${user.addr1 || '-'} ${user.addr2 || ''}`}</td>
-                                <td>{user.childCount + user.descendantCount}</td>
-                                <td>{user.activeOrderCount}</td>
-                                <td>{user.payReadyCount}</td>
-                                <td>{user.point}</td>
-                                <td>{formatDate(user.jday)}</td>
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>TYPE</th>
+                                <th>업종</th>
+                                <th>ID</th>
+                                <th>이름</th>
+                                <th>업체명</th>
+                                <th>주소</th>
+                                <th>자손</th>
+                                <th>진행주문</th>
+                                <th>포인트대기</th>
+                                <th>포인트</th>
+                                <th>가입일자</th>
                             </tr>
-                        ))}
+                        </thead>
+                        <tbody>
+                            {amsUsers.map((user, idx) => (
+                                <tr key={user.seq} onClick={() => navigate("/admin/userView", { state: user })}>
+                                    <td>{amsUsers.length - idx}</td>
+                                    <td>{decodeType(user.type)}</td>
+                                    <td>{decodeIndustry(user.industry)}</td>
+                                    <td>{user.id}</td>
+                                    <td>{user.name}</td>
+                                    <td>{user.company || '-'}</td>
+                                    <td>{`${user.addr1 || '-'} ${user.addr2 || ''}`}</td>
+                                    <td>{user.childCount + user.descendantCount}</td>
+                                    <td>{user.activeOrderCount}</td>
+                                    <td>{user.payReadyCount}</td>
+                                    <td>{user.point}</td>
+                                    <td>{formatDate(user.jday)}</td>
+                                </tr>
+                            ))}
+                        </tbody>
                     </table>
                 }
 

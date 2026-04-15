@@ -30,7 +30,7 @@ const AdminMembers: React.FC = () => {
                         <th>가입일자</th>
                     </tr>
                     {memberList.map((mem, idx) => (
-                        <tr key={mem.seq} onClick={() => navigate("/admin/memberView", { state: { memData: mem } })}>
+                        <tr key={mem.seq} onClick={() => navigate(`/admin/memberView?memSeq=${mem.seq}`, { state: { memData: mem } })}>
                             <td>{memberList.length - idx}</td>
                             <td>{decodeIndustry(mem.industry)}</td>
                             <td>{mem.id}</td>

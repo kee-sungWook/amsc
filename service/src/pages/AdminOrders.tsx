@@ -150,6 +150,7 @@ const AdminOrders: React.FC = () => {
                                     <AdminOrderList
                                         key={order.seq}
                                         order={order}
+                                        setOrders={setOrders}
                                         index={total - (page - 1) * LIMIT - index}
                                         selList={selList}
                                         handleOpenToggle={handleOpenToggle}

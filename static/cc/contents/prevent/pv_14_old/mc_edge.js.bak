@@ -1,0 +1,113 @@
+/**
+ * Adobe Edge: symbol definitions
+ */
+(function($, Edge, compId){
+//images folder
+var im='images/';
+
+var fonts = {};
+
+
+var resources = [
+];
+var symbols = {
+"stage": {
+   version: "2.0.1",
+   minimumCompatibleVersion: "2.0.0",
+   build: "2.0.1.268",
+   baseState: "Base State",
+   initialState: "Base State",
+   gpuAccelerate: false,
+   resizeInstances: false,
+   content: {
+         dom: [
+         {
+            id:'txt1',
+            type:'text',
+            rect:['1169','285px','1001','93px','auto','auto'],
+            text:"밧데리",
+            align:"auto",
+            font:['나눔고딕',80,"rgb(0,75,140)","normal","none","normal"]
+         },
+         {
+            id:'txt2',
+            type:'text',
+            rect:['1169','457','415px','66','auto','auto'],
+            text:"정비교환시기",
+            align:"auto",
+            font:['나눔고딕',60,"rgb(198,0,95)","normal","none","normal"]
+         },
+         {
+            id:'txt3',
+            type:'text',
+            rect:['1169','549','1221px','55','auto','auto'],
+            text:"매 2~3년 또는 50,000Km 주행시 점검 및 교환",
+            align:"auto",
+            font:['나눔고딕',50,"rgb(0,75,140)","normal","none","normal"]
+         },
+         {
+            id:'txt4',
+            type:'text',
+            rect:['1169','717','1221px','235','auto','auto'],
+            text:"밧데리는 초기시동 및 시동중 전장품(라디오등)을\r작동할 경우 사용된다.\r또한 시동시 스타팅모터를 구동하는 아주 중요한\r역할도 하고 있다.",
+            align:"auto",
+            font:['나눔고딕',50,"rgb(0,75,140)","normal","none","normal"]
+         },
+         {
+            id:'pic',
+            type:'image',
+            tag:'img',
+            rect:['279','272','718','735','auto','auto'],
+            fill:["rgba(0,0,0,0)",im+"pic.png"]
+         }],
+         symbolInstances: [
+
+         ]
+      },
+   states: {
+      "Base State": {
+         "${_txt4}": [
+            ["style", "width", '1221px']
+         ],
+         "${_txt3}": [
+            ["style", "width", '1221px']
+         ],
+         "${_Stage}": [
+            ["color", "background-color", 'rgba(239,239,239,1.00)'],
+            ["style", "overflow", 'hidden'],
+            ["style", "height", '1230px'],
+            ["style", "width", '2400px']
+         ],
+         "${_txt1}": [
+            ["style", "height", '93px'],
+            ["style", "top", '285px'],
+            ["style", "font-size", '80px']
+         ],
+         "${_txt2}": [
+            ["style", "width", '415px']
+         ]
+      }
+   },
+   timelines: {
+      "Default Timeline": {
+         fromState: "Base State",
+         toState: "",
+         duration: 0,
+         autoPlay: true,
+         timeline: [
+         ]
+      }
+   }
+}
+};
+
+
+Edge.registerCompositionDefn(compId, symbols, fonts, resources);
+
+/**
+ * Adobe Edge DOM Ready Event Handler
+ */
+$(window).ready(function() {
+     Edge.launchComposition(compId);
+});
+})(jQuery, AdobeEdge, "EDGE-31339615");

@@ -1,0 +1,723 @@
+
+{
+
+	"expanded:images/return_sp.png":"nil",
+	"L2_MOVE-Default Timeline_playhead_ms":"0",
+	"L1_MOVE-Default Timeline_playhead_ms":"0",
+	"symbol_DRIVE_BELT_MOVE":{
+		"element_${driveBelt}":{
+			"timelineColor2":"0x81aa62",
+			"timelineColor3":"0x5b6c4d",
+			"animationEnabled":"false",
+			"timelineColor":"0x91c767"},
+		"defaultStageParentHeight":"146px",
+		"dummyStageParentHeight":"146px",
+		"defaultStageParentWidth":"34px",
+		"element_${belt_flow_src}":{
+			"timelineColor2":"0x326a96",
+			"animationEnabled":"true",
+			"timelineColor3":"0x385063",
+			"timelineColor":"0x2f73ad"},
+		"dummyStageParentWidth":"34px"},
+	"symbol_PROPELLER_MOVE":{
+		"element_${propeller_down}":{
+			"timelineColor2":"0x1095d2",
+			"timelineColor3":"0x29647e",
+			"timelineColor":"0x00a9fa",
+			"timelineTreeOpened":"true",
+			"animationEnabled":"true",
+			"invisible":"false"},
+		"element_${propeller_up}":{
+			"timelineColor2":"0xb099ce",
+			"timelineColor3":"0x70657c",
+			"timelineColor":"0xceaef4",
+			"animationEnabled":"true",
+			"invisible":"false"}},
+	"L7_MOVE-Default Timeline_playhead_ms":"0",
+	"expanded:images/front_component.png":"nil",
+	"HOT_LIQUID_MOVE-Default Timeline_mark_ms":"500",
+	"Preloader-Default Timeline_playhead_ms":"0",
+	"L3_MOVE-Default Timeline_playhead_ms":"0",
+	"L6_MOVE-Default Timeline_playhead_ms":"0",
+	"L5_MOVE-Default Timeline_playhead_ms":"0",
+	"symbol_GEAR2_MOVE":{
+		"dummyStageParentWidth":"66px",
+		"dummyStageParentHeight":"124px",
+		"defaultStageParentWidth":"66px",
+		"element_${gear_flow_src}":{
+			"timelineColor2":"0x1095d2",
+			"animationEnabled":"true",
+			"timelineColor3":"0x29647e",
+			"timelineColor":"0x00a9fa"},
+		"defaultStageParentHeight":"124px",
+		"element_${gear2}":{
+			"timelineColor2":"0x168c84",
+			"timelineColor3":"0x2a605c",
+			"timelineColor":"0x00a096"}},
+	"expanded:images/piston1.png":"nil",
+	"PISTON_MOVE-Default Timeline_mark_ms":"-1",
+	"CompZoomFactor":"100",
+	"GEAR1_MOVE-Default Timeline_playhead_ms":"0",
+	"expanded:images/pistonExtra.png":"nil",
+	"TIMING_BELT_MOVE-Default Timeline_mark_ms":"500",
+	"nextElementColorIndex":"2",
+	"stage-Default Timeline_playhead_ms":"0",
+	"PISTON_MOVE-Default Timeline_playhead_ms":"0",
+	"HTMLFileName":"mc.html",
+	"expanded:images/crank_p2.png":"nil",
+	"symbol_GEAR1_MOVE":{
+		"defaultStageParentHeight":"149px",
+		"dummyStageParentHeight":"149px",
+		"defaultStageParentWidth":"62px",
+		"element_${gear1}":{
+			"timelineColor2":"0x1aa38f",
+			"timelineColor3":"0x2a6a61",
+			"timelineColor":"0x00bda4"},
+		"dummyStageParentWidth":"62px",
+		"element_${gear_flow_src}":{
+			"timelineColor2":"0x4fa275",
+			"invisible":"false",
+			"timelineColor":"0x50bd82",
+			"animationEnabled":"true",
+			"timelineColor3":"0x456a55"}},
+	"PROPELLER_MOVE-Default Timeline_playhead_ms":"0",
+	"expanded:images/waterPump.png":"nil",
+	"expanded:images/propeller_down.png":"nil",
+	"HOT_LIQUID_MOVE-Default Timeline_playhead_ms":"0",
+	"symbol_L6_MOVE":{
+		"element_${L6}":{
+			"timelineColor2":"0x1aa38f",
+			"timelineColor3":"0x2a6a61",
+			"animationEnabled":"false",
+			"timelineColor":"0x00bda4"},
+		"element_${LIQUIDE_DOT_MOVE6Copy3}":{
+			"timelineColor2":"0x107faa",
+			"timelineColor3":"0x295a6d",
+			"animationEnabled":"true",
+			"timelineColor":"0x008dc8"},
+		"element_${LIQUIDE_DOT_MOVE6}":{
+			"timelineColor2":"0x168c84",
+			"timelineColor3":"0x2a605c",
+			"animationEnabled":"true",
+			"timelineColor":"0x00a096"},
+		"element_${LIQUIDE_DOT_MOVE6Copy}":{
+			"timelineColor2":"0x326a96",
+			"timelineColor3":"0x385063",
+			"animationEnabled":"true",
+			"timelineColor":"0x2f73ad"},
+		"element_${LIQUIDE_DOT_MOVE6Copy2}":{
+			"timelineColor2":"0x1095d2",
+			"timelineColor3":"0x29647e",
+			"animationEnabled":"true",
+			"timelineColor":"0x00a9fa"}},
+	"pref__general__AutoKeyframePropertiesArmed":"true",
+	"expanded:images/driveBelt.png":"nil",
+	"DRIVE_BELT_MOVE-Default Timeline_playhead_ms":"0",
+	"GEAR2_MOVE-Default Timeline_playhead_ms":"0",
+	"usedBOM":"false",
+	"LIQUIDE_DOT_MOVE-Default Timeline_playhead_ms":"0",
+	"PreloaderType":"Immediate",
+	"expanded:images/preloader5.gif":"nil",
+	"symbol_CRANK_P1_MOVE":{
+		"element_${crand_flow_src}":{
+			"timelineColor2":"0xb099ce",
+			"timelineColor3":"0x70657c",
+			"animationEnabled":"true",
+			"timelineColor":"0xceaef4"},
+		"element_${crank_p1}":{
+			"timelineColor2":"0xd35d6e",
+			"timelineColor3":"0x7e4b52",
+			"locked":"false",
+			"timelineColor":"0xfb657a"}},
+	"symbol_TIMING_BELT_MOVE":{
+		"dummyStageParentWidth":"34px",
+		"element_${timingBelt}":{
+			"timelineColor2":"0xcbbd71",
+			"timelineColor3":"0x7b7652",
+			"timelineColor":"0xeedf79"},
+		"defaultStageParentWidth":"34px",
+		"dummyStageParentHeight":"414px",
+		"element_${belt_flow_src}":{
+			"timelineColor2":"0xd8b467",
+			"timelineColor3":"0x81714f",
+			"animationEnabled":"true",
+			"timelineColor":"0xffd46d"},
+		"defaultStageParentHeight":"414px"},
+	"expanded:images/liquid_dot.png":"nil",
+	"symbol_L2_MOVE":{
+		"element_${LIQUIDE_DOT_MOVE2}":{
+			"timelineColor2":"0xcbbd71",
+			"timelineColor3":"0x7b7652",
+			"animationEnabled":"true",
+			"timelineColor":"0xeedf79"},
+		"element_${L2}":{
+			"timelineColor2":"0xd8b467",
+			"timelineColor3":"0x81714f",
+			"animationEnabled":"false",
+			"timelineColor":"0xffd46d"}},
+	"CRANK_P2_MOVE-Default Timeline_playhead_ms":"0",
+	"pref__general__FilterNonAnimatedElements":"false",
+	"PROPELLER_MOVE-Default Timeline_mark_ms":"-1",
+	"symbol_L7_MOVE":{
+		"element_${LIQUIDE_DOT_MOVE7}":{
+			"timelineColor2":"0x5a558a",
+			"timelineColor3":"0x4a485e",
+			"animationEnabled":"true",
+			"timelineColor":"0x63599f"},
+		"element_${L7}":{
+			"timelineColor2":"0x168c84",
+			"timelineColor3":"0x2a605c",
+			"animationEnabled":"false",
+			"timelineColor":"0x00a096"}},
+	"expanded:images/back.png":"nil",
+	"symbol_L1_MOVE":{
+		"element_${LIQUIDE_DOT_MOVE}":{
+			"timelineColor2":"0xba5b89",
+			"timelineColor3":"0x734a5f",
+			"animationEnabled":"true",
+			"timelineColor":"0xdb619d"},
+		"element_${liquid_dot}":{
+			"timelineColor2":"0xd8b467",
+			"timelineColor3":"0x81714f",
+			"animationEnabled":"false",
+			"timelineColor":"0xffd46d"},
+		"element_${L1}":{
+			"timelineColor2":"0xba5b89",
+			"timelineColor3":"0x734a5f",
+			"animationEnabled":"false",
+			"timelineColor":"0xdb619d"}},
+	"CRANK_P1_MOVE-Default Timeline_playhead_ms":"0",
+	"symbol_Preloader":{
+		"dummyStageParentWidth":"1806px",
+		"dummyStageParentHeight":"1077px",
+		"defaultStageParentWidth":"1806px",
+		"element_${preloader5}":{
+			"timelineColor2":"0xcbbd71",
+			"timelineColor3":"0x7b7652",
+			"timelineColor":"0xeedf79"},
+		"defaultStageParentHeight":"1077px"},
+	"StageZoomFactor":"100",
+	"pixelsPerMs":"1",
+	"expanded:images/timingBelt.png":"nil",
+	"pref__general__AutoKeyframeProperties":"true",
+	"expanded:images/crank_p1.png":"nil",
+	"RETURN_SP_MOVE-Default Timeline_playhead_ms":"0",
+	"TransitionIdCounter":"74",
+	"symbol_CRANK_P2_MOVE":{
+		"element_${gear_flow_src2}":{
+			"timelineColor2":"0x326a96",
+			"timelineColor3":"0x385063",
+			"animationEnabled":"true",
+			"timelineColor":"0x2f73ad"},
+		"element_${crank_p2}":{
+			"timelineColor2":"0xba5b89",
+			"timelineColor3":"0x734a5f",
+			"timelineColor":"0xdb619d"}},
+	"symbol_RETURN_SP_MOVE":{
+		"element_${return_sp}":{
+			"timelineColor2":"0x107faa",
+			"timelineColor3":"0x295a6d",
+			"animationEnabled":"true",
+			"timelineColor":"0x008dc8"}},
+	"symbol_L5_MOVE":{
+		"element_${L5}":{
+			"timelineColor2":"0x4fa275",
+			"timelineColor3":"0x456a55",
+			"animationEnabled":"false",
+			"timelineColor":"0x50bd82"},
+		"element_${LIQUIDE_DOT_MOVE5}":{
+			"timelineColor2":"0x1aa38f",
+			"timelineColor3":"0x2a6a61",
+			"animationEnabled":"true",
+			"timelineColor":"0x00bda4"}},
+	"expanded:images/crand_flow_src.png":"nil",
+	"expanded:images/belt_flow_src.png":"nil",
+	"L4_MOVE-Default Timeline_playhead_ms":"0",
+	"symbol_L8":{
+		"element_${L8}":{
+			"timelineColor2":"0x326a96",
+			"timelineColor3":"0x385063",
+			"animationEnabled":"false",
+			"timelineColor":"0x2f73ad"},
+		"element_${LIQUIDE_DOT_MOVE8}":{
+			"timelineColor2":"0xb099ce",
+			"timelineColor3":"0x70657c",
+			"animationEnabled":"true",
+			"timelineColor":"0xceaef4"}},
+	"expanded:images/gear1.png":"nil",
+	"symbol_HOT_LIQUID_MOVE":{
+		"element_${hot_liquid}":{
+			"timelineColor2":"0x1095d2",
+			"timelineColor3":"0x29647e",
+			"animationEnabled":"true",
+			"timelineColor":"0x00a9fa"}},
+	"viewStartY":"39",
+	"TIMING_BELT_MOVE-Default Timeline_playhead_ms":"0",
+	"PreloadAudio":"false",
+	"L8-Default Timeline_playhead_ms":"0",
+	"expanded:images/gear_flow_src.png":"nil",
+	"symbol_L3_MOVE":{
+		"element_${LIQUIDE_DOT_MOVE3}":{
+			"timelineColor2":"0x81aa62",
+			"timelineColor3":"0x5b6c4d",
+			"animationEnabled":"true",
+			"timelineColor":"0x91c767"},
+		"element_${L3}":{
+			"timelineColor2":"0xcbbd71",
+			"timelineColor3":"0x7b7652",
+			"animationEnabled":"false",
+			"timelineColor":"0xeedf79"}},
+	"symbol_PISTON_MOVE":{
+		"element_${pistonExtra}":{
+			"timelineColor2":"0x5a558a",
+			"timelineColor3":"0x4a485e",
+			"animationEnabled":"true",
+			"timelineColor":"0x63599f"},
+		"element_${piston1}":{
+			"timelineColor2":"0x1095d2",
+			"timelineColor3":"0x29647e",
+			"animationEnabled":"true",
+			"timelineColor":"0x00a9fa"},
+		"element_${piston2}":{
+			"timelineColor2":"0x107faa",
+			"timelineColor3":"0x295a6d",
+			"animationEnabled":"true",
+			"timelineColor":"0x008dc8"}},
+	"L1_MOVE-Default Timeline_mark_ms":"-1",
+	"expanded:images/gear2.png":"nil",
+	"pref__general__GenerateSmoothTransitions":"true",
+	"CRANK_P1_MOVE-Default Timeline_mark_ms":"0",
+	"symbol_stage":{
+		"element_${driveBelt}":{
+			"timelineColor2":"0xd35d6e",
+			"timelineColor3":"0x7e4b52",
+			"animationEnabled":"false",
+			"timelineColor":"0xfb657a"},
+		"element_${L1}":{
+			"timelineColor2":"0x5a558a",
+			"timelineColor3":"0x4a485e",
+			"animationEnabled":"false",
+			"timelineColor":"0x63599f"},
+		"element_${DRIVE_BELT_MOVE}":{
+			"timelineColor2":"0xb099ce",
+			"timelineColor3":"0x70657c",
+			"timelineColor":"0xceaef4",
+			"locked":"true",
+			"animationEnabled":"true",
+			"timelineTreeOpened":"false"},
+		"element_${TIMING_BELT_MOVE}":{
+			"timelineColor2":"0x1095d2",
+			"timelineColor3":"0x29647e",
+			"timelineColor":"0x00a9fa",
+			"locked":"true",
+			"animationEnabled":"true",
+			"timelineTreeOpened":"false"},
+		"element_${txt4}":{
+			"timelineColor2":"0x81aa62",
+			"timelineColor3":"0x5b6c4d",
+			"locked":"true",
+			"timelineColor":"0x91c767"},
+		"element_${L5_MOVE}":{
+			"timelineColor2":"0x4fa275",
+			"timelineColor3":"0x456a55",
+			"timelineColor":"0x50bd82",
+			"locked":"true",
+			"animationEnabled":"true",
+			"timelineTreeOpened":"false"},
+		"element_${return_sp}":{
+			"timelineColor2":"0xd8b467",
+			"timelineColor3":"0x81714f",
+			"animationEnabled":"false",
+			"timelineColor":"0xffd46d"},
+		"element_${propeller_down}":{
+			"timelineColor2":"0xba5b89",
+			"timelineColor3":"0x734a5f",
+			"animationEnabled":"false",
+			"timelineColor":"0xdb619d"},
+		"element_${L6_MOVE}":{
+			"timelineColor2":"0x168c84",
+			"timelineColor3":"0x2a605c",
+			"timelineColor":"0x00a096",
+			"timelineTreeOpened":"false",
+			"animationEnabled":"true",
+			"locked":"true"},
+		"element_${PROPELLER_MOVE}":{
+			"timelineColor2":"0xd35d6e",
+			"timelineColor3":"0x7e4b52",
+			"timelineColor":"0xfb657a",
+			"locked":"true",
+			"animationEnabled":"true"},
+		"element_${L4_MOVE}":{
+			"timelineColor2":"0xcbbd71",
+			"timelineColor3":"0x7b7652",
+			"timelineColor":"0xeedf79",
+			"locked":"true",
+			"animationEnabled":"true",
+			"timelineTreeOpened":"false"},
+		"element_${L82}":{
+			"timelineColor2":"0x5a558a",
+			"timelineColor3":"0x4a485e",
+			"timelineColor":"0x63599f",
+			"locked":"true",
+			"animationEnabled":"true",
+			"timelineTreeOpened":"false"},
+		"element_${L2}":{
+			"timelineColor2":"0xd35d6e",
+			"timelineColor3":"0x7e4b52",
+			"animationEnabled":"false",
+			"timelineColor":"0xfb657a"},
+		"element_${L2_MOVE}":{
+			"timelineColor2":"0xb099ce",
+			"timelineColor3":"0x70657c",
+			"timelineColor":"0xceaef4",
+			"locked":"true",
+			"animationEnabled":"true",
+			"timelineTreeOpened":"false"},
+		"element_${gear_flow_src}":{
+			"timelineColor2":"0xd8b467",
+			"timelineColor3":"0x81714f",
+			"animationEnabled":"false",
+			"timelineColor":"0xffd46d"},
+		"element_${L4}":{
+			"timelineColor2":"0x81aa62",
+			"timelineColor3":"0x5b6c4d",
+			"animationEnabled":"false",
+			"timelineColor":"0x91c767"},
+		"defaultStageParentHeight":"1077px",
+		"element_${txt3}":{
+			"timelineColor2":"0x4fa275",
+			"timelineColor3":"0x456a55",
+			"locked":"true",
+			"timelineColor":"0x50bd82"},
+		"dummyStageParentWidth":"1806px",
+		"dummyStageParentHeight":"1077px",
+		"element_${RETURN_SP_MOVE}":{
+			"timelineColor2":"0xba5b89",
+			"timelineColor3":"0x734a5f",
+			"timelineColor":"0xdb619d",
+			"timelineTreeOpened":"false",
+			"animationEnabled":"true",
+			"locked":"true"},
+		"element_${PISTON_MOVE}":{
+			"timelineColor2":"0x107faa",
+			"timelineColor3":"0x295a6d",
+			"timelineColor":"0x008dc8",
+			"locked":"true",
+			"animationEnabled":"true",
+			"invisible":"false",
+			"timelineTreeOpened":"false"},
+		"element_${waterPump}":{
+			"timelineColor2":"0x326a96",
+			"timelineColor3":"0x385063",
+			"locked":"true",
+			"timelineColor":"0x2f73ad"},
+		"element_${GEAR1_MOVE}":{
+			"timelineColor2":"0xba5b89",
+			"timelineColor3":"0x734a5f",
+			"timelineColor":"0xdb619d",
+			"timelineTreeOpened":"false",
+			"animationEnabled":"true",
+			"locked":"true"},
+		"element_${crank_p2}":{
+			"timelineColor2":"0x168c84",
+			"timelineColor3":"0x2a605c",
+			"animationEnabled":"false",
+			"timelineColor":"0x00a096"},
+		"element_${txt1}":{
+			"timelineColor2":"0x168c84",
+			"timelineColor3":"0x2a605c",
+			"locked":"true",
+			"timelineColor":"0x00a096"},
+		"element_${propeller_up}":{
+			"timelineColor2":"0xd8b467",
+			"timelineColor3":"0x81714f",
+			"animationEnabled":"false",
+			"timelineColor":"0xffd46d"},
+		"element_${hot_liquid}":{
+			"timelineColor2":"0x168c84",
+			"timelineColor3":"0x2a605c",
+			"animationEnabled":"false",
+			"timelineColor":"0x00a096"},
+		"element_${CRANK_P2_MOVE}":{
+			"timelineColor2":"0x1aa38f",
+			"timelineColor3":"0x2a6a61",
+			"timelineColor":"0x00bda4",
+			"timelineTreeOpened":"false",
+			"animationEnabled":"true",
+			"locked":"true"},
+		"element_${piston1}":{
+			"timelineColor2":"0x5a558a",
+			"timelineColor3":"0x4a485e",
+			"animationEnabled":"false",
+			"timelineColor":"0x63599f"},
+		"element_${Stage}":{
+			"timelineColor2":"0xcbbd71",
+			"timelineColor3":"0x7b7652",
+			"timelineColor":"0xeedf79"},
+		"element_${txt2}":{
+			"timelineColor2":"0x1aa38f",
+			"timelineColor3":"0x2a6a61",
+			"locked":"true",
+			"timelineColor":"0x00bda4"},
+		"element_${GEAR2_MOVE}":{
+			"timelineColor2":"0x81aa62",
+			"timelineColor3":"0x5b6c4d",
+			"timelineColor":"0x91c767",
+			"locked":"false",
+			"animationEnabled":"true",
+			"timelineTreeOpened":"false"},
+		"element_${L3_MOVE}":{
+			"timelineColor2":"0xba5b89",
+			"timelineColor3":"0x734a5f",
+			"timelineColor":"0xdb619d",
+			"locked":"true",
+			"animationEnabled":"true",
+			"timelineTreeOpened":"false"},
+		"element_${L8}":{
+			"timelineColor2":"0xb099ce",
+			"timelineColor3":"0x70657c",
+			"animationEnabled":"false",
+			"timelineColor":"0xceaef4"},
+		"element_${pistonExtra}":{
+			"timelineColor2":"0xd35d6e",
+			"timelineColor3":"0x7e4b52",
+			"animationEnabled":"false",
+			"timelineColor":"0xfb657a"},
+		"element_${gear1}":{
+			"timelineColor2":"0xcbbd71",
+			"timelineColor3":"0x7b7652",
+			"animationEnabled":"false",
+			"timelineColor":"0xeedf79"},
+		"element_${HOT_LIQUID_MOVE}":{
+			"timelineColor2":"0x1aa38f",
+			"timelineColor3":"0x2a6a61",
+			"animationEnabled":"true",
+			"timelineColor":"0x00bda4"},
+		"element_${back}":{
+			"timelineColor2":"0x5a558a",
+			"timelineColor3":"0x4a485e",
+			"timelineColor":"0x63599f",
+			"locked":"true",
+			"timelineTreeOpened":"false"},
+		"element_${crand_flow_src}":{
+			"timelineColor2":"0x81aa62",
+			"timelineColor3":"0x5b6c4d",
+			"animationEnabled":"false",
+			"timelineColor":"0x91c767"},
+		"element_${L7}":{
+			"timelineColor2":"0x107faa",
+			"timelineColor3":"0x295a6d",
+			"animationEnabled":"false",
+			"timelineColor":"0x008dc8"},
+		"element_${front_component}":{
+			"timelineColor2":"0x326a96",
+			"timelineColor3":"0x385063",
+			"locked":"true",
+			"timelineColor":"0x2f73ad"},
+		"element_${L3}":{
+			"timelineColor2":"0xd8b467",
+			"timelineColor3":"0x81714f",
+			"animationEnabled":"false",
+			"timelineColor":"0xffd46d"},
+		"element_${CRANK_P1_MOVE}":{
+			"timelineColor2":"0xcbbd71",
+			"timelineColor3":"0x7b7652",
+			"timelineColor":"0xeedf79",
+			"locked":"true",
+			"animationEnabled":"true",
+			"timelineTreeOpened":"false"},
+		"element_${crank_p1}":{
+			"timelineColor2":"0x4fa275",
+			"timelineColor3":"0x456a55",
+			"animationEnabled":"false",
+			"timelineColor":"0x50bd82"},
+		"element_${L5}":{
+			"timelineColor2":"0x1aa38f",
+			"timelineColor3":"0x2a6a61",
+			"animationEnabled":"false",
+			"timelineColor":"0x00bda4"},
+		"element_${gear2}":{
+			"timelineColor2":"0x4fa275",
+			"timelineColor3":"0x456a55",
+			"animationEnabled":"false",
+			"timelineColor":"0x50bd82"},
+		"element_${liquid_dot}":{
+			"timelineColor2":"0xd35d6e",
+			"timelineColor3":"0x7e4b52",
+			"animationEnabled":"false",
+			"timelineColor":"0xfb657a"},
+		"element_${L6}":{
+			"timelineColor2":"0x326a96",
+			"timelineColor3":"0x385063",
+			"animationEnabled":"false",
+			"timelineColor":"0x2f73ad"},
+		"element_${L7_MOVE}":{
+			"timelineColor2":"0x1095d2",
+			"timelineColor3":"0x29647e",
+			"timelineColor":"0x00a9fa",
+			"locked":"true",
+			"animationEnabled":"true",
+			"timelineTreeOpened":"false"},
+		"element_${timingBelt}":{
+			"timelineColor2":"0x5a558a",
+			"timelineColor3":"0x4a485e",
+			"animationEnabled":"false",
+			"timelineColor":"0x63599f"},
+		"element_${piston2}":{
+			"timelineColor2":"0xb099ce",
+			"timelineColor3":"0x70657c",
+			"animationEnabled":"false",
+			"timelineColor":"0xceaef4"},
+		"element_${L1_MOVE}":{
+			"timelineColor2":"0x107faa",
+			"timelineColor3":"0x295a6d",
+			"timelineColor":"0x008dc8",
+			"locked":"true",
+			"animationEnabled":"true",
+			"timelineTreeOpened":"false"},
+		"element_${belt_flow_src}":{
+			"timelineColor2":"0x107faa",
+			"timelineColor3":"0x295a6d",
+			"animationEnabled":"false",
+			"timelineColor":"0x008dc8"},
+		"defaultStageParentWidth":"1806px"},
+	"GEAR1_MOVE-Default Timeline_mark_ms":"-1",
+	"symbol_L4_MOVE":{
+		"element_${L4}":{
+			"timelineColor2":"0x81aa62",
+			"timelineColor3":"0x5b6c4d",
+			"animationEnabled":"false",
+			"timelineColor":"0x91c767"},
+		"element_${LIQUIDE_DOT_MOVE4}":{
+			"timelineColor2":"0x4fa275",
+			"timelineColor3":"0x456a55",
+			"animationEnabled":"true",
+			"timelineColor":"0x50bd82"}},
+	"expanded:images/propeller_up.png":"nil",
+	"symbol_LIQUIDE_DOT_MOVE":{
+		"dummyStageParentWidth":"77px",
+		"dummyStageParentHeight":"779px",
+		"element_${liquid_dot}":{
+			"timelineColor2":"0xd35d6e",
+			"timelineColor3":"0x7e4b52",
+			"animationEnabled":"true",
+			"timelineColor":"0xfb657a"},
+		"defaultStageParentHeight":"779px",
+		"defaultStageParentWidth":"77px"},
+	"RETURN_SP_MOVE-Default Timeline_mark_ms":"-1",
+	"expanded:images/hot_liquid.png":"nil",
+	"expanded:images/piston2.png":"nil",
+	"pref__general__TimelineShowGrid":"true",
+	"LIQUIDE_DOT_MOVE-Default Timeline_mark_ms":"0",
+	"pref__general__TimelineGridSize":"24fps",
+	"ModelData":"{\
+\"stage\": {\
+   \"timelines\": {\
+      \"Default Timeline\": {\
+      }\
+   }},\
+\"PISTON_MOVE\": {\
+   \"timelines\": {\
+      \"Default Timeline\": {\
+      }\
+   }},\
+\"RETURN_SP_MOVE\": {\
+   \"timelines\": {\
+      \"Default Timeline\": {\
+      }\
+   }},\
+\"CRANK_P1_MOVE\": {\
+   \"timelines\": {\
+      \"Default Timeline\": {\
+      }\
+   }},\
+\"CRANK_P2_MOVE\": {\
+   \"timelines\": {\
+      \"Default Timeline\": {\
+      }\
+   }},\
+\"TIMING_BELT_MOVE\": {\
+   \"timelines\": {\
+      \"Default Timeline\": {\
+      }\
+   }},\
+\"DRIVE_BELT_MOVE\": {\
+   \"timelines\": {\
+      \"Default Timeline\": {\
+      }\
+   }},\
+\"GEAR1_MOVE\": {\
+   \"timelines\": {\
+      \"Default Timeline\": {\
+      }\
+   }},\
+\"GEAR2_MOVE\": {\
+   \"timelines\": {\
+      \"Default Timeline\": {\
+      }\
+   }},\
+\"HOT_LIQUID_MOVE\": {\
+   \"timelines\": {\
+      \"Default Timeline\": {\
+      }\
+   }},\
+\"L1_MOVE\": {\
+   \"timelines\": {\
+      \"Default Timeline\": {\
+      }\
+   }},\
+\"L2_MOVE\": {\
+   \"timelines\": {\
+      \"Default Timeline\": {\
+      }\
+   }},\
+\"L3_MOVE\": {\
+   \"timelines\": {\
+      \"Default Timeline\": {\
+      }\
+   }},\
+\"L4_MOVE\": {\
+   \"timelines\": {\
+      \"Default Timeline\": {\
+      }\
+   }},\
+\"L5_MOVE\": {\
+   \"timelines\": {\
+      \"Default Timeline\": {\
+      }\
+   }},\
+\"L6_MOVE\": {\
+   \"timelines\": {\
+      \"Default Timeline\": {\
+      }\
+   }},\
+\"L7_MOVE\": {\
+   \"timelines\": {\
+      \"Default Timeline\": {\
+      }\
+   }},\
+\"L8\": {\
+   \"timelines\": {\
+      \"Default Timeline\": {\
+      }\
+   }},\
+\"LIQUIDE_DOT_MOVE\": {\
+   \"timelines\": {\
+      \"Default Timeline\": {\
+      }\
+   }},\
+\"PROPELLER_MOVE\": {\
+   \"timelines\": {\
+      \"Default Timeline\": {\
+      }\
+   }},\
+\"Preloader\": {\
+   \"timelines\": {\
+\
+   }},\
+\"Down-level\": {\
+   \"timelines\": {\
+\
+   }}\
+}",
+	"CRANK_P2_MOVE-Default Timeline_mark_ms":"0"}

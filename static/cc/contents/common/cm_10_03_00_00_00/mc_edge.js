@@ -1,0 +1,883 @@
+/**
+ * Adobe Edge: symbol definitions
+ */
+(function($, Edge, compId){
+//images folder
+var im='images/';
+
+var fonts = {};
+var opts = {};
+var resources = [
+];
+var symbols = {
+"stage": {
+    version: "3.0.0",
+    minimumCompatibleVersion: "3.0.0",
+    build: "3.0.0.322",
+    baseState: "Base State",
+    scaleToFit: "none",
+    centerStage: "none",
+    initialState: "Base State",
+    gpuAccelerate: false,
+    resizeInstances: false,
+    content: {
+            dom: [
+            {
+                id: 'smallPics',
+                display: 'block',
+                type: 'rect',
+                rect: ['40', '55','auto','auto','auto', 'auto']
+            },
+            {
+                id: 'bigPics',
+                display: 'none',
+                type: 'rect',
+                rect: ['38', '53px','auto','auto','auto', 'auto']
+            }],
+            symbolInstances: [
+            {
+                id: 'bigPics',
+                symbolName: 'bigPics',
+                autoPlay: {
+
+                }
+            },
+            {
+                id: 'smallPics',
+                symbolName: 'smallPics',
+                autoPlay: {
+
+                }
+            }
+            ]
+        },
+    states: {
+        "Base State": {
+            "${_Stage}": [
+                ["color", "background-color", 'rgba(239,239,239,1.00)'],
+                ["style", "width", '1900px'],
+                ["style", "height", '1230px'],
+                ["style", "overflow", 'hidden']
+            ],
+            "${_smallPics}": [
+                ["style", "display", 'block']
+            ],
+            "${_bigPics}": [
+                ["style", "display", 'none'],
+                ["style", "opacity", '0'],
+                ["style", "top", '53px']
+            ]
+        }
+    },
+    timelines: {
+        "Default Timeline": {
+            fromState: "Base State",
+            toState: "",
+            duration: 1600,
+            autoPlay: false,
+            labels: {
+                "showBig": 1100
+            },
+            timeline: [
+                { id: "eid89", tween: [ "style", "${_smallPics}", "display", 'none', { fromValue: 'block'}], position: 1100, duration: 0, easing: "easeOutQuad" },
+                { id: "eid92", tween: [ "style", "${_bigPics}", "opacity", '1', { fromValue: '0'}], position: 1100, duration: 500, easing: "easeOutQuad" },
+                { id: "eid88", tween: [ "style", "${_bigPics}", "display", 'none', { fromValue: 'none'}], position: 0, duration: 0, easing: "easeOutQuad" },
+                { id: "eid90", tween: [ "style", "${_bigPics}", "display", 'block', { fromValue: 'none'}], position: 1100, duration: 0, easing: "easeOutQuad" }            ]
+        }
+    }
+},
+"smallPic1": {
+    version: "3.0.0",
+    minimumCompatibleVersion: "3.0.0",
+    build: "3.0.0.322",
+    baseState: "Base State",
+    scaleToFit: "none",
+    centerStage: "none",
+    initialState: "Base State",
+    gpuAccelerate: false,
+    resizeInstances: false,
+    content: {
+            dom: [
+                {
+                    rect: ['0px', '0px', '896px', '256px', 'auto', 'auto'],
+                    id: 'small_nemo',
+                    stroke: [2, 'rgba(140,140,140,1.00)', 'solid'],
+                    type: 'rect',
+                    fill: ['rgba(255,255,255,1.00)']
+                },
+                {
+                    rect: ['8px', '8px', '324px', '244px', 'auto', 'auto'],
+                    id: 'picArea',
+                    stroke: [2, 'rgba(140,140,140,1.00)', 'none'],
+                    type: 'rect',
+                    fill: ['rgba(178,178,178,1.00)']
+                },
+                {
+                    rect: ['332px', '75px', '560px', '175px', 'auto', 'auto'],
+                    font: ['Arial, Helvetica, sans-serif', 42, 'rgba(0,0,0,1)', 'normal', 'none', 'normal'],
+                    id: 'TextArea',
+                    text: '워터펌프 파손으로 인한<br>엔진 과열',
+                    align: 'center',
+                    type: 'text'
+                },
+                {
+                    id: 'pic1',
+                    type: 'image',
+                    rect: ['10px', '10px', '320px', '240px', 'auto', 'auto'],
+                    fill: ['rgba(0,0,0,0)', 'images/pic1.gif', '0px', '0px']
+                }
+            ],
+            symbolInstances: [
+            ]
+        },
+    states: {
+        "Base State": {
+            "${_picArea}": [
+                ["color", "background-color", 'rgba(178,178,178,1.00)'],
+                ["style", "top", '8px'],
+                ["style", "border-width", '2px'],
+                ["style", "border-style", 'none'],
+                ["style", "height", '244px'],
+                ["color", "border-color", 'rgba(140,140,140,1.00)'],
+                ["style", "left", '8px'],
+                ["style", "width", '324px']
+            ],
+            "${_small_nemo}": [
+                ["color", "background-color", 'rgba(255,255,255,1)'],
+                ["style", "top", '0px'],
+                ["style", "left", '0px'],
+                ["color", "border-color", 'rgba(140,140,140,1.00)'],
+                ["style", "height", '256px'],
+                ["style", "border-style", 'solid'],
+                ["style", "border-width", '2px'],
+                ["style", "width", '896px']
+            ],
+            "${_pic1}": [
+                ["style", "left", '10px'],
+                ["style", "top", '10px']
+            ],
+            "${symbolSelector}": [
+                ["style", "height", '260px'],
+                ["style", "width", '900px']
+            ],
+            "${_TextArea}": [
+                ["style", "top", '75px'],
+                ["style", "height", '175px'],
+                ["style", "font-size", '42px'],
+                ["style", "left", '332px'],
+                ["style", "width", '560px']
+            ]
+        }
+    },
+    timelines: {
+        "Default Timeline": {
+            fromState: "Base State",
+            toState: "",
+            duration: 0,
+            autoPlay: true,
+            timeline: [
+            ]
+        }
+    }
+},
+"smallPic2": {
+    version: "3.0.0",
+    minimumCompatibleVersion: "3.0.0",
+    build: "3.0.0.322",
+    baseState: "Base State",
+    scaleToFit: "none",
+    centerStage: "none",
+    initialState: "Base State",
+    gpuAccelerate: false,
+    resizeInstances: false,
+    content: {
+            dom: [
+                {
+                    type: 'rect',
+                    id: 'small_nemo',
+                    stroke: [2, 'rgba(140,140,140,1.00)', 'solid'],
+                    rect: ['0px', '0px', '896px', '256px', 'auto', 'auto'],
+                    fill: ['rgba(255,255,255,1.00)']
+                },
+                {
+                    type: 'rect',
+                    id: 'picArea',
+                    stroke: [2, 'rgba(140,140,140,1.00)', 'none'],
+                    rect: ['8px', '8px', '324px', '244px', 'auto', 'auto'],
+                    fill: ['rgba(178,178,178,1.00)']
+                },
+                {
+                    font: ['Arial, Helvetica, sans-serif', 42, 'rgba(0,0,0,1)', 'normal', 'none', 'normal'],
+                    type: 'text',
+                    id: 'TextArea',
+                    text: '서모스탯 고장으로<br>인한 문제',
+                    align: 'center',
+                    rect: ['332px', '75px', '560px', '175px', 'auto', 'auto']
+                },
+                {
+                    id: 'pic2',
+                    type: 'image',
+                    rect: ['10px', '10px', '320px', '240px', 'auto', 'auto'],
+                    fill: ['rgba(0,0,0,0)', 'images/pic2.gif', '0px', '0px']
+                }
+            ],
+            symbolInstances: [
+            ]
+        },
+    states: {
+        "Base State": {
+            "${_picArea}": [
+                ["color", "background-color", 'rgba(178,178,178,1.00)'],
+                ["style", "top", '8px'],
+                ["style", "left", '8px'],
+                ["color", "border-color", 'rgba(140,140,140,1.00)'],
+                ["style", "height", '244px'],
+                ["style", "border-style", 'none'],
+                ["style", "border-width", '2px'],
+                ["style", "width", '324px']
+            ],
+            "${_small_nemo}": [
+                ["color", "background-color", 'rgba(255,255,255,1)'],
+                ["style", "top", '0px'],
+                ["style", "border-width", '2px'],
+                ["style", "border-style", 'solid'],
+                ["style", "height", '256px'],
+                ["color", "border-color", 'rgba(140,140,140,1.00)'],
+                ["style", "left", '0px'],
+                ["style", "width", '896px']
+            ],
+            "${_pic2}": [
+                ["style", "left", '10px'],
+                ["style", "top", '10px']
+            ],
+            "${symbolSelector}": [
+                ["style", "height", '260px'],
+                ["style", "width", '900px']
+            ],
+            "${_TextArea}": [
+                ["style", "top", '75px'],
+                ["style", "height", '175px'],
+                ["style", "width", '560px'],
+                ["style", "left", '332px'],
+                ["style", "font-size", '42px']
+            ]
+        }
+    },
+    timelines: {
+        "Default Timeline": {
+            fromState: "Base State",
+            toState: "",
+            duration: 0,
+            autoPlay: true,
+            timeline: [
+            ]
+        }
+    }
+},
+"smallPic3": {
+    version: "3.0.0",
+    minimumCompatibleVersion: "3.0.0",
+    build: "3.0.0.322",
+    baseState: "Base State",
+    scaleToFit: "none",
+    centerStage: "none",
+    initialState: "Base State",
+    gpuAccelerate: false,
+    resizeInstances: false,
+    content: {
+            dom: [
+                {
+                    type: 'rect',
+                    id: 'small_nemo',
+                    stroke: [2, 'rgba(140,140,140,1.00)', 'solid'],
+                    rect: ['0px', '0px', '896px', '256px', 'auto', 'auto'],
+                    fill: ['rgba(255,255,255,1.00)']
+                },
+                {
+                    type: 'rect',
+                    id: 'picArea',
+                    stroke: [2, 'rgba(140,140,140,1.00)', 'none'],
+                    rect: ['8px', '8px', '324px', '244px', 'auto', 'auto'],
+                    fill: ['rgba(178,178,178,1.00)']
+                },
+                {
+                    font: ['Arial, Helvetica, sans-serif', 42, 'rgba(0,0,0,1)', 'normal', 'none', 'normal'],
+                    type: 'text',
+                    id: 'TextArea',
+                    text: '냉각수 오염 및 부족으로<br>인한 엔진 과열',
+                    align: 'center',
+                    rect: ['332px', '75px', '560px', '175px', 'auto', 'auto']
+                },
+                {
+                    id: 'pic3',
+                    type: 'image',
+                    rect: ['10px', '10px', '320px', '240px', 'auto', 'auto'],
+                    fill: ['rgba(0,0,0,0)', 'images/pic3.gif', '0px', '0px']
+                }
+            ],
+            symbolInstances: [
+            ]
+        },
+    states: {
+        "Base State": {
+            "${_picArea}": [
+                ["color", "background-color", 'rgba(178,178,178,1.00)'],
+                ["style", "top", '8px'],
+                ["style", "border-width", '2px'],
+                ["style", "border-style", 'none'],
+                ["style", "height", '244px'],
+                ["color", "border-color", 'rgba(140,140,140,1.00)'],
+                ["style", "left", '8px'],
+                ["style", "width", '324px']
+            ],
+            "${_pic3}": [
+                ["style", "left", '10px'],
+                ["style", "top", '10px']
+            ],
+            "${_small_nemo}": [
+                ["color", "background-color", 'rgba(255,255,255,1)'],
+                ["style", "top", '0px'],
+                ["style", "left", '0px'],
+                ["color", "border-color", 'rgba(140,140,140,1.00)'],
+                ["style", "height", '256px'],
+                ["style", "border-style", 'solid'],
+                ["style", "border-width", '2px'],
+                ["style", "width", '896px']
+            ],
+            "${symbolSelector}": [
+                ["style", "height", '260px'],
+                ["style", "width", '900px']
+            ],
+            "${_TextArea}": [
+                ["style", "top", '75px'],
+                ["style", "height", '175px'],
+                ["style", "font-size", '42px'],
+                ["style", "left", '332px'],
+                ["style", "width", '560px']
+            ]
+        }
+    },
+    timelines: {
+        "Default Timeline": {
+            fromState: "Base State",
+            toState: "",
+            duration: 0,
+            autoPlay: true,
+            timeline: [
+            ]
+        }
+    }
+},
+"smallPic4": {
+    version: "3.0.0",
+    minimumCompatibleVersion: "3.0.0",
+    build: "3.0.0.322",
+    baseState: "Base State",
+    scaleToFit: "none",
+    centerStage: "none",
+    initialState: "Base State",
+    gpuAccelerate: false,
+    resizeInstances: false,
+    content: {
+            dom: [
+                {
+                    type: 'rect',
+                    id: 'small_nemo',
+                    stroke: [2, 'rgba(140,140,140,1.00)', 'solid'],
+                    rect: ['0px', '0px', '896px', '256px', 'auto', 'auto'],
+                    fill: ['rgba(255,255,255,1.00)']
+                },
+                {
+                    type: 'rect',
+                    id: 'picArea',
+                    stroke: [2, 'rgba(140,140,140,1.00)', 'none'],
+                    rect: ['8px', '8px', '324px', '244px', 'auto', 'auto'],
+                    fill: ['rgba(178,178,178,1.00)']
+                },
+                {
+                    font: ['Arial, Helvetica, sans-serif', 42, 'rgba(0,0,0,1)', 'normal', 'none', 'normal'],
+                    type: 'text',
+                    id: 'TextArea',
+                    text: '냉각수의 교환작업',
+                    align: 'center',
+                    rect: ['332px', '75px', '560px', '175px', 'auto', 'auto']
+                },
+                {
+                    id: 'pic4',
+                    type: 'image',
+                    rect: ['10px', '10px', '320px', '240px', 'auto', 'auto'],
+                    fill: ['rgba(0,0,0,0)', 'images/pic4.gif', '0px', '0px']
+                }
+            ],
+            symbolInstances: [
+            ]
+        },
+    states: {
+        "Base State": {
+            "${_picArea}": [
+                ["color", "background-color", 'rgba(178,178,178,1.00)'],
+                ["style", "top", '8px'],
+                ["style", "left", '8px'],
+                ["color", "border-color", 'rgba(140,140,140,1.00)'],
+                ["style", "height", '244px'],
+                ["style", "border-style", 'none'],
+                ["style", "border-width", '2px'],
+                ["style", "width", '324px']
+            ],
+            "${_small_nemo}": [
+                ["color", "background-color", 'rgba(255,255,255,1)'],
+                ["style", "top", '0px'],
+                ["style", "border-width", '2px'],
+                ["style", "border-style", 'solid'],
+                ["style", "height", '256px'],
+                ["color", "border-color", 'rgba(140,140,140,1.00)'],
+                ["style", "left", '0px'],
+                ["style", "width", '896px']
+            ],
+            "${_pic4}": [
+                ["style", "left", '10px'],
+                ["style", "top", '10px']
+            ],
+            "${symbolSelector}": [
+                ["style", "height", '260px'],
+                ["style", "width", '900px']
+            ],
+            "${_TextArea}": [
+                ["style", "top", '75px'],
+                ["style", "height", '175px'],
+                ["style", "width", '560px'],
+                ["style", "left", '332px'],
+                ["style", "font-size", '42px']
+            ]
+        }
+    },
+    timelines: {
+        "Default Timeline": {
+            fromState: "Base State",
+            toState: "",
+            duration: 0,
+            autoPlay: true,
+            timeline: [
+            ]
+        }
+    }
+},
+"smallPic5": {
+    version: "3.0.0",
+    minimumCompatibleVersion: "3.0.0",
+    build: "3.0.0.322",
+    baseState: "Base State",
+    scaleToFit: "none",
+    centerStage: "none",
+    initialState: "Base State",
+    gpuAccelerate: false,
+    resizeInstances: false,
+    content: {
+            dom: [
+                {
+                    type: 'rect',
+                    id: 'small_nemo',
+                    stroke: [2, 'rgba(140,140,140,1.00)', 'solid'],
+                    rect: ['0px', '0px', '896px', '256px', 'auto', 'auto'],
+                    fill: ['rgba(255,255,255,1.00)']
+                },
+                {
+                    type: 'rect',
+                    id: 'picArea',
+                    stroke: [2, 'rgba(140,140,140,1.00)', 'none'],
+                    rect: ['8px', '8px', '324px', '244px', 'auto', 'auto'],
+                    fill: ['rgba(178,178,178,1.00)']
+                },
+                {
+                    font: ['Arial, Helvetica, sans-serif', 42, 'rgba(0,0,0,1)', 'normal', 'none', 'normal'],
+                    type: 'text',
+                    id: 'TextArea',
+                    text: '장비를 사용한<br>냉각수의 교환작업',
+                    align: 'center',
+                    rect: ['332px', '75px', '560px', '175px', 'auto', 'auto']
+                },
+                {
+                    id: 'pic5',
+                    type: 'image',
+                    rect: ['10px', '10px', '320px', '240px', 'auto', 'auto'],
+                    fill: ['rgba(0,0,0,0)', 'images/pic5.gif', '0px', '0px']
+                }
+            ],
+            symbolInstances: [
+            ]
+        },
+    states: {
+        "Base State": {
+            "${_picArea}": [
+                ["color", "background-color", 'rgba(178,178,178,1.00)'],
+                ["style", "top", '8px'],
+                ["style", "border-width", '2px'],
+                ["style", "border-style", 'none'],
+                ["style", "height", '244px'],
+                ["color", "border-color", 'rgba(140,140,140,1.00)'],
+                ["style", "left", '8px'],
+                ["style", "width", '324px']
+            ],
+            "${_small_nemo}": [
+                ["color", "background-color", 'rgba(255,255,255,1)'],
+                ["style", "top", '0px'],
+                ["style", "left", '0px'],
+                ["color", "border-color", 'rgba(140,140,140,1.00)'],
+                ["style", "height", '256px'],
+                ["style", "border-style", 'solid'],
+                ["style", "border-width", '2px'],
+                ["style", "width", '896px']
+            ],
+            "${_pic5}": [
+                ["style", "left", '10px'],
+                ["style", "top", '10px']
+            ],
+            "${symbolSelector}": [
+                ["style", "height", '260px'],
+                ["style", "width", '900px']
+            ],
+            "${_TextArea}": [
+                ["style", "top", '75px'],
+                ["style", "height", '175px'],
+                ["style", "font-size", '42px'],
+                ["style", "left", '332px'],
+                ["style", "width", '560px']
+            ]
+        }
+    },
+    timelines: {
+        "Default Timeline": {
+            fromState: "Base State",
+            toState: "",
+            duration: 0,
+            autoPlay: true,
+            timeline: [
+            ]
+        }
+    }
+},
+"smallPics": {
+    version: "3.0.0",
+    minimumCompatibleVersion: "3.0.0",
+    build: "3.0.0.322",
+    baseState: "Base State",
+    scaleToFit: "none",
+    centerStage: "none",
+    initialState: "Base State",
+    gpuAccelerate: false,
+    resizeInstances: false,
+    content: {
+            dom: [
+                {
+                    id: 'smallPic1',
+                    type: 'rect',
+                    rect: ['-40px', '-55px', 'auto', 'auto', 'auto', 'auto']
+                },
+                {
+                    id: 'smallPic2',
+                    type: 'rect',
+                    rect: ['1022px', '498px', 'auto', 'auto', 'auto', 'auto']
+                },
+                {
+                    id: 'smallPic3',
+                    type: 'rect',
+                    rect: ['419px', '673px', 'auto', 'auto', 'auto', 'auto']
+                },
+                {
+                    id: 'smallPic4',
+                    type: 'rect',
+                    rect: ['1320px', '626px', 'auto', 'auto', 'auto', 'auto']
+                },
+                {
+                    id: 'smallPic5',
+                    type: 'rect',
+                    rect: ['299px', '869px', 'auto', 'auto', 'auto', 'auto']
+                }
+            ],
+            symbolInstances: [
+            {
+                id: 'smallPic5',
+                symbolName: 'smallPic5',
+                autoPlay: {
+
+               }
+            },
+            {
+                id: 'smallPic4',
+                symbolName: 'smallPic4',
+                autoPlay: {
+
+               }
+            },
+            {
+                id: 'smallPic3',
+                symbolName: 'smallPic3',
+                autoPlay: {
+
+               }
+            },
+            {
+                id: 'smallPic2',
+                symbolName: 'smallPic2',
+                autoPlay: {
+
+               }
+            },
+            {
+                id: 'smallPic1',
+                symbolName: 'smallPic1',
+                autoPlay: {
+
+               }
+            }            ]
+        },
+    states: {
+        "Base State": {
+            "${_smallPic1}": [
+                ["style", "top", '0px'],
+                ["transform", "scaleY", '0.95'],
+                ["transform", "scaleX", '0.95'],
+                ["style", "opacity", '0'],
+                ["style", "left", '0px']
+            ],
+            "${_smallPic3}": [
+                ["style", "top", '280px'],
+                ["transform", "scaleY", '0.95'],
+                ["transform", "scaleX", '0.95'],
+                ["style", "opacity", '0'],
+                ["style", "left", '0px']
+            ],
+            "${symbolSelector}": [
+                ["style", "height", '1100px'],
+                ["style", "width", '1819px']
+            ],
+            "${_smallPic5}": [
+                ["style", "top", '560px'],
+                ["transform", "scaleY", '0.95'],
+                ["transform", "scaleX", '0.95'],
+                ["style", "opacity", '0'],
+                ["style", "left", '0px']
+            ],
+            "${_smallPic2}": [
+                ["style", "top", '0px'],
+                ["transform", "scaleY", '0.95'],
+                ["transform", "scaleX", '0.95'],
+                ["style", "opacity", '0'],
+                ["style", "left", '919px']
+            ],
+            "${_smallPic4}": [
+                ["style", "top", '280px'],
+                ["transform", "scaleY", '0.95'],
+                ["transform", "scaleX", '0.95'],
+                ["style", "opacity", '0'],
+                ["style", "left", '919px']
+            ]
+        }
+    },
+    timelines: {
+        "Default Timeline": {
+            fromState: "Base State",
+            toState: "",
+            duration: 900,
+            autoPlay: true,
+            timeline: [
+                { id: "eid81", tween: [ "transform", "${_smallPic1}", "scaleX", '1', { fromValue: '0.95'}], position: 0, duration: 500, easing: "easeOutQuad" },
+                { id: "eid47", tween: [ "style", "${_smallPic4}", "opacity", '1', { fromValue: '0'}], position: 300, duration: 500, easing: "easeOutQuad" },
+                { id: "eid55", tween: [ "style", "${_smallPic3}", "opacity", '1', { fromValue: '0'}], position: 200, duration: 500, easing: "easeOutQuad" },
+                { id: "eid79", tween: [ "transform", "${_smallPic3}", "scaleY", '1', { fromValue: '0.95'}], position: 200, duration: 500, easing: "easeOutQuad" },
+                { id: "eid53", tween: [ "style", "${_smallPic5}", "opacity", '1', { fromValue: '0'}], position: 400, duration: 500, easing: "easeOutQuad" },
+                { id: "eid77", tween: [ "transform", "${_smallPic3}", "scaleX", '1', { fromValue: '0.95'}], position: 200, duration: 500, easing: "easeOutQuad" },
+                { id: "eid63", tween: [ "transform", "${_smallPic4}", "scaleY", '1', { fromValue: '0.95'}], position: 300, duration: 500, easing: "easeOutQuad" },
+                { id: "eid75", tween: [ "transform", "${_smallPic5}", "scaleY", '1', { fromValue: '0.95'}], position: 400, duration: 500, easing: "easeOutQuad" },
+                { id: "eid57", tween: [ "style", "${_smallPic1}", "opacity", '1', { fromValue: '0'}], position: 0, duration: 500, easing: "easeOutQuad" },
+                { id: "eid65", tween: [ "transform", "${_smallPic2}", "scaleX", '1', { fromValue: '0.95'}], position: 100, duration: 500, easing: "easeOutQuad" },
+                { id: "eid73", tween: [ "transform", "${_smallPic5}", "scaleX", '1', { fromValue: '0.95'}], position: 400, duration: 500, easing: "easeOutQuad" },
+                { id: "eid67", tween: [ "transform", "${_smallPic2}", "scaleY", '1', { fromValue: '0.95'}], position: 100, duration: 500, easing: "easeOutQuad" },
+                { id: "eid61", tween: [ "transform", "${_smallPic4}", "scaleX", '1', { fromValue: '0.95'}], position: 300, duration: 500, easing: "easeOutQuad" },
+                { id: "eid83", tween: [ "transform", "${_smallPic1}", "scaleY", '1', { fromValue: '0.95'}], position: 0, duration: 500, easing: "easeOutQuad" },
+                { id: "eid49", tween: [ "style", "${_smallPic2}", "opacity", '1', { fromValue: '0'}], position: 100, duration: 500, easing: "easeOutQuad" }            ]
+        }
+    }
+},
+"BUTTON_CLOSE": {
+    version: "3.0.0",
+    minimumCompatibleVersion: "3.0.0",
+    build: "3.0.0.322",
+    baseState: "Base State",
+    scaleToFit: "none",
+    centerStage: "none",
+    initialState: "Base State",
+    gpuAccelerate: false,
+    resizeInstances: false,
+    content: {
+            dom: [
+                {
+                    rect: ['0px', '0px', '75', '75', 'auto', 'auto'],
+                    tag: 'img',
+                    id: 'close_btn',
+                    opacity: 0.6,
+                    type: 'image',
+                    fill: ['rgba(0,0,0,0)', 'images/close_btn.png']
+                },
+                {
+                    rect: ['2px', '2px', '70', '70', 'auto', 'auto'],
+                    tag: 'img',
+                    id: 'close_x',
+                    opacity: 0.6,
+                    type: 'image',
+                    fill: ['rgba(0,0,0,0)', 'images/close_x.png']
+                }
+            ],
+            symbolInstances: [
+            ]
+        },
+    states: {
+        "Base State": {
+            "${_close_btn}": [
+                ["style", "left", '0px'],
+                ["style", "top", '0px']
+            ],
+            "${_close_x}": [
+                ["style", "left", '2px'],
+                ["style", "top", '2px']
+            ],
+            "${symbolSelector}": [
+                ["style", "height", '75px'],
+                ["style", "width", '75px']
+            ]
+        }
+    },
+    timelines: {
+        "Default Timeline": {
+            fromState: "Base State",
+            toState: "",
+            duration: 0,
+            autoPlay: true,
+            timeline: [
+            ]
+        }
+    }
+},
+"bigPics": {
+    version: "3.0.0",
+    minimumCompatibleVersion: "3.0.0",
+    build: "3.0.0.322",
+    baseState: "Base State",
+    scaleToFit: "none",
+    centerStage: "none",
+    initialState: "Base State",
+    gpuAccelerate: false,
+    resizeInstances: false,
+    content: {
+            dom: [
+                {
+                    type: 'rect',
+                    id: 'blinder',
+                    stroke: [2, 'rgb(0, 0, 0)', 'none'],
+                    rect: ['0px', '0px', '1823px', '79px', 'auto', 'auto'],
+                    fill: ['rgba(239,239,239,1.00)']
+                },
+                {
+                    type: 'rect',
+                    id: 'Big_nemo',
+                    stroke: [2, 'rgba(0,0,0,1.00)', 'solid'],
+                    rect: ['0px', '79px', '1820px', '1091px', 'auto', 'auto'],
+                    fill: ['rgba(255,255,255,1.00)']
+                },
+                {
+                    rect: ['9px', '88px', '1806px', '1077px', 'auto', 'auto'],
+                    opacity: 1,
+                    id: 'movieArea',
+                    stroke: [2, 'rgb(0, 0, 0)', 'none'],
+                    type: 'rect',
+                    fill: ['rgba(175,175,175,1.00)']
+                },
+                {
+                    id: 'BUTTON_CLOSE',
+                    type: 'rect',
+                    rect: ['1845', '338', 'auto', 'auto', 'auto', 'auto']
+                },
+                {
+                    rect: ['0px', '0px', '1824px', '80px', 'auto', 'auto'],
+                    font: ['Arial, Helvetica, sans-serif', 50, 'rgba(0,0,0,1)', 'normal', 'none', ''],
+                    id: 'textArea',
+                    text: 'text area',
+                    align: 'center',
+                    type: 'text'
+                }
+            ],
+            symbolInstances: [
+            {
+                id: 'BUTTON_CLOSE',
+                symbolName: 'BUTTON_CLOSE'
+            }            ]
+        },
+    states: {
+        "Base State": {
+            "${_blinder}": [
+                ["color", "background-color", 'rgba(239,239,239,1.00)'],
+                ["style", "border-style", 'none'],
+                ["style", "height", '79px'],
+                ["style", "width", '1823px']
+            ],
+            "${_Big_nemo}": [
+                ["color", "background-color", 'rgba(255,255,255,1)'],
+                ["style", "top", '79px'],
+                ["style", "left", '0px'],
+                ["color", "border-color", 'rgba(0,0,0,1.00)'],
+                ["style", "height", '1091px'],
+                ["style", "border-style", 'solid'],
+                ["style", "border-width", '2px'],
+                ["style", "width", '1820px']
+            ],
+            "${_movieArea}": [
+                ["style", "top", '88px'],
+                ["color", "background-color", 'rgba(175,175,175,1.00)'],
+                ["style", "opacity", '1'],
+                ["style", "height", '1077px'],
+                ["style", "border-style", 'none'],
+                ["style", "left", '9px'],
+                ["style", "width", '1806px']
+            ],
+            "${_textArea}": [
+                ["style", "top", '0px'],
+                ["style", "text-align", 'center'],
+                ["style", "height", '80px'],
+                ["style", "width", '1824px'],
+                ["style", "left", '0px'],
+                ["style", "font-size", '50px']
+            ],
+            "${symbolSelector}": [
+                ["style", "height", '1174px'],
+                ["style", "width", '1824px']
+            ],
+            "${_BUTTON_CLOSE}": [
+                ["style", "left", '1728px'],
+                ["style", "top", '99px']
+            ]
+        }
+    },
+    timelines: {
+        "Default Timeline": {
+            fromState: "Base State",
+            toState: "",
+            duration: 0,
+            autoPlay: true,
+            timeline: [
+                { id: "eid40", tween: [ "style", "${_BUTTON_CLOSE}", "left", '1728px', { fromValue: '1728px'}], position: 0, duration: 0, easing: "easeOutQuad" },
+                { id: "eid41", tween: [ "style", "${_BUTTON_CLOSE}", "top", '99px', { fromValue: '99px'}], position: 0, duration: 0, easing: "easeOutQuad" }            ]
+        }
+    }
+}
+};
+
+
+Edge.registerCompositionDefn(compId, symbols, fonts, resources, opts);
+
+/**
+ * Adobe Edge DOM Ready Event Handler
+ */
+$(window).ready(function() {
+     Edge.launchComposition(compId);
+});
+})(jQuery, AdobeEdge, "EDGE-13633348");

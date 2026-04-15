@@ -1,4 +1,4 @@
-import "@scss/pages/_ccSystemg.scss";
+import "@scss/pages/_cc.scss";
 import { useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -22,7 +22,7 @@ const CCsystemg = () => {
     return (
         <article className="counselPage">
             <section>
-                <div onClick={() => navigate("/")}><img src="/img/cc_back.png" /></div>
+                <div onClick={() => navigate("/main")}><img src="/img/cc_back.png" /></div>
                 <p>
                     <span>Counsel Content</span>
                     <span>시스템 가이드</span>
@@ -30,7 +30,7 @@ const CCsystemg = () => {
                 <div></div>
             </section>
             <section ref={parentRef}>
-                <iframe ref={iframeRef} src="https://amsk.kr/cc/systemg_00.html" />
+                <iframe ref={iframeRef} src={`/static/cc/systemg_00.html`} />
             </section>
         </article>
     );

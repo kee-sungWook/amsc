@@ -16,7 +16,7 @@ const RentalCar: React.FC = () => {
     const [loading, setLoading] = React.useState<boolean>(false);
     const { user } = useUserStore();
     const [popup, setPopup] = React.useState<boolean>(false);
-    const [dummyUserData, setDummyUserData] = React.useState<DummyUser>({ name: user?.name, phone: user?.phone });
+    const [dummyUserData, setDummyUserData] = React.useState<DummyUser>({ name: "", phone: "" });
     const [sidogunguVal, setSidogunguVal] = React.useState<SidogunguVal>({ sido: '0', sigungu: '0' });
     const [car, setCar] = React.useState<string>('');
     const [address, setAddress] = React.useState<string>('');
@@ -156,12 +156,12 @@ const RentalCar: React.FC = () => {
                         <div className="user">
                             <div className="user-row">
                                 <PiUserDuotone className="icon" />
-                                <span>신청자 : </span>
+                                <span>운전자 : </span>
                                 <input
                                     type="text"
                                     value={dummyUserData.name}
                                     ref={(el) => { refs.current.userName = el }}
-                                    placeholder="신청자 이름"
+                                    placeholder="운전자 이름"
                                     onChange={(e) => setDummyUserData((prev) => ({ ...prev, name: e.target.value }))}
                                 />
                             </div>

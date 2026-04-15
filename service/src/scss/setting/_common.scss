@@ -64,12 +64,7 @@ button {
 
     &:disabled {
         background-color: $outLine;
-
-        &:hover {
-            background-color: $outLine;
-            cursor: default;
-            color: white;
-        }
+        pointer-events: none;
     }
 }
 
