@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8" />
+      <meta http-equiv="pragma" content="no-cache" />
+      <title>전자제어</title>
+      <link rel="stylesheet" type="text/css" href="css/all_public.css" />
+      <link rel="stylesheet" type="text/css" href="css/only_electric.css" />
+      <script src="script/script_all.js"></script>
+      <script>
+         let nowMenu = "01";
+         function setListMenu(target) {
+            const menus = target.closest("#menuList").querySelectorAll("li");
+            menus.forEach((menu) => {
+               if (menu !== target) {
+                  menu.classList.remove("selected");
+                  menu.querySelector("img").setAttribute("src", "img/dot.gif");
+               } else {
+                  menu.classList.add("selected");
+                  menu.querySelector("img").setAttribute("src", "img/dot_c.gif");
+               }
+            });
+            document.querySelector("#contentCotainer").setAttribute("src", `contents/electric/el_10_${nowMenu}_00_00_00/mc.html`);
+         }
+         function makeListMenu(res) {
+            if (res.status === "ok") {
+               let tag = "";
+               for (let data of res.resData) {
+                  if (data.code2 === "00") {
+                     document.querySelector("#subTitle").innerText = data.title.replace(" ", "\n");
+                     continue;
+                  }
+                  tag += `<li ${data.code2 === nowMenu ? "class='selected'" : ""} data-code='${data.code2}'><img src='img/dot${data.code2 === nowMenu ? "_c" : ""}.gif' /> <span>${data.title}</span></li>`;
+               }
+               document.querySelector("#menuList").insertAdjacentHTML("afterbegin", tag);
+               document.querySelector("#contentCotainer").setAttribute("src", `contents/electric/el_10_${nowMenu}_00_00_00/mc.html`);
+            } else {
+               console.log(res.status);
+            }
+         }
+         window.addEventListener("DOMContentLoaded", async () => {
+            const fetchOpt = {
+               method: "post",
+               headers: { "Content-Type": "application/json" },
+               body: JSON.stringify({ menuCode: "03", code1: "10" }),
+            };
+            const response = await fetch("/CC/getCCdatas", fetchOpt);
+            if (response.ok) makeListMenu(await response.json());
+            else console.log("HTTP-Error: " + response.status);
+         });
+         document.addEventListener("click", (e) => {
+            if (e.target.closest("li")) {
+               nowMenu = e.target.closest("li").dataset.code;
+               setListMenu(e.target.closest("li"));
+            }
+         });
+      </script>
+   </head>
+
+   <body>
+      <header>
+         <img class="hicon" src="img/top_icon_el.gif" />
+         <span><a href="/cc/electric" target="_parent">전자제어</a></span>
+         <img class="hclose" src="img/btn_goHome.gif" definder="btn" pics="img/btn_goHome" onmouseover="btnOver(this)" onmouseout="btnOut(this)" onclick="top.location.href='/manager'" />
+         <img class="hprev" src="img/btn_prev.gif" definder="btn" pics="img/btn_prev" onmouseover="btnOver(this)" onmouseout="btnOut(this)" onclick="top.location.href='/cc/electric'" />
+      </header>
+
+      <section>
+         <table cellpadding="0" cellspacing="0">
+            <tr>
+               <td>
+                  <iframe id="contentCotainer" scrolling="no"></iframe>
+                  <div id="rThing">
+                     <div id="subTitle"></div>
+                     <ul id="menuList"></ul>
+                  </div>
+               </td>
+            </tr>
+         </table>
+      </section>
+   </body>
+</html>

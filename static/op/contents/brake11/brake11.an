@@ -1,0 +1,246 @@
+
+{
+
+	"expanded:images/memo.png":"nil",
+	"pref__general__AutoKeyframeProperties":"false",
+	"expanded:images/car_body.png":"nil",
+	"symbol_SYM_REPLAY":{
+		"element_${REPLAY_ICON}":{
+			"timelineColor2":"0x4fa275",
+			"timelineColor3":"0x456a55",
+			"timelineColor":"0x50bd82"},
+		"element_${REPLAY}":{
+			"timelineColor2":"0x1aa38f",
+			"timelineColor3":"0x2a6a61",
+			"timelineColor":"0x00bda4"}},
+	"symbol_CAR2":{
+		"element_${WHEEL_MOVE2}":{
+			"timelineColor2":"0x5a558a",
+			"timelineColor3":"0x4a485e",
+			"animationEnabled":"true",
+			"timelineColor":"0x63599f"},
+		"element_${car_body}":{
+			"timelineColor2":"0xba5b89",
+			"timelineColor3":"0x734a5f",
+			"timelineColor":"0xdb619d"},
+		"element_${memo}":{
+			"timelineColor2":"0xd35d6e",
+			"timelineColor3":"0x7e4b52",
+			"animationEnabled":"false",
+			"timelineColor":"0xfb657a"},
+		"element_${car_shadow}":{
+			"timelineColor2":"0xd8b467",
+			"timelineColor3":"0x81714f",
+			"timelineColor":"0xffd46d"},
+		"element_${WHEEL_MOVE}":{
+			"timelineColor2":"0xb099ce",
+			"timelineColor3":"0x70657c",
+			"animationEnabled":"true",
+			"timelineColor":"0xceaef4"}},
+	"symbol_SYM_CLOSE":{
+		"element_${CLOSE_ICON}":{
+			"timelineColor2":"0x168c84",
+			"timelineColor3":"0x2a605c",
+			"timelineColor":"0x00a096"},
+		"element_${CLOSE}":{
+			"timelineColor2":"0x326a96",
+			"timelineColor3":"0x385063",
+			"timelineColor":"0x2f73ad"}},
+	"expanded:images/REPLAY_ICON.png":"nil",
+	"pref__general__FilterNonAnimatedElements":"false",
+	"pref__general__TimelineGridSize":"30fps",
+	"WHEEL_MOVE-Default Timeline_playhead_ms":"0",
+	"CompZoomFactor":"100",
+	"StageZoomFactor":"50",
+	"pixelsPerMs":"1",
+	"WHEEL_MOVE-Default Timeline_mark_ms":"500",
+	"stage-Default Timeline_mark_ms":"-1",
+	"nextElementColorIndex":"8",
+	"stage-Default Timeline_playhead_ms":"6500",
+	"SYM_CLOSE-Default Timeline_playhead_ms":"0",
+	"HTMLFileName":"brake11.html",
+	"symbol_WHEEL_MOVE":{
+		"dummyStageParentWidth":"109px",
+		"dummyStageParentHeight":"108px",
+		"defaultStageParentWidth":"109px",
+		"defaultStageParentHeight":"108px",
+		"element_${wheel}":{
+			"timelineColor2":"0x81aa62",
+			"timelineColor3":"0x5b6c4d",
+			"animationEnabled":"true",
+			"timelineColor":"0x91c767"}},
+	"ModelData":"{\
+\"stage\": {\
+   \"timelines\": {\
+      \"Default Timeline\": {\
+      }\
+   }},\
+\"CAR1\": {\
+   \"timelines\": {\
+      \"Default Timeline\": {\
+      }\
+   }},\
+\"WHEEL_MOVE\": {\
+   \"timelines\": {\
+      \"Default Timeline\": {\
+      }\
+   }},\
+\"CAR2\": {\
+   \"timelines\": {\
+      \"Default Timeline\": {\
+      }\
+   }},\
+\"Preloader\": {\
+   \"timelines\": {\
+\
+   }},\
+\"Down-level\": {\
+   \"timelines\": {\
+\
+   }}\
+}",
+	"CAR2-Default Timeline_playhead_ms":"0",
+	"expanded:images/wheel.png":"nil",
+	"expanded:images/road.png":"nil",
+	"SYM_REPLAY-Default Timeline_playhead_ms":"0",
+	"viewStartMs":"5884.0059274317",
+	"pref__general__AutoKeyframePropertiesArmed":"false",
+	"expanded:images/title_icon.png":"nil",
+	"symbol_stage":{
+		"dummyStageParentWidth":"2560px",
+		"dummyStageParentHeight":"1440px",
+		"element_${titleText}":{
+			"timelineColor2":"0x5a558a",
+			"timelineColor3":"0x4a485e",
+			"timelineColor":"0x63599f",
+			"timelineTreeOpened":"false",
+			"animationEnabled":"false",
+			"locked":"false",
+			"invisible":"false"},
+		"element_${SYM_REPLAY}":{
+			"timelineColor2":"0xb099ce",
+			"timelineColor3":"0x70657c",
+			"timelineColor":"0xceaef4",
+			"timelineTreeOpened":"false",
+			"animationEnabled":"false",
+			"locked":"false",
+			"invisible":"false"},
+		"element_${memo}":{
+			"timelineColor2":"0x81aa62",
+			"timelineColor3":"0x5b6c4d",
+			"animationEnabled":"false",
+			"timelineColor":"0x91c767"},
+		"element_${wheel}":{
+			"timelineColor2":"0xcbbd71",
+			"timelineColor3":"0x7b7652",
+			"animationEnabled":"false",
+			"timelineColor":"0xeedf79"},
+		"element_${road}":{
+			"timelineColor2":"0x326a96",
+			"timelineColor3":"0x385063",
+			"timelineTreeOpened":"false",
+			"timelineColor":"0x2f73ad"},
+		"element_${car_body}":{
+			"timelineColor2":"0x4fa275",
+			"timelineColor3":"0x456a55",
+			"animationEnabled":"false",
+			"timelineColor":"0x50bd82"},
+		"element_${car_shadow}":{
+			"timelineColor2":"0x1aa38f",
+			"timelineColor3":"0x2a6a61",
+			"animationEnabled":"false",
+			"timelineColor":"0x00bda4"},
+		"element_${SYM_CLOSE}":{
+			"timelineColor2":"0xd35d6e",
+			"timelineColor3":"0x7e4b52",
+			"timelineColor":"0xfb657a",
+			"timelineTreeOpened":"false",
+			"animationEnabled":"false",
+			"locked":"false",
+			"invisible":"false"},
+		"element_${titleCon}":{
+			"timelineColor2":"0x107faa",
+			"timelineColor3":"0x295a6d",
+			"timelineColor":"0x008dc8",
+			"timelineTreeOpened":"false",
+			"animationEnabled":"false",
+			"locked":"false",
+			"invisible":"false"},
+		"element_${title_icon}":{
+			"timelineColor2":"0x1095d2",
+			"timelineColor3":"0x29647e",
+			"timelineColor":"0x00a9fa"},
+		"defaultStageParentHeight":"1440px",
+		"element_${CAR2}":{
+			"timelineColor2":"0x81aa62",
+			"timelineColor3":"0x5b6c4d",
+			"timelineColor":"0x91c767",
+			"timelineTreeOpened":"false",
+			"animationEnabled":"true"},
+		"element_${Stage}":{
+			"timelineColor2":"0xcbbd71",
+			"timelineColor3":"0x7b7652",
+			"timelineTreeOpened":"false",
+			"timelineColor":"0xeedf79"},
+		"element_${txt}":{
+			"timelineColor2":"0x1095d2",
+			"timelineColor3":"0x29647e",
+			"timelineColor":"0x00a9fa",
+			"timelineTreeOpened":"false",
+			"animationEnabled":"false",
+			"locked":"false",
+			"invisible":"false"},
+		"element_${Rectangle}":{
+			"timelineColor2":"0xba5b89",
+			"timelineColor3":"0x734a5f",
+			"timelineColor":"0xdb619d",
+			"timelineTreeOpened":"false",
+			"animationEnabled":"false",
+			"locked":"false",
+			"invisible":"false"},
+		"defaultStageParentWidth":"2560px",
+		"element_${CAR1}":{
+			"timelineColor2":"0xcbbd71",
+			"timelineColor3":"0x7b7652",
+			"timelineColor":"0xeedf79",
+			"timelineTreeOpened":"false",
+			"animationEnabled":"true"}},
+	"TransitionIdCounter":"74",
+	"pref__general__GenerateSmoothTransitions":"false",
+	"symbol_CAR1":{
+		"element_${WHEEL_MOVE2}":{
+			"timelineColor2":"0x1095d2",
+			"timelineColor3":"0x29647e",
+			"animationEnabled":"true",
+			"timelineColor":"0x00a9fa"},
+		"element_${car_body}":{
+			"timelineColor2":"0x1aa38f",
+			"timelineColor3":"0x2a6a61",
+			"timelineColor":"0x00bda4"},
+		"element_${memo}":{
+			"timelineColor2":"0x4fa275",
+			"timelineColor3":"0x456a55",
+			"timelineColor":"0x50bd82"},
+		"element_${car_shadow}":{
+			"timelineColor2":"0x168c84",
+			"timelineColor3":"0x2a605c",
+			"timelineColor":"0x00a096"},
+		"element_${WHEEL_MOVE}":{
+			"timelineColor2":"0x168c84",
+			"timelineColor3":"0x2a605c",
+			"animationEnabled":"true",
+			"timelineColor":"0x00a096"},
+		"element_${wheel}":{
+			"timelineColor2":"0x326a96",
+			"timelineColor3":"0x385063",
+			"animationEnabled":"false",
+			"timelineColor":"0x2f73ad"}},
+	"expanded:images/CLOSE_ICON.png":"nil",
+	"expanded:images/titleCon01.png":"nil",
+	"pref__general__TimelineShowGrid":"true",
+	"usedBOM":"false",
+	"expanded:images/road.gif":"nil",
+	"CAR1-Default Timeline_playhead_ms":"0",
+	"expanded:images/titleCon.png":"nil",
+	"expanded:images/car_shadow.png":"nil",
+	"viewStartY":"0"}

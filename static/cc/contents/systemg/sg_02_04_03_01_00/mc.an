@@ -1,0 +1,78 @@
+
+{
+
+	"HTMLFileName":"mc.html",
+	"pref__general__AutoKeyframeProperties":"true",
+	"ModelData":"{\
+\"stage\": {\
+   \"timelines\": {\
+      \"Default Timeline\": {\
+      }\
+   }},\
+\"Preloader\": {\
+   \"timelines\": {\
+      \"Default Timeline\": {\
+      }\
+   }},\
+\"Down-level\": {\
+   \"timelines\": {\
+\
+   }}\
+}",
+	"Preloader-Default Timeline_playhead_ms":"0",
+	"pref__general__FilterNonAnimatedElements":"false",
+	"viewStartMs":"361.55038452148",
+	"pref__general__TimelineGridSize":"30fps",
+	"symbol_Preloader":{
+		"element_${_preloader5}":{
+			"timelineColor2":"0x326a96",
+			"timelineColor3":"0x385063",
+			"timelineColor":"0x2f73ad"},
+		"dummyStageParentWidth":"2400px",
+		"dummyStageParentHeight":"1230px",
+		"defaultStageParentWidth":"2400px",
+		"defaultStageParentHeight":"1230px"},
+	"symbol_stage":{
+		"dummyStageParentWidth":"2400px",
+		"dummyStageParentHeight":"1230px",
+		"element_${_Text}":{
+			"timelineColor2":"0x81aa62",
+			"timelineColor3":"0x5b6c4d",
+			"animationEnabled":"true",
+			"timelineColor":"0x91c767"},
+		"defaultStageParentHeight":"1230px",
+		"element_${_whiteThing}":{
+			"timelineColor2":"0x4fa275",
+			"invisible":"false",
+			"timelineColor":"0x50bd82",
+			"animationEnabled":"true",
+			"timelineColor3":"0x456a55"},
+		"defaultStageParentWidth":"2400px",
+		"element_${_blackThing}":{
+			"timelineColor2":"0x1aa38f",
+			"invisible":"false",
+			"timelineColor":"0x00bda4",
+			"animationEnabled":"true",
+			"timelineColor3":"0x2a6a61"},
+		"element_${_Stage}":{
+			"timelineColor2":"0xcbbd71",
+			"timelineColor3":"0x7b7652",
+			"timelineColor":"0xeedf79"},
+		"element_${_cv_joint}":{
+			"timelineColor2":"0x168c84",
+			"invisible":"false",
+			"timelineColor":"0x00a096",
+			"animationEnabled":"true",
+			"timelineColor3":"0x2a605c"}},
+	"TransitionIdCounter":"23",
+	"CompZoomFactor":"100",
+	"viewStartY":"0",
+	"pixelsPerMs":"1",
+	"pref__general__GenerateSmoothTransitions":"true",
+	"StageZoomFactor":"73",
+	"usedBOM":"false",
+	"nextElementColorIndex":"7",
+	"pref__general__TimelineShowGrid":"true",
+	"stage-Default Timeline_mark_ms":"1000",
+	"pref__general__AutoKeyframePropertiesArmed":"true",
+	"stage-Default Timeline_playhead_ms":"1000"}

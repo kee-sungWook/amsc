@@ -5,7 +5,7 @@ import useMeasure from "react-use-measure";
 import { currencyComma, formatDate } from "@utils/supporters";
 import { Fragment } from "react/jsx-runtime";
 import LoadingIndicator from "@components/LoadingIndicator";
-import { useAdminStore } from "@store/adminStore";
+// import { useAdminStore } from "@store/adminStore";
 import { headerJson } from "@utils/constSet";
 
 import { FaCheck, FaRegPlayCircle, FaStarOfLife } from "react-icons/fa";
@@ -18,6 +18,7 @@ import { LiaCoinsSolid } from "react-icons/lia";
 
 interface Props {
     order: OrderWithPoint;
+    setOrders: React.Dispatch<React.SetStateAction<OrderWithPoint[]>>
     index: number;
     selList: number[];
     handleOpenToggle: (seq: number) => void;
@@ -25,8 +26,8 @@ interface Props {
     handleSelectListIds: (seq: number) => void;
 }
 
-const AdminOrderList: React.FC<Props> = ({ order, index, selList, handleOpenToggle, selectedIds, handleSelectListIds }) => {
-    const { amsOrders, setAmsOrders } = useAdminStore();
+const AdminOrderList: React.FC<Props> = ({ order, index, selList, setOrders, handleOpenToggle, selectedIds, handleSelectListIds }) => {
+    // const { amsOrders, setAmsOrders } = useAdminStore();
     const [ref, { height }] = useMeasure();
     const [loading, setLoading] = React.useState(false);
     const [pointEditMode, setPointEditMode] = React.useState<boolean>(false);
@@ -56,13 +57,18 @@ const AdminOrderList: React.FC<Props> = ({ order, index, selList, handleOpenTogg
             const response = await fetch("/api/order/updatePoint", opt);
             const json = await response.json();
             if (!json.success) throw new Error(json.message);
-            const newData = amsOrders.map((el) => {
+            // const newData = amsOrders.map((el) => {
+            //     if (el.seq === order.seq) {
+            //         el.point = point;
+            //     }
+            //     return el;
+            // });
+            setOrders((prev) => prev.map((el) => {
                 if (el.seq === order.seq) {
                     el.point = point;
                 }
                 return el;
-            });
-            setAmsOrders(newData);
+            }));
         } catch (err) {
             console.error(`updatePoint - ${err}`);
         } finally {
@@ -91,14 +97,20 @@ const AdminOrderList: React.FC<Props> = ({ order, index, selList, handleOpenTogg
             const response = await fetch("/api/order/payPoint", opt);
             const result = await response.json();
             if (!result.success) throw new Error(result.message);
-            const newData = amsOrders.map((el) => {
+            // const newData = amsOrders.map((el) => {
+            //     if (el.seq === order.seq) {
+            //         el.point = point;
+            //         el.payOk = 1;
+            //     }
+            //     return el;
+            // });
+            setOrders(prev => prev.map((el) => {
                 if (el.seq === order.seq) {
                     el.point = point;
                     el.payOk = 1;
                 }
                 return el;
-            });
-            setAmsOrders(newData);
+            }));
         } catch (err) {
             console.error(`payPoint ${err}`);
         } finally {

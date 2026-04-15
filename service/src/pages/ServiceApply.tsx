@@ -19,7 +19,7 @@ const ServiceApply = () => {
     const [loading, setLoading] = React.useState<boolean>(false);
     const { user } = useUserStore();
     const navigate = useNavigate();
-    const [dummyUserData, setDummyUserData] = React.useState<DummyUser>({ name: user?.name, phone: user?.phone });
+    const [dummyUserData, setDummyUserData] = React.useState<DummyUser>({ name: '', phone: '' });
     const { applyList, setApplyList } = useServiceChoose();
     const serviceList: AllowServiceVal[] = [...SERVICE_LIST];
 
@@ -352,16 +352,16 @@ const ServiceApply = () => {
                         </ul>
 
                         <div className="default">
-                            <section className="title"><PiAddressBookTabsDuotone className="icon" /><span>신청자정보</span></section>
+                            <section className="title"><PiAddressBookTabsDuotone className="icon" /><span>운전자정보</span></section>
                             <section className="content">
                                 <div className="user-row">
                                     <PiUserDuotone className="icon" />
-                                    <span>신청자 : </span>
+                                    <span>운전자 : </span>
                                     <input
                                         type="text"
                                         value={dummyUserData.name}
                                         ref={(el) => { userRefs.current[0] = el }}
-                                        placeholder="신청자 이름"
+                                        placeholder="운전자 이름"
                                         onChange={(e) => setDummyUserData((prev) => ({ ...prev, name: e.target.value }))}
                                     />
                                 </div>

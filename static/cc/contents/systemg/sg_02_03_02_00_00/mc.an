@@ -1,0 +1,527 @@
+
+{
+
+	"pedal_piston-Default Timeline_playhead_ms":"0",
+	"oilColorMovie-Default Timeline_playhead_ms":"0",
+	"symbol_oilFlowAreaSub4":{
+		"defaultStageParentHeight":"1230px",
+		"element_${_oilFlowArea4}":{
+			"timelineColor2":"0x4fa275",
+			"timelineColor3":"0x456a55",
+			"animationEnabled":"false",
+			"timelineColor":"0x50bd82"},
+		"dummyStageParentHeight":"1230px",
+		"defaultStageParentWidth":"2400px",
+		"element_${_blueDot4}":{
+			"timelineColor2":"0x1095d2",
+			"timelineColor3":"0x29647e",
+			"animationEnabled":"true",
+			"timelineColor":"0x00a9fa"},
+		"dummyStageParentWidth":"2400px"},
+	"Preloader-Default Timeline_playhead_ms":"0",
+	"pref__general__FilterNonAnimatedElements":"false",
+	"symbol_oilFlowAreaSub2":{
+		"element_${_oilFlowArea2}":{
+			"timelineColor2":"0xcbbd71",
+			"timelineColor3":"0x7b7652",
+			"animationEnabled":"false",
+			"timelineColor":"0xeedf79"},
+		"defaultStageParentHeight":"1230px",
+		"element_${_blueDot2}":{
+			"timelineColor2":"0x168c84",
+			"timelineColor3":"0x2a605c",
+			"animationEnabled":"true",
+			"timelineColor":"0x00a096"},
+		"dummyStageParentHeight":"1230px",
+		"defaultStageParentWidth":"2400px",
+		"dummyStageParentWidth":"2400px"},
+	"pref__general__TimelineGridSize":"30fps",
+	"symbol_oilFlowAreas":{
+		"element_${_oilFlowArea2}":{
+			"timelineColor2":"0xb099ce",
+			"timelineColor3":"0x70657c",
+			"animationEnabled":"false",
+			"timelineColor":"0xceaef4"},
+		"dummyStageParentWidth":"2400px",
+		"element_${_oilFlowAreaSub5}":{
+			"timelineColor2":"0x81aa62",
+			"timelineColor3":"0x5b6c4d",
+			"animationEnabled":"true",
+			"timelineColor":"0x91c767"},
+		"dummyStageParentHeight":"1230px",
+		"element_${_oilFlowArea3}":{
+			"timelineColor2":"0xba5b89",
+			"timelineColor3":"0x734a5f",
+			"animationEnabled":"false",
+			"timelineColor":"0xdb619d"},
+		"element_${_oilFlowAreaSub3}":{
+			"timelineColor2":"0xd35d6e",
+			"timelineColor3":"0x7e4b52",
+			"animationEnabled":"true",
+			"timelineColor":"0xfb657a"},
+		"element_${_oilFlowAreaSub2}":{
+			"timelineColor2":"0x5a558a",
+			"timelineColor3":"0x4a485e",
+			"animationEnabled":"true",
+			"timelineColor":"0x63599f"},
+		"defaultStageParentHeight":"1230px",
+		"element_${_oilFlowAreaSub1}":{
+			"timelineColor2":"0x1095d2",
+			"timelineColor3":"0x29647e",
+			"animationEnabled":"true",
+			"timelineColor":"0x00a9fa"},
+		"element_${_oilFlowAreaSub4}":{
+			"timelineColor2":"0xd8b467",
+			"timelineColor3":"0x81714f",
+			"animationEnabled":"true",
+			"timelineColor":"0xffd46d"},
+		"defaultStageParentWidth":"2400px",
+		"element_${_oilFlowArea4}":{
+			"timelineColor2":"0xcbbd71",
+			"timelineColor3":"0x7b7652",
+			"animationEnabled":"false",
+			"timelineColor":"0xeedf79"},
+		"element_${_oilFlowArea5}":{
+			"timelineColor2":"0x4fa275",
+			"timelineColor3":"0x456a55",
+			"animationEnabled":"false",
+			"timelineColor":"0x50bd82"},
+		"element_${_oilFlowArea1}":{
+			"timelineColor2":"0x107faa",
+			"timelineColor3":"0x295a6d",
+			"animationEnabled":"false",
+			"timelineColor":"0x008dc8"}},
+	"symbol_Preloader":{
+		"element_${_preloader5}":{
+			"timelineColor2":"0x4fa275",
+			"timelineColor3":"0x456a55",
+			"timelineColor":"0x50bd82"},
+		"dummyStageParentWidth":"2400px",
+		"dummyStageParentHeight":"1230px",
+		"defaultStageParentWidth":"2400px",
+		"defaultStageParentHeight":"1230px"},
+	"CompZoomFactor":"100",
+	"StageZoomFactor":"58",
+	"pixelsPerMs":"0.37927613955179",
+	"o_cylinder_sub-Default Timeline_mark_ms":"-1",
+	"pref__general__TimelineShowGrid":"true",
+	"stage-Default Timeline_mark_ms":"-1",
+	"nextElementColorIndex":"4",
+	"stage-Default Timeline_playhead_ms":"1700",
+	"oilFlowAreaSub1-Default Timeline_playhead_ms":"0",
+	"pedal_pistion-Default Timeline_playhead_ms":"0",
+	"symbol_moving_parts":{
+		"element_${_disk}":{
+			"timelineColor2":"0xba5b89",
+			"timelineColor3":"0x734a5f",
+			"timelineColor":"0xdb619d",
+			"locked":"false",
+			"animationEnabled":"true"},
+		"element_${_pan_axle2}":{
+			"timelineColor2":"0xd35d6e",
+			"timelineColor3":"0x7e4b52",
+			"timelineColor":"0xfb657a",
+			"locked":"false",
+			"animationEnabled":"true"},
+		"element_${_moving_axle}":{
+			"timelineColor2":"0x107faa",
+			"timelineColor3":"0x295a6d",
+			"timelineColor":"0x008dc8",
+			"locked":"false",
+			"animationEnabled":"true"},
+		"element_${_bearing}":{
+			"timelineColor2":"0x5a558a",
+			"timelineColor3":"0x4a485e",
+			"timelineColor":"0x63599f",
+			"locked":"false",
+			"animationEnabled":"true",
+			"invisible":"false"},
+		"element_${_pan_axle1}":{
+			"timelineColor2":"0xb099ce",
+			"timelineColor3":"0x70657c",
+			"timelineColor":"0xceaef4",
+			"locked":"false",
+			"animationEnabled":"true"}},
+	"HTMLFileName":"mc.html",
+	"oilFlowAreaSub2-Default Timeline_playhead_ms":"0",
+	"symbol_oilFlowAreaSub5":{
+		"element_${_blueDot5}":{
+			"timelineColor2":"0x107faa",
+			"timelineColor3":"0x295a6d",
+			"animationEnabled":"true",
+			"timelineColor":"0x008dc8"},
+		"defaultStageParentHeight":"1230px",
+		"element_${_oilFlowArea5}":{
+			"timelineColor2":"0x1aa38f",
+			"timelineColor3":"0x2a6a61",
+			"animationEnabled":"false",
+			"timelineColor":"0x00bda4"},
+		"dummyStageParentHeight":"1230px",
+		"defaultStageParentWidth":"2400px",
+		"dummyStageParentWidth":"2400px"},
+	"oilFlowAreaSub2-Default Timeline_mark_ms":"-1",
+	"symbol_o_cylinder_sub":{
+		"element_${_o_cylinder_j}":{
+			"timelineColor2":"0xd35d6e",
+			"timelineColor3":"0x7e4b52",
+			"timelineColor":"0xfb657a",
+			"locked":"false",
+			"animationEnabled":"true",
+			"invisible":"false"},
+		"element_${_o_cylinder_piston}":{
+			"timelineColor2":"0x5a558a",
+			"timelineColor3":"0x4a485e",
+			"timelineColor":"0x63599f",
+			"locked":"false",
+			"animationEnabled":"true",
+			"invisible":"false"}},
+	"ModelData":"{\
+\"stage\": {\
+   \"timelines\": {\
+      \"Default Timeline\": {\
+      }\
+   }},\
+\"oilFlowAreas\": {\
+   \"timelines\": {\
+      \"Default Timeline\": {\
+      }\
+   }},\
+\"oilFlowAreaSub1\": {\
+   \"timelines\": {\
+      \"Default Timeline\": {\
+      }\
+   }},\
+\"oilFlowAreaSub2\": {\
+   \"timelines\": {\
+      \"Default Timeline\": {\
+      }\
+   }},\
+\"oilFlowAreaSub3\": {\
+   \"timelines\": {\
+      \"Default Timeline\": {\
+      }\
+   }},\
+\"oilFlowAreaSub4\": {\
+   \"timelines\": {\
+      \"Default Timeline\": {\
+      }\
+   }},\
+\"oilFlowAreaSub5\": {\
+   \"timelines\": {\
+      \"Default Timeline\": {\
+      }\
+   }},\
+\"oilColorMovie\": {\
+   \"timelines\": {\
+      \"Default Timeline\": {\
+      }\
+   }},\
+\"pedal_piston\": {\
+   \"timelines\": {\
+      \"Default Timeline\": {\
+      }\
+   }},\
+\"moving_parts\": {\
+   \"timelines\": {\
+      \"Default Timeline\": {\
+      }\
+   }},\
+\"o_cylinder_sub\": {\
+   \"timelines\": {\
+      \"Default Timeline\": {\
+      }\
+   }},\
+\"Preloader\": {\
+   \"timelines\": {\
+      \"Default Timeline\": {\
+      }\
+   }},\
+\"Down-level\": {\
+   \"timelines\": {\
+\
+   }}\
+}",
+	"oilFlowAreaSub5-Default Timeline_playhead_ms":"0",
+	"oilFlowAreaSub1-Default Timeline_mark_ms":"-1",
+	"oilFlowAreaSub3-Default Timeline_playhead_ms":"0",
+	"oilFlowAreaSub3-Default Timeline_mark_ms":"-1",
+	"pref__general__GenerateSmoothTransitions":"true",
+	"oilFlowAreaSub4-Default Timeline_playhead_ms":"0",
+	"symbol_oilFlowAreaSub3":{
+		"defaultStageParentHeight":"1230px",
+		"element_${_blueDot3}":{
+			"timelineColor2":"0x326a96",
+			"timelineColor3":"0x385063",
+			"animationEnabled":"true",
+			"timelineColor":"0x2f73ad"},
+		"dummyStageParentHeight":"1230px",
+		"defaultStageParentWidth":"2400px",
+		"element_${_oilFlowArea3}":{
+			"timelineColor2":"0x81aa62",
+			"timelineColor3":"0x5b6c4d",
+			"animationEnabled":"false",
+			"timelineColor":"0x91c767"},
+		"dummyStageParentWidth":"2400px"},
+	"oilColorMovie-Default Timeline_mark_ms":"-1",
+	"symbol_stage":{
+		"element_${_oilFlowArea5}":{
+			"timelineColor2":"0x326a96",
+			"timelineColor3":"0x385063",
+			"animationEnabled":"false",
+			"timelineColor":"0x2f73ad"},
+		"dummyStageParentHeight":"1230px",
+		"element_${_oilFlowArea3}":{
+			"timelineColor2":"0x1aa38f",
+			"timelineColor3":"0x2a6a61",
+			"animationEnabled":"false",
+			"timelineColor":"0x00bda4"},
+		"element_${_disk}":{
+			"timelineColor2":"0xba5b89",
+			"timelineColor3":"0x734a5f",
+			"animationEnabled":"false",
+			"timelineColor":"0xdb619d"},
+		"element_${_pedal_piston}":{
+			"timelineColor2":"0x4fa275",
+			"timelineColor3":"0x456a55",
+			"timelineColor":"0x50bd82",
+			"timelineTreeOpened":"false",
+			"animationEnabled":"true",
+			"invisible":"false"},
+		"element_${_oilCask}":{
+			"timelineColor2":"0x81aa62",
+			"timelineColor3":"0x5b6c4d",
+			"timelineColor":"0x91c767",
+			"locked":"false",
+			"animationEnabled":"true",
+			"invisible":"false",
+			"timelineTreeOpened":"false"},
+		"element_${_moving_axle}":{
+			"timelineColor2":"0x107faa",
+			"timelineColor3":"0x295a6d",
+			"animationEnabled":"false",
+			"timelineColor":"0x008dc8"},
+		"element_${_piston_body}":{
+			"timelineColor2":"0x1aa38f",
+			"timelineColor3":"0x2a6a61",
+			"animationEnabled":"false",
+			"timelineColor":"0x00bda4"},
+		"element_${_o_cylinder_sub}":{
+			"timelineColor2":"0xd8b467",
+			"timelineColor3":"0x81714f",
+			"timelineColor":"0xffd46d",
+			"timelineTreeOpened":"false",
+			"animationEnabled":"true"},
+		"element_${_piston_head}":{
+			"timelineColor2":"0x168c84",
+			"timelineColor3":"0x2a605c",
+			"animationEnabled":"false",
+			"timelineColor":"0x00a096"},
+		"element_${_M_cylinder_oil1}":{
+			"timelineColor2":"0x107faa",
+			"timelineColor3":"0x295a6d",
+			"timelineColor":"0x008dc8",
+			"locked":"false",
+			"animationEnabled":"true",
+			"timelineTreeOpened":"false"},
+		"element_${_pan_axle2}":{
+			"timelineColor2":"0xd35d6e",
+			"timelineColor3":"0x7e4b52",
+			"animationEnabled":"false",
+			"timelineColor":"0xfb657a"},
+		"element_${_o_cylinder_piston}":{
+			"timelineColor2":"0xcbbd71",
+			"timelineColor3":"0x7b7652",
+			"animationEnabled":"false",
+			"timelineColor":"0xeedf79"},
+		"element_${_oilLine_back}":{
+			"timelineColor2":"0x326a96",
+			"timelineColor3":"0x385063",
+			"timelineColor":"0x2f73ad",
+			"locked":"false",
+			"animationEnabled":"true",
+			"timelineTreeOpened":"false"},
+		"element_${_oilLine}":{
+			"timelineColor2":"0xba5b89",
+			"invisible":"false",
+			"timelineColor":"0xdb619d",
+			"locked":"false",
+			"animationEnabled":"true",
+			"timelineColor3":"0x734a5f",
+			"timelineTreeOpened":"false"},
+		"element_${_oilFlowArea2}":{
+			"timelineColor2":"0x4fa275",
+			"timelineColor3":"0x456a55",
+			"animationEnabled":"false",
+			"timelineColor":"0x50bd82"},
+		"dummyStageParentWidth":"2400px",
+		"element_${_oilFlowArea4}":{
+			"timelineColor2":"0x168c84",
+			"timelineColor3":"0x2a605c",
+			"animationEnabled":"false",
+			"timelineColor":"0x00a096"},
+		"element_${_oilFlowArea1}":{
+			"timelineColor2":"0x81aa62",
+			"timelineColor3":"0x5b6c4d",
+			"animationEnabled":"false",
+			"timelineColor":"0x91c767"},
+		"element_${_pan_axle1}":{
+			"timelineColor2":"0xb099ce",
+			"timelineColor3":"0x70657c",
+			"animationEnabled":"false",
+			"timelineColor":"0xceaef4"},
+		"element_${_BACK-TOP}":{
+			"timelineColor2":"0x1095d2",
+			"timelineColor3":"0x29647e",
+			"timelineColor":"0x00a9fa",
+			"locked":"false",
+			"animationEnabled":"true",
+			"timelineTreeOpened":"false"},
+		"element_${_o_cylinder}":{
+			"timelineColor2":"0xb099ce",
+			"timelineColor3":"0x70657c",
+			"timelineColor":"0xceaef4",
+			"locked":"false",
+			"animationEnabled":"true",
+			"invisible":"false",
+			"timelineTreeOpened":"false"},
+		"defaultStageParentHeight":"1230px",
+		"defaultStageParentWidth":"2400px",
+		"element_${_BACK}":{
+			"timelineColor2":"0xd8b467",
+			"timelineColor3":"0x81714f",
+			"timelineColor":"0xffd46d",
+			"locked":"false",
+			"animationEnabled":"true",
+			"timelineTreeOpened":"false"},
+		"element_${_oilColorMovie}":{
+			"timelineColor2":"0xd8b467",
+			"timelineColor3":"0x81714f",
+			"timelineColor":"0xffd46d",
+			"timelineTreeOpened":"false",
+			"animationEnabled":"true",
+			"locked":"false"},
+		"element_${_M_cylinder}":{
+			"timelineColor2":"0x326a96",
+			"invisible":"false",
+			"timelineColor":"0x2f73ad",
+			"locked":"false",
+			"animationEnabled":"true",
+			"timelineColor3":"0x385063",
+			"timelineTreeOpened":"false"},
+		"element_${_o_cylinder_j}":{
+			"timelineColor2":"0x81aa62",
+			"timelineColor3":"0x5b6c4d",
+			"animationEnabled":"false",
+			"timelineColor":"0x91c767"},
+		"element_${_pedal_pistion}":{
+			"timelineColor2":"0x5a558a",
+			"timelineColor3":"0x4a485e",
+			"animationEnabled":"true",
+			"timelineColor":"0x63599f"},
+		"element_${_pedal}":{
+			"timelineColor2":"0x326a96",
+			"timelineColor3":"0x385063",
+			"animationEnabled":"false",
+			"timelineColor":"0x2f73ad"},
+		"element_${_bearing}":{
+			"timelineColor2":"0x5a558a",
+			"timelineColor3":"0x4a485e",
+			"animationEnabled":"false",
+			"timelineColor":"0x63599f"},
+		"element_${_M_cylinder_oil2}":{
+			"timelineColor2":"0xcbbd71",
+			"timelineColor3":"0x7b7652",
+			"animationEnabled":"false",
+			"timelineColor":"0xeedf79"},
+		"element_${_oilFlowAreas}":{
+			"timelineColor2":"0xcbbd71",
+			"timelineColor3":"0x7b7652",
+			"timelineColor":"0xeedf79",
+			"timelineTreeOpened":"false",
+			"animationEnabled":"true",
+			"locked":"false",
+			"invisible":"false"},
+		"element_${_moving_parts}":{
+			"timelineColor2":"0x1095d2",
+			"timelineColor3":"0x29647e",
+			"timelineColor":"0x00a9fa",
+			"timelineTreeOpened":"false",
+			"animationEnabled":"true"},
+		"element_${_Stage}":{
+			"timelineColor2":"0xcbbd71",
+			"timelineColor3":"0x7b7652",
+			"locked":"false",
+			"timelineColor":"0xeedf79"},
+		"element_${_oilLine_back2}":{
+			"timelineColor2":"0x81aa62",
+			"timelineColor3":"0x5b6c4d",
+			"animationEnabled":"false",
+			"timelineColor":"0x91c767"}},
+	"symbol_oilFlowAreaSub1":{
+		"defaultStageParentHeight":"1230px",
+		"dummyStageParentHeight":"1230px",
+		"defaultStageParentWidth":"2400px",
+		"element_${_blueDot}":{
+			"timelineColor2":"0x1aa38f",
+			"timelineColor3":"0x2a6a61",
+			"animationEnabled":"true",
+			"timelineColor":"0x00bda4"},
+		"element_${_oilFlowArea1}":{
+			"timelineColor2":"0xd8b467",
+			"timelineColor3":"0x81714f",
+			"animationEnabled":"false",
+			"timelineColor":"0xffd46d"},
+		"dummyStageParentWidth":"2400px"},
+	"viewStartMs":"68.181640625",
+	"pref__general__AutoKeyframePropertiesArmed":"false",
+	"oilFlowAreaSub4-Default Timeline_mark_ms":"-1",
+	"symbol_pedal_piston":{
+		"element_${_piston_body}":{
+			"timelineColor2":"0x4fa275",
+			"timelineColor3":"0x456a55",
+			"timelineColor":"0x50bd82",
+			"locked":"false",
+			"animationEnabled":"true",
+			"invisible":"false"},
+		"element_${_pedal}":{
+			"timelineColor2":"0x168c84",
+			"timelineColor3":"0x2a605c",
+			"timelineColor":"0x00a096",
+			"locked":"false",
+			"animationEnabled":"true"},
+		"element_${_piston_head}":{
+			"timelineColor2":"0x1aa38f",
+			"timelineColor3":"0x2a6a61",
+			"timelineColor":"0x00bda4",
+			"locked":"false",
+			"animationEnabled":"true",
+			"invisible":"false"}},
+	"TransitionIdCounter":"160",
+	"oilFlowAreas-Default Timeline_playhead_ms":"0",
+	"viewStartY":"0",
+	"pref__general__AutoKeyframeProperties":"true",
+	"pedal_piston-Default Timeline_mark_ms":"-1",
+	"oilFlowAreaSub5-Default Timeline_mark_ms":"-1",
+	"usedBOM":"false",
+	"moving_parts-Default Timeline_playhead_ms":"0",
+	"moving_parts-Default Timeline_mark_ms":"-1",
+	"symbol_oilColorMovie":{
+		"element_${_oilLine_back2}":{
+			"timelineColor2":"0x168c84",
+			"timelineColor3":"0x2a605c",
+			"timelineColor":"0x00a096",
+			"timelineTreeOpened":"true",
+			"animationEnabled":"true",
+			"invisible":"false"},
+		"defaultStageParentHeight":"1230px",
+		"element_${_M_cylinder_oil2}":{
+			"timelineColor2":"0x1095d2",
+			"invisible":"false",
+			"timelineColor":"0x00a9fa",
+			"animationEnabled":"true",
+			"timelineColor3":"0x29647e"},
+		"dummyStageParentHeight":"1230px",
+		"defaultStageParentWidth":"2400px",
+		"dummyStageParentWidth":"2400px"},
+	"o_cylinder_sub-Default Timeline_playhead_ms":"0",
+	"symbol_pedal_pistion":{}}

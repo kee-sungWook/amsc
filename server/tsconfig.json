@@ -5,13 +5,12 @@
     "moduleResolution": "bundler",
     "rootDir": "./",
     "outDir": "../dist/server",
-    "baseUrl": "./",
     "paths": {
-      "@controllers/*": ["controllers/*"],
-      "@routes/*": ["routes/*"],
-      "@connect/*": ["connect/*"],
-      "@models/*": ["models/*"],
-      "@utils/*": ["utils/*"]
+      "@controllers/*": ["./controllers/*"],
+      "@routes/*": ["./routes/*"],
+      "@connect/*": ["./connect/*"],
+      "@models/*": ["./models/*"],
+      "@utils/*": ["./utils/*"]
     },
     "esModuleInterop": true,
     "strict": true,

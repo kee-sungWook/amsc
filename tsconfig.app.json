@@ -1,14 +1,13 @@
 {
   "compilerOptions": {
-    "baseUrl": "./service/src",
     "paths": {
-      "@interface/*": ["interface/*"],
-      "@components/*": ["components/*"],
-      "@scss/*": ["scss/*"],
-      "@pages/*": ["pages/*"],
-      "@store/*": ["store/*"],
-      "@utils/*": ["utils/*"],
-      "@hooks/*": ["hooks/*"],
+      "@interface/*": ["./service/src/interface/*"],
+      "@components/*": ["./service/src/components/*"],
+      "@scss/*": ["./service/src/scss/*"],
+      "@pages/*": ["./service/src/pages/*"],
+      "@store/*": ["./service/src/store/*"],
+      "@utils/*": ["./service/src/utils/*"],
+      "@hooks/*": ["./service/src/hooks/*"],
     },
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
     "target": "ES2022",

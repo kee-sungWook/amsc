@@ -152,8 +152,6 @@ const MyPoint: React.FC = () => {
                         }
                     </>
                 }
-
-
             </article>
         </>
     );

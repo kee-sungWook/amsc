@@ -1,0 +1,103 @@
+.btnArea {
+   width: 2400px;
+   height: 980px;
+   padding-top: 100px;
+}
+
+.btnDiv {
+   display: inline-block;
+   width: 464px;
+   height: 490px;
+   opacity: 0;
+
+   -webkit-transform: scale(0.5);
+   -ms-transform: scale(0.5);
+   transform: scale(0.5);
+
+   -webkit-transform-origin: 50% 70%;
+   -ms-transform-origin: 50% 70%;
+   transform-origin: 50% 70%;
+}
+.btnDiv img {
+   margin: 70px 70px 0px;
+}
+
+@keyframes appearMenu {
+   to {
+      transform: scale(1);
+      opacity: 1;
+   }
+}
+@-webkit-keyframes appearMenu {
+   to {
+      -webkit-transform: scale(1);
+      opacity: 1;
+   }
+}
+@-moz-keyframes appearMenu {
+   to {
+      transform: scale(1);
+      opacity: 1;
+   }
+}
+@-ms-keyframes appearMenu {
+   to {
+      -ms-transform: scale(1);
+      opacity: 1;
+   }
+}
+@-o-keyframes appearMenu {
+   to {
+      transform: scale(1);
+      opacity: 1;
+   }
+}
+
+table {
+   width: 2400px;
+   height: 1230px;
+   margin: auto;
+   padding: 0;
+}
+
+iframe {
+   width: 1920px;
+   height: 1230px;
+   border: 0;
+   margin-right: 35px;
+   vertical-align: middle;
+   overflow: hidden;
+}
+
+#rThing {
+   display: inline-block;
+   text-align: left;
+   vertical-align: middle;
+}
+
+#subTitle {
+   font-size: 70px;
+   color: #97989a;
+   line-height: 90px;
+}
+
+#menuList {
+   display: inline-block;
+   list-style: none;
+   padding: 0;
+}
+
+#menuList li {
+   line-height: 120px;
+}
+#menuList li.selected {
+   color: #c6005f;
+   pointer-events: none;
+}
+#menuList li:hover {
+   cursor: pointer;
+}
+
+#menuList li img {
+   vertical-align: middle;
+}

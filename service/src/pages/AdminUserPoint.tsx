@@ -30,7 +30,6 @@ const AdminUserPoint: React.FC = () => {
             } finally {
                 setLoading(false);
             }
-
         };
         getPointLog();
     }, []);

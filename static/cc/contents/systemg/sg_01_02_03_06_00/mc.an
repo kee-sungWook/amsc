@@ -1,0 +1,141 @@
+
+{
+
+	"HTMLFileName":"mc.html",
+	"pref__general__AutoKeyframeProperties":"true",
+	"ModelData":"{\
+\"stage\": {\
+   \"timelines\": {\
+      \"Default Timeline\": {\
+      }\
+   }},\
+\"Preloader\": {\
+   \"timelines\": {\
+      \"Default Timeline\": {\
+      }\
+   }},\
+\"Down-level\": {\
+   \"timelines\": {\
+\
+   }}\
+}",
+	"Preloader-Default Timeline_playhead_ms":"0",
+	"pref__general__FilterNonAnimatedElements":"false",
+	"pref__general__TimelineGridSize":"24fps",
+	"symbol_Preloader":{
+		"element_${_preloader5}":{
+			"timelineColor2":"0x1aa38f",
+			"timelineColor3":"0x2a6a61",
+			"timelineColor":"0x00bda4"},
+		"dummyStageParentWidth":"1430px",
+		"dummyStageParentHeight":"1230px",
+		"defaultStageParentWidth":"1430px",
+		"defaultStageParentHeight":"1230px"},
+	"symbol_stage":{
+		"dummyStageParentWidth":"1430px",
+		"element_${_Layer-4-copy}":{
+			"timelineColor2":"0x81aa62",
+			"timelineColor3":"0x5b6c4d",
+			"timelineColor":"0x91c767",
+			"animationEnabled":"true",
+			"invisible":"false"},
+		"dummyStageParentHeight":"1230px",
+		"element_${_filter-copy}":{
+			"timelineColor2":"0x4fa275",
+			"timelineColor3":"0x456a55",
+			"timelineColor":"0x50bd82",
+			"animationEnabled":"true",
+			"invisible":"false"},
+		"element_${_pump_ov}":{
+			"timelineColor2":"0xd8b467",
+			"timelineColor3":"0x81714f",
+			"timelineColor":"0xffd46d",
+			"animationEnabled":"false",
+			"invisible":"false"},
+		"element_${_IMAGE-copy}":{
+			"timelineColor2":"0x5a558a",
+			"timelineColor3":"0x4a485e",
+			"animationEnabled":"true",
+			"timelineColor":"0x63599f"},
+		"element_${_pump-copy}":{
+			"timelineColor2":"0x1095d2",
+			"timelineColor3":"0x29647e",
+			"timelineColor":"0x00a9fa",
+			"animationEnabled":"true",
+			"invisible":"false"},
+		"element_${_iniecter_ov}":{
+			"timelineColor2":"0xba5b89",
+			"timelineColor3":"0x734a5f",
+			"animationEnabled":"false",
+			"timelineColor":"0xdb619d"},
+		"element_${_rail-copy}":{
+			"timelineColor2":"0x326a96",
+			"timelineColor3":"0x385063",
+			"timelineColor":"0x2f73ad",
+			"animationEnabled":"true",
+			"invisible":"false"},
+		"element_${_rail_ov}":{
+			"timelineColor2":"0x81aa62",
+			"timelineColor3":"0x5b6c4d",
+			"animationEnabled":"false",
+			"timelineColor":"0x91c767"},
+		"element_${_line-copy}":{
+			"timelineColor2":"0x1aa38f",
+			"timelineColor3":"0x2a6a61",
+			"timelineColor":"0x00bda4",
+			"animationEnabled":"true",
+			"invisible":"false"},
+		"element_${_filter_ov}":{
+			"timelineColor2":"0xcbbd71",
+			"timelineColor3":"0x7b7652",
+			"timelineColor":"0xeedf79",
+			"animationEnabled":"false",
+			"invisible":"false"},
+		"element_${_IMAGE_ov}":{
+			"timelineColor2":"0xb099ce",
+			"timelineColor3":"0x70657c",
+			"timelineColor":"0xceaef4",
+			"locked":"false",
+			"animationEnabled":"true",
+			"invisible":"false"},
+		"defaultStageParentHeight":"1230px",
+		"element_${_flap-copy}":{
+			"timelineColor2":"0x107faa",
+			"timelineColor3":"0x295a6d",
+			"timelineColor":"0x008dc8",
+			"animationEnabled":"true",
+			"invisible":"false"},
+		"element_${_iniecter-copy}":{
+			"timelineColor2":"0x168c84",
+			"timelineColor3":"0x2a605c",
+			"timelineColor":"0x00a096",
+			"animationEnabled":"true",
+			"invisible":"false"},
+		"defaultStageParentWidth":"1430px",
+		"element_${_line_ov}":{
+			"timelineColor2":"0xd35d6e",
+			"timelineColor3":"0x7e4b52",
+			"animationEnabled":"false",
+			"timelineColor":"0xfb657a"},
+		"element_${_Stage}":{
+			"timelineColor2":"0xcbbd71",
+			"timelineColor3":"0x7b7652",
+			"locked":"false",
+			"timelineColor":"0xeedf79"},
+		"element_${_flap_ov}":{
+			"timelineColor2":"0x4fa275",
+			"timelineColor3":"0x456a55",
+			"animationEnabled":"true",
+			"timelineColor":"0x50bd82"}},
+	"TransitionIdCounter":"34",
+	"CompZoomFactor":"100",
+	"StageZoomFactor":"75",
+	"pixelsPerMs":"0.52664347131227",
+	"stage-Default Timeline_playhead_ms":"708",
+	"pref__general__AutoKeyframePropertiesArmed":"false",
+	"usedBOM":"false",
+	"nextElementColorIndex":"5",
+	"pref__general__GenerateSmoothTransitions":"true",
+	"stage-Default Timeline_mark_ms":"-1",
+	"viewStartY":"0",
+	"pref__general__TimelineShowGrid":"true"}

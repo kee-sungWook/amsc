@@ -1,0 +1,40 @@
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section { display: block; }
+audio, canvas, video { display: inline-block; }
+body, table, tr, tr, div, p, button, input, select, textarea { box-sizing: border-box }
+img { border:0px }
+
+body { width:2560px; height:100%; margin:0px; padding:0px; background-color:white; text-align:center; color:#214b8d; }
+
+iframe {width:100%; height:100%; min-height:1440px; border:0px;}
+
+.mainTitle { width:95%; height:320px; padding-top:70px; margin:auto; font-size:120px; font-weight:700;}
+.subTitle { width:95%; height:185px; margin:auto; padding-top:65px; font-size:50px; font-weight:700; text-align:left; color:214b8d;}
+
+.mainTitle img, .subTitle img {float:right;}
+
+.menuArea_main { width:90%; margin:auto; }
+.menuArea_main div { float:left; width:25%; height:410px; font-size:55px; line-height:65px;}
+.menuArea_main span {display:inline-block; font-size:45px; margin-top:50px;}
+
+.menuArea_2ea { width:90%; margin:auto; }
+.menuArea_2ea div { float:left; width:50%; height:510px; font-size:55px; line-height:65px;}
+
+.menuArea_4ea { width:90%; margin:auto; }
+.menuArea_4ea div { float:left; width:25%; height:510px; font-size:55px; line-height:65px;}
+
+.menuArea_5ea { width:95%; margin:auto; }
+.menuArea_5ea div { float:left; width:20%; height:510px; font-size:55px; line-height:65px;}
+
+.menuArea_6ea { width:99%; margin:auto; }
+.menuArea_6ea div { float:left; width:16.6666666666667%; height:510px; font-size:55px; line-height:65px;}
+
+.bigImgArea { width:100%; height:300px; margin-top:120px;}
+.bigTitleArea { width:100%; height:140px; font-size:100px; color:#1f4c8d;}
+.conTextArea { width:100%; height:auto; font-size:68px;}
+.goPlayArea { width:100%; height:300px; }
+
+#prevBtn {margin-right:100px;}
+#closeBtn2 { position:absolute; top:35px; left:2400px;}
+.menuArea_main img, .menuArea_2ea img, .menuArea_4ea img, .menuArea_5ea img, .menuArea_6ea img { width:300px; height:auto;}
+.blankerDiv { width:100%; height:255px;}
+.blankerDiv2 { width:100%; height:100px;}

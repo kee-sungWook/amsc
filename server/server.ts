@@ -1,7 +1,7 @@
 import "dotenv/config";
 import express from "express";
 import http from "http";
-import apiRouter from "router.js";
+import apiRouter from "./router.js";
 import path from 'path';
 
 const app = express();

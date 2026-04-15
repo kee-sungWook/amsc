@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8" />
+      <meta http-equiv="pragma" content="no-cache" />
+
+      <title>KOMO CC</title>
+
+      <link rel="stylesheet" type="text/css" href="css/all_public.css" />
+      <link rel="stylesheet" type="text/css" href="css/only_systemg.css" />
+
+      <script src="js/jquery-1.11.0.min.js"></script>
+      <script src="script/script_all.js"></script>
+      <script src="script/script_systemg.js"></script>
+   </head>
+
+   <body>
+      <header>
+         <img class="hicon" src="img/top_icon_sg.gif" />
+         <span><a href="systemg.html">시스템가이드</a></span>
+         <img class="hclose" src="img/btn_goHome.gif" definder="btn" pics="img/btn_goHome" onmouseover="btnOver(this)" onmouseout="btnOut(this)" onclick="top.location.href='/main'" />
+         <img class="hprev" src="img/btn_prev.gif" definder="btn" pics="img/btn_prev" onmouseover="btnOver(this)" onmouseout="btnOut(this)" onclick="history.go(-1);" />
+         <div style="float: right; margin-right: 100px; padding-top: 30px; font-size: 60px; display: lnline-block; color: #c6005f" onclick="location.href='systemg_map.html>';"><img src="img/dot_map.png" style="height: 45px; width: auto" />&nbsp;사이트맵</div>
+      </header>
+
+      <form name="myForm" method="post" action="">
+         <input name="nowPos" type="hidden" value="0" />
+         <input name="step1" type="hidden" value="00" />
+         <input name="step2" type="hidden" value="00" />
+         <input name="step3" type="hidden" value="00" />
+         <input name="step4" type="hidden" value="00" />
+         <input name="step5" type="hidden" value="00" />
+         <input name="lastPos" type="hidden" value="n" />
+      </form>
+      <section>
+         <table cellpadding="0" cellspacing="0">
+            <tr>
+               <td>
+                  <iframe id="motion_systemg" scrolling="no" src="contents/systemg/sg_00_00_00_00_00/mc.html"></iframe>
+                  <div id="rThing">
+                     <span id="subTitle">시스템<br />가이드</span>
+                     <span id="bracket">}</span>
+                     <ul id="menuList">
+                        <li><img src="img/dot.gif" /><span definder="sMenu" pics="img/dot" onmouseover="btnOver(this)" onmouseout="btnOut(this)" onclick="get_link1('01','01_00_00_00_00', '엔진');"> 엔진</span></li>
+                        <li><img src="img/dot.gif" /><span definder="sMenu" pics="img/dot" onmouseover="btnOver(this)" onmouseout="btnOut(this)" onclick="get_link1('02','02_00_00_00_00', '변속기');"> 변속기</span></li>
+                        <li><img src="img/dot.gif" /><span definder="sMenu" pics="img/dot" onmouseover="btnOver(this)" onmouseout="btnOut(this)" onclick="get_link1('03','03_00_00_00_00', '브레이크');"> 브레이크</span></li>
+                        <li><img src="img/dot.gif" /><span definder="sMenu" pics="img/dot" onmouseover="btnOver(this)" onmouseout="btnOut(this)" onclick="get_link1('04','04_00_00_00_00', '스티어링 휠');"> 스티어링 휠</span></li>
+                        <li><img src="img/dot.gif" /><span definder="sMenu" pics="img/dot" onmouseover="btnOver(this)" onmouseout="btnOut(this)" onclick="get_link1('05','05_00_00_00_00', '서스펜션');"> 서스펜션</span></li>
+                        <li><img src="img/dot.gif" /><span definder="sMenu" pics="img/dot" onmouseover="btnOver(this)" onmouseout="btnOut(this)" onclick="get_link1('06','06_00_00_00_00', '에어컨/히터');"> 에어컨/히터</span></li>
+                     </ul>
+                  </div>
+               </td>
+            </tr>
+         </table>
+      </section>
+      <script>
+         function get_link1(code, img_code, title) {
+            location.href = "systemg_01.html?code=" + code + "&img_code=" + img_code + "&title=" + encodeURI(encodeURIComponent(title));
+         }
+      </script>
+   </body>
+</html>

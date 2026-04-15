@@ -1,0 +1,311 @@
+/**
+ * Adobe Edge: symbol definitions
+ */
+(function($, Edge, compId){
+//images folder
+var im='images/';
+
+var fonts = {};
+var opts = {};
+var resources = [
+];
+var symbols = {
+"stage": {
+    version: "3.0.0",
+    minimumCompatibleVersion: "3.0.0",
+    build: "3.0.0.322",
+    baseState: "Base State",
+    scaleToFit: "none",
+    centerStage: "none",
+    initialState: "Base State",
+    gpuAccelerate: false,
+    resizeInstances: false,
+    content: {
+            dom: [
+            {
+                id: 'exhaust-1',
+                type: 'image',
+                tag: 'img',
+                rect: ['1004px', '76px','417','249','auto', 'auto'],
+                fill: ["rgba(0,0,0,0)",im+"exhaust-1.png"]
+            },
+            {
+                id: 'intake3-1',
+                type: 'image',
+                tag: 'img',
+                rect: ['3px', '17px','721','352','auto', 'auto'],
+                fill: ["rgba(0,0,0,0)",im+"intake3-1.png"]
+            },
+            {
+                id: 'intake2-1',
+                type: 'image',
+                tag: 'img',
+                rect: ['572px', '208px','287','229','auto', 'auto'],
+                fill: ["rgba(0,0,0,0)",im+"intake2-1.png"]
+            },
+            {
+                id: 'intake1-1',
+                type: 'image',
+                tag: 'img',
+                rect: ['521px', '5px','422','284','auto', 'auto'],
+                fill: ["rgba(0,0,0,0)",im+"intake1-1.png"]
+            },
+            {
+                id: 'rub3-1',
+                type: 'image',
+                tag: 'img',
+                rect: ['731px', '758px','442','252','auto', 'auto'],
+                fill: ["rgba(0,0,0,0)",im+"rub3-1.png"]
+            },
+            {
+                id: 'rub32',
+                type: 'image',
+                rect: ['727px', '747px','442px','252px','auto', 'auto'],
+                fill: ["rgba(0,0,0,0)",im+"rub32.png",'0px','0px']
+            },
+            {
+                id: 'rub2-1',
+                type: 'image',
+                tag: 'img',
+                rect: ['470px', '410px','173','152','auto', 'auto'],
+                fill: ["rgba(0,0,0,0)",im+"rub2-1.png"]
+            },
+            {
+                id: 'rub22',
+                type: 'image',
+                rect: ['470px', '410px','173px','152px','auto', 'auto'],
+                fill: ["rgba(0,0,0,0)",im+"rub22.png",'0px','0px']
+            },
+            {
+                id: 'mainMoving-1',
+                type: 'image',
+                tag: 'img',
+                rect: ['655', '229','506','595','auto', 'auto'],
+                fill: ["rgba(0,0,0,0)",im+"mainMoving-1.png"]
+            },
+            {
+                id: 'rub1-1',
+                type: 'image',
+                tag: 'img',
+                rect: ['404px', '646px','282','290','auto', 'auto'],
+                fill: ["rgba(0,0,0,0)",im+"rub1-1.png"]
+            },
+            {
+                id: 'rub12',
+                type: 'image',
+                rect: ['417px', '641px','282px','290px','auto', 'auto'],
+                fill: ["rgba(0,0,0,0)",im+"rub12.png",'0px','0px']
+            },
+            {
+                id: 'timing-1',
+                type: 'image',
+                tag: 'img',
+                rect: ['241px', '668px','250','330','auto', 'auto'],
+                fill: ["rgba(0,0,0,0)",im+"timing-1.png"]
+            },
+            {
+                id: 'cooling2-1',
+                type: 'image',
+                tag: 'img',
+                rect: ['492px', '523px','282','286','auto', 'auto'],
+                fill: ["rgba(0,0,0,0)",im+"cooling2-1.png"]
+            },
+            {
+                id: 'cooling1-1',
+                type: 'image',
+                tag: 'img',
+                rect: ['52px', '808px','289','371','auto', 'auto'],
+                fill: ["rgba(0,0,0,0)",im+"cooling1-1.png"]
+            }],
+            symbolInstances: [
+
+            ]
+        },
+    states: {
+        "Base State": {
+            "${_rub3-1}": [
+                ["style", "top", '566px'],
+                ["transform", "scaleY", '1.1'],
+                ["transform", "scaleX", '1.1'],
+                ["style", "opacity", '0'],
+                ["style", "left", '681px']
+            ],
+            "${_rub12}": [
+                ["style", "top", '641px'],
+                ["style", "opacity", '0'],
+                ["style", "left", '417px']
+            ],
+            "${_intake3-1}": [
+                ["style", "top", '203px'],
+                ["transform", "scaleY", '1.1'],
+                ["transform", "scaleX", '1.1'],
+                ["style", "opacity", '0'],
+                ["style", "left", '171px']
+            ],
+            "${_rub1-1}": [
+                ["style", "top", '547px'],
+                ["transform", "scaleY", '1.1'],
+                ["transform", "scaleX", '1.1'],
+                ["style", "opacity", '0'],
+                ["style", "left", '555px']
+            ],
+            "${_intake2-1}": [
+                ["style", "top", '243px'],
+                ["transform", "scaleY", '1.1'],
+                ["transform", "scaleX", '1.1'],
+                ["style", "opacity", '0'],
+                ["style", "left", '667px']
+            ],
+            "${_intake1-1}": [
+                ["style", "top", '195px'],
+                ["transform", "scaleY", '1.1'],
+                ["transform", "scaleX", '1.1'],
+                ["style", "opacity", '0'],
+                ["style", "left", '538px']
+            ],
+            "${_cooling1-1}": [
+                ["style", "top", '581px'],
+                ["transform", "scaleY", '1.1'],
+                ["transform", "scaleX", '1.1'],
+                ["style", "opacity", '0'],
+                ["style", "left", '449px']
+            ],
+            "${_exhaust-1}": [
+                ["style", "top", '218px'],
+                ["transform", "scaleY", '1.1'],
+                ["transform", "scaleX", '1.1'],
+                ["style", "opacity", '0'],
+                ["style", "left", '853px']
+            ],
+            "${_rub32}": [
+                ["style", "top", '747px'],
+                ["style", "opacity", '0'],
+                ["style", "left", '727px']
+            ],
+            "${_rub22}": [
+                ["style", "top", '410px'],
+                ["style", "opacity", '0'],
+                ["style", "left", '470px']
+            ],
+            "${_cooling2-1}": [
+                ["style", "top", '516px'],
+                ["transform", "scaleY", '1.1'],
+                ["transform", "scaleX", '1.1'],
+                ["style", "opacity", '0'],
+                ["style", "left", '538px']
+            ],
+            "${_Stage}": [
+                ["color", "background-color", 'rgba(255,255,255,0.00)'],
+                ["style", "width", '1430px'],
+                ["style", "height", '1230px'],
+                ["style", "overflow", 'hidden']
+            ],
+            "${_timing-1}": [
+                ["style", "top", '581px'],
+                ["transform", "scaleY", '1.1'],
+                ["transform", "scaleX", '1.1'],
+                ["style", "opacity", '0'],
+                ["style", "left", '469px']
+            ],
+            "${_rub2-1}": [
+                ["style", "top", '450px'],
+                ["transform", "scaleY", '1.1'],
+                ["transform", "scaleX", '1.1'],
+                ["style", "opacity", '0'],
+                ["style", "left", '576px']
+            ],
+            "${_mainMoving-1}": [
+                ["transform", "scaleX", '1.1'],
+                ["style", "opacity", '0'],
+                ["transform", "scaleY", '1.1']
+            ]
+        }
+    },
+    timelines: {
+        "Default Timeline": {
+            fromState: "Base State",
+            toState: "",
+            duration: 986,
+            autoPlay: true,
+            timeline: [
+                { id: "eid178", tween: [ "transform", "${_intake2-1}", "scaleX", '1', { fromValue: '1.1'}], position: 346, duration: 281, easing: "easeOutQuad" },
+                { id: "eid148", tween: [ "style", "${_rub1-1}", "opacity", '1', { fromValue: '0'}], position: 251, duration: 240 },
+                { id: "eid54", tween: [ "style", "${_cooling1-1}", "top", '804px', { fromValue: '581px'}], position: 249, duration: 182, easing: "easeOutQuad" },
+                { id: "eid38", tween: [ "style", "${_cooling2-1}", "top", '523px', { fromValue: '516px'}], position: 374, duration: 209, easing: "easeOutQuad" },
+                { id: "eid192", tween: [ "transform", "${_exhaust-1}", "scaleX", '1', { fromValue: '1.1'}], position: 346, duration: 281, easing: "easeOutQuad" },
+                { id: "eid170", tween: [ "transform", "${_intake1-1}", "scaleX", '1', { fromValue: '1.1'}], position: 346, duration: 281, easing: "easeOutQuad" },
+                { id: "eid130", tween: [ "style", "${_timing-1}", "left", '470px', { fromValue: '469px'}], position: 200, duration: 269, easing: "easeInQuad" },
+                { id: "eid44", tween: [ "style", "${_timing-1}", "left", '274px', { fromValue: '470px'}], position: 469, duration: 198, easing: "easeInQuad" },
+                { id: "eid160", tween: [ "style", "${_rub3-1}", "left", '682px', { fromValue: '681px'}], position: 346, duration: 281, easing: "easeOutQuad" },
+                { id: "eid60", tween: [ "style", "${_rub3-1}", "left", '727px', { fromValue: '682px'}], position: 627, duration: 206, easing: "easeOutQuad" },
+                { id: "eid168", tween: [ "style", "${_intake1-1}", "left", '539px', { fromValue: '538px'}], position: 346, duration: 281, easing: "easeOutQuad" },
+                { id: "eid74", tween: [ "style", "${_intake1-1}", "left", '522px', { fromValue: '539px'}], position: 627, duration: 206, easing: "easeOutQuad" },
+                { id: "eid190", tween: [ "style", "${_exhaust-1}", "opacity", '1', { fromValue: '0'}], position: 346, duration: 281, easing: "easeOutQuad" },
+                { id: "eid180", tween: [ "transform", "${_intake2-1}", "scaleY", '1', { fromValue: '1.1'}], position: 346, duration: 281, easing: "easeOutQuad" },
+                { id: "eid107", tween: [ "style", "${_cooling1-1}", "left", '450px', { fromValue: '449px'}], position: 0, duration: 249, easing: "easeOutQuad" },
+                { id: "eid52", tween: [ "style", "${_cooling1-1}", "left", '52px', { fromValue: '450px'}], position: 249, duration: 182, easing: "easeOutQuad" },
+                { id: "eid142", tween: [ "style", "${_rub2-1}", "left", '577px', { fromValue: '576px'}], position: 346, duration: 281, easing: "easeOutQuad" },
+                { id: "eid56", tween: [ "style", "${_rub2-1}", "left", '470px', { fromValue: '577px'}], position: 627, duration: 206, easing: "easeOutQuad" },
+                { id: "eid162", tween: [ "transform", "${_rub3-1}", "scaleX", '1', { fromValue: '1.1'}], position: 346, duration: 281, easing: "easeOutQuad" },
+                { id: "eid80", tween: [ "style", "${_exhaust-1}", "top", '129px', { fromValue: '218px'}], position: 627, duration: 206, easing: "easeOutQuad" },
+                { id: "eid126", tween: [ "transform", "${_cooling2-1}", "scaleX", '1', { fromValue: '1.1'}], position: 133, duration: 241, easing: "easeOutQuad" },
+                { id: "eid158", tween: [ "style", "${_rub2-1}", "opacity", '1', { fromValue: '0'}], position: 346, duration: 281, easing: "easeOutQuad" },
+                { id: "eid140", tween: [ "transform", "${_rub1-1}", "scaleY", '1', { fromValue: '1.1'}], position: 251, duration: 240 },
+                { id: "eid109", tween: [ "transform", "${_cooling1-1}", "scaleX", '1', { fromValue: '1.1'}], position: 0, duration: 249, easing: "easeOutQuad" },
+                { id: "eid132", tween: [ "transform", "${_timing-1}", "scaleX", '1', { fromValue: '1.1'}], position: 200, duration: 269, easing: "easeInQuad" },
+                { id: "eid234", tween: [ "style", "${_rub22}", "opacity", '1', { fromValue: '0'}], position: 861, duration: 125 },
+                { id: "eid186", tween: [ "style", "${_intake3-1}", "opacity", '1', { fromValue: '0'}], position: 346, duration: 281, easing: "easeOutQuad" },
+                { id: "eid228", tween: [ "style", "${_rub32}", "opacity", '1', { fromValue: '0'}], position: 853, duration: 133 },
+                { id: "eid111", tween: [ "transform", "${_cooling1-1}", "scaleY", '1', { fromValue: '1.1'}], position: 0, duration: 249, easing: "easeOutQuad" },
+                { id: "eid42", tween: [ "style", "${_rub1-1}", "top", '641px', { fromValue: '547px'}], position: 491, duration: 176 },
+                { id: "eid176", tween: [ "style", "${_intake2-1}", "left", '668px', { fromValue: '667px'}], position: 346, duration: 281, easing: "easeOutQuad" },
+                { id: "eid64", tween: [ "style", "${_intake2-1}", "left", '572px', { fromValue: '668px'}], position: 627, duration: 206, easing: "easeOutQuad" },
+                { id: "eid188", tween: [ "style", "${_exhaust-1}", "left", '854px', { fromValue: '853px'}], position: 346, duration: 281, easing: "easeOutQuad" },
+                { id: "eid82", tween: [ "style", "${_exhaust-1}", "left", '1006px', { fromValue: '854px'}], position: 627, duration: 206, easing: "easeOutQuad" },
+                { id: "eid58", tween: [ "style", "${_rub2-1}", "top", '410px', { fromValue: '450px'}], position: 627, duration: 206, easing: "easeOutQuad" },
+                { id: "eid196", tween: [ "transform", "${_intake3-1}", "scaleX", '1', { fromValue: '1.1'}], position: 346, duration: 281, easing: "easeOutQuad" },
+                { id: "eid144", tween: [ "transform", "${_rub2-1}", "scaleX", '1', { fromValue: '1.1'}], position: 346, duration: 281, easing: "easeOutQuad" },
+                { id: "eid128", tween: [ "transform", "${_cooling2-1}", "scaleY", '1', { fromValue: '1.1'}], position: 133, duration: 241, easing: "easeOutQuad" },
+                { id: "eid198", tween: [ "transform", "${_intake3-1}", "scaleY", '1', { fromValue: '1.1'}], position: 346, duration: 281, easing: "easeOutQuad" },
+                { id: "eid66", tween: [ "style", "${_intake2-1}", "top", '217px', { fromValue: '243px'}], position: 627, duration: 206, easing: "easeOutQuad" },
+                { id: "eid70", tween: [ "style", "${_intake3-1}", "top", '23px', { fromValue: '203px'}], position: 627, duration: 206, easing: "easeOutQuad" },
+                { id: "eid194", tween: [ "transform", "${_exhaust-1}", "scaleY", '1', { fromValue: '1.1'}], position: 346, duration: 281, easing: "easeOutQuad" },
+                { id: "eid146", tween: [ "transform", "${_rub2-1}", "scaleY", '1', { fromValue: '1.1'}], position: 346, duration: 281, easing: "easeOutQuad" },
+                { id: "eid124", tween: [ "style", "${_cooling2-1}", "left", '539px', { fromValue: '538px'}], position: 133, duration: 327, easing: "easeOutQuad" },
+                { id: "eid36", tween: [ "style", "${_cooling2-1}", "left", '501px', { fromValue: '539px'}], position: 460, duration: 123, easing: "easeOutQuad" },
+                { id: "eid150", tween: [ "style", "${_cooling1-1}", "opacity", '1', { fromValue: '0'}], position: 0, duration: 249, easing: "easeOutQuad" },
+                { id: "eid156", tween: [ "style", "${_mainMoving-1}", "opacity", '1', { fromValue: '0'}], position: 311, duration: 375 },
+                { id: "eid209", tween: [ "transform", "${_mainMoving-1}", "scaleY", '1', { fromValue: '1.1'}], position: 311, duration: 375 },
+                { id: "eid138", tween: [ "transform", "${_rub1-1}", "scaleX", '1', { fromValue: '1.1'}], position: 251, duration: 240 },
+                { id: "eid134", tween: [ "transform", "${_timing-1}", "scaleY", '1', { fromValue: '1.1'}], position: 200, duration: 269, easing: "easeInQuad" },
+                { id: "eid184", tween: [ "style", "${_intake3-1}", "left", '172px', { fromValue: '171px'}], position: 346, duration: 281, easing: "easeOutQuad" },
+                { id: "eid68", tween: [ "style", "${_intake3-1}", "left", '-1px', { fromValue: '172px'}], position: 627, duration: 206, easing: "easeOutQuad" },
+                { id: "eid154", tween: [ "style", "${_timing-1}", "opacity", '1', { fromValue: '0'}], position: 200, duration: 269, easing: "easeInQuad" },
+                { id: "eid174", tween: [ "style", "${_intake1-1}", "opacity", '1', { fromValue: '0'}], position: 346, duration: 281, easing: "easeOutQuad" },
+                { id: "eid62", tween: [ "style", "${_rub3-1}", "top", '747px', { fromValue: '566px'}], position: 627, duration: 206, easing: "easeOutQuad" },
+                { id: "eid182", tween: [ "style", "${_intake2-1}", "opacity", '1', { fromValue: '0'}], position: 346, duration: 281, easing: "easeOutQuad" },
+                { id: "eid164", tween: [ "transform", "${_rub3-1}", "scaleY", '1', { fromValue: '1.1'}], position: 346, duration: 281, easing: "easeOutQuad" },
+                { id: "eid152", tween: [ "style", "${_cooling2-1}", "opacity", '1', { fromValue: '0'}], position: 133, duration: 241, easing: "easeOutQuad" },
+                { id: "eid207", tween: [ "transform", "${_mainMoving-1}", "scaleX", '1', { fromValue: '1.1'}], position: 311, duration: 375 },
+                { id: "eid72", tween: [ "style", "${_intake1-1}", "top", '22px', { fromValue: '195px'}], position: 627, duration: 206, easing: "easeOutQuad" },
+                { id: "eid46", tween: [ "style", "${_timing-1}", "top", '679px', { fromValue: '581px'}], position: 469, duration: 198, easing: "easeInQuad" },
+                { id: "eid172", tween: [ "transform", "${_intake1-1}", "scaleY", '1', { fromValue: '1.1'}], position: 346, duration: 281, easing: "easeOutQuad" },
+                { id: "eid166", tween: [ "style", "${_rub3-1}", "opacity", '1', { fromValue: '0'}], position: 346, duration: 281, easing: "easeOutQuad" },
+                { id: "eid136", tween: [ "style", "${_rub1-1}", "left", '567px', { fromValue: '555px'}], position: 251, duration: 240 },
+                { id: "eid40", tween: [ "style", "${_rub1-1}", "left", '417px', { fromValue: '567px'}], position: 491, duration: 176, easing: "easeInQuad" },
+                { id: "eid232", tween: [ "style", "${_rub12}", "opacity", '1', { fromValue: '0'}], position: 861, duration: 125 }            ]
+        }
+    }
+}
+};
+
+
+Edge.registerCompositionDefn(compId, symbols, fonts, resources, opts);
+
+/**
+ * Adobe Edge DOM Ready Event Handler
+ */
+$(window).ready(function() {
+     Edge.launchComposition(compId);
+});
+})(jQuery, AdobeEdge, "EDGE-26030171");

@@ -1,0 +1,151 @@
+
+{
+
+	"expanded:images/titleCon01.png":"nil",
+	"pref__general__AutoKeyframeProperties":"true",
+	"expanded:images/CLOSE_ICON.png":"nil",
+	"symbol_SYM_CLOSE":{
+		"element_${CLOSE_ICON}":{
+			"timelineColor2":"0x81aa62",
+			"timelineColor3":"0x5b6c4d",
+			"timelineColor":"0x91c767"},
+		"element_${CLOSE}":{
+			"timelineColor2":"0x4fa275",
+			"timelineColor3":"0x456a55",
+			"timelineColor":"0x50bd82"}},
+	"expanded:images/REPLAY_ICON.png":"nil",
+	"pref__general__FilterNonAnimatedElements":"false",
+	"pref__general__TimelineGridSize":"24fps",
+	"CompZoomFactor":"100",
+	"StageZoomFactor":"50",
+	"pixelsPerMs":"1",
+	"stage-Default Timeline_mark_ms":"-1",
+	"nextElementColorIndex":"5",
+	"pref__general__GenerateSmoothTransitions":"true",
+	"SYM_CLOSE-Default Timeline_playhead_ms":"0",
+	"HTMLFileName":"brake6.html",
+	"ModelData":"{\
+\"stage\": {\
+   \"timelines\": {\
+      \"Default Timeline\": {\
+      }\
+   }},\
+\"Preloader\": {\
+   \"timelines\": {\
+\
+   }},\
+\"Down-level\": {\
+   \"timelines\": {\
+\
+   }}\
+}",
+	"expanded:images/car2.png":"nil",
+	"SYM_REPLAY-Default Timeline_playhead_ms":"0",
+	"viewStartMs":"4167.1186523438",
+	"pref__general__AutoKeyframePropertiesArmed":"false",
+	"symbol_stage":{
+		"element_${car2}":{
+			"timelineColor2":"0x1aa38f",
+			"invisible":"false",
+			"timelineColor":"0x00bda4",
+			"animationEnabled":"true",
+			"usingMotionPaths":"true",
+			"timelineColor3":"0x2a6a61"},
+		"dummyStageParentWidth":"2560px",
+		"dummyStageParentHeight":"1440px",
+		"element_${car1}":{
+			"timelineColor2":"0x4fa275",
+			"invisible":"false",
+			"timelineColor":"0x50bd82",
+			"animationEnabled":"true",
+			"usingMotionPaths":"true",
+			"timelineColor3":"0x456a55"},
+		"element_${titleText}":{
+			"timelineColor2":"0x107faa",
+			"timelineColor3":"0x295a6d",
+			"timelineColor":"0x008dc8",
+			"timelineTreeOpened":"false",
+			"animationEnabled":"false",
+			"locked":"false"},
+		"element_${SYM_REPLAY}":{
+			"timelineColor2":"0x5a558a",
+			"timelineColor3":"0x4a485e",
+			"timelineColor":"0x63599f",
+			"timelineTreeOpened":"false",
+			"animationEnabled":"false",
+			"locked":"false"},
+		"element_${Rectangle2}":{
+			"timelineColor2":"0xba5b89",
+			"timelineColor3":"0x734a5f",
+			"animationEnabled":"false",
+			"timelineColor":"0xdb619d"},
+		"element_${road}":{
+			"timelineColor2":"0x168c84",
+			"timelineColor3":"0x2a605c",
+			"timelineColor":"0x00a096",
+			"locked":"true",
+			"animationEnabled":"false"},
+		"element_${SYM_CLOSE}":{
+			"timelineColor2":"0xb099ce",
+			"timelineColor3":"0x70657c",
+			"timelineColor":"0xceaef4",
+			"timelineTreeOpened":"false",
+			"animationEnabled":"false",
+			"locked":"false"},
+		"element_${titleCon}":{
+			"timelineColor2":"0x1095d2",
+			"timelineColor3":"0x29647e",
+			"timelineColor":"0x00a9fa",
+			"timelineTreeOpened":"false",
+			"animationEnabled":"false",
+			"locked":"false"},
+		"defaultStageParentHeight":"1440px",
+		"element_${Rectangle}":{
+			"timelineColor2":"0xd35d6e",
+			"timelineColor3":"0x7e4b52",
+			"timelineColor":"0xfb657a",
+			"timelineTreeOpened":"false",
+			"animationEnabled":"false",
+			"locked":"false"},
+		"element_${Stage}":{
+			"timelineColor2":"0xcbbd71",
+			"timelineColor3":"0x7b7652",
+			"timelineColor":"0xeedf79"},
+		"element_${txt}":{
+			"timelineColor2":"0x326a96",
+			"timelineColor3":"0x385063",
+			"timelineColor":"0x2f73ad",
+			"timelineTreeOpened":"false",
+			"animationEnabled":"false",
+			"locked":"false"},
+		"defaultStageParentWidth":"2560px",
+		"element_${memo_body}":{
+			"timelineColor2":"0x81aa62",
+			"timelineColor3":"0x5b6c4d",
+			"timelineColor":"0x91c767",
+			"animationEnabled":"true",
+			"usingMotionPaths":"true"},
+		"element_${title_icon}":{
+			"timelineColor2":"0x1aa38f",
+			"timelineColor3":"0x2a6a61",
+			"timelineColor":"0x00bda4"}},
+	"TransitionIdCounter":"44",
+	"expanded:images/memo_body.png":"nil",
+	"viewStartY":"0",
+	"pref__general__TimelineShowGrid":"true",
+	"stage-Default Timeline_playhead_ms":"5167",
+	"symbol_SYM_REPLAY":{
+		"element_${REPLAY}":{
+			"timelineColor2":"0xcbbd71",
+			"timelineColor3":"0x7b7652",
+			"timelineColor":"0xeedf79"},
+		"element_${REPLAY_ICON}":{
+			"timelineColor2":"0xd8b467",
+			"timelineColor3":"0x81714f",
+			"timelineColor":"0xffd46d"}},
+	"usedBOM":"false",
+	"expanded:images/car1.png":"nil",
+	"expanded:images/road.png":"nil",
+	"expanded:images/titleCon.png":"nil",
+	"colorSwatches":"rgba(81,44,139,1.00)",
+	"expanded:images/title_icon.png":"nil"}

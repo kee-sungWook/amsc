@@ -1,0 +1,236 @@
+/**
+ * Adobe Edge: symbol definitions
+ */
+(function($, Edge, compId){
+//images folder
+var im='images/';
+
+var fonts = {};
+
+
+var resources = [
+];
+var symbols = {
+"stage": {
+   version: "2.0.1",
+   minimumCompatibleVersion: "2.0.0",
+   build: "2.0.1.268",
+   baseState: "Base State",
+   initialState: "Base State",
+   gpuAccelerate: false,
+   resizeInstances: false,
+   content: {
+         dom: [
+         {
+            id:'rock',
+            type:'image',
+            tag:'img',
+            rect:['165','382','132','269','auto','auto'],
+            fill:["rgba(0,0,0,0)",im+"rock.png"]
+         },
+         {
+            id:'car_body',
+            type:'image',
+            tag:'img',
+            rect:['246','476','1493','658','auto','auto'],
+            fill:["rgba(0,0,0,0)",im+"car_body.png"]
+         },
+         {
+            id:'airbag_side2',
+            type:'image',
+            tag:'img',
+            rect:['844','1026','713','61','auto','auto'],
+            fill:["rgba(0,0,0,0)",im+"airbag_side2.png"]
+         },
+         {
+            id:'airbag_side1',
+            type:'image',
+            tag:'img',
+            rect:['844','522','713','61','auto','auto'],
+            fill:["rgba(0,0,0,0)",im+"airbag_side1.png"]
+         },
+         {
+            id:'airbag_whiteLine2',
+            type:'image',
+            tag:'img',
+            rect:['844','522','713','565','auto','auto'],
+            fill:["rgba(0,0,0,0)",im+"airbag_whiteLine2.png"]
+         },
+         {
+            id:'airbag_passenger',
+            type:'image',
+            tag:'img',
+            rect:['725','600','152','158','auto','auto'],
+            fill:["rgba(0,0,0,0)",im+"airbag_passenger.png"]
+         },
+         {
+            id:'airbag_driver',
+            type:'image',
+            tag:'img',
+            rect:['726','840','145','155','auto','auto'],
+            fill:["rgba(0,0,0,0)",im+"airbag_driver.png"]
+         },
+         {
+            id:'airbag_whiteLine1',
+            type:'image',
+            tag:'img',
+            rect:['724','600','153','396','auto','auto'],
+            fill:["rgba(0,0,0,0)",im+"airbag_whiteLine1.png"]
+         },
+         {
+            id:'crash_side',
+            type:'image',
+            tag:'img',
+            rect:['807','513','700','584','auto','auto'],
+            fill:["rgba(0,0,0,0)",im+"crash_side.png"]
+         },
+         {
+            id:'crash_front',
+            type:'image',
+            tag:'img',
+            rect:['247','516','206','578','auto','auto'],
+            fill:["rgba(0,0,0,0)",im+"crash_front.png"]
+         },
+         {
+            id:'module_crash',
+            type:'image',
+            tag:'img',
+            rect:['728','773','61','59','auto','auto'],
+            fill:["rgba(0,0,0,0)",im+"module_crash.png"]
+         },
+         {
+            id:'module_whiteLine',
+            type:'image',
+            tag:'img',
+            rect:['728','773','62','60','auto','auto'],
+            fill:["rgba(0,0,0,0)",im+"module_whiteLine.png"]
+         },
+         {
+            id:'module_normal',
+            type:'image',
+            tag:'img',
+            rect:['728','773','61','59','auto','auto'],
+            fill:["rgba(0,0,0,0)",im+"module_normal.png"]
+         },
+         {
+            id:'sensor',
+            type:'image',
+            tag:'img',
+            rect:['298','523','839','564','auto','auto'],
+            fill:["rgba(0,0,0,0)",im+"sensor.png"]
+         },
+         {
+            id:'sensor_selector_side',
+            type:'image',
+            tag:'img',
+            rect:['1058','493','87','624','auto','auto'],
+            fill:["rgba(0,0,0,0)",im+"sensor_selector_side.png"]
+         },
+         {
+            id:'sensor_selector_front',
+            type:'image',
+            tag:'img',
+            rect:['279','560','86','490','auto','auto'],
+            fill:["rgba(0,0,0,0)",im+"sensor_selector_front.png"]
+         },
+         {
+            id:'signal_oval',
+            type:'image',
+            tag:'img',
+            rect:['1083','316','119','118','auto','auto'],
+            fill:["rgba(0,0,0,0)",im+"signal_oval.png"]
+         },
+         {
+            id:'signal_src',
+            type:'image',
+            tag:'img',
+            rect:['473','360','851','5','auto','auto'],
+            fill:["rgba(0,0,0,0)",im+"signal_src.png"]
+         },
+         {
+            id:'temp_signalLine',
+            type:'image',
+            tag:'img',
+            rect:['357','558','716','491','auto','auto'],
+            fill:["rgba(0,0,0,0)",im+"temp_signalLine.png"]
+         },
+         {
+            id:'txt_c3',
+            type:'text',
+            rect:['219','388','186','134','auto','auto'],
+            text:"정면\r충돌 감지\r센서",
+            align:"center",
+            font:['굴림',41,"rgb(0,0,0)","normal","none","normal"]
+         },
+         {
+            id:'txt_c2',
+            type:'text',
+            rect:['1125','449','368','47','auto','auto'],
+            text:"측면 충돌감지 센서",
+            align:"center",
+            font:['굴림',41,"rgb(0,0,0)","normal","none","normal"]
+         },
+         {
+            id:'txt_c1',
+            type:'text',
+            rect:['832','752','271px','91','auto','auto'],
+            text:"에어백<br>컨트롤 모듈",
+            align:"auto",
+            font:['굴림',41,"rgb(0,0,0)","normal","none","normal"]
+         },
+         {
+            id:'txt2',
+            type:'text',
+            rect:['681','87','1131','106','auto','auto'],
+            text:"에어백 컨트롤모듈은 에어백모듈과 안전벨트 프리텐셔너의\r작동여부와 전개시기를 결정하는 역할을 합니다.",
+            align:"auto",
+            font:['나눔고딕',46,"rgb(0,0,0)","normal","none","normal"]
+         },
+         {
+            id:'txt1',
+            type:'text',
+            rect:['80','92','572','76','auto','auto'],
+            text:"에어백 컨트롤 모듈",
+            align:"center",
+            font:['나눔고딕',70,"rgb(0,0,0)","normal","none","normal"]
+         }],
+         symbolInstances: [
+
+         ]
+      },
+   states: {
+      "Base State": {
+         "${_Stage}": [
+            ["color", "background-color", 'rgba(239,239,239,1.00)'],
+            ["style", "width", '1900px'],
+            ["style", "height", '1230px'],
+            ["style", "overflow", 'hidden']
+         ],
+         "${_txt_c1}": [
+            ["style", "width", '271px']
+         ]
+      }
+   },
+   timelines: {
+      "Default Timeline": {
+         fromState: "Base State",
+         toState: "",
+         duration: 0,
+         autoPlay: true,
+         timeline: [
+         ]
+      }
+   }
+}
+};
+
+
+Edge.registerCompositionDefn(compId, symbols, fonts, resources);
+
+/**
+ * Adobe Edge DOM Ready Event Handler
+ */
+$(window).ready(function() {
+     Edge.launchComposition(compId);
+});
+})(jQuery, AdobeEdge, "EDGE-13423272");

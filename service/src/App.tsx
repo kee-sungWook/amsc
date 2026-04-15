@@ -30,6 +30,10 @@ import AdminWithdrawal from "@pages/AdminWithdrawal";
 import AdminRemittance from "@pages/AdminRemittance";
 import AdminMembers from "@pages/AdminMembers"
 import AdminMemberView from "@pages/AdminMemberView";
+import CCcommon from "@pages/CCcommon";
+import CCelectric from "@pages/CCelectric";
+import CCprevent from "@pages/CCprevent";
+import CCoption from "@pages/CCoption";
 const PrivateRoute: React.FC = () => {
     const { loggedIn } = useUserStore();
     const location = useLocation();
@@ -54,11 +58,11 @@ function MyRoute() {
             <Route path="joinBusiness" element={<JoinBusiness />} />
             <Route path="suggest" element={<LogSuggest />} />
             <Route path="main" element={<MainPage />} />
-            <Route path="cc/common" element={<CCsystemg />} />
-            <Route path="cc/electric" element={<CCsystemg />} />
+            <Route path="cc/common" element={<CCcommon />} />
+            <Route path="cc/electric" element={<CCelectric />} />
             <Route path="cc/systemg" element={<CCsystemg />} />
-            <Route path="cc/prevent" element={<CCsystemg />} />
-            <Route path="cc/option" element={<CCsystemg />} />
+            <Route path="cc/prevent" element={<CCprevent />} />
+            <Route path="cc/option" element={<CCoption />} />
             <Route element={<PrivateRoute />}>
                 <Route path="notice" element={<Qna />} />
                 <Route path="service" element={<ServiceApply />} />

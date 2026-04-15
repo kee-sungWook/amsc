@@ -385,13 +385,13 @@ export async function taxInvoice(req: Request, res: Response) {
                 const placeholders = ids.map(() => '?').join(',');
                 const queryStr = `UPDATE ams_order SET taxInvoice = NOW() WHERE seq IN (${placeholders})`;
                 const result = await modifyQuery(queryStr, ids, conn);
-                if (result.affectedRows < 1) throw new Error('삭제 실패');
+                if (result.affectedRows < 1) throw new Error('세금계산서 발행여부 업데이트 실패');
                 return result;
             });
         });
-        res.json({ success: true, message: 'del ok' });
+        res.json({ success: true, message: 'taxInvoice ok' });
     } catch (error) {
-        res.json({ success: false, message: `<api deleteOrder> ${error}` });
+        res.json({ success: false, message: `<api taxInvoice> ${error}` });
     }
 }
 
@@ -408,12 +408,12 @@ export async function deposit(req: Request, res: Response) {
                 const placeholders = ids.map(() => '?').join(',');
                 const queryStr = `UPDATE ams_order SET deposit = NOW() WHERE seq IN (${placeholders})`;
                 const result = await modifyQuery(queryStr, ids, conn);
-                if (result.affectedRows < 1) throw new Error('삭제 실패');
+                if (result.affectedRows < 1) throw new Error('입금여부 등록 실패');
                 return result;
             });
         });
-        res.json({ success: true, message: 'del ok' });
+        res.json({ success: true, message: 'deposit ok' });
     } catch (error) {
-        res.json({ success: false, message: `<api deleteOrder> ${error}` });
+        res.json({ success: false, message: `<api deposit> ${error}` });
     }
 }

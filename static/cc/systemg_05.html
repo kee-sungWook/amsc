@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8" />
+      <meta http-equiv="pragma" content="no-cache" />
+
+      <title>KOMO CC</title>
+
+      <link rel="stylesheet" type="text/css" href="css/all_public.css" />
+      <link rel="stylesheet" type="text/css" href="css/only_systemg.css" />
+
+      <script src="js/jquery-1.11.0.min.js"></script>
+      <script src="script/script_all.js"></script>
+      <script src="script/script_systemg.js"></script>
+      <script>
+         var Request = function () {
+            this.getParameter = function (name) {
+               var rtnval = "";
+               var nowAddress = unescape(location.href);
+               var parameters = nowAddress.slice(nowAddress.indexOf("?") + 1, nowAddress.length).split("&");
+
+               for (var i = 0; i < parameters.length; i++) {
+                  var varName = parameters[i].split("=")[0];
+                  if (varName.toUpperCase() == name.toUpperCase()) {
+                     rtnval = parameters[i].split("=")[1];
+                     break;
+                  }
+               }
+               return rtnval;
+            };
+         };
+         var request = new Request();
+      </script>
+   </head>
+
+   <body>
+      <header>
+         <img class="hicon" src="img/top_icon_sg.gif" />
+         <span><a href="systemg_00.html">시스템가이드</a></span>
+         <img class="hclose" src="img/btn_goHome.gif" definder="btn" pics="img/btn_goHome" onmouseover="btnOver(this)" onmouseout="btnOut(this)" onclick="top.location.href='/cc'" />
+         <img class="hprev" src="img/btn_prev.gif" definder="btn" pics="img/btn_prev" onmouseover="btnOver(this)" onmouseout="btnOut(this)" onclick="history.go(-1);" />
+         <div style="float: right; margin-right: 100px; padding-top: 30px; font-size: 60px; display: lnline-block; color: #c6005f" onclick="location.href='systemg_map.html';"><img src="img/dot_map.png" style="height: 45px; width: auto" />&nbsp;사이트맵</div>
+      </header>
+
+      <form name="myForm" method="post" action="">
+         <input name="nowPos" type="hidden" value="5" />
+         <input name="step1" type="hidden" value="00" />
+         <input name="step2" type="hidden" value="00" />
+         <input name="step3" type="hidden" value="00" />
+         <input name="step4" type="hidden" value="00" />
+         <input name="step5" type="hidden" value="00" />
+         <input name="lastPos" type="hidden" value="y" />
+      </form>
+
+      <section>
+         <table cellpadding="0" cellspacing="0">
+            <tr>
+               <td>
+                  <iframe scrolling="no" id="motion_systemg"></iframe>
+
+                  <div id="rThing">
+                     <span id="subTitle"></span>
+                     <span id="bracket">}</span>
+                     <ul id="menuList"
+                        ><!-- ajax --></ul
+                     >
+                  </div>
+               </td>
+            </tr>
+         </table>
+      </section>
+
+      <script>
+         var code_str = request.getParameter("code");
+         var img_str = request.getParameter("img_code");
+         var title_str = decodeURIComponent(request.getParameter("title"));
+
+         $("#motion_systemg").attr("src", "contents/systemg/sg_" + img_str + "/mc.html");
+
+         if (title_str == "세부그림" || title_str == "원리도" || title_str == "정상사진" || title_str == "고장사진") {
+            document.myForm.lastPos.value = "y";
+            $("#rThing").remove();
+            $("#motion_systemg").css({
+               width: "100%",
+            });
+         } else {
+            $("#subTitle").html(title_str);
+         }
+      </script>
+   </body>
+</html>
