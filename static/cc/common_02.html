@@ -22,10 +22,10 @@
             });
             document.querySelector("#contentCotainer").setAttribute("src", `contents/common/cm_02_${nowMenu}_00_00_00/mc.html`);
          }
-         function makeListMenu(res) {
-            if (res.status === "ok") {
-               let tag = "";
-               for (let data of res.resData) {
+         function makeListMenu(datas) {
+            console.log(datas);
+            let tag = "";
+               for (let data of datas) {
                   if (data.code2 === "00") {
                      document.querySelector("#subTitle").innerText = data.title;
                      continue;
@@ -34,9 +34,6 @@
                }
                document.querySelector("#menuList").insertAdjacentHTML("afterbegin", tag);
                document.querySelector("#contentCotainer").setAttribute("src", `contents/common/cm_02_${nowMenu}_00_00_00/mc.html`);
-            } else {
-               console.log(res.status);
-            }
          }
          window.addEventListener("DOMContentLoaded", async () => {
             const fetchOpt = {
@@ -44,8 +41,11 @@
                headers: { "Content-Type": "application/json" },
                body: JSON.stringify({ menuCode: "04", code1: "02" }),
             };
-            const response = await fetch("/CC/getCCdatas", fetchOpt);
-            if (response.ok) makeListMenu(await response.json());
+            const response = await fetch("/api/cc/getCCdatas", fetchOpt);
+            if (response.ok) {
+                const data = await response.json();
+                makeListMenu(data);
+            }
             else console.log("HTTP-Error: " + response.status);
          });
          document.addEventListener("click", (e) => {
@@ -61,7 +61,7 @@
       <header>
          <img class="hicon" src="img/top_icon_cm.gif" />
          <span><a href="/cc/common">일반정비</a></span>
-         <img class="hclose" src="img/btn_goHome.gif" definder="btn" pics="img/btn_goHome" onmouseover="btnOver(this)" onmouseout="btnOut(this)" onclick="top.location.href='/manager'" />
+         <img class="hclose" src="img/btn_goHome.gif" definder="btn" pics="img/btn_goHome" onmouseover="btnOver(this)" onmouseout="btnOut(this)" onclick="top.location.href='/main'" />
          <img class="hprev" src="img/btn_prev.gif" definder="btn" pics="img/btn_prev" onmouseover="btnOver(this)" onmouseout="btnOut(this)" onclick="top.location.href='/cc/common'" />
       </header>
 

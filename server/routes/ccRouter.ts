@@ -6,7 +6,7 @@ const router = express.Router();
 router.post("/getCCdatas",
     async (req, res, next) => {
         try {
-            const result = ccController.getCCdatas(req.body);
+            const result = await ccController.getCCdatas(req.body);
             res.status(200).json(result);
         } catch (err) { next(err); }
     }
@@ -14,7 +14,7 @@ router.post("/getCCdatas",
 router.post("/getSystemG",
     async (req, res, next) => {
         try {
-            const result = ccController.getSystemG(req.body);
+            const result = await ccController.getSystemG(req.body);
             res.status(200).json(result);
         } catch (err) { next(err); }
     }
@@ -22,7 +22,7 @@ router.post("/getSystemG",
 router.post("/getOp",
     async (req, res, next) => {
         try {
-            const result = ccController.getOp(req.body);
+            const result = await ccController.getOp(req.body);
             res.status(200).json(result);
         } catch (err) { next(err); }
     }

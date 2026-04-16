@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useUserStore } from "@store/publicState";
 import { motion } from "motion/react";
 import useMeasure from "react-use-measure";
-import { isPwaInstalled } from "../pwaInstall";
+// import { isPwaInstalled } from "../pwaInstall";
 
 // import { TbDeviceDesktopPlus } from "react-icons/tb";
 import { AiOutlineHome } from "react-icons/ai";
@@ -18,16 +18,16 @@ const Header: React.FC = () => {
     const [mobileMenuOpen, setMobileMenuOpen] = React.useState<boolean>(false);
     const insideRef = React.useRef<HTMLDivElement>(null);
     const [ref] = useMeasure();
-    const [_, setPwaInstalled] = React.useState(false);
+    // const [_, setPwaInstalled] = React.useState(false);
 
-    useEffect(() => {
-        setPwaInstalled(isPwaInstalled());
+    // useEffect(() => {
+    //     setPwaInstalled(isPwaInstalled());
 
-        const handler = () => setPwaInstalled(true);
-        window.addEventListener("appinstalled", handler);
+    //     const handler = () => setPwaInstalled(true);
+    //     window.addEventListener("appinstalled", handler);
 
-        return () => window.removeEventListener("appinstalled", handler);
-    }, []);
+    //     return () => window.removeEventListener("appinstalled", handler);
+    // }, []);
 
     useEffect(() => {
         const handleClickOutSide = (e: MouseEvent) => {
