@@ -6,9 +6,11 @@ import path from 'path';
 
 const app = express();
 const UPLOAD_DIR = path.join(process.cwd(), 'uploads');
+const STATIC_DIR = path.join(process.cwd(), 'static');
 
 app.use(express.json());
 app.use('/uploads', express.static(UPLOAD_DIR));
+app.use('/static', express.static(STATIC_DIR));
 app.use("/api", apiRouter);
 
 app.use((err: any, _req: express.Request, res: express.Response, _next: express.NextFunction) => {

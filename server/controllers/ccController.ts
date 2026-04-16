@@ -1,4 +1,4 @@
-import { selectQuery } from "@connect/query";
+import { selectQuery } from "@connect/query.js";
 import { RowDataPacket } from "mysql2";
 
 interface CCdata {
