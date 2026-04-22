@@ -13,6 +13,8 @@ router.post("/getCCdatas",
 );
 router.post("/getSystemG",
     async (req, res, next) => {
+        console.log(`getSystemG router`);
+        console.log(req.body);
         try {
             const result = await ccController.getSystemG(req.body);
             res.status(200).json(result);

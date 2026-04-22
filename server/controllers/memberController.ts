@@ -40,7 +40,7 @@ export async function getMembers(): Promise<Member[]> {
                 'localName', l.localName, 
                 'localCode', l.localCode
             )
-        ) FROM ams_locales l WHERE l.memSeq = m.seq) AS local
+        ) FROM ams_local l WHERE l.memSeq = m.seq) AS local
         FROM ams_member m 
         WHERE m.type != 'a'
         ORDER BY m.jday DESC`,

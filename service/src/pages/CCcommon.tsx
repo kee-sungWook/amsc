@@ -12,9 +12,10 @@ const CCcommon = () => {
             const pWidth = parentRef.current?.getBoundingClientRect().width;
             if (pWidth) {
                 const scaleVal = pWidth / 2560;
-                iframeRef.current!.style.transform = `scale(${scaleVal})`
+                iframeRef.current!.style.transform = `scale(${scaleVal})`;
             }
         }
+        handleIframe();
         window.addEventListener('resize', handleIframe);
         return () => window.removeEventListener('resize', handleIframe);
     }, []);

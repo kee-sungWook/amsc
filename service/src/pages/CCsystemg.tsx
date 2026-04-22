@@ -15,6 +15,7 @@ const CCsystemg = () => {
                 iframeRef.current!.style.transform = `scale(${scaleVal})`
             }
         }
+        handleIframe();
         window.addEventListener('resize', handleIframe);
         return () => window.removeEventListener('resize', handleIframe);
     }, []);
@@ -30,7 +31,7 @@ const CCsystemg = () => {
                 <div></div>
             </section>
             <section ref={parentRef}>
-                <iframe ref={iframeRef} src={`/static/cc/systemg_00.html`} />
+                <iframe ref={iframeRef} src={`${import.meta.env.VITE_SITE_URL}/static/cc/systemg_00.html`} />
             </section>
         </article>
     );

@@ -9,6 +9,7 @@ const UPLOAD_DIR = path.join(process.cwd(), 'uploads');
 const STATIC_DIR = path.join(process.cwd(), 'static');
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use('/uploads', express.static(UPLOAD_DIR));
 app.use('/static', express.static(STATIC_DIR));
 app.use("/api", apiRouter);
