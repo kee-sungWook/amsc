@@ -21,6 +21,7 @@ export const getCCdatas = async (reqBody: any) => {
 };
 
 export const getSystemG = async (reqBody: any) => {
+    console.log(`getSystemG reqBody: `, reqBody);
     const { menu_code, field1, code1, field2, code2, field3, code3, field4, code4, field5, code5, order } = reqBody;
     let sql = `SELECT * FROM ams_cc WHERE menu_code=${menu_code} AND ${field1}=${code1} `;
     if (code2) sql += `AND ${field2}=${code2} `;

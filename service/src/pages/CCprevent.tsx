@@ -15,6 +15,7 @@ const CCprevent = () => {
                 iframeRef.current!.style.transform = `scale(${scaleVal})`
             }
         }
+        handleIframe();
         window.addEventListener('resize', handleIframe);
         return () => window.removeEventListener('resize', handleIframe);
     }, []);

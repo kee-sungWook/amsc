@@ -37,7 +37,7 @@
       <header>
          <img class="hicon" src="img/top_icon_sg.gif" />
          <span><a href="systemg_00.html">시스템가이드</a></span>
-         <img class="hclose" src="img/btn_goHome.gif" definder="btn" pics="img/btn_goHome" onmouseover="btnOver(this)" onmouseout="btnOut(this)" onclick="top.location.href='/cc'" />
+         <img class="hclose" src="img/btn_goHome.gif" definder="btn" pics="img/btn_goHome" onmouseover="btnOver(this)" onmouseout="btnOut(this)" onclick="top.location.href='/main'" />
          <img class="hprev" src="img/btn_prev.gif" definder="btn" pics="img/btn_prev" onmouseover="btnOver(this)" onmouseout="btnOut(this)" onclick="history.go(-1);" />
          <div style="float: right; margin-right: 100px; padding-top: 30px; font-size: 60px; display: lnline-block; color: #c6005f" onclick="location.href='systemg_map.html';"><img src="img/dot_map.png" style="height: 45px; width: auto" />&nbsp;사이트맵</div>
       </header>
@@ -86,7 +86,7 @@
 
          $.ajax({
             type: "post",
-            url: "/cc/getSystemG",
+            url: "/api/cc/getSystemG",
             data: {
                menu_code: "01",
                field1: "code1",

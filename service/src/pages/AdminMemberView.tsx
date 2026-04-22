@@ -3,7 +3,7 @@ import { decodeIndustry, formatDate } from "@utils/supporters";
 import { FaAngleLeft } from "react-icons/fa6";
 import { useLocation, useNavigate } from "react-router-dom";
 import React, { useEffect } from "react";
-import SetMemberLocale from "@components/SetMemberLocale";
+import MemLocal from "@components/MemLocal";
 import { useAdminMember } from "../hooks/useAdminMember";
 import LoadingIndicator from "@components/LoadingIndicator";
 import MemFeeRate from "@components/MemFeeRate";
@@ -86,7 +86,10 @@ const AdminMemberView: React.FC = () => {
 
                         <div>
                             <h5>지역 :</h5>
-                            <SetMemberLocale />
+                            <MemLocal
+                                memData={memData}
+                                setMemData={setMemData}
+                            />
                         </div>
                     </section>
                     <button className="goList" onClick={() => navigate("/admin/members")}>목록보기</button>
