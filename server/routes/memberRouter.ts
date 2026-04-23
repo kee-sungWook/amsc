@@ -48,6 +48,15 @@ router.put("/insertMemFeeRate",
     }
 );
 
+router.patch("/updateMemFeeRate",
+    async (req, res, next) => {
+        try {
+            const result = await memberController.updateMemFeeRate(req.body);
+            res.status(200).json(result);
+        } catch (err) { next(err); }
+    }
+);
+
 
 router.delete("/deleteMemFeeRate/:seq",
     async (req, res, next) => {

@@ -43,10 +43,11 @@ export const useAdminMember = () => {
             return result;
         } catch (err) {
             processError(err);
+            throw err;
         } finally {
             setIsLoading(false);
         }
-    }
+    };
 
 
     const updateMemFeeRate = async (data: { seq: number; memSeq: number; feeName: string; feeRate: number }) => {
@@ -57,14 +58,14 @@ export const useAdminMember = () => {
             return result;
         } catch (err) {
             processError(err);
+            throw err;
         } finally {
             setIsLoading(false);
         }
-    }
+    };
 
 
     const deleteMemFeeRate = async (seq: number): Promise<boolean> => {
-        console.log("deleteMemFeeRate called with seq:", seq); // 디버깅 로그 추가
         try {
             setIsLoading(true);
             const { data: result } = await axios.delete(`/api/member/deleteMemFeeRate/${seq}`);
@@ -76,16 +77,45 @@ export const useAdminMember = () => {
         } finally {
             setIsLoading(false);
         }
-    }
+    };
 
 
-    const insertMemLocal = async (data: any) => {
+    const insertMemLocal = async (data: { memSeq: number; localName: string; localCode: string }) => {
         try {
             setIsLoading(true);
-            const result = await axios.put<LocalModel[]>("/api/member/insertMemLocal", data);
-            return result.data;
+            const { data: result } = await axios.put<LocalModel[]>("/api/member/insertMemLocal", data);
+            return result;
         } catch (err) {
             processError(err);
+            throw err;
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
+
+    const updateMemLocal = async (data: { seq: number; memSeq: number; localName: string; localCode: string }) => {
+        try {
+            setIsLoading(true);
+            const { data: result } = await axios.put<LocalModel[]>("/api/member/updateMemLocal", data);
+            return result;
+        } catch (err) {
+            processError(err);
+            throw err;
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
+
+    const deleteMemLocal = async (seq: number) => {
+        try {
+            setIsLoading(true);
+            const { data: result } = await axios.delete(`/api/member/deleteMemLocal/${seq}`);
+            return result;
+        } catch (err) {
+            processError(err);
+            throw err;
         } finally {
             setIsLoading(false);
         }
@@ -98,7 +128,10 @@ export const useAdminMember = () => {
         getMembers,
         getMemberBySeq,
         insertMemFeeRate,
+        updateMemFeeRate,
         deleteMemFeeRate,
         insertMemLocal,
+        updateMemLocal,
+        deleteMemLocal,
     };
 }

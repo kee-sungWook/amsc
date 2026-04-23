@@ -13,7 +13,7 @@ const AdminMemberView: React.FC = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const queryParam = new URLSearchParams(location.search);
-    const { isLoading, getMemberBySeq, insertMemFeeRate, deleteMemFeeRate } = useAdminMember();
+    const { isLoading, getMemberBySeq, insertMemFeeRate, updateMemFeeRate, deleteMemFeeRate, insertMemLocal, updateMemLocal, deleteMemLocal } = useAdminMember();
     const memSeq = queryParam.get("memSeq");
     const [memData, setMemData] = React.useState(location.state?.memData as MemberModel);
 
@@ -80,6 +80,7 @@ const AdminMemberView: React.FC = () => {
                                 memData={memData}
                                 setMemData={setMemData}
                                 insertMemFeeRate={insertMemFeeRate}
+                                updateMemFeeRate={updateMemFeeRate}
                                 deleteMemFeeRate={deleteMemFeeRate}
                             />
                         </div>
@@ -89,6 +90,9 @@ const AdminMemberView: React.FC = () => {
                             <MemLocal
                                 memData={memData}
                                 setMemData={setMemData}
+                                insertMemLocal={insertMemLocal}
+                                updateMemLocal={updateMemLocal}
+                                deleteMemLocal={deleteMemLocal}
                             />
                         </div>
                     </section>

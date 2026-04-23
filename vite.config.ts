@@ -43,7 +43,7 @@ export default defineConfig({
     },
     server: {
         proxy: {
-            "/api": { target: "https://catrige.net", changeOrigin: true, secure: false }
+            "/api": { target: "https://catrige.com", changeOrigin: true, secure: false }
         }
     }
 });

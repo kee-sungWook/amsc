@@ -7,6 +7,7 @@ interface Props {
     memData: MemberModel;
     setMemData: React.Dispatch<React.SetStateAction<MemberModel>>;
     insertMemFeeRate: (data: { memSeq: number; feeName: string; feeRate: number }) => Promise<FeeRateModel[] | undefined>;
+    updateMemFeeRate: (data: { seq: number; memSeq: number; feeName: string; feeRate: number }) => Promise<FeeRateModel[] | undefined>;
     deleteMemFeeRate: (seq: number) => Promise<boolean>;
 };
 
@@ -20,7 +21,7 @@ interface FormValues {
     feeRates: FeeRateFormItem[];
 }
 
-const MemFeeRate: React.FC<Props> = ({ memData, setMemData, insertMemFeeRate, deleteMemFeeRate }) => {
+const MemFeeRate: React.FC<Props> = ({ memData, setMemData, insertMemFeeRate, updateMemFeeRate, deleteMemFeeRate }) => {
     const [inputMode, setInputMode] = React.useState(false);
     const [editIndex, setEditIndex] = React.useState<number | null>(null);
     const [submitIndex, setSubmitIndex] = React.useState<number | null>(null);
@@ -77,7 +78,6 @@ const MemFeeRate: React.FC<Props> = ({ memData, setMemData, insertMemFeeRate, de
 
 
     const onSubmit = async (data: FormValues) => {
-        console.log("submit", data);
         if (submitIndex === null) return;
         const item = data.feeRates[submitIndex];
 
@@ -90,38 +90,27 @@ const MemFeeRate: React.FC<Props> = ({ memData, setMemData, insertMemFeeRate, de
             }
             const result = await insertMemFeeRate(payload);
             setMemData(prev => prev
-                ? { ...prev, feeRate: result ? [...(prev.feeRate ?? []), ...result] : prev.feeRate, }
+                ? { ...prev, feeRate: result ? [...result] : prev.feeRate, }
                 : prev
             );
         } else {
             console.log("update", item);
+            const payload = {
+                seq: item.seq,
+                memSeq: memData.seq,
+                feeName: item.feeName,
+                feeRate: item.feeRate,
+            }
+            const result = await updateMemFeeRate(payload);
+            setMemData(prev => prev
+                ? { ...prev, feeRate: result ? [...result] : prev.feeRate }
+                : prev
+            );
         }
 
         setSubmitIndex(null);
         setEditIndex(null);
         setInputMode(false);
-
-        // console.log("submit", data);
-        // const insertList = data.feeRates.filter(
-        //     v => !v.seq && !v.isDeleted
-        // );
-
-        // const updateList = data.feeRates.filter(
-        //     v => v.seq && !v.isDeleted
-        // );
-
-        // const deleteList = data.feeRates.filter(
-        //     v => v.seq && v.isDeleted
-        // );
-
-        // console.log({
-        //     insertList,
-        //     updateList,
-        //     deleteList,
-        // });
-
-        // // 👉 API 호출 후
-        // // reset(serverData);
     };
 
     // ===== render =====

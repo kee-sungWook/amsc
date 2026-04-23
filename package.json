@@ -9,11 +9,12 @@
     "build:service": "vite build",
     "build:server": "cd server && tsc -p tsconfig.json && tsc-alias",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "start": "pm2 startOrRestart ecosystem.config.cjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
     "axios": "^1.13.6",
+    "csv-parser": "^3.2.0",
     "date-fns": "^4.1.0",
     "decimal.js": "^10.6.0",
     "dotenv": "^17.2.3",
