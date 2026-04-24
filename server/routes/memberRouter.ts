@@ -63,7 +63,6 @@ router.delete("/deleteMemFeeRate/:seq",
         try {
             const { seq } = req.params;
             const seqNum = Number(seq);
-            console.log("deleteMemFeeRate called with seq:", seqNum); // 디버깅 로그 추가
             const result = await memberController.deleteMemFeeRate(seqNum);
             res.status(200).json(result);
         } catch (err) { next(err); }
@@ -77,6 +76,28 @@ router.put("/insertMemLocal",
             const result = await memberController.insertMemLocal(req.body);
             res.status(201).json(result);
         } catch (err) { next(err) }
+    }
+);
+
+
+router.patch("/updateMemLocal",
+    async (req, res, next) => {
+        try {
+            const result = await memberController.updateMemFeeRate(req.body);
+            res.status(200).json(result);
+        } catch (err) { next(err); }
+    }
+);
+
+
+router.delete("/deleteMemLocal/:seq",
+    async (req, res, next) => {
+        try {
+            const { seq } = req.params;
+            const seqNum = Number(seq);
+            const result = await memberController.deleteMemFeeRate(seqNum);
+            res.status(200).json(result);
+        } catch (err) { next(err); }
     }
 );
 

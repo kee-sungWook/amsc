@@ -173,3 +173,5 @@ export interface LocalModel {
     localName: string;
     localCode: string;
 }
+
+export type Region = { code: string, name: string };

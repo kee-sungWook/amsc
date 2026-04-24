@@ -1,5 +1,4 @@
-import type { LocalModel, MemberModel } from "@interface/models";
-import { getSido, getSigungu } from "@utils/supporters";
+import type { LocalModel, MemberModel, Region } from "@interface/models";
 import React from "react";
 import { useFieldArray, useForm } from "react-hook-form";
 import { IoMdAddCircleOutline } from "react-icons/io";
@@ -22,18 +21,17 @@ interface FormValues {
     memLocals: LocalFormItem[];
 }
 
-type SidoGungu = { code: string, name: string };
+
 
 const MemLocal: React.FC<Props> = ({ memData, setMemData, insertMemLocal, updateMemLocal, deleteMemLocal }) => {
     const [inputMode, setInputMode] = React.useState<boolean>(false);
     const [editIndex, setEditIndex] = React.useState<number | null>(null);
     const [submitIndex, setSubmitIndex] = React.useState<number | null>(null);
 
-    const [sidoCode, setSidoCode] = React.useState<SidoGungu[]>([]);
-    const [sigunguMap, setSigunguMap] = React.useState<Record<number, SidoGungu[]>>({});
-    // const [sigunguCode, setSigunguCode] = React.useState<SidoGungu[]>([]);
+    const [sidoList, setSidoList] = React.useState<Region[]>([]);
+    const [sigunguMap, setSigunguMap] = React.useState<Record<number, Region[]>>({});
 
-    const { control, register, handleSubmit, getValues, setValue, reset } = useForm<FormValues>({
+    const { control, register, handleSubmit, getValues, setValue, watch, reset } = useForm<FormValues>({
         defaultValues: { memLocals: memData.local ?? [] }
     });
 
@@ -42,46 +40,38 @@ const MemLocal: React.FC<Props> = ({ memData, setMemData, insertMemLocal, update
         name: "memLocals"
     });
 
+    const values = watch('memLocals');
+
     // 시도 로딩
     React.useEffect(() => {
-        getSido().then(setSidoCode).catch(console.error);
+        fetch("/api/region/getSido")
+            .then(res => res.json())
+            .then(setSidoList)
     }, []);
 
-    // 초기값 기반 시군구 로딩
-    React.useEffect(() => {
-        const init = async () => {
-            const locals = memData.local ?? [];
-            const newMap: Record<number, SidoGungu[]> = {};
 
-            for (let i = 0; i < locals.length; i++) {
-                const code = locals[i].localCode;
-                if (!code) continue;
-
-                const sidoCd = code.substring(0, 2);
-                const result = await getSigungu(sidoCd);
-                newMap[i] = result;
-            }
-            setSigunguMap(newMap);
-        };
-
-        init();
-    }, [memData.local]);
-
-    const handleSidoChange = async (e: React.ChangeEvent<HTMLSelectElement>, index: number) => {
-        const value = e.target.value;
-
-        if (value === "0") {
-            setSigunguMap(prev => ({ ...prev, [index]: [] }));
-            return;
-        }
-
-        const cd = value.substring(0, 2);
-        const result = await getSigungu(cd);
-
+    // 시군구 로딩함수
+    const fetchSigungu = async (parentCode: string, index: number) => {
+        const res = await fetch(`/api/region/getSigungu/${parentCode}`);
+        const data = await res.json();
         setSigunguMap(prev => ({
-            ...prev,
-            [index]: result
+            ...prev, [index]: data
         }));
+    };
+
+    // 초기값 처리 (edit 모드 핵심)
+    React.useEffect(() => {
+        values.forEach((item, index) => {
+            if (!item?.localCode) return;
+            const sidoCode = item.localCode.substring(0, 2) + "00000000";
+            fetchSigungu(sidoCode, index);
+        });
+    }, []);
+
+    // 시도 변경
+    const handleSidoChange = async (code: string, index: number) => {
+        fetchSigungu(code, index);
+        setValue(`memLocals.${index}.localCode`, code); // 시군구 초기화
     };
 
     const handleAdd = () => {
@@ -123,40 +113,46 @@ const MemLocal: React.FC<Props> = ({ memData, setMemData, insertMemLocal, update
     const onSubmit = async (data: FormValues) => {
         if (submitIndex === null) return;
         const item = data.memLocals[submitIndex];
-        if (!item.seq) { // insert
-            const payload = {
-                memSeq: memData.seq,
-                localName: item.localName,
-                localCode: item.localCode,
-            }
-            const result = await insertMemLocal(payload);
-            setMemData(prev => prev
-                ? { ...prev, local: result ? [...result] : prev.local }
-                : prev
-            );
-        } else { // update
-            const payload = {
-                seq: item.seq,
-                memSeq: memData.seq,
-                localName: item.localName,
-                localCode: item.localCode,
-            }
-            const result = await updateMemLocal(payload);
-            setMemData(prev => prev
-                ? { ...prev, local: result ? [...result] : prev.local }
-                : prev
-            );
-        }
-        setEditIndex(null);
-        setSubmitIndex(null);
-        setInputMode(false);
+        console.log(`data :`, data);
+        console.log(`submitIndex :`, submitIndex);
+        console.log(`item :`, item);
+        // if (!item.seq) { // insert
+        //     const payload = {
+        //         memSeq: memData.seq,
+        //         localName: item.localName,
+        //         localCode: item.localCode,
+        //     }
+        //     const result = await insertMemLocal(payload);
+        //     setMemData(prev => prev
+        //         ? { ...prev, local: result ? [...result] : prev.local }
+        //         : prev
+        //     );
+        // } else { // update
+        //     const payload = {
+        //         seq: item.seq,
+        //         memSeq: memData.seq,
+        //         localName: item.localName,
+        //         localCode: item.localCode,
+        //     }
+        //     const result = await updateMemLocal(payload);
+        //     setMemData(prev => prev
+        //         ? { ...prev, local: result ? [...result] : prev.local }
+        //         : prev
+        //     );
+        // }
+        // setEditIndex(null);
+        // setSubmitIndex(null);
+        // setInputMode(false);
     };
 
     return (
         <form className="member-pannel" onSubmit={handleSubmit(onSubmit)}>
             {fields.length > 0 ? (
                 fields.map((list, index) => {
-                    const sidoDefault = list.localCode ? list.localCode.substring(0, 2) + "00000000" : "0";
+                    const currentCode = values?.[index]?.localCode;
+                    const sidoCode = currentCode
+                        ? currentCode.substring(0, 2) + "00000000"
+                        : "";
 
                     return (
                         <section className="row" key={list.id}>
@@ -165,13 +161,13 @@ const MemLocal: React.FC<Props> = ({ memData, setMemData, insertMemLocal, update
                                     <div className="local-sel">
                                         {/* 시도 */}
                                         <select
-                                            defaultValue={sidoDefault}
-                                            onChange={(e) => handleSidoChange(e, index)}
+                                            value={sidoCode}
+                                            onChange={(e) => handleSidoChange(e.target.value, index)}
                                         >
                                             <option value="0">시.도 선택</option>
-                                            {sidoCode.map(el => (
-                                                <option key={el.code} value={el.code}>
-                                                    {el.name}
+                                            {sidoList.map(sido => (
+                                                <option key={sido.code} value={sido.code}>
+                                                    {sido.name}
                                                 </option>
                                             ))}
                                         </select>
@@ -179,18 +175,23 @@ const MemLocal: React.FC<Props> = ({ memData, setMemData, insertMemLocal, update
                                         {/* 시군구 */}
                                         <select
                                             {...register(`memLocals.${index}.localCode`)}
-                                            defaultValue={list.localCode}
+                                            value={currentCode || ""}
                                             onChange={(e) => {
-                                                const selected = sigunguMap[index]?.find(v => v.code === e.target.value);
+                                                const selectedCode = e.target.value;
+                                                const selected = (sigunguMap[index] || []).find(
+                                                    (v) => v.code === selectedCode
+                                                );
+                                                setValue(`memLocals.${index}.localCode`, e.target.value);
                                                 if (selected) {
                                                     setValue(`memLocals.${index}.localName`, selected.name);
                                                 }
                                             }}
+                                            disabled={!sidoCode}
                                         >
                                             <option value="0">시.군.구 선택</option>
-                                            {(sigunguMap[index] ?? []).map(el => (
-                                                <option key={el.code} value={el.code}>
-                                                    {el.name}
+                                            {(sigunguMap[index] || []).map(sigungu => (
+                                                <option key={sigungu.code} value={sigungu.code}>
+                                                    {sigungu.name}
                                                 </option>
                                             ))}
                                         </select>
