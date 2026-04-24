@@ -197,8 +197,8 @@
                     }
 
                     .local {
-                        min-width: 250px;
-                        padding-left: 8px
+                        min-width: 210px;
+                        padding-left: 8px;
                     }
 
                     .local-sel {
@@ -213,12 +213,10 @@
                     }
 
                     .code {
-                        width: 120px;
+                        width: 90px;
                         font-weight: 400;
-
-                        &~.controll {
-                            width: 60px;
-                        }
+                        text-align: right;
+                        padding-right: 5px;
                     }
 
                     .controll {
