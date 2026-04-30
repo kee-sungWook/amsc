@@ -23,7 +23,7 @@ fs.createReadStream("input.csv")
     // 시군구
     else if (sigungu && !dong) {
       const parent = code.substring(0, 2) + "00000000";
-      results.push([code, sigungu, parent, 2]);
+      results.push([code, `${sido} ${sigungu}`, parent, 2]);
     }
   })
   .on("end", () => {
