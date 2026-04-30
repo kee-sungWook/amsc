@@ -61,7 +61,7 @@ const MemLocal: React.FC<Props> = ({ memData, setMemData, insertMemLocal, update
 
     // 초기값 처리 (edit 모드 핵심)
     React.useEffect(() => {
-        values.forEach((item, index) => {
+        getValues('memLocals').forEach((item, index) => {
             if (!item?.localCode) return;
             const sidoCode = item.localCode.substring(0, 2) + "00000000";
             fetchSigungu(sidoCode, index);
@@ -70,8 +70,11 @@ const MemLocal: React.FC<Props> = ({ memData, setMemData, insertMemLocal, update
 
     // 시도 변경
     const handleSidoChange = async (code: string, index: number) => {
+        console.log(`code : ${code}`);
+        console.log(`index : ${index}`);
         fetchSigungu(code, index);
         setValue(`memLocals.${index}.localCode`, code); // 시군구 초기화
+        setValue(`memLocals.${index}.localName`, sidoList[index].name); // 시군구 초기화
     };
 
     const handleAdd = () => {
