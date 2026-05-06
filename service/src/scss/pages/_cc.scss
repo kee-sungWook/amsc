@@ -53,8 +53,13 @@
         aspect-ratio: 16/10;
         box-sizing: content-box;
 
+        .iframeWrapper {
+            transform-origin: 0 0;
+        }
+
         iframe {
             width: 2560px;
+            height: 1600px; // new
             aspect-ratio: 16/10;
             transform: scale(0.46);
             transform-origin: 0 0;

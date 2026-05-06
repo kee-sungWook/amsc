@@ -5,6 +5,7 @@ import orderRouter from "@routes/orderRouter.js";
 import memberRouter from "@routes/memberRouter.js";
 import sseRouter from "@routes/sseRouter.js";
 import regionRouter from "@routes/regionRouter.js";
+import ccRouter from "@routes/ccRouter.js";
 
 const apiRouter = Router();
 
@@ -14,7 +15,7 @@ const routeModules: { path: string, router: Router }[] = [
     { path: "/member", router: memberRouter },
     { path: "/order", router: orderRouter },
     { path: "/sse", router: sseRouter },
-    { path: "/cc", router: regionRouter },
+    { path: "/cc", router: ccRouter },
     { path: "/region", router: regionRouter },
 ];
 

@@ -13,6 +13,7 @@ interface CCdata {
 };
 
 export const getCCdatas = async (reqBody: any) => {
+    console.log(`-----------------------getCCdatas-----------------------`);
     const { menuCode, code1 } = reqBody;
     const sql = `SELECT * FROM ams_cc WHERE menu_code=? AND code1=? ORDER BY code2 ASC`;
     const prepare = [menuCode, code1];
