@@ -42,6 +42,9 @@ const MemLocal: React.FC<Props> = ({ memData, setMemData, insertMemLocal, update
 
     const values = watch('memLocals');
 
+    console.log(`sidoList : `, sidoList);
+    console.log(`sigunguMap : `, sigunguMap);
+
     // 시도 로딩
     React.useEffect(() => {
         fetch("/api/region/getSido")
@@ -70,11 +73,11 @@ const MemLocal: React.FC<Props> = ({ memData, setMemData, insertMemLocal, update
 
     // 시도 변경
     const handleSidoChange = async (code: string, index: number) => {
-        console.log(`code : ${code}`);
-        console.log(`index : ${index}`);
+        const selected = sidoList.find(v => v.code === code);
+        console.log(`selected : ${JSON.stringify(selected)}`);
         fetchSigungu(code, index);
         setValue(`memLocals.${index}.localCode`, code); // 시군구 초기화
-        setValue(`memLocals.${index}.localName`, sidoList[index].name); // 시군구 초기화
+        setValue(`memLocals.${index}.localName`, selected?.name ?? ''); // 시군구 초기화
     };
 
     const handleAdd = () => {
@@ -155,7 +158,7 @@ const MemLocal: React.FC<Props> = ({ memData, setMemData, insertMemLocal, update
                     const currentCode = values?.[index]?.localCode;
                     const sidoCode = currentCode
                         ? currentCode.substring(0, 2) + "00000000"
-                        : "";
+                        : "0";
 
                     return (
                         <section className="row" key={list.id}>
@@ -177,24 +180,22 @@ const MemLocal: React.FC<Props> = ({ memData, setMemData, insertMemLocal, update
 
                                         {/* 시군구 */}
                                         <select
-                                            {...register(`memLocals.${index}.localCode`)}
-                                            value={currentCode || ""}
+                                            // {...register(`memLocals.${index}.localCode`)}
+                                            value={currentCode || "0"}
                                             onChange={(e) => {
                                                 const selectedCode = e.target.value;
                                                 const selected = (sigunguMap[index] || []).find(
                                                     (v) => v.code === selectedCode
                                                 );
                                                 setValue(`memLocals.${index}.localCode`, e.target.value);
-                                                if (selected) {
-                                                    setValue(`memLocals.${index}.localName`, selected.name);
-                                                }
+                                                setValue(`memLocals.${index}.localName`, selected?.name ?? '');
                                             }}
                                             disabled={!sidoCode}
                                         >
                                             <option value="0">시.군.구 선택</option>
                                             {(sigunguMap[index] || []).map(sigungu => (
                                                 <option key={sigungu.code} value={sigungu.code}>
-                                                    {sigungu.name}
+                                                    {sigungu.name.split(' ').slice(1).join(' ')}
                                                 </option>
                                             ))}
                                         </select>

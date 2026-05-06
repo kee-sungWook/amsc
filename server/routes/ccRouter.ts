@@ -5,6 +5,7 @@ const router = express.Router();
 
 router.post("/getCCdatas",
     async (req, res, next) => {
+        console.log(`---------------------route getCCdatas------------------`);
         try {
             const result = await ccController.getCCdatas(req.body);
             res.status(200).json(result);
