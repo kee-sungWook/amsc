@@ -43,6 +43,9 @@ const ServiceApply = () => {
     const deRefs = React.useRef<Record<string, HTMLInputElement | null>>({ carNum: null, time: null, startJuso: null, endJuso: null, payType: null });
     const phoneRefs = React.useRef<(HTMLInputElement | null)[]>([null, null, null, null, null, null]);
 
+    //라디오체크
+    const [selectedRadio, setSelectedRadio] = React.useState<string | null>(null);
+
     //정비전용 - 입고일자
     const [ibgoDay, setibgoDay] = React.useState<string>('');
     const ibgoRef = React.useRef<HTMLInputElement | null>(null);
@@ -97,6 +100,9 @@ const ServiceApply = () => {
         next = next.includes(targetVal)
             ? next.filter((v) => v !== targetVal)
             : [...next, targetVal];
+
+        // FX 선택해제시 radio null
+        if (!next.includes("FX")) setSelectedRadio(null);
 
         //all 체크시 전체선택
         if (targetVal === "all" && next.includes("all")) {
@@ -216,6 +222,8 @@ const ServiceApply = () => {
         return true;
     }
 
+
+
     async function handleSubmit() {
         if (!checkValidate()) return;
 
@@ -300,6 +308,10 @@ const ServiceApply = () => {
         }
     }
 
+    function handleRadioChange(val: string) {
+        setSelectedRadio(val)
+    }
+
 
     return (
         <>
@@ -382,58 +394,93 @@ const ServiceApply = () => {
                         {(applyList.includes("all") || applyList.includes("FX")) &&
                             <div className="default">
                                 <section className="title"><IoBuild className="icon blue" /><span>수리신청</span></section>
-                                <section className="content">
-                                    <p><FaStarOfLife className="icon" />입고일자 입력</p>
-                                    <input
-                                        type="text"
-                                        placeholder={`입고일자 입력`}
-                                        value={ibgoDay}
-                                        ref={ibgoRef}
-                                        onChange={(e) => setibgoDay(e.target.value)}
-                                    />
-                                    {Object.entries(fxrt).map(([key, val], idx) =>
-                                        <Fragment key={idx}>
-                                            <p><FaStarOfLife className="icon" />{key} 입력</p>
-                                            <input
-                                                type="text"
-                                                placeholder={`${key} 입력`}
-                                                name={key}
-                                                value={val}
-                                                ref={(el) => { fxRefs.current[idx] = el }}
-                                                onChange={(e) => {
-                                                    setFxrt((prev) => ({ ...prev, [key]: e.target.value }));
-                                                }} />
-                                        </Fragment>
-                                    )}
-                                    <p><FaStarOfLife className="icon" />지역 선택</p>
-                                    <div className="twice">
-                                        <select
-                                            value={fxRtSidogunguVal.sido}
-                                            ref={(el) => { fxRefs.current[4] = el }}
-                                            onChange={
-                                                (e) => {
-                                                    getSigungu(e);
-                                                    setFxRtSidogunguVal((prev) => ({ ...prev, sido: e.target.value }));
-                                                }
-                                            }
-                                        >
-                                            <option value={'0'}>시.도 선택</option>
-                                            {sidoCode.map((el) => <option key={el.code} value={el.code}>{el.name}</option>)}
-                                        </select>
-                                        <select
-                                            value={fxRtSidogunguVal.sigungu}
-                                            ref={(el) => { fxRefs.current[5] = el }}
-                                            onChange={
-                                                (e) => {
-                                                    setFxRtSidogunguVal((prev) => ({ ...prev, sigungu: e.target.value }));
-                                                }
-                                            }
-                                        >
-                                            <option value={'0'}>시.군.구 선택</option>
-                                            {sigunguCode.map((el) => <option key={el.code} value={el.code}>{el.name.split(" ")[1]} {el.name.split(" ")[2] && el.name.split(" ")[2]}</option>)}
-                                        </select>
+                                <section className="check-area">
+                                    <div>
+                                        <input
+                                            name="fixcheck"
+                                            type="radio"
+                                            value="insuranceFix"
+                                            id="insuranceFix"
+                                            onChange={(e) => handleRadioChange(e.target.value)}
+                                        />
+                                        <label htmlFor="insuranceFix">보험수리</label>
+                                    </div>
+                                    <div>
+                                        <input
+                                            name="fixcheck"
+                                            type="radio"
+                                            value="selfCover"
+                                            id="selfCover"
+                                            onChange={(e) => handleRadioChange(e.target.value)}
+                                        />
+                                        <label htmlFor="selfCover">자차처리</label>
+                                    </div>
+                                    <div>
+                                        <input
+                                            name="fixcheck"
+                                            type="radio"
+                                            value="commonFix"
+                                            id="commonFix"
+                                            onChange={(e) => handleRadioChange(e.target.value)}
+                                        />
+                                        <label htmlFor="commonFix">일반수리</label>
                                     </div>
                                 </section>
+
+                                {selectedRadio &&
+                                    <section className="content">
+                                        <p><FaStarOfLife className="icon" />입고일자 입력</p>
+                                        <input
+                                            type="text"
+                                            placeholder={`입고일자 입력`}
+                                            value={ibgoDay}
+                                            ref={ibgoRef}
+                                            onChange={(e) => setibgoDay(e.target.value)}
+                                        />
+                                        {Object.entries(fxrt).map(([key, val], idx) =>
+                                            <Fragment key={idx}>
+                                                <p><FaStarOfLife className="icon" />{key} 입력</p>
+                                                <input
+                                                    type="text"
+                                                    placeholder={`${key} 입력`}
+                                                    name={key}
+                                                    value={val}
+                                                    ref={(el) => { fxRefs.current[idx] = el }}
+                                                    onChange={(e) => {
+                                                        setFxrt((prev) => ({ ...prev, [key]: e.target.value }));
+                                                    }} />
+                                            </Fragment>
+                                        )}
+                                        <p><FaStarOfLife className="icon" />지역 선택</p>
+                                        <div className="twice">
+                                            <select
+                                                value={fxRtSidogunguVal.sido}
+                                                ref={(el) => { fxRefs.current[4] = el }}
+                                                onChange={
+                                                    (e) => {
+                                                        getSigungu(e);
+                                                        setFxRtSidogunguVal((prev) => ({ ...prev, sido: e.target.value }));
+                                                    }
+                                                }
+                                            >
+                                                <option value={'0'}>시.도 선택</option>
+                                                {sidoCode.map((el) => <option key={el.code} value={el.code}>{el.name}</option>)}
+                                            </select>
+                                            <select
+                                                value={fxRtSidogunguVal.sigungu}
+                                                ref={(el) => { fxRefs.current[5] = el }}
+                                                onChange={
+                                                    (e) => {
+                                                        setFxRtSidogunguVal((prev) => ({ ...prev, sigungu: e.target.value }));
+                                                    }
+                                                }
+                                            >
+                                                <option value={'0'}>시.군.구 선택</option>
+                                                {sigunguCode.map((el) => <option key={el.code} value={el.code}>{el.name.split(" ")[1]} {el.name.split(" ")[2] && el.name.split(" ")[2]}</option>)}
+                                            </select>
+                                        </div>
+                                    </section>
+                                }
                             </div>
                         }
 

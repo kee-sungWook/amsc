@@ -28,7 +28,9 @@ const MemFeeRate: React.FC<Props> = ({ memData, setMemData, insertMemFeeRate, up
 
     // ===== form =====
     const { control, register, handleSubmit, getValues, reset, } = useForm<FormValues>({
-        defaultValues: { feeRates: memData.feeRate ?? [], },
+        defaultValues: {
+            feeRates: memData.feeRate ?? [],
+        },
     });
 
     const { fields, append, remove } = useFieldArray({
@@ -42,6 +44,7 @@ const MemFeeRate: React.FC<Props> = ({ memData, setMemData, insertMemFeeRate, up
         setInputMode(true);
         setEditIndex(fields.length);
     };
+
     const handleCancel = (index: number) => {
         if (!fields[index].seq) { // 신규 데이터인 경우
             remove(fields.length - 1);
@@ -117,41 +120,42 @@ const MemFeeRate: React.FC<Props> = ({ memData, setMemData, insertMemFeeRate, up
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <article className="member-pannel">
-                {fields.length > 0 ? (
-                    fields.map((list, index) => {
-                        return (
-                            <section className="row" key={list.id}>
-                                <div className="name">
-                                    {editIndex === index
-                                        ? <input type="text" {...register(`feeRates.${index}.feeName`)} />
-                                        : list.feeName
-                                    }
-                                </div>
-                                <div className="rate">
-                                    {editIndex === index
-                                        ? <input type="number" {...register(`feeRates.${index}.feeRate`, { valueAsNumber: true })} />
-                                        : <span>{list.feeRate}</span>
-                                    }
-                                    %
-                                </div>
-                                <div className="controll">
-                                    {editIndex === index
-                                        ? <>
-                                            <button type="submit" onClick={() => setSubmitIndex(index)}>확인</button>
-                                            <button type="button" className="cancel" onClick={() => handleCancel(index)}>취소</button>
-                                        </>
-                                        : <>
-                                            <button type="button" disabled={inputMode} onClick={() => setEditIndex(index)}>수정</button>
-                                            <button type="button" disabled={inputMode} className="del" onClick={() => handleDelete(index)}>삭제</button>
-                                        </>
-                                    }
-                                </div>
-                            </section>
-                        );
-                    })
-                ) : (
-                    <div className="no-data">입력된 데이터가 없습니다.</div>
-                )}
+                {fields.length > 0
+                    ? (
+                        fields.map((list, index) => {
+                            return (
+                                <section className="row" key={list.id}>
+                                    <div className="name">
+                                        {editIndex === index
+                                            ? <input type="text" {...register(`feeRates.${index}.feeName`)} />
+                                            : list.feeName
+                                        }
+                                    </div>
+                                    <div className="rate">
+                                        {editIndex === index
+                                            ? <input type="number" {...register(`feeRates.${index}.feeRate`, { valueAsNumber: true })} />
+                                            : <span>{list.feeRate}</span>
+                                        }
+                                        %
+                                    </div>
+                                    <div className="controll">
+                                        {editIndex === index
+                                            ? <>
+                                                <button type="submit" onClick={() => setSubmitIndex(index)}>확인</button>
+                                                <button type="button" className="cancel" onClick={() => handleCancel(index)}>취소</button>
+                                            </>
+                                            : <>
+                                                <button type="button" disabled={inputMode} onClick={() => setEditIndex(index)}>수정</button>
+                                                <button type="button" disabled={inputMode} className="del" onClick={() => handleDelete(index)}>삭제</button>
+                                            </>
+                                        }
+                                    </div>
+                                </section>
+                            );
+                        })
+                    ) : (
+                        <div className="no-data">입력된 데이터가 없습니다.</div>
+                    )}
 
                 {!inputMode &&
                     <section className="add-row">

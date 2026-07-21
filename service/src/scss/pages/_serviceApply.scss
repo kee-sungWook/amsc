@@ -190,6 +190,33 @@
             }
         }
 
+        .check-area {
+            @include flex-cc;
+            gap: 50px;
+            width: 100%;
+            height: 60px;
+
+            >div {
+                @include flex-cc;
+                gap: 8px;
+
+                &:hover {
+                    cursor: pointer;
+                    color: $primary;
+                    font-weight: bold;
+                }
+
+                input[type='radio'] {
+                    transform: scale(1.5);
+                }
+
+                input[type="radio"]:checked+label {
+                    color: $primary;
+                    font-weight: bold;
+                }
+            }
+        }
+
         .content {
             @include flex-c-ss;
             width: 100%;

@@ -83,7 +83,7 @@ router.put("/insertMemLocal",
 router.patch("/updateMemLocal",
     async (req, res, next) => {
         try {
-            const result = await memberController.updateMemFeeRate(req.body);
+            const result = await memberController.updateMemLocal(req.body);
             res.status(200).json(result);
         } catch (err) { next(err); }
     }
@@ -95,7 +95,7 @@ router.delete("/deleteMemLocal/:seq",
         try {
             const { seq } = req.params;
             const seqNum = Number(seq);
-            const result = await memberController.deleteMemFeeRate(seqNum);
+            const result = await memberController.deleteMemLocal(seqNum);
             res.status(200).json(result);
         } catch (err) { next(err); }
     }

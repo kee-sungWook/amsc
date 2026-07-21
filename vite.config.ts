@@ -8,23 +8,7 @@ export default defineConfig({
     envDir: path.resolve(__dirname),
     publicDir: path.resolve(__dirname, "service/public"),
     plugins: [
-        react(),
-        // VitePWA({
-        //     registerType: "autoUpdate",
-        //     injectRegister: "auto",
-        //     manifest: {
-        //         name: "AMS",
-        //         short_name: "AMS",
-        //         start_url: "/",
-        //         display: "standalone",
-        //         theme_color: "#0d6efd",
-        //         background_color: "#ffffff",
-        //         icons: [
-        //             { src: "/icons/ic_192.png", sizes: "192x192", type: "image/png" },
-        //             { src: "/icons/ic_512.png", sizes: "512x512", type: "image/png" }
-        //         ]
-        //     }
-        // })
+        react()
     ],
     build: {
         outDir: path.resolve(__dirname, "dist/service"),
@@ -43,7 +27,7 @@ export default defineConfig({
     },
     server: {
         proxy: {
-            "/api": { target: "https://catrige.com", changeOrigin: true, secure: false }
+            "/api": { target: "https://dev.catrige.net", changeOrigin: true, secure: false }
         }
     }
 });
