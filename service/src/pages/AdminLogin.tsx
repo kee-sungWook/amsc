@@ -21,7 +21,7 @@ const AdminLogin: React.FC = () => {
         if (e.key === "Enter") {
             handleLogin();
         }
-    }
+    };
 
     async function handleLogin() {
         if (idpw.id.trim() === '') {

@@ -53,7 +53,7 @@ export const useAdminMember = () => {
     const updateMemFeeRate = async (data: { seq: number; memSeq: number; feeName: string; feeRate: number }) => {
         try {
             setIsLoading(true);
-            const { data: result } = await axios.put<FeeRateModel[]>("/api/member/updateMemFeeRate", data);
+            const { data: result } = await axios.patch<FeeRateModel[]>("/api/member/updateMemFeeRate", data);
             if (!data) throw new Error("수수료율 수정에 실패했습니다.");
             return result;
         } catch (err) {
@@ -80,7 +80,7 @@ export const useAdminMember = () => {
     };
 
 
-    const insertMemLocal = async (data: { memSeq: number; localName: string; localCode: string }) => {
+    const insertMemLocal = async (data: Partial<LocalModel>) => {
         try {
             setIsLoading(true);
             const { data: result } = await axios.put<LocalModel[]>("/api/member/insertMemLocal", data);
@@ -94,10 +94,10 @@ export const useAdminMember = () => {
     };
 
 
-    const updateMemLocal = async (data: { seq: number; memSeq: number; localName: string; localCode: string }) => {
+    const updateMemLocal = async (data: Partial<LocalModel>) => {
         try {
             setIsLoading(true);
-            const { data: result } = await axios.put<LocalModel[]>("/api/member/updateMemLocal", data);
+            const { data: result } = await axios.patch<LocalModel[]>("/api/member/updateMemLocal", data);
             return result;
         } catch (err) {
             processError(err);

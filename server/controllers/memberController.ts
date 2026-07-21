@@ -117,6 +117,8 @@ export async function insertMemFeeRate(reqBody: any): Promise<FeeRateModel[]> {
 
 export async function updateMemFeeRate(reqBody: any): Promise<FeeRateModel[]> {
     const { seq, memSeq, feeName, feeRate } = reqBody;
+    console.log(`updateMemFeeRate`);
+    console.log(seq, memSeq, feeName, feeRate);
     try {
         await modifyQuery(
             `UPDATE ams_feerate SET feeName = ?, feeRate = ? WHERE seq = ?`,
@@ -156,14 +158,14 @@ export async function insertMemLocal(reqBody: any): Promise<LocalModel[]> {
 }
 
 
-export async function updateMemlocal(reqBody: any): Promise<FeeRateModel[]> {
+export async function updateMemLocal(reqBody: any): Promise<LocalModel[]> {
     const { seq, memSeq, localName, localCode } = reqBody;
     try {
         await modifyQuery(
             `UPDATE ams_local SET localName = ?, localCode = ? WHERE seq = ?`,
             [localName, localCode, Number(seq)],
         );
-        const updateData = await selectQuery<(FeeRateModel & RowDataPacket)[]>(
+        const updateData = await selectQuery<(LocalModel & RowDataPacket)[]>(
             `SELECT * FROM ams_local WHERE memSeq = ?`,
             [Number(memSeq)]
         );
@@ -174,7 +176,8 @@ export async function updateMemlocal(reqBody: any): Promise<FeeRateModel[]> {
 }
 
 
-export async function deleteMemlocal(seq: number): Promise<boolean> {
+export async function deleteMemLocal(seq: number): Promise<boolean> {
+    console.log(`deleteMemlocal seq : ${seq}`);
     const result = await modifyQuery(
         `DELETE FROM ams_local WHERE seq = ?`,
         [seq]
