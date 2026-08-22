@@ -79,6 +79,7 @@ const ServiceApply = () => {
     function handleBtnFindAddr() {
         setPopup(!popup);
     }
+
     function handleAddr(addr: AddrData) {
         const address = addr.sub !== '' ? `${addr.addr} (${addr.sub})` : `${addr.addr}`;
         const desidoCode = addr.bCode ? addr.bCode.substring(0, 2) : '';
@@ -123,8 +124,6 @@ const ServiceApply = () => {
         setApplyList(next);
     }
 
-
-
     function makeLocName(define: string): string {
         if (define === 'start') {
             const names = de['출발지주소'].split(" ");
@@ -156,18 +155,26 @@ const ServiceApply = () => {
                 ibgoRef.current && ibgoRef.current.focus();
                 return false;
             }
+
             for (const el of fxRefs.current) {
+                //일반정비일때 보험접수번호와 과실비율은 패스
+                const none = (selectedRadio === "commonFix" && (el instanceof HTMLInputElement && (el.placeholder === "보험접수번호" || el.placeholder === "과실비율")));
+
                 if (!el) {
-                    console.error(`!el`);
+                    console.error(`!el : ${el}`);
                     return false
                 }
-                if (el instanceof HTMLInputElement && el.value.trim() === '') {
-                    alert(`수리신청 : ${el.placeholder} 항목을 입력해 주세요`);
+
+                if (el instanceof HTMLSelectElement && el.value === '0') {
+                    alert(`수리신청 : 지역선택 항목을 입력해 주세요`);
                     el.focus();
                     return false;
                 }
-                if (el instanceof HTMLSelectElement && el.value === '0') {
-                    alert(`수리신청 : 지역선택 항목을 입력해 주세요`);
+
+                if (!none) continue;
+
+                if (el instanceof HTMLInputElement && el.value.trim() === '') {
+                    alert(`수리신청 : ${el.placeholder} 항목을 입력해 주세요`);
                     el.focus();
                     return false;
                 }
@@ -231,18 +238,35 @@ const ServiceApply = () => {
             alert('신청 항목을 선택해 주세요');
             return;
         }
+
         try {
             setLoading(true);
             const sendData = applyList.map((list) => {
                 if (list === "FX") {
-                    const detail = { 입고일자: ibgoDay, ...fxrt };
+                    let title = "";
+                    let data;
+
+                    if (selectedRadio === "commonFix") {
+                        const exclude = ['보험접수번호', '과실비율'];
+                        const result = Object.fromEntries(
+                            Object.entries(fxrt).filter(([key]) => !exclude.includes(key))
+                        );
+                        title = "일반정비(직접결제)";
+                        data = result;
+                    } else {
+                        title = "사고수리";
+                        data = fxrt;
+                    }
+
+                    const detail = { 입고일자: ibgoDay, ...data };
+
                     return {
                         requester: user?.seq,
                         userName: dummyUserData.name,
                         userPhone: dummyUserData.phone,
                         industry: 'FX',
                         service: 'FXA',
-                        title: `사고수리: ${fxrt['차종']} (${dummyUserData.name})`,
+                        title: `${title}: ${fxrt['차종']} (${dummyUserData.name})`,
                         num: `FXA-${makeOrderNum()}`,
                         detail: JSON.stringify(detail),
                         sido: fxRtSidogunguVal.sido.substring(0, 2),
@@ -283,6 +307,7 @@ const ServiceApply = () => {
                     };
                 }
             }).filter(Boolean);
+
             const res = await fetch("/api/order/insertOrder", {
                 method: 'post',
                 headers: { 'Content-Type': 'application/json' },
@@ -409,21 +434,11 @@ const ServiceApply = () => {
                                         <input
                                             name="fixcheck"
                                             type="radio"
-                                            value="selfCover"
-                                            id="selfCover"
-                                            onChange={(e) => handleRadioChange(e.target.value)}
-                                        />
-                                        <label htmlFor="selfCover">자차처리</label>
-                                    </div>
-                                    <div>
-                                        <input
-                                            name="fixcheck"
-                                            type="radio"
                                             value="commonFix"
                                             id="commonFix"
                                             onChange={(e) => handleRadioChange(e.target.value)}
                                         />
-                                        <label htmlFor="commonFix">일반수리</label>
+                                        <label htmlFor="commonFix">일반수리(직접결제)</label>
                                     </div>
                                 </section>
 
@@ -437,10 +452,12 @@ const ServiceApply = () => {
                                             ref={ibgoRef}
                                             onChange={(e) => setibgoDay(e.target.value)}
                                         />
-                                        {Object.entries(fxrt).map(([key, val], idx) =>
-                                            <Fragment key={idx}>
-                                                <p><FaStarOfLife className="icon" />{key} 입력</p>
+                                        {Object.entries(fxrt).map(([key, val], idx) => {
+                                            const none = (selectedRadio === "commonFix" && (key === "보험접수번호" || key === "과실비율"));
+                                            return <Fragment key={idx}>
+                                                <p style={none ? { display: 'none' } : {}}><FaStarOfLife className="icon" />{key} 입력</p>
                                                 <input
+                                                    style={none ? { display: 'none' } : {}}
                                                     type="text"
                                                     placeholder={`${key} 입력`}
                                                     name={key}
@@ -450,7 +467,7 @@ const ServiceApply = () => {
                                                         setFxrt((prev) => ({ ...prev, [key]: e.target.value }));
                                                     }} />
                                             </Fragment>
-                                        )}
+                                        })}
                                         <p><FaStarOfLife className="icon" />지역 선택</p>
                                         <div className="twice">
                                             <select
