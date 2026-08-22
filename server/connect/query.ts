@@ -1,13 +1,13 @@
-import "dotenv/config"; // .env 읽어오기
+import { envConfig } from "@config/dotenv.config.js";
 import { createPool, Pool, PoolConnection } from "mysql2/promise";
 import { ResultSetHeader, RowDataPacket } from "mysql2/promise";
 
 export const pool: Pool = createPool({
-    host: process.env.DB_HOST,
-    port: Number(process.env.DB_PORT),
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME,
+    host: envConfig.DB.HOST,
+    port: envConfig.DB.PORT,
+    user: envConfig.DB.USER,
+    password: envConfig.DB.PASSWORD,
+    database: envConfig.DB.NAME,
     waitForConnections: true,
     connectionLimit: 10,
     idleTimeout: 60000,

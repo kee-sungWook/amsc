@@ -4,6 +4,12 @@ const router = Router()
 
 router.post("/memberLogin", memberController.adminLogin);
 
+router.get("/signIn", async (req, res) => {
+    console.log("test connect ok");
+});
+
+router.post("/memberJoin", async (req, res) => { })
+
 
 router.get("/getMembers",
     async (req, res, next) => {

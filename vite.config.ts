@@ -26,8 +26,9 @@ export default defineConfig({
         },
     },
     server: {
+        host: true,
         proxy: {
-            "/api": { target: "https://dev.catrige.net", changeOrigin: true, secure: false }
+            "/api": { target: "http://localhost:45780", changeOrigin: true, secure: false }
         }
     }
 });

@@ -4,7 +4,7 @@ import { FaAngleLeft } from "react-icons/fa6";
 import { useLocation, useNavigate } from "react-router-dom";
 import React, { useEffect } from "react";
 import MemLocal from "@components/MemLocal";
-import { useAdminMember } from "../hooks/useAdminMember";
+import { useAdminMember } from "../../hooks/useAdminMember";
 import LoadingIndicator from "@components/LoadingIndicator";
 import MemFeeRate from "@components/MemFeeRate";
 
