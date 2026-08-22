@@ -3,7 +3,6 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-
 const env = process.env.NODE_ENV || 'development';
 const envPath = path.resolve(__dirname, `../.env.${env}`);
 const projectRoot = path.resolve(__dirname, `../../`);
