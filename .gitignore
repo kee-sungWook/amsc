@@ -10,7 +10,7 @@ lerna-debug.log*
 node_modules
 dist
 dist-ssr
-*.local
+skills-lock.json
 
 # Editor directories and files
 .vscode/*
@@ -23,9 +23,14 @@ dist-ssr
 *.sln
 *.sw?
 
+# Environment variables & Local settings
+.env*
+!.env.example
+*.local
+
 #My Collection
-.env
 public
 uploads
-config
+fcm_serviceAccountKey.json
 static
+/generated/prisma

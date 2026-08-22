@@ -1,6 +1,6 @@
 import LoadingIndicator from "@components/LoadingIndicator";
 import { decodeIndustry, formatDate } from "@utils/supporters";
-import { useAdminMember } from "../hooks/useAdminMember";
+import { useAdminMember } from "../../hooks/useAdminMember";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 

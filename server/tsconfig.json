@@ -6,6 +6,7 @@
     "rootDir": "./",
     "outDir": "../dist/server",
     "paths": {
+      "@config/*": ["./config/*"],
       "@controllers/*": ["./controllers/*"],
       "@routes/*": ["./routes/*"],
       "@connect/*": ["./connect/*"],

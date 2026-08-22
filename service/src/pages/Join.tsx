@@ -29,7 +29,7 @@ const Join = () => {
     useEffect(() => {
         if (loggedIn) navigate("/main");
         refs.current.id!.focus();
-    }, [loggedIn]);
+    }, [loggedIn, navigate]);
 
     function handleChange(e: EventTarget & HTMLInputElement) {
         const newData = { ...userData, [e.name]: e.value };
@@ -96,8 +96,8 @@ const Join = () => {
             setLoggedIn(true);
             setUser(result.message);
             navigate("/main");
-        } catch (error) {
-            console.error(`[Join handleJoin Err] - ${error}`);
+        } catch (error: any) {
+            console.error(`[Join handleJoin Err] - ${error.message}`);
             if (error === 'id') alert('이미 사용중인 아이디 입니다');
         }
     }

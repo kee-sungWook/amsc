@@ -1,0 +1,225 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+model ams_cc {
+  seq       Int    @id @default(autoincrement())
+  menu_code String @db.VarChar(10)
+  code1     String @db.VarChar(10)
+  code2     String @db.VarChar(10)
+  code3     String @db.VarChar(10)
+  code4     String @db.VarChar(10)
+  code5     String @db.VarChar(10)
+  title     String @db.VarChar(50)
+
+  @@index([menu_code], map: "menu_code")
+  @@index([menu_code], map: "menu_code_2")
+  @@index([seq], map: "seq")
+  @@index([seq], map: "seq_2")
+}
+
+model ams_commission {
+  seq             BigInt   @id @default(autoincrement()) @db.UnsignedBigInt
+  orderSeq        Int      @db.UnsignedInt
+  fromUserSeq     Int      @db.UnsignedInt
+  toUserSeq       Int      @db.UnsignedInt
+  level           Int      @db.UnsignedInt
+  baseAmount      Int
+  rate            Decimal  @db.Decimal(5, 2)
+  calculateAmount Int
+  finalAmount     Int
+  wday            DateTime @default(now()) @db.Timestamp(0)
+
+  @@index([fromUserSeq], map: "idx_fromUser")
+  @@index([level], map: "idx_level")
+  @@index([orderSeq], map: "idx_order")
+  @@index([toUserSeq], map: "idx_toUser")
+}
+
+model ams_feerate {
+  seq        Int        @id @default(autoincrement()) @db.UnsignedInt
+  memSeq     Int        @db.UnsignedInt
+  feeName    String     @db.VarChar(45)
+  feeRate    Decimal    @db.Decimal(5, 2)
+  ams_member ams_member @relation(fields: [memSeq], references: [seq], onDelete: Cascade, map: "fk_feerate_mem_seq")
+
+  @@index([memSeq], map: "fk_feerate_mem_seq_idx")
+}
+
+model ams_local {
+  seq        Int        @id @default(autoincrement()) @db.UnsignedInt
+  memSeq     Int        @db.UnsignedInt
+  localName  String?    @db.VarChar(45)
+  localCode  String?    @db.VarChar(45)
+  ams_member ams_member @relation(fields: [memSeq], references: [seq], onDelete: Cascade, map: "fk_locales_mem_seq")
+
+  @@index([memSeq], map: "fk_locales_mem_seq_idx")
+}
+
+model ams_member {
+  seq         Int           @id @default(autoincrement()) @db.UnsignedInt
+  type        String        @default("b") @db.Char(1)
+  industry    String?       @db.VarChar(10)
+  service     String?       @db.VarChar(10)
+  id          String        @db.VarChar(50)
+  pw          String        @db.VarChar(50)
+  name        String?       @db.VarChar(50)
+  email       String?       @db.VarChar(50)
+  phone       String        @db.VarChar(15)
+  company     String?       @db.VarChar(50)
+  businessNum String?       @db.VarChar(20)
+  fcmToken    String?       @db.VarChar(255)
+  addr1       String?       @db.VarChar(255)
+  addr2       String?       @db.VarChar(255)
+  sido        String?       @db.VarChar(255)
+  sigungu     String?       @db.VarChar(255)
+  addrX       String?       @db.VarChar(50)
+  addrY       String?       @db.VarChar(50)
+  jday        DateTime?     @default(now()) @db.Timestamp(0)
+  ams_feerate ams_feerate[]
+  ams_local   ams_local[]
+}
+
+model ams_op {
+  seq       Int    @id @default(autoincrement())
+  con_id    String @db.VarChar(15)
+  con_title String @db.VarChar(30)
+  con_text  String @db.Text
+
+  @@fulltext([con_text], map: "con_text")
+}
+
+model ams_order {
+  seq        Int       @id @default(autoincrement()) @db.UnsignedInt
+  requester  Int       @db.UnsignedInt
+  userName   String    @db.VarChar(50)
+  userPhone  String    @db.VarChar(15)
+  industry   String    @db.VarChar(10)
+  service    String?   @db.VarChar(10)
+  title      String    @db.VarChar(255)
+  num        String    @db.VarChar(100)
+  confirm    Int       @default(0) @db.UnsignedTinyInt
+  situation  String    @default("wait") @db.VarChar(10)
+  worker     Int?
+  detail     String    @db.LongText
+  price      Int       @default(0) @db.UnsignedInt
+  sido       String    @db.VarChar(10)
+  sigungu    String    @db.VarChar(10)
+  img        String?   @db.VarChar(255)
+  wday       DateTime  @default(now()) @db.Timestamp(0)
+  fday       DateTime? @db.DateTime(0)
+  point      Int?
+  payOk      Boolean   @default(false)
+  taxInvoice DateTime? @db.DateTime(0)
+  deposit    DateTime? @db.DateTime(0)
+  ams_user   ams_user  @relation(fields: [requester], references: [seq], onDelete: Cascade, map: "fk_requester")
+
+  @@index([requester], map: "fk_requester_idx")
+  @@index([deposit], map: "idx_deposit")
+  @@index([fday], map: "idx_fday")
+  @@index([situation], map: "idx_situation")
+  @@index([taxInvoice], map: "idx_taxInvoice")
+  @@index([wday], map: "idx_wday")
+}
+
+model ams_point_log {
+  seq      BigInt    @id @default(autoincrement()) @db.UnsignedBigInt
+  userSeq  Int       @db.UnsignedInt
+  utilize  String    @db.VarChar(45)
+  subject  String?   @db.VarChar(255)
+  amount   Int
+  balance  Int       @db.UnsignedInt
+  wday     DateTime? @default(now()) @db.Timestamp(0)
+  eday     DateTime? @db.DateTime(0)
+  ams_user ams_user  @relation(fields: [userSeq], references: [seq], onDelete: Cascade, map: "fk_user_seq")
+
+  @@index([userSeq], map: "fk_user_seq_idx")
+  @@index([eday], map: "idx_eday")
+  @@index([userSeq, wday], map: "idx_user_wday")
+}
+
+model ams_qna {
+  seq      Int       @id @default(autoincrement()) @db.UnsignedInt
+  title    String    @db.VarChar(100)
+  question String    @db.Text
+  answer   String?   @db.Text
+  pic      String?   @db.VarChar(100)
+  writer   Int       @db.UnsignedInt
+  wday     DateTime  @default(now()) @db.Timestamp(0)
+  aday     DateTime? @db.DateTime(0)
+  ams_user ams_user  @relation(fields: [writer], references: [seq], onDelete: Cascade, map: "qna_writer_fk")
+
+  @@index([writer], map: "write_mem_seq_idx")
+}
+
+model ams_regions {
+  code       String  @id @db.VarChar(10)
+  name       String  @db.VarChar(100)
+  parentCode String? @db.VarChar(10)
+  level      Int
+
+  @@index([parentCode], map: "idx_parent")
+}
+
+model ams_user {
+  seq                                                       Int                @id @default(autoincrement()) @db.UnsignedInt
+  type                                                      String             @default("b") @db.Char(1)
+  industry                                                  String?            @db.VarChar(10)
+  service                                                   String?            @db.VarChar(10)
+  id                                                        String             @db.VarChar(50)
+  pw                                                        String             @db.VarChar(50)
+  name                                                      String?            @db.VarChar(50)
+  email                                                     String?            @db.VarChar(50)
+  phone                                                     String             @db.VarChar(15)
+  company                                                   String?            @db.VarChar(50)
+  businessNum                                               String?            @db.VarChar(20)
+  fcmToken                                                  String?            @db.VarChar(255)
+  addr1                                                     String?            @db.VarChar(255)
+  addr2                                                     String?            @db.VarChar(255)
+  sido                                                      String?            @db.VarChar(10)
+  sigungu                                                   String?            @db.VarChar(10)
+  addrY                                                     String?            @db.VarChar(50)
+  addrX                                                     String?            @db.VarChar(50)
+  point                                                     Int                @default(0)
+  jday                                                      DateTime           @default(now()) @db.Timestamp(0)
+  ams_order                                                 ams_order[]
+  ams_point_log                                             ams_point_log[]
+  ams_qna                                                   ams_qna[]
+  ams_user_closure_ams_user_closure_ancestorSeqToams_user   ams_user_closure[] @relation("ams_user_closure_ancestorSeqToams_user")
+  ams_user_closure_ams_user_closure_descendantSeqToams_user ams_user_closure[] @relation("ams_user_closure_descendantSeqToams_user")
+  bank_account                                              bank_account[]
+}
+
+model ams_user_closure {
+  ancestorSeq                                       Int      @db.UnsignedInt
+  descendantSeq                                     Int      @db.UnsignedInt
+  depth                                             Int
+  ams_user_ams_user_closure_ancestorSeqToams_user   ams_user @relation("ams_user_closure_ancestorSeqToams_user", fields: [ancestorSeq], references: [seq], onDelete: Cascade, onUpdate: NoAction, map: "fk_ancestor")
+  ams_user_ams_user_closure_descendantSeqToams_user ams_user @relation("ams_user_closure_descendantSeqToams_user", fields: [descendantSeq], references: [seq], onDelete: Cascade, onUpdate: NoAction, map: "fk_descendant")
+
+  @@id([ancestorSeq, descendantSeq])
+  @@index([descendantSeq], map: "fk_descendant_idx")
+  @@index([ancestorSeq, depth], map: "idx_depth")
+}
+
+model bank_account {
+  seq        Int      @id @default(autoincrement()) @db.UnsignedInt
+  userSeq    Int      @db.UnsignedInt
+  bankName   String   @db.VarChar(50)
+  accountNum String   @db.VarChar(50)
+  owner      String   @db.VarChar(20)
+  wday       DateTime @default(now()) @db.Timestamp(0)
+  ams_user   ams_user @relation(fields: [userSeq], references: [seq], onDelete: Cascade, map: "band_user_seq_fk")
+
+  @@index([userSeq], map: "band_user_seq_fk_idx")
+}

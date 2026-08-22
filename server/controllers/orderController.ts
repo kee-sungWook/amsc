@@ -208,6 +208,7 @@ export async function getOrderForB(req: Request, res: Response) {
 }
 
 export async function updateOrder(req: Request, res: Response) {
+    // eslint-disable-next-line prefer-const
     let { seq, updateData } = req.body;
     if (typeof updateData === 'string') updateData = JSON.parse(updateData);
     if (!updateData || typeof updateData !== 'object') {
