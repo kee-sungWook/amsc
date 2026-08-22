@@ -99,19 +99,15 @@ export async function getMemFeeRates(memSeq: number): Promise<FeeRateModel[]> {
 
 export async function insertMemFeeRate(reqBody: any): Promise<FeeRateModel[]> {
     const { memSeq, feeName, feeRate } = reqBody;
-    try {
-        await modifyQuery(
-            `INSERT INTO ams_feerate (memSeq, feeName, feeRate) VALUES (?, ?, ?)`,
-            [Number(memSeq), feeName, Number(feeRate)]
-        );
-        const newData = await selectQuery<(FeeRateModel & RowDataPacket)[]>(
-            `SELECT * FROM ams_feerate WHERE memSeq = ?`,
-            [Number(memSeq)]
-        );
-        return newData;
-    } catch (err) {
-        throw err;
-    }
+    await modifyQuery(
+        `INSERT INTO ams_feerate (memSeq, feeName, feeRate) VALUES (?, ?, ?)`,
+        [Number(memSeq), feeName, Number(feeRate)]
+    );
+    const newData = await selectQuery<(FeeRateModel & RowDataPacket)[]>(
+        `SELECT * FROM ams_feerate WHERE memSeq = ?`,
+        [Number(memSeq)]
+    );
+    return newData;
 }
 
 
@@ -119,19 +115,15 @@ export async function updateMemFeeRate(reqBody: any): Promise<FeeRateModel[]> {
     const { seq, memSeq, feeName, feeRate } = reqBody;
     console.log(`updateMemFeeRate`);
     console.log(seq, memSeq, feeName, feeRate);
-    try {
-        await modifyQuery(
-            `UPDATE ams_feerate SET feeName = ?, feeRate = ? WHERE seq = ?`,
-            [feeName, feeRate, Number(seq)],
-        );
-        const updateData = await selectQuery<(FeeRateModel & RowDataPacket)[]>(
-            `SELECT * FROM ams_feerate WHERE memSeq = ?`,
-            [Number(memSeq)]
-        );
-        return updateData;
-    } catch (err) {
-        throw err;
-    }
+    await modifyQuery(
+        `UPDATE ams_feerate SET feeName = ?, feeRate = ? WHERE seq = ?`,
+        [feeName, feeRate, Number(seq)],
+    );
+    const updateData = await selectQuery<(FeeRateModel & RowDataPacket)[]>(
+        `SELECT * FROM ams_feerate WHERE memSeq = ?`,
+        [Number(memSeq)]
+    );
+    return updateData;
 }
 
 
@@ -160,19 +152,15 @@ export async function insertMemLocal(reqBody: any): Promise<LocalModel[]> {
 
 export async function updateMemLocal(reqBody: any): Promise<LocalModel[]> {
     const { seq, memSeq, localName, localCode } = reqBody;
-    try {
-        await modifyQuery(
-            `UPDATE ams_local SET localName = ?, localCode = ? WHERE seq = ?`,
-            [localName, localCode, Number(seq)],
-        );
-        const updateData = await selectQuery<(LocalModel & RowDataPacket)[]>(
-            `SELECT * FROM ams_local WHERE memSeq = ?`,
-            [Number(memSeq)]
-        );
-        return updateData;
-    } catch (err) {
-        throw err;
-    }
+    await modifyQuery(
+        `UPDATE ams_local SET localName = ?, localCode = ? WHERE seq = ?`,
+        [localName, localCode, Number(seq)],
+    );
+    const updateData = await selectQuery<(LocalModel & RowDataPacket)[]>(
+        `SELECT * FROM ams_local WHERE memSeq = ?`,
+        [Number(memSeq)]
+    );
+    return updateData;
 }
 
 

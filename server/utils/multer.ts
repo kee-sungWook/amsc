@@ -1,9 +1,10 @@
 import multer from "multer";
 import path from "path";
 import fs from 'fs';
+import { envConfig } from "@config/dotenv.config.js";
 
 function createUploadPath() {
-    const uploadPath = path.join(process.cwd(), "uploads");
+    const uploadPath = path.join(envConfig.ROOT, "uploads");
     if (!fs.existsSync(uploadPath)) fs.mkdirSync(uploadPath, { recursive: true });
     return uploadPath;
 }

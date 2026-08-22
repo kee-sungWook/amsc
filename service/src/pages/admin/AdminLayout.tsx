@@ -61,6 +61,10 @@ const Menus: React.FC = () => {
                         <TiLocationArrowOutline className={`icon`} /> 주문내역
                     </li>
 
+                    <li className={`${isActive("ordersCancel")}`} onClick={() => navigate("ordersCancel")}>
+                        <TiLocationArrowOutline className={`icon`} /> 주문취소내역
+                    </li>
+
                     <li className={`${isActive("qna")}`} onClick={() => navigate("qna")}>
                         <TiLocationArrowOutline className={`icon`} /> QnA {qnaNum > 0 && <div className="badge">{qnaNum}</div>}
                     </li>
