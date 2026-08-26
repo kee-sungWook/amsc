@@ -2,13 +2,10 @@ import { Router } from 'express';
 import * as memberController from '@controllers/memberController.js';
 const router = Router()
 
+router.get("/checkValid/:memId", memberController.checkValid);
 router.post("/memberLogin", memberController.adminLogin);
-
-router.get("/signIn", async (req, res) => {
-    console.log("test connect ok");
-});
-
-router.post("/memberJoin", async (req, res) => { })
+router.post("/signIn", memberController.signIn);
+router.post("/join", memberController.join)
 
 
 router.get("/getMembers",
