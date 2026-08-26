@@ -6,6 +6,9 @@ router.get("/checkValid/:memId", memberController.checkValid);
 router.post("/memberLogin", memberController.adminLogin);
 router.post("/signIn", memberController.signIn);
 router.post("/join", memberController.join)
+router.get("/test", () => {
+    console.log('test');
+});
 
 
 router.get("/getMembers",
