@@ -9,6 +9,9 @@ router.post("/join", memberController.join)
 router.get("/test", () => {
     console.log('test');
 });
+router.get("/test2", () => {
+    console.log('test2');
+});
 
 
 router.get("/getMembers",
