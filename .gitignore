@@ -29,8 +29,8 @@ skills-lock.json
 *.local
 
 #My Collection
-public
-uploads
+public/
+uploads/
 fcm_serviceAccountKey.json
-static
+static/
 /generated/prisma
