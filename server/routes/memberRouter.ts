@@ -12,7 +12,9 @@ router.get("/test", () => {
 router.get("/test2", () => {
     console.log('test2');
 });
-
+router.get("/test3", () => {
+    console.log('test3');
+});
 
 router.get("/getMembers",
     async (req, res, next) => {
