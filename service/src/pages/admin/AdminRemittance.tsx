@@ -11,9 +11,7 @@ const AdminRemittance: React.FC = () => {
     const [remittanceList, setRemittanceList] = React.useState<Withdrawal[]>([]);
 
     //페이징을 위한 상태 추가
-    const [page, setPage] = React.useState(1);
-    const [total, setTotal] = React.useState(0);
-    const totalPage = Math.ceil(total / LIMIT);
+    const [page] = React.useState(1);
 
     React.useEffect(() => {
         getWithdrawalList();

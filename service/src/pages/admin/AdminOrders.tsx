@@ -7,12 +7,11 @@ import type { OrderWithPoint } from "@interface/models";
 import AdminOrderList from "@components/lists/AdminOrderList";
 import { headerJson } from "@utils/constSet";
 import Pagination from "@components/Pagination";
+import { useAdminOrder } from "@hooks/useAdminOrder";
 
 const LIMIT = 10;
 
 const AdminOrders: React.FC = () => {
-    const [orders, setOrders] = React.useState<OrderWithPoint[]>([]);
-    const [loading, setLoading] = React.useState<boolean>(false);
     const [playMode, setPlayMode] = React.useState<boolean>(true);
     const [selList, setSelList] = React.useState<number[]>([]);
 
@@ -21,36 +20,11 @@ const AdminOrders: React.FC = () => {
     const [total, setTotal] = React.useState(0);
     const [selectedIds, setSelectedIds] = React.useState<number[]>([]);
     const totalPage = Math.ceil(total / LIMIT);
+    const situation = playMode ? "play" : "finish";
 
+    const { adminOrders: orders, adminOrdersLoading: loading } = useAdminOrder(page, situation, LIMIT);
 
-
-    const fetchOrders = React.useCallback(async () => {
-        try {
-            setLoading(true);
-
-            const situation = playMode ? "play" : "finish";
-            const res = await fetch(
-                `/api/order/getOrderForAdmin?page=${page}&limit=${LIMIT}&situation=${situation}`
-            );
-
-            const result = await res.json();
-            if (!result.success) throw new Error(result.message);
-
-            setOrders(result.data);
-            setTotal(result.total);
-            setSelectedIds([]);
-        } catch (err) {
-            console.error(err);
-        } finally {
-            setLoading(false);
-        }
-    }, [page, playMode]);
-
-    React.useEffect(() => {
-        fetchOrders();
-    }, [fetchOrders]);
-
-
+    console.log(`orders : ${orders}`);
 
     function handleOpenToggle(seq: number) {
         setSelList((prev) => {
@@ -60,14 +34,10 @@ const AdminOrders: React.FC = () => {
                 return [...prev, seq];
             }
         });
-    };
+    }
 
     function handleSelectListIds(seq: number) {
-        setSelectedIds((prev) =>
-            prev.includes(seq)
-                ? prev.filter((id) => id !== seq)
-                : [...prev, seq]
-        )
+        setSelectedIds((prev) => (prev.includes(seq) ? prev.filter((id) => id !== seq) : [...prev, seq]));
     }
 
     async function handleDelete() {
@@ -80,8 +50,6 @@ const AdminOrders: React.FC = () => {
             headers: headerJson,
             body: JSON.stringify({ ids: selectedIds })
         });
-
-        fetchOrders();
     }
 
     async function handleTaxInvoice() {
@@ -92,8 +60,6 @@ const AdminOrders: React.FC = () => {
             headers: headerJson,
             body: JSON.stringify({ ids: selectedIds })
         });
-
-        fetchOrders();
     }
 
     async function handleDeposit() {
@@ -104,8 +70,6 @@ const AdminOrders: React.FC = () => {
             headers: headerJson,
             body: JSON.stringify({ ids: selectedIds })
         });
-
-        fetchOrders();
     }
 
     return (
@@ -116,61 +80,73 @@ const AdminOrders: React.FC = () => {
                 <section className="order-menu">
                     <div
                         className={playMode ? "" : "deselect"}
-                        onClick={() => { setPlayMode(true); setSelList([]); setPage(1); }}
+                        onClick={() => {
+                            setPlayMode(true);
+                            setSelList([]);
+                            setPage(1);
+                        }}
                     >
-                        <FaPlay className="icon" />처리중
+                        <FaPlay className="icon" />
+                        처리중
                     </div>
                     <div
                         className={!playMode ? "" : "deselect"}
-                        onClick={() => { setPlayMode(false); setSelList([]); setPage(1); }}
+                        onClick={() => {
+                            setPlayMode(false);
+                            setSelList([]);
+                            setPage(1);
+                        }}
                     >
-                        <FaCheck className="icon" />처리완료
+                        <FaCheck className="icon" />
+                        처리완료
                     </div>
                 </section>
-                {loading
-                    ? <LoadingIndicator />
-                    : <>
-                        {playMode
-                            ? <section className="bulk-action">
+                {loading ? (
+                    <LoadingIndicator />
+                ) : (
+                    <>
+                        {playMode ? (
+                            <section className="bulk-action">
                                 선택한 목록을 :
-                                <button type="button" className="red" onClick={handleDelete}>삭제</button>
+                                <button type="button" className="red" onClick={handleDelete}>
+                                    삭제
+                                </button>
                             </section>
-                            :
+                        ) : (
                             <section className="bulk-action">
                                 선택한 목록을 :
                                 {/* <button type="button" className="red" onClick={handleDelete}>삭제</button> */}
-                                <button type="button" onClick={handleTaxInvoice}>계산서발행완료</button>
-                                <button type="button" className="orange" onClick={handleDeposit}>입금확인</button>
+                                <button type="button" onClick={handleTaxInvoice}>
+                                    계산서발행완료
+                                </button>
+                                <button type="button" className="orange" onClick={handleDeposit}>
+                                    입금확인
+                                </button>
                             </section>
-                        }
-                        {orders.length === 0
-                            ? <div className="no-data">No Data.</div>
-                            : <>
-                                {orders.map((order: OrderWithPoint, index: number) => (
+                        )}
+                        {orders?.data.length === 0 ? (
+                            <div className="no-data">No Data.</div>
+                        ) : (
+                            <>
+                                {orders?.data.map((order: OrderWithPoint, index: number) => (
                                     <AdminOrderList
                                         key={order.seq}
                                         order={order}
-                                        setOrders={setOrders}
                                         index={total - (page - 1) * LIMIT - index}
                                         selList={selList}
                                         handleOpenToggle={handleOpenToggle}
                                         selectedIds={selectedIds.includes(order.seq)}
                                         handleSelectListIds={handleSelectListIds}
-
                                     />
                                 ))}
-                                <Pagination
-                                    page={page}
-                                    totalPage={totalPage}
-                                    onChange={setPage}
-                                />
+                                <Pagination page={page} totalPage={totalPage} onChange={setPage} />
                             </>
-                        }
+                        )}
                     </>
-                }
+                )}
             </article>
         </>
     );
-}
+};
 
 export default AdminOrders;

@@ -2,19 +2,19 @@ import { RowDataPacket } from "mysql2";
 
 export interface Member extends RowDataPacket {
     seq: number;
-    industry: string;
-    service: string;
+    industry: string | null;
+    service: string | null;
     id: string;
     pw: string;
     name: string;
-    email: string;
+    email: string | null;
     phone: string;
-    company: string;
-    businessNum: string;
-    addr1: string;
-    addr2: string;
-    feeRate: FeeRateModel[];
-    local: LocalModel[];
+    company: string | null;
+    businessNum: string | null;
+    addr1: string | null;
+    addr2: string | null;
+    feeRate: FeeRateModel[] | null;
+    local: LocalModel[] | null;
     jday: string;
 }
 

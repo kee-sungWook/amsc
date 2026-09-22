@@ -27,5 +27,6 @@ export const envConfig = {
         PASSWORD: process.env.DB_PASSWORD,
         NAME: process.env.DB_NAME,
         URL: process.env.DB_URL,
+        SHADOW_DATABASE_URL: process.env.SHADOW_DATABASE_URL,
     }
 }

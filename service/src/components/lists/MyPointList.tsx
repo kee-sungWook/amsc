@@ -9,17 +9,14 @@ interface Props {
 
 const MyPointList: React.FC<Props> = ({ pointData, no }) => {
     const [mainSubject, setMainSubject] = React.useState<string>("");
-    const [secondSubject, setSecondSubject] = React.useState<string>("");
 
     React.useEffect(() => {
         if (pointData.utilize === "받음") {
-            const [subjects, ...rest] = pointData.subject.split(" ");
+            const [subjects] = pointData.subject.split(" ");
             setMainSubject(subjects);
-            setSecondSubject(rest.join(" "));
         } else {
             const subjects = pointData.subject.split("/");
             setMainSubject(subjects[0] || "");
-            setSecondSubject(subjects[1] || " ");
         }
     }, []);
 

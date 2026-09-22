@@ -14,14 +14,23 @@ app.use('/uploads', express.static(UPLOAD_DIR));
 app.use('/static', express.static(STATIC_DIR));
 app.use("/api", apiRouter);
 
+// 공통 에러 핸들러
 app.use((err: any, _req: express.Request, res: express.Response, _next: express.NextFunction) => {
-    console.error("==========================================");
-    console.error("[Global Error Handler]");
+    console.error("============[Global Error Handler]==============");
+    console.error("CODE:", err.code ?? '-');
+    console.error("STATUS:", err.status ?? '-');
+    console.error("LOCATION:", err.location ?? '-');
     console.error("메시지:", err.message);
-    console.error("스택 트레이스:", err.stack);
-    console.error("==========================================");
-    console.error(`${err}`);
-    const status = err.status || 500;
+    console.error("DETAILS:", err.details ?? '-');
+    console.error("CAUSE:", err.cause ?? '-');
+    console.error("================================================");
+
+    let status = err.status || 500;
+    let message = err.message || "내부 서버 오류";
+    if (err.code === "ENOENT") {
+        status = 404;
+        message = "파일을 찾을 수 없습니다.";
+    }
     res.status(status).json({
         success: false,
         message: err.message || "내부 서버 오류"
@@ -36,6 +45,7 @@ server.listen(PORT, HOST, () => {
     console.log(`AMS for Driver Server running at http://localhost:${PORT}`);
 });
 
+// GRACEFUL SHUTDOWN
 let isShuttingDown = false;
 async function gracefulShutdown(signal: string) {
     if (isShuttingDown) return;

@@ -34,3 +34,4 @@ uploads/
 fcm_serviceAccountKey.json
 static/
 /generated/prisma
+*.sql

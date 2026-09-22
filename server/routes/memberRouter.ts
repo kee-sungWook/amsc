@@ -3,18 +3,11 @@ import * as memberController from '@controllers/memberController.js';
 const router = Router()
 
 router.get("/checkValid/:memId", memberController.checkValid);
-router.post("/memberLogin", memberController.adminLogin);
+router.post("/adminLogin", memberController.adminLogin);
 router.post("/signIn", memberController.signIn);
-router.post("/join", memberController.join)
-router.get("/test", () => {
-    console.log('test');
-});
-router.get("/test2", () => {
-    console.log('test2');
-});
-router.get("/test3", () => {
-    console.log('test3');
-});
+router.post("/join", memberController.join);
+router.post("/updateField", memberController.updateField);
+
 
 router.get("/getMembers",
     async (req, res, next) => {

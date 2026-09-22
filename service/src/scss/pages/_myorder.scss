@@ -1,7 +1,6 @@
 @use "@scss/abstract/vars" as *;
 @use "@scss/abstract/mixin" as *;
 
-
 .my-order {
     position: relative;
     width: 100%;
@@ -18,11 +17,11 @@
         width: 100%;
 
         // border-bottom: solid 1px #fef2e2;
-        @media(width < 768px) {
+        @media (width < 768px) {
             margin-top: -20px;
         }
 
-        @media(width < 500px) {
+        @media (width < 500px) {
             flex-direction: column;
             justify-content: flex-start;
             align-items: center;
@@ -32,28 +31,26 @@
         img {
             margin-right: 2%;
 
-            @media(width < 768px) {
+            @media (width < 768px) {
                 width: 45%;
                 min-width: 180px;
             }
 
-            @media(width < 500px) {
+            @media (width < 500px) {
                 width: 250px;
             }
         }
 
-
-
         .top-txt {
             @include flex-c-es;
 
-            @media(width < 500px) {
+            @media (width < 500px) {
                 align-items: center;
                 margin: 20px 0 10px;
             }
 
             .title {
-                font-size: 3.0rem;
+                font-size: 3rem;
                 font-family: $font2;
                 color: $accent;
                 margin-bottom: 10px;
@@ -61,17 +58,16 @@
                 span {
                     font-family: $font2;
                     font-weight: 800;
-                    color: $textMain
+                    color: $textMain;
                 }
 
-                @media(width < 768px) {
+                @media (width < 768px) {
                     font-size: 3.5vw;
                     margin-bottom: 1%;
                 }
 
-                @media(width < 500px) {
+                @media (width < 500px) {
                     font-size: clamp(24px, 5vw, 32px);
-
                 }
             }
 
@@ -84,19 +80,18 @@
                 line-height: 120%;
                 padding-left: 5px;
 
-                @media(width < 768px) {
+                @media (width < 768px) {
                     font-size: 2.5vw;
                 }
 
-                @media(width < 550px) {
+                @media (width < 550px) {
                     font-size: clamp(14px, 4vw, 18px);
                     margin-bottom: 11px;
                 }
 
-                @media(width < 400px) {
+                @media (width < 400px) {
                     margin-bottom: 8px;
                 }
-
             }
 
             .content2 {
@@ -154,7 +149,6 @@
         }
     }
 
-
     .order-list {
         @include shadowDark;
         width: 100%;
@@ -165,7 +159,7 @@
         background-color: white;
         overflow: hidden;
 
-        >div {
+        > div {
             width: 100%;
 
             .submit-user {
@@ -178,7 +172,7 @@
                 border: solid 1px $btnSub;
                 background-color: $inputBg;
 
-                @media(width < 500px) {
+                @media (width < 500px) {
                     width: 95%;
                     padding: 0 10px;
                 }
@@ -206,11 +200,10 @@
                             color: $textMain;
                             width: 100px;
 
-                            @media(width < 500px) {
+                            @media (width < 500px) {
                                 font-size: 12px;
-                                width: 75px
+                                width: 75px;
                             }
-
                         }
 
                         .icon {
@@ -318,6 +311,10 @@
                     }
                 }
 
+                .orange {
+                    color: orange;
+                }
+
                 .red {
                     color: $red;
                 }
@@ -330,7 +327,7 @@
                     color: #4ed60f;
                 }
 
-                >img {
+                > img {
                     width: 10%;
                     max-width: 50px;
                     min-width: 35px;
@@ -360,14 +357,14 @@
                         font-size: 12px;
                         color: $textThird;
 
-                        >div {
+                        > div {
                             @include flex-sc;
                             font-size: 12px;
                             gap: 15px;
                         }
                     }
 
-                    @media(width < 768px) {
+                    @media (width < 768px) {
                         p {
                             font-size: 14px;
                         }
@@ -380,14 +377,14 @@
                             gap: 10px;
                             font-size: 12px;
 
-                            >div {
+                            > div {
                                 gap: 10px;
                                 font-size: 12px;
                             }
                         }
                     }
 
-                    @media(width < 500px) {
+                    @media (width < 500px) {
                         p {
                             font-size: 13px;
                         }
@@ -400,11 +397,10 @@
                             @include flex-c-ss;
                             column-gap: 0;
                             row-gap: 2px;
-
                         }
                     }
 
-                    @media(width < 400px) {
+                    @media (width < 400px) {
                         section {
                             gap: 1px;
                         }
@@ -426,7 +422,7 @@
                         margin-bottom: 5px;
                     }
 
-                    @media(width < 500px) {
+                    @media (width < 500px) {
                         font-size: 11px;
 
                         .icon {
@@ -441,11 +437,11 @@
                 margin: auto;
                 padding: 15px;
 
-                @media(width < 768px) {
+                @media (width < 768px) {
                     width: 85%;
                 }
 
-                @media(width < 500px) {
+                @media (width < 500px) {
                     width: 95%;
                     padding: 10px;
                 }
@@ -457,23 +453,23 @@
                     font-size: 13px;
                     color: $textSub;
 
-                    >div {
+                    > div {
                         @include flex-sc;
                         font-size: 13px;
                         width: 100px;
 
-                        @media(width < 500px) {
+                        @media (width < 500px) {
                             width: 95px;
                         }
 
-                        @media(width < 400px) {
+                        @media (width < 400px) {
                             font-size: 12px;
                             width: 95px;
                         }
 
                         &::after {
                             margin-left: 5px;
-                            content: " : "
+                            content: " : ";
                         }
 
                         .icon {
@@ -481,12 +477,11 @@
                             font-size: 10px;
                             margin-right: 8px;
 
-                            @media(width < 500px) {
+                            @media (width < 500px) {
                                 font-size: 7px;
                                 margin-right: 5px;
                             }
                         }
-
                     }
 
                     span {
@@ -494,11 +489,11 @@
                         font-weight: 600;
                         color: $textMain;
 
-                        @media(width < 768px) {
+                        @media (width < 768px) {
                             margin-left: 15px;
                         }
 
-                        @media(width < 500px) {
+                        @media (width < 500px) {
                             font-size: 12px;
                             margin-left: 5px;
                         }
@@ -508,7 +503,7 @@
                         width: 80%;
                         margin-left: 20px;
 
-                        @media(width < 500px) {
+                        @media (width < 500px) {
                             font-size: 12px;
                         }
                     }
@@ -520,8 +515,6 @@
                 margin: 15px 0;
                 width: 100%;
                 gap: 25px;
-
-
 
                 button {
                     &.red {
@@ -555,7 +548,7 @@
                 }
 
                 .info {
-                    >div {
+                    > div {
                         @include flex-sc;
                         font-size: 13px;
                         font-weight: 700;
@@ -576,7 +569,7 @@
                     }
                 }
 
-                @media(width < 768px) {
+                @media (width < 768px) {
                     width: 85%;
 
                     .icon {
@@ -585,7 +578,7 @@
                     }
 
                     .info {
-                        >div {
+                        > div {
                             font-size: 12px;
 
                             p {
@@ -599,7 +592,7 @@
                     }
                 }
 
-                @media(width < 500px) {
+                @media (width < 500px) {
                     width: 90%;
                     padding: 10px;
 
@@ -609,15 +602,46 @@
                     }
 
                     .info {
-                        >div {
-
+                        > div {
                             span {
                                 font-size: 14px;
                             }
                         }
                     }
                 }
+            }
 
+            .cancel-reason {
+                @include flex-c-sc;
+                gap: 8px;
+                width: 80%;
+                margin: 15px auto 0;
+                padding: 15px 15px 20px;
+                color: $textSub;
+                background-color: $bg;
+                border-radius: 10px;
+                border: dashed 1px $outLine;
+
+                .info {
+                    @include flex-cc;
+                    gap: 16px;
+                    width: 80%;
+                    color: black;
+                    text-align: center;
+                    padding-bottom: 10px;
+                    border-bottom: 1px solid $outLine;
+                    .icon {
+                        font-size: 20px;
+                        color: $green;
+                    }
+                }
+
+                p {
+                    width: 100%;
+                    text-align: center;
+                    font-weight: 700;
+                    color: $red;
+                }
             }
 
             .about-point {

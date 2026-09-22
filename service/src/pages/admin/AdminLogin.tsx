@@ -35,15 +35,14 @@ const AdminLogin: React.FC = () => {
             return;
         }
         try {
-            const response = await fetch("/api/member/memberLogin", {
+            const response = await fetch("/api/member/adminLogin", {
                 method: "post",
                 headers: { "Content-type": "application/json" },
                 body: JSON.stringify({ memId: idpw.id, memPw: idpw.pw }),
             });
             const result = await response.json();
-            if (!result.success) throw new Error(result.message);
             setLoggedIn(true);
-            setUser(result.message);
+            setUser(result);
         } catch (err) {
             if (err === 'no member') alert('아이디 및 비밀번호를 확인하세요')
             console.error(`handleLogin err ${err}`);

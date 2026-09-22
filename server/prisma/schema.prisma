@@ -1,8 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Get a free hosted Postgres database in seconds: `npx create-db`
-
 generator client {
   provider = "prisma-client"
   output   = "../generated/prisma"
@@ -100,29 +95,30 @@ model ams_op {
 }
 
 model ams_order {
-  seq        Int       @id @default(autoincrement()) @db.UnsignedInt
-  requester  Int       @db.UnsignedInt
-  userName   String    @db.VarChar(50)
-  userPhone  String    @db.VarChar(15)
-  industry   String    @db.VarChar(10)
-  service    String?   @db.VarChar(10)
-  title      String    @db.VarChar(255)
-  num        String    @db.VarChar(100)
-  confirm    Int       @default(0) @db.UnsignedTinyInt
-  situation  String    @default("wait") @db.VarChar(10)
-  worker     Int?
-  detail     String    @db.LongText
-  price      Int       @default(0) @db.UnsignedInt
-  sido       String    @db.VarChar(10)
-  sigungu    String    @db.VarChar(10)
-  img        String?   @db.VarChar(255)
-  wday       DateTime  @default(now()) @db.Timestamp(0)
-  fday       DateTime? @db.DateTime(0)
-  point      Int?
-  payOk      Boolean   @default(false)
-  taxInvoice DateTime? @db.DateTime(0)
-  deposit    DateTime? @db.DateTime(0)
-  ams_user   ams_user  @relation(fields: [requester], references: [seq], onDelete: Cascade, map: "fk_requester")
+  seq              Int                @id @default(autoincrement()) @db.UnsignedInt
+  requester        Int                @db.UnsignedInt
+  userName         String             @db.VarChar(50)
+  userPhone        String             @db.VarChar(15)
+  industry         String             @db.VarChar(10)
+  service          String?            @db.VarChar(10)
+  title            String             @db.VarChar(255)
+  num              String             @db.VarChar(100)
+  confirm          Int                @default(0) @db.UnsignedTinyInt
+  situation        String             @default("wait") @db.VarChar(10)
+  worker           Int?
+  detail           String             @db.LongText
+  price            Int                @default(0) @db.UnsignedInt
+  sido             String             @db.VarChar(10)
+  sigungu          String             @db.VarChar(10)
+  img              String?            @db.VarChar(255)
+  wday             DateTime           @default(now()) @db.Timestamp(0)
+  fday             DateTime?          @db.DateTime(0)
+  point            Int?
+  payOk            Boolean            @default(false)
+  taxInvoice       DateTime?          @db.DateTime(0)
+  deposit          DateTime?          @db.DateTime(0)
+  ams_user         ams_user           @relation(fields: [requester], references: [seq], onDelete: Cascade, map: "fk_requester")
+  ams_order_cancel ams_order_cancel[]
 
   @@index([requester], map: "fk_requester_idx")
   @@index([deposit], map: "idx_deposit")
@@ -222,4 +218,15 @@ model bank_account {
   ams_user   ams_user @relation(fields: [userSeq], references: [seq], onDelete: Cascade, map: "band_user_seq_fk")
 
   @@index([userSeq], map: "band_user_seq_fk_idx")
+}
+
+model ams_order_cancel {
+  seq            Int       @id @default(autoincrement()) @db.UnsignedInt
+  order_seq      Int       @db.UnsignedInt
+  cancel_reason  String    @db.Text
+  cancel_confrim Int       @default(0) @db.TinyInt
+  wday           DateTime  @default(now()) @db.Timestamp(0)
+  ams_order      ams_order @relation(fields: [order_seq], references: [seq], onDelete: Cascade, onUpdate: Restrict, map: "ams_order_cancel_ams_order_FK")
+
+  @@index([order_seq], map: "ams_order_cancel_ams_order_FK")
 }

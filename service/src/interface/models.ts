@@ -49,7 +49,7 @@ export interface Minion {
     parentName: string;
     childSeq: number;
     childName: string;
-};
+}
 
 export interface AddrData {
     addr?: string;
@@ -63,7 +63,7 @@ export interface Fxrt {
     차량번호: string;
     보험접수번호: string;
     과실비율: string;
-};
+}
 
 export interface De {
     차량번호: string;
@@ -73,12 +73,12 @@ export interface De {
     도착지연락처: string;
     도착지주소: string;
     결재방식: string;
-};
+}
 
 export interface SidogunguVal {
     sido: string;
     sigungu: string;
-};
+}
 
 export interface Order {
     seq: number;
@@ -104,16 +104,17 @@ export interface Order {
     payOk: number;
     taxInvoice: string | null;
     deposit: string | null;
-};
+}
 export interface OrderWithWorker extends Order {
     workerCompany: string | null;
     workerPhone: string | null;
-};
+    cancelReason: string | null;
+    cancelWday: string | null;
+}
 export interface OrderWithPoint extends OrderWithWorker {
     requesterName: string | null;
     requesterPhone: string | null;
-
-};
+}
 
 export interface PointLog {
     seq: number;
@@ -124,7 +125,7 @@ export interface PointLog {
     balance: number;
     wday: string;
     eday: string | null;
-};
+}
 
 export interface Withdrawal extends PointLog {
     name: string;
@@ -133,14 +134,12 @@ export interface Withdrawal extends PointLog {
     accountNum: string;
 }
 
-
 export interface TreeNode {
     id: number;
     name: string;
     depth: number;
     children: TreeNode[];
 }
-
 
 export interface MemberModel {
     seq: number;
@@ -174,4 +173,4 @@ export interface LocalModel {
     localCode: string;
 }
 
-export type Region = { code: string, name: string };
+export type Region = { code: string; name: string };

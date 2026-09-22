@@ -1,0 +1,98 @@
+@use "../abstract/_vars" as *;
+@use "../abstract/_mixin" as *;
+
+.global-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    @include flex-cc;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.6);
+
+    &__content {
+        width: 100%;
+        margin: 0 5%;
+        padding: 24px;
+        background-color: $bg;
+        border-radius: 16px;
+    }
+}
+
+.modal-close-x {
+    @include flex-c-cc;
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    background-color: $primary;
+    color: white;
+    font-size: 18px;
+}
+
+.order-cancel-modal {
+    width: 100%;
+    position: relative;
+
+    &__header {
+        @include flex-bc;
+        width: 100%;
+        margin-bottom: 30px;
+        font-size: 30px;
+        .title {
+            font-size: 18px;
+            font-weight: bold;
+            color: $red;
+            > span {
+                margin-left: 4px;
+                font-weight: 600;
+                font-size: 13px;
+                color: $textThird;
+                letter-spacing: -0.05em;
+            }
+            @media (width < 600px) {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+            }
+        }
+    }
+
+    &__body {
+        @include flex-c-ss;
+        gap: 16px;
+        width: 100%;
+        padding: 20px 8px;
+        border-top: 1px solid $btnSub;
+        // border-bottom: 1px solid $btnSub;
+        label {
+            @include flex-sc;
+            gap: 8px;
+            margin: 0 4px;
+            input {
+                transform: scale(1.4);
+            }
+        }
+        textarea {
+            width: 100%;
+            min-height: 100px;
+            padding: 8px;
+            border-radius: 8px;
+        }
+    }
+
+    &__footer {
+        @include flex-cc;
+        gap: 24px;
+        width: 100%;
+        padding: 10px 0;
+        margin-bottom: 20px;
+        font-size: 20px;
+        > button {
+            width: 80px;
+            &:first-of-type {
+                background-color: $accent;
+            }
+        }
+    }
+}

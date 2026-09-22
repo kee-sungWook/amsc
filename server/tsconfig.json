@@ -9,6 +9,8 @@
       "@config/*": ["./config/*"],
       "@controllers/*": ["./controllers/*"],
       "@routes/*": ["./routes/*"],
+      "@repo/*": ["./repo/*"],
+      "@svc/*": ["./svc/*"],
       "@connect/*": ["./connect/*"],
       "@models/*": ["./models/*"],
       "@utils/*": ["./utils/*"]

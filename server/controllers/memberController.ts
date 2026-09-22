@@ -3,6 +3,7 @@ import { modifyQuery, selectQuery, withTransaction } from "@connect/query.js";
 import { User } from "@models/User.js";
 import type { FeeRateModel, LocalModel, Member } from "@models/Member.js";
 import { RowDataPacket } from "mysql2";
+import * as svc from '@svc/svc.member.js';
 
 export async function checkValid(req: Request, res: Response) {
     try {
@@ -18,18 +19,9 @@ export async function checkValid(req: Request, res: Response) {
 
 
 export async function adminLogin(req: Request, res: Response) {
-    try {
-        const { memId, memPw } = req.body;
-        const memRow = await selectQuery<User[]>(
-            'SELECT * FROM ams_member WHERE id = ? AND pw = ? AND type= ?',
-            [memId, memPw, 'a']
-        );
-        if (memRow.length === 0) res.json({ success: false, message: 'no member' });
-        else res.json({ success: true, message: memRow[0] });
-    } catch (err) {
-        console.error(`[memberLogin err] ${err}`);
-        res.json({ success: false, message: `[api memberLogin err] ${err}` });
-    }
+    const result = await svc.adminLogin(req.body);
+    const { pw, ...userData } = result;
+    res.status(200).json({ ...userData })
 }
 
 export async function signIn(req: Request, res: Response) {
@@ -93,17 +85,11 @@ export async function join(req: Request, res: Response) {
             if (insertResult.affectedRows < 1) throw new Error('insert member fail');
             const newMemberSeq = insertResult.insertId;
 
-            console.log(`newMemberSeq : ${newMemberSeq}`);
-
             //입력된 회원정보 전송
             const [row] = await selectQuery<User[]>('SELECT * FROM ams_member WHERE seq = ?', [newMemberSeq], conn);
 
-            console.log(`row : ${JSON.stringify(row)}`);
-
             if (!row) throw new Error('select fail after insert');
             const { pw, ...memberData } = row;
-
-            console.log(`memberData : ${JSON.stringify(memberData)}`);
 
             return memberData;
         });
@@ -111,6 +97,25 @@ export async function join(req: Request, res: Response) {
     } catch (error) {
         console.log('<mem join err:>', error)
         res.json({ success: false, message: `<api member join> ${error}` });
+    }
+}
+
+export async function updateField(req: Request, res: Response) {
+    try {
+        const { seq, updateData } = req.body;
+        console.log('updateField : ', seq, updateData);
+        const columns = Object.keys(updateData);
+        const values: any[] = Object.values(updateData);
+        const placeholders = columns.map(col => `${col} = ?`).join(', ');
+        const query = `UPDATE ams_member SET ${placeholders} WHERE seq = ?`;
+        const updateResult = await modifyQuery(query, [...values, seq]);
+        if (updateResult.affectedRows < 1) throw new Error('fail');
+
+        const row = await selectQuery<User[]>('SELECT * FROM ams_member WHERE seq = ?', [seq]);
+        if (row.length < 1) throw new Error('select fail after insert');
+        res.json({ success: true, message: row[0] });
+    } catch (error) {
+        res.json({ success: false, message: `<api user updateField> ${error}` });
     }
 }
 

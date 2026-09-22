@@ -1,14 +1,20 @@
 import "@scss/pages/_adminLayout.scss";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
-import { TiLocationArrowOutline } from "react-icons/ti";
+import { TiHomeOutline, TiDownloadOutline } from "react-icons/ti";
+import { LuUserRound, LuBuilding } from "react-icons/lu";
+import { MdAttachMoney } from "react-icons/md";
+import { HiOutlineDocumentDuplicate } from "react-icons/hi";
+import { TbCancel, TbMessage2Question } from "react-icons/tb";
+import { LiaCoinsSolid } from "react-icons/lia";
 import React from "react";
 
 const Menus: React.FC = () => {
     const location = useLocation();
     const [qnaNum, setQnaNum] = React.useState<number>(0);
     const [withdrawalNum, setwithdrawalNum] = React.useState<number>(0);
+    const [orderCancelNum, setOrderCancelNum] = React.useState<number>(0);
     const navigate = useNavigate();
-    const isActive = (path: string) => location.pathname.includes(`/${path}`) ? 'selected' : '';
+    const isActive = (path: string) => (location.pathname.includes(`/${path}`) ? "selected" : "");
 
     React.useEffect(() => {
         const es = new EventSource("/api/sse/adminSseConnect");
@@ -16,8 +22,9 @@ const Menus: React.FC = () => {
             const data = JSON.parse(event.data);
 
             console.log(`event data : ${event.data}`);
-            if (data.type === 'qna') setQnaNum(data.data);
-            if (data.type === 'withdrawal') setwithdrawalNum(data.data);
+            if (data.type === "qna") setQnaNum(data.data);
+            if (data.type === "withdrawal") setwithdrawalNum(data.data);
+            if (data.type === "orderCancel") setOrderCancelNum(data.data);
         });
         es.onerror = (err) => {
             console.error("SSE error", err);
@@ -46,35 +53,42 @@ const Menus: React.FC = () => {
             <nav>
                 <ul>
                     <li className={`${isActive("home")}`} onClick={() => navigate("home")}>
-                        <TiLocationArrowOutline className={`icon`} /> Home
+                        <TiHomeOutline className={`icon`} /> Home
                     </li>
 
-                    <li className={`${isActive("user")}`} onClick={() => navigate("users")}>
-                        <TiLocationArrowOutline className={`icon`} /> 회원현황
+                    <li className={`${isActive("users")}`} onClick={() => navigate("users")}>
+                        <LuUserRound className={`icon`} /> 회원현황
                     </li>
 
-                    <li className={`${isActive("member")}`} onClick={() => navigate("members")}>
-                        <TiLocationArrowOutline className={`icon`} /> 업체현황
+                    <li className={`${isActive("defaultFeeRates")}`} onClick={() => navigate("defaultFeeRates")}>
+                        <MdAttachMoney className={`icon`} /> 기본수수료율설정
+                    </li>
+
+                    <li className={`${isActive("members")}`} onClick={() => navigate("members")}>
+                        <LuBuilding className={`icon`} /> 업체현황
                     </li>
 
                     <li className={`${isActive("orders")}`} onClick={() => navigate("orders")}>
-                        <TiLocationArrowOutline className={`icon`} /> 주문내역
+                        <HiOutlineDocumentDuplicate className={`icon`} /> 주문내역
                     </li>
 
-                    <li className={`${isActive("ordersCancel")}`} onClick={() => navigate("ordersCancel")}>
-                        <TiLocationArrowOutline className={`icon`} /> 주문취소내역
+                    <li className={`${isActive("orderCancel")}`} onClick={() => navigate("orderCancel")}>
+                        <TbCancel className={`icon`} /> 주문취소내역{" "}
+                        {orderCancelNum > 0 && <div className="badge">{orderCancelNum}</div>}
                     </li>
 
                     <li className={`${isActive("qna")}`} onClick={() => navigate("qna")}>
-                        <TiLocationArrowOutline className={`icon`} /> QnA {qnaNum > 0 && <div className="badge">{qnaNum}</div>}
+                        <TbMessage2Question className={`icon`} /> QnA{" "}
+                        {qnaNum > 0 && <div className="badge">{qnaNum}</div>}
                     </li>
 
                     <li className={`${isActive("withdrawal")}`} onClick={() => navigate("withdrawal")}>
-                        <TiLocationArrowOutline className={`icon`} /> 출금요청 {withdrawalNum > 0 && <div className="badge">{withdrawalNum}</div>}
+                        <LiaCoinsSolid className={`icon`} /> 출금요청{" "}
+                        {withdrawalNum > 0 && <div className="badge">{withdrawalNum}</div>}
                     </li>
 
                     <li className={`${isActive("remittance")}`} onClick={() => navigate("remittance")}>
-                        <TiLocationArrowOutline className={`icon`} /> 송금내역
+                        <TiDownloadOutline className={`icon`} /> 송금내역
                     </li>
                 </ul>
             </nav>
@@ -89,6 +103,6 @@ const AdminLayout: React.FC = () => {
             <Outlet />
         </article>
     );
-}
+};
 
 export default AdminLayout;

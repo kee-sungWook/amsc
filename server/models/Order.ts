@@ -29,6 +29,8 @@ export interface Order extends RowDataPacket {
 export interface OrderWithWorker extends Order {
     workerCompany: string | null;
     workerPhone: string | null;
+    cancelReason: string | null;
+    cancelWday: string | null;
 }
 
 export interface OrderWithPoint extends OrderWithWorker {
