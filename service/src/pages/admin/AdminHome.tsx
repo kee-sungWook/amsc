@@ -26,17 +26,17 @@ const AdminHome: React.FC = () => {
             } finally {
                 setLoading(false);
             }
-        }
+        };
         fetchAll();
     }, []);
-
 
     return (
         <article className="admin-home">
             <h3>AMS Admin HOME</h3>
-            {loading
-                ? <LoadingIndicator />
-                : <section className="admin-pannel-area">
+            {loading ? (
+                <LoadingIndicator />
+            ) : (
+                <section className="admin-pannel-area">
                     <div className="admin-pannel">
                         <img src="/img/titlePic_mypage.png" />
                         <div className="pannel-head">
@@ -72,16 +72,18 @@ const AdminHome: React.FC = () => {
                             <span>{amsOrders.filter((list) => list.situation === "play").length}</span>
                         </div>
                         <div className="pannel-list">
+                            <h5>취소요청</h5>
+                            <span>{amsOrders.filter((list) => list.situation === "cancelReady").length}</span>
+                        </div>
+                        <div className="pannel-list">
                             <h5>완료</h5>
                             <span>{amsOrders.filter((list) => list.situation === "finish").length}</span>
                         </div>
                     </div>
                 </section>
-            }
-
-
+            )}
         </article>
     );
-}
+};
 
 export default AdminHome;

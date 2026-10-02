@@ -22,9 +22,11 @@ const AdminOrders: React.FC = () => {
     const totalPage = Math.ceil(total / LIMIT);
     const situation = playMode ? "play" : "finish";
 
-    const { adminOrders: orders, adminOrdersLoading: loading } = useAdminOrder(page, situation, LIMIT);
-
-    console.log(`orders : ${orders}`);
+    const {
+        adminOrders: orders,
+        adminOrdersLoading: loading,
+        updateAdminOrderCancel
+    } = useAdminOrder(page, situation, LIMIT);
 
     function handleOpenToggle(seq: number) {
         setSelList((prev) => {
@@ -40,8 +42,20 @@ const AdminOrders: React.FC = () => {
         setSelectedIds((prev) => (prev.includes(seq) ? prev.filter((id) => id !== seq) : [...prev, seq]));
     }
 
+    async function handleCancelOrder(orderSeq: number) {
+        try {
+            await updateAdminOrderCancel.mutateAsync(orderSeq);
+        } catch (error) {
+            console.error("error : ", error);
+        }
+    }
+
     async function handleDelete() {
-        if (selectedIds.length === 0) return;
+        console.log(`selectedIds : `, selectedIds);
+        if (selectedIds.length === 0) {
+            alert("삭제할 목록을 선택해 주세요");
+            return;
+        }
 
         if (!confirm("삭제하시겠습니까?")) return;
 
@@ -137,6 +151,7 @@ const AdminOrders: React.FC = () => {
                                         handleOpenToggle={handleOpenToggle}
                                         selectedIds={selectedIds.includes(order.seq)}
                                         handleSelectListIds={handleSelectListIds}
+                                        handleCancelOrder={handleCancelOrder}
                                     />
                                 ))}
                                 <Pagination page={page} totalPage={totalPage} onChange={setPage} />

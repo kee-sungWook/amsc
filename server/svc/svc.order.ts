@@ -2,6 +2,18 @@ import * as repo from "@repo/repo.order.js";
 import { modifyQuery, selectQuery } from "@connect/query";
 import { AppError } from "@utils/err.app";
 
+export const getCancelOrderForAdmin = async (page: number, limit: number, situation: string) => {
+    const result = await repo.getCancelOrderForAdmin(page, limit, situation);
+    if (!result) {
+        throw new AppError("NOT_FOUND", "[svc.order] getCancelOrderForAdmin", "order not found", 400, {
+            page,
+            limit,
+            situation
+        });
+    }
+    return result;
+};
+
 export const updateOrder = async (orderSeq: number, updateData: any, imgFile?: Express.Multer.File) => {
     if (!orderSeq || typeof orderSeq !== "number") {
         throw new AppError("INVALID_SEQ", "[svc.order] updateOrder", "seq is not number", 400, {
@@ -44,8 +56,18 @@ export const updateOrder = async (orderSeq: number, updateData: any, imgFile?: E
     return result[0];
 };
 
-export const cancelOrder = async (orderSeq: number, cancelReason: string) => {
-    const insertRes = await repo.insertCancelOrder(orderSeq, cancelReason);
+export const updateAdminOrderCancel = async (orderSeq: number) => {
+    const res = await repo.updateAdminOrderCancel(orderSeq);
+    if (res.affectedRows === 0) {
+        throw new AppError("UPDATE_FAIL", "[svc.order] updateAdminOrderCancel", "update fail", 400, {
+            orderSeq
+        });
+    }
+    return orderSeq;
+};
+
+export const cancelReqOrder = async (orderSeq: number, cancelReason: string) => {
+    const insertRes = await repo.insertCancelReqOrder(orderSeq, cancelReason);
     if (!insertRes.affectedRows) {
         throw new AppError("INSERT_FAIL", "[svc.order] cancelOrder", "insert fail", 400, {
             orderSeq

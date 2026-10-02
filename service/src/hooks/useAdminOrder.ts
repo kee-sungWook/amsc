@@ -1,9 +1,14 @@
-import type { OrderWithWorker, OrderWithPoint } from "@interface/models";
+import type { OrderWithPoint } from "@interface/models";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { qKeyAdminOrder } from "./queryKey/query.key.adminOrder";
-import { apiGetAdminOrders, apiUpdateAdminOrderCancel } from "@api/api.adminOrder";
+import {
+    apiDeleteAdminCancelOrder,
+    apiGetAdminCancelOrders,
+    apiGetAdminOrders,
+    apiUpdateAdminOrderCancel
+} from "@api/api.adminOrder";
 
-export const useAdminOrder = (page: number, situation: string, limit: number) => {
+export const useAdminOrder = (page: number, situation: string = "", limit: number) => {
     const queryClient = useQueryClient();
 
     const { data: adminOrders, isFetching: adminOrdersFetching } = useQuery<{
@@ -24,19 +29,33 @@ export const useAdminOrder = (page: number, situation: string, limit: number) =>
         }
     });
 
-    // const { data: adminCancelReqOrder, isFetching: adminCancelReqOrderFetching } = useQuery<{
-    //     data: OrderWithWorker[];
-    //     total: number;
-    // }>({
-    //     queryKey: qKeyAdminOrder.getAdminCancelReqOrder(page, situation),
-    //     queryFn: () => apiAdminCancelReqOrder(page, limit, situation),
-    //     staleTime: 1000 * 60 * 5
-    //     // refetchOnWindowFocus: false,
-    //     // refetchOnReconnect: false
-    // });
+    const { data: adminCancelOrders, isFetching: adminCancelOrdersFetching } = useQuery<{
+        data: OrderWithPoint[];
+        total: number;
+    }>({
+        queryKey: qKeyAdminOrder.getAdminCancelOrders(page, situation),
+        queryFn: () => apiGetAdminCancelOrders(page, limit, situation),
+        staleTime: 1000 * 60 * 5,
+        refetchOnWindowFocus: false,
+        refetchOnReconnect: true
+    });
+
+    const deleteAdminCancelOrder = useMutation({
+        mutationFn: (orderSeqs: number[]) => apiDeleteAdminCancelOrder(orderSeqs),
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: qKeyAdminOrder.getAdminCancelOrders(page, situation) });
+        }
+    });
 
     const adminOrdersLoading = adminOrdersFetching || updateAdminOrderCancel.isPending;
     // const reqCancelLoading = adminCancelReqOrderFetching || adminCancelReqUpdate.isPending;
 
-    return { adminOrders, adminOrdersLoading };
+    return {
+        adminOrders,
+        adminOrdersLoading,
+        adminCancelOrders,
+        adminCancelOrdersFetching,
+        updateAdminOrderCancel,
+        deleteAdminCancelOrder
+    };
 };

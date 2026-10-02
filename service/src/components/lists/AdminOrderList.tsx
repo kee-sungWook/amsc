@@ -11,7 +11,7 @@ import { FaCheck, FaRegPlayCircle, FaStarOfLife } from "react-icons/fa";
 import { PiBuildingOfficeDuotone } from "react-icons/pi";
 import { FiEdit } from "react-icons/fi";
 import { LuUserRoundPen, LuBadgeCheck, LuClockAlert } from "react-icons/lu";
-import { TbReceiptTax } from "react-icons/tb";
+import { TbCancel, TbReceiptTax } from "react-icons/tb";
 import { LiaCoinsSolid } from "react-icons/lia";
 import { RiChatDeleteFill } from "react-icons/ri";
 
@@ -22,6 +22,7 @@ interface Props {
     handleOpenToggle: (seq: number) => void;
     selectedIds?: boolean;
     handleSelectListIds?: (seq: number) => void;
+    handleCancelOrder?: (orderSeq: number) => Promise<void>;
 }
 
 const AdminOrderList: React.FC<Props> = ({
@@ -30,9 +31,9 @@ const AdminOrderList: React.FC<Props> = ({
     selList,
     handleOpenToggle,
     selectedIds,
-    handleSelectListIds
+    handleSelectListIds,
+    handleCancelOrder
 }) => {
-    // const { amsOrders, setAmsOrders } = useAdminStore();
     const [ref, { height }] = useMeasure();
     const [loading, setLoading] = React.useState(false);
     const [pointEditMode, setPointEditMode] = React.useState<boolean>(false);
@@ -154,19 +155,34 @@ const AdminOrderList: React.FC<Props> = ({
                             />
                             <img src={`/img/mem_service${order.industry}.png`} />
                             <div className="str">
-                                <p>{order.title}</p>
+                                <p style={order.situation === "cancel" ? { color: "#dd3aa3" } : {}}>{order.title}</p>
                                 <section>
                                     <div>
                                         <span>No.{index}</span>
                                         <span>{order.num}</span>
                                     </div>
 
-                                    {order.situation !== "finish" ? (
+                                    {(order.situation === "waite" || order.situation === "play") && (
                                         <span>신청일 : {formatDate(order.wday)}</span>
-                                    ) : (
+                                    )}
+                                    {order.situation === "finish" && (
                                         <span style={{ color: "#5bba03ff" }}>
                                             완료일 : {formatDate(order.fday ?? "")}
                                         </span>
+                                    )}
+                                    {order.situation === "cancelReady" && (
+                                        <span style={{ color: "#dd3aa3" }}>
+                                            취소요청일 : {formatDate(order.cancelWday ?? "")}
+                                        </span>
+                                    )}
+                                    {order.situation === "cancel" && (
+                                        <>
+                                            <span>취소요청일 : {formatDate(order.cancelWday ?? "")}</span>
+                                            &nbsp;
+                                            <span style={{ color: "#dd3aa3" }}>
+                                                취소일 : {formatDate(order.fday ?? "")}
+                                            </span>
+                                        </>
                                     )}
                                 </section>
                             </div>
@@ -198,6 +214,14 @@ const AdminOrderList: React.FC<Props> = ({
                                     </>
                                 </div>
                             )}
+                            {order.situation === "cancel" && (
+                                <div className="pictogram red">
+                                    <>
+                                        <TbCancel className="icon" />
+                                        취소완료
+                                    </>
+                                </div>
+                            )}
                             {order.situation === "finish" && (
                                 <div className="pictogram green">
                                     <FaCheck className="icon" />
@@ -206,7 +230,7 @@ const AdminOrderList: React.FC<Props> = ({
                         </section>
 
                         {/*  취소사유 */}
-                        {order.situation === "cancelReady" && (
+                        {(order.situation === "cancelReady" || order.situation === "cancel") && (
                             <section className="cancel-reason">
                                 <div className="info">
                                     <FaCheck className="icon" /> 담당 업체와 사전 논의 된 사항입니다.
@@ -275,7 +299,7 @@ const AdminOrderList: React.FC<Props> = ({
 
                         {order.situation === "cancelReady" && (
                             <section className="modify-area">
-                                <button type="button" className="red" onClick={() => {}}>
+                                <button type="button" className="red" onClick={() => handleCancelOrder?.(order.seq)}>
                                     취소 승인
                                 </button>
                             </section>

@@ -1,8 +1,6 @@
 import "@scss/pages/_adminOrders.scss";
 import React from "react";
 import LoadingIndicator from "@components/LoadingIndicator";
-import { FaCheck } from "react-icons/fa";
-import { FaPlay } from "react-icons/fa6";
 import type { OrderWithPoint } from "@interface/models";
 import AdminOrderList from "@components/lists/AdminOrderList";
 import { headerJson } from "@utils/constSet";
@@ -12,7 +10,6 @@ import { useAdminOrder } from "@hooks/useAdminOrder";
 const LIMIT = 10;
 
 const AdminOrderCancel: React.FC = () => {
-    const [playMode, setPlayMode] = React.useState<boolean>(true);
     const [selList, setSelList] = React.useState<number[]>([]);
 
     //페이징을 위한 상태 추가
@@ -20,9 +17,13 @@ const AdminOrderCancel: React.FC = () => {
     const [total, setTotal] = React.useState(0);
     const [selectedIds, setSelectedIds] = React.useState<number[]>([]);
     const totalPage = Math.ceil(total / LIMIT);
-    const situation = playMode ? "play" : "finish";
+    const situation = "cancel";
 
-    const { adminOrders: orders, adminOrdersLoading: loading } = useAdminOrder(page, situation, LIMIT);
+    const { adminCancelOrders: cancelOrders, adminCancelOrdersFetching: loading } = useAdminOrder(
+        page,
+        situation,
+        LIMIT
+    );
 
     function handleOpenToggle(seq: number) {
         setSelList((prev) => {
@@ -39,31 +40,14 @@ const AdminOrderCancel: React.FC = () => {
     }
 
     async function handleDelete() {
-        if (selectedIds.length === 0) return;
+        if (selectedIds.length === 0) {
+            alert("삭제할 목록을 선택해 주세요");
+            return;
+        }
 
         if (!confirm("삭제하시겠습니까?")) return;
 
         await fetch("/api/order/deleteOrder", {
-            method: "post",
-            headers: headerJson,
-            body: JSON.stringify({ ids: selectedIds })
-        });
-    }
-
-    async function handleTaxInvoice() {
-        if (selectedIds.length === 0) return;
-
-        await fetch("/api/order/taxInvoice", {
-            method: "post",
-            headers: headerJson,
-            body: JSON.stringify({ ids: selectedIds })
-        });
-    }
-
-    async function handleDeposit() {
-        if (selectedIds.length === 0) return;
-
-        await fetch("/api/order/deposit", {
             method: "post",
             headers: headerJson,
             body: JSON.stringify({ ids: selectedIds })
@@ -75,62 +59,31 @@ const AdminOrderCancel: React.FC = () => {
             <article className="admin-orders">
                 <h3>AMS Admin 주문취소 내역</h3>
 
-                <section className="order-menu">
-                    <div
-                        className={playMode ? "" : "deselect"}
-                        onClick={() => {
-                            setPlayMode(true);
-                            setSelList([]);
-                            setPage(1);
-                        }}
-                    >
-                        <FaPlay className="icon" />
-                        취소요청
-                    </div>
-                    <div
-                        className={!playMode ? "" : "deselect"}
-                        onClick={() => {
-                            setPlayMode(false);
-                            setSelList([]);
-                            setPage(1);
-                        }}
-                    >
-                        <FaCheck className="icon" />
-                        취소완료
-                    </div>
-                </section>
                 {loading ? (
                     <LoadingIndicator />
                 ) : (
                     <>
-                        {playMode ? (
-                            <section className="bulk-action">
-                                선택한 목록을 :
-                                <button type="button" className="red" onClick={handleDelete}>
-                                    삭제
-                                </button>
-                            </section>
-                        ) : (
-                            <section className="bulk-action">
-                                선택한 목록을 :
-                                {/* <button type="button" className="red" onClick={handleDelete}>삭제</button> */}
-                                <button type="button" onClick={handleTaxInvoice}>
-                                    계산서발행완료
-                                </button>
-                                <button type="button" className="orange" onClick={handleDeposit}>
-                                    입금확인
-                                </button>
-                            </section>
-                        )}
-                        {orders.length === 0 ? (
+                        <section className="bulk-action">
+                            선택한 목록을 :
+                            <button
+                                type="button"
+                                className="red"
+                                disabled={!cancelOrders || cancelOrders?.data.length === 0}
+                                onClick={handleDelete}
+                            >
+                                삭제
+                            </button>
+                        </section>
+
+                        {!cancelOrders || cancelOrders?.data.length === 0 ? (
                             <div className="no-data">No Data.</div>
                         ) : (
                             <>
-                                {orders.map((order: OrderWithPoint, index: number) => (
+                                {cancelOrders?.data.map((order: OrderWithPoint, index: number) => (
                                     <AdminOrderList
                                         key={order.seq}
                                         order={order}
-                                        setOrders={setOrders}
+                                        // setOrders={setOrders}
                                         index={total - (page - 1) * LIMIT - index}
                                         selList={selList}
                                         handleOpenToggle={handleOpenToggle}

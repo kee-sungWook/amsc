@@ -8,7 +8,7 @@ router.post("/insertOrder", orderController.insertOrder);
 router.post("/updateOrder", uploadModule.single("img"), orderController.updateOrder);
 router.post("/updatePoint", orderController.updatePoint);
 router.post("/payPoint", orderController.payPoint);
-router.post("/cancelOrder", orderController.cancelOrder);
+router.post("/cancelReqOrder", orderController.cancelReqOrder);
 
 router.get("/getOrderForC/:userSeq", orderController.getOrderForC);
 router.get("/getOrderForB/:bseq/:industry/:sido/:sigungu", orderController.getOrderForB);
@@ -16,9 +16,12 @@ router.get("/deleteOrderBySeq/:orderSeq", orderController.deleteOrderBySeq);
 router.get("/getAllOrders", orderController.getAllOrders);
 
 router.get("/getOrderForAdmin", orderController.getOrderForAdmin);
+router.get("/getCancelOrderForAdmin", orderController.getCancelOrderForAdmin);
 
 router.post("/deleteOrder", orderController.deleteOrder);
 router.post("/taxInvoice", orderController.taxInvoice);
 router.post("/deposit", orderController.deposit);
+
+router.patch("/updateAdminOrderCancel/:orderSeq", orderController.updateAdminOrderCancel);
 
 export default router;

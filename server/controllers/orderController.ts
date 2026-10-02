@@ -8,6 +8,13 @@ import { Decimal } from "decimal.js";
 import { getFcmTokenBySeq } from "@repo/repo.fcmToken.js";
 import * as repo from "@repo/repo.order.js";
 import * as svc from "@svc/svc.order.js";
+import { sendAdminEvent } from "./sseController";
+
+const getCancelReadyCount = async () => {
+    const queryStr = `SELECT COUNT(*) as cnt FROM ams_order WHERE situation = ?`;
+    const [result] = await selectQuery<SimpleRow<{ cnt: number }>[]>(queryStr, ["cancelReady"]);
+    return result.cnt;
+};
 
 export async function insertOrder(req: Request, res: Response) {
     const results: { index: number; success: boolean; error?: string }[] = [];
@@ -75,6 +82,7 @@ export async function getAllOrders(req: Request, res: Response) {
             FROM ams_order o
             LEFT JOIN ams_user r ON o.requester = r.seq
             LEFT JOIN ams_user w ON o.worker = w.seq
+            WHERE o.situation != 'cancel'
             ORDER BY o.wday DESC
         `;
         const orders = await selectQuery<OrderWithPoint[]>(queryStr);
@@ -96,7 +104,7 @@ export async function getOrderForAdmin(req: Request, res: Response) {
         }
 
         const situationCondition =
-            situation === "finish" ? `o.situation = 'finish'` : `o.situation != 'finish AND o.situation != cancel'`;
+            situation === "finish" ? `o.situation = 'finish'` : `o.situation != 'finish' AND o.situation != 'cancel'`;
         const countSql = `SELECT COUNT(*) as total FROM ams_order o WHERE ${situationCondition}`;
         const countResult = await selectQuery<SimpleRow<{ total: number }>[]>(countSql);
         const total = countResult[0].total;
@@ -136,15 +144,27 @@ export async function getOrderForAdmin(req: Request, res: Response) {
     }
 }
 
+export async function getCancelOrderForAdmin(req: Request, res: Response) {
+    const page = Number(req.query.page) || 1;
+    const limit = Number(req.query.limit) || 20;
+    const situation = req.query.situation as string;
+    const result = await svc.getCancelOrderForAdmin(page, limit, situation);
+    const countSql = `SELECT COUNT(*) as total FROM ams_order o WHERE situation = ?`;
+    const countResult = await selectQuery<SimpleRow<{ total: number }>[]>(countSql, [situation]);
+    const total = countResult[0].total;
+
+    res.status(200).json({ data: result, total });
+}
+
 export async function getOrderForC(req: Request, res: Response) {
     const { userSeq } = req.params;
     try {
         const queryStr = `
             SELECT 
-            o.*,
-            c.cancel_reason AS cancelReason, 
-            COALESCE(w.company, m.company) as workerCompany, 
-            COALESCE(w.phone, m.phone) as workerPhone
+                o.*,
+                c.cancel_reason AS cancelReason, 
+                COALESCE(w.company, m.company) as workerCompany, 
+                COALESCE(w.phone, m.phone) as workerPhone
             FROM ams_order o
             JOIN ams_user u ON o.requester = u.seq 
             LEFT JOIN ams_user w ON o.worker = w.seq
@@ -236,10 +256,20 @@ export async function updateOrder(req: Request, res: Response) {
     }
 }
 
-export async function cancelOrder(req: Request, res: Response) {
+export async function updateAdminOrderCancel(req: Request, res: Response) {
+    const { orderSeq } = req.params;
+    const result = await svc.updateAdminOrderCancel(+orderSeq);
+    res.status(201).json(+result);
+    const cancelReadyCount = await getCancelReadyCount();
+    sendAdminEvent("SSE_EVENT", { type: "orderCancelReq", data: cancelReadyCount });
+}
+
+export async function cancelReqOrder(req: Request, res: Response) {
     const { seq, cancelReason } = req.body;
-    const result = await svc.cancelOrder(Number(seq), cancelReason);
+    const result = await svc.cancelReqOrder(Number(seq), cancelReason);
     res.json({ success: true, message: result });
+    const cancelReadyCount = await getCancelReadyCount();
+    sendAdminEvent("SSE_EVENT", { type: "orderCancelReq", data: cancelReadyCount });
 }
 
 export async function updatePoint(req: Request, res: Response) {
@@ -383,9 +413,9 @@ export async function deleteOrder(req: Request, res: Response) {
                 return result;
             });
         });
-        res.json({ success: true, message: "del ok" });
+        res.status(201).json({ success: true, message: "del ok" });
     } catch (error) {
-        res.json({ success: false, message: `<api deleteOrder> ${error}` });
+        res.status(500).json({ success: false, message: `<api deleteOrder> ${error}` });
     }
 }
 

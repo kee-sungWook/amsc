@@ -29,7 +29,7 @@ export const apiDeleteOrder = async (orderSeq: number) => {
 
 export const apiCancelReqOrder = async (sendData: { seq: number; cancelReason: string }) => {
     const { data } = await api.post<{ success: boolean; message: Partial<OrderWithWorker> }>(
-        `/order/cancelOrder`,
+        `/order/cancelReqOrder`,
         sendData
     );
     return data.message;

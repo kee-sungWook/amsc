@@ -1,5 +1,5 @@
 import { modifyQuery, selectQuery, withTransaction, executeWithRety } from "@connect/query.js";
-import { Order, OrderWithWorker } from "@models/Order";
+import { Order, OrderWithPoint, OrderWithWorker } from "@models/Order";
 import { RowDataPacket } from "mysql2/promise";
 
 export const insertSingleOrder = async (order: Record<string, any>) => {
@@ -23,6 +23,12 @@ export const updateOrder = async (seq: number, values: (string | number | Date |
     return res;
 };
 
+export const updateAdminOrderCancel = async (orderSeq: number) => {
+    const queryStr = `UPDATE ams_order SET situation = 'cancel', fday = NOW() WHERE seq = ?`;
+    const res = await modifyQuery(queryStr, [orderSeq]);
+    return res;
+};
+
 export const selectOrderBySeq = async (seq: number) => {
     const queryStr = `
         SELECT 
@@ -42,9 +48,9 @@ export const selectOrderBySeq = async (seq: number) => {
     return res;
 };
 
-export const getCancelOrderForAdmin = async (page: number, limit: number) => {
+export const getCancelOrderForAdmin = async (page: number, limit: number, situation: string) => {
     const offset = (page - 1) * limit;
-    const res = await selectQuery<Partial<OrderWithWorker> & RowDataPacket[]>(
+    const res = await selectQuery<Partial<OrderWithPoint> & RowDataPacket[]>(
         `
         SELECT 
                 o.*,
@@ -59,15 +65,16 @@ export const getCancelOrderForAdmin = async (page: number, limit: number) => {
             LEFT JOIN ams_user w ON o.worker = w.seq
             LEFT JOIN ams_member m ON o.worker = m.seq
             LEFT JOIN ams_order_cancel c ON o.seq = c.order_seq
-            WHERE o.situation = 'cancel'
-            ORDER BY o.created DESC
+            WHERE o.situation = ?
+            ORDER BY c.wday DESC
             LIMIT ? OFFSET ?
         `,
-        [limit, offset]
+        [situation, limit, offset]
     );
+    return res;
 };
 
-export const insertCancelOrder = async (orderSeq: number, cancelReason: string) => {
+export const insertCancelReqOrder = async (orderSeq: number, cancelReason: string) => {
     const queryStr = `INSERT INTO ams_order_cancel (order_seq, cancel_reason) VALUES (?, ?)`;
     const res = await modifyQuery(queryStr, [Number(orderSeq), cancelReason]);
     return res;

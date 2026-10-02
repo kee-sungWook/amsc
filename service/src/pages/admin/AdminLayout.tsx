@@ -7,12 +7,14 @@ import { HiOutlineDocumentDuplicate } from "react-icons/hi";
 import { TbCancel, TbMessage2Question } from "react-icons/tb";
 import { LiaCoinsSolid } from "react-icons/lia";
 import React from "react";
+import { useQueryClient } from "@tanstack/react-query";
 
 const Menus: React.FC = () => {
     const location = useLocation();
+    const queryClient = useQueryClient();
     const [qnaNum, setQnaNum] = React.useState<number>(0);
     const [withdrawalNum, setwithdrawalNum] = React.useState<number>(0);
-    const [orderCancelNum, setOrderCancelNum] = React.useState<number>(0);
+    const [orderCancelReqNum, setOrderCancelReqNum] = React.useState<number>(0);
     const navigate = useNavigate();
     const isActive = (path: string) => (location.pathname.includes(`/${path}`) ? "selected" : "");
 
@@ -24,7 +26,11 @@ const Menus: React.FC = () => {
             console.log(`event data : ${event.data}`);
             if (data.type === "qna") setQnaNum(data.data);
             if (data.type === "withdrawal") setwithdrawalNum(data.data);
-            if (data.type === "orderCancel") setOrderCancelNum(data.data);
+            if (data.type === "orderCancelReq") {
+                // 3. orderCancelReq 수신 시 뱃지 갱신 및 adminOrder 목록 자동 refetch
+                setOrderCancelReqNum(data.data);
+                queryClient.invalidateQueries({ queryKey: ["getAdminOrder"] });
+            }
         });
         es.onerror = (err) => {
             console.error("SSE error", err);
@@ -38,6 +44,7 @@ const Menus: React.FC = () => {
             } else {
                 setQnaNum(result.message.qna);
                 setwithdrawalNum(result.message.withdrawal);
+                setOrderCancelReqNum(result.message.orderCancelReq);
             }
         };
         firstReceive();
@@ -70,11 +77,11 @@ const Menus: React.FC = () => {
 
                     <li className={`${isActive("orders")}`} onClick={() => navigate("orders")}>
                         <HiOutlineDocumentDuplicate className={`icon`} /> 주문내역
+                        {orderCancelReqNum > 0 && <div className="badge">{orderCancelReqNum}</div>}
                     </li>
 
                     <li className={`${isActive("orderCancel")}`} onClick={() => navigate("orderCancel")}>
                         <TbCancel className={`icon`} /> 주문취소내역{" "}
-                        {orderCancelNum > 0 && <div className="badge">{orderCancelNum}</div>}
                     </li>
 
                     <li className={`${isActive("qna")}`} onClick={() => navigate("qna")}>
