@@ -5,11 +5,11 @@
   "type": "module",
   "scripts": {
     "dev:frontend": "vite",
-    "dev:backend": "cd server && tsx watch server.ts",
+    "dev:backend": "cd devApps/server && tsx watch server.ts",
     "dev": "concurrently -n frontend,backend -c blue,green \"npm run dev:frontend\" \"npm run dev:backend\" ",
     "build": "npm run build:server && npm run build:service",
     "build:service": "tsc -b && vite build",
-    "build:server": "cd server && tsc -p tsconfig.json && tsc-alias",
+    "build:server": "cd devApps/server && tsc -p tsconfig.json && tsc-alias",
     "lint": "eslint .",
     "start": "pm2 startOrRestart ecosystem.config.cjs"
   },

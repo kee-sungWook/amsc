@@ -1,0 +1,669 @@
+@use "@scss/abstract/vars" as *;
+@use "@scss/abstract/mixin" as *;
+
+.admin-orders {
+    @include flex-c-sc;
+    width: 100%;
+    min-width: 900px;
+    padding: 20px;
+
+    h3 {
+        padding: 5px 0 20px;
+        font-size: 20px;
+    }
+
+    .order-menu {
+        @include flex-cc;
+        gap: 10px;
+        width: 100%;
+        margin: 20px auto;
+
+        div {
+            @include flex-cc;
+            width: 50%;
+            height: 30px;
+            border-radius: 15px;
+            background-color: $primary;
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+
+            &.deselect {
+                background-color: $btnSub;
+                color: $textThird;
+
+                &:hover {
+                    color: $primary;
+                    cursor: pointer;
+
+                    .icon {
+                        color: $primary;
+                    }
+                }
+
+                .icon {
+                    color: $textThird;
+                }
+            }
+
+            .icon {
+                margin-right: 10px;
+                font-size: 18px;
+                color: white;
+            }
+        }
+    }
+
+    .bulk-action {
+        @include flex-sc;
+        gap: 15px;
+        width: 100%;
+        padding: 15px 0 15px 20px;
+        margin-bottom: 20px;
+        font-weight: 700;
+        font-size: 16px;
+        color: $textSub;
+        border: 1px solid $outLine;
+        border-radius: 5px;
+
+        > button {
+            width: 100px;
+            height: 30px;
+            padding: 0;
+            font-size: 12px;
+            box-shadow: none;
+
+            &.red {
+                background-color: $red;
+
+                &:hover {
+                    background-color: #ff86d7;
+                }
+            }
+
+            &.orange {
+                background-color: $orange;
+
+                &:hover {
+                    background-color: #ffce0b;
+                }
+            }
+        }
+    }
+
+    .no-data {
+        @include flex-cc;
+        width: 100%;
+        max-width: 300px;
+        margin: auto;
+        padding: 10% 0;
+        font-size: 25px;
+        color: $textThird;
+        font-weight: 800;
+    }
+
+    .order-list {
+        @include shadowDark;
+        width: 100%;
+        margin: 0 auto 10px;
+        border: solid 1px $outLine;
+        border-radius: 5px;
+        background-color: white;
+        overflow: hidden;
+
+        > div {
+            width: 100%;
+
+            .list-head {
+                @include flex-sc;
+                gap: 2%;
+                width: 95%;
+                padding: 15px 0;
+                margin: auto;
+                border-bottom: solid 1px $outLine;
+                cursor: pointer;
+
+                &:hover {
+                    .str p {
+                        color: $primary;
+                    }
+                }
+
+                .red {
+                    color: $red;
+                }
+
+                .orange {
+                    color: orange;
+                }
+
+                .blue {
+                    color: $primary;
+                }
+
+                .green {
+                    color: #4ed60f;
+                }
+
+                > input[type="checkbox"] {
+                    transform: scale(1.2);
+                }
+
+                > img {
+                    width: 10%;
+                    max-width: 40px;
+                    min-width: 25px;
+                }
+
+                .str {
+                    margin-right: auto;
+
+                    p {
+                        width: 100%;
+                        font-size: 15px;
+                        font-weight: bold;
+                        color: $textMain;
+                        margin-bottom: 3px;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
+
+                    input {
+                        width: 100%;
+                    }
+
+                    section {
+                        @include flex-sc;
+                        gap: 15px;
+                        font-size: 12px;
+                        color: $textThird;
+
+                        > div {
+                            @include flex-sc;
+                            font-size: 12px;
+                            gap: 10px;
+                        }
+                    }
+
+                    @media (width < 768px) {
+                        p {
+                            font-size: 14px;
+                        }
+
+                        input {
+                            font-size: 14px;
+                        }
+
+                        section {
+                            gap: 10px;
+                            font-size: 12px;
+
+                            > div {
+                                gap: 10px;
+                                font-size: 12px;
+                            }
+                        }
+                    }
+
+                    @media (width < 500px) {
+                        p {
+                            font-size: 13px;
+                        }
+
+                        input {
+                            font-size: 13px;
+                        }
+
+                        section {
+                            @include flex-c-ss;
+                            column-gap: 0;
+                            row-gap: 2px;
+                        }
+                    }
+
+                    @media (width < 400px) {
+                        section {
+                            gap: 1px;
+                        }
+                    }
+                }
+
+                .payOk {
+                    font-size: 13px;
+                    font-weight: bold;
+                    color: $accent;
+                }
+
+                .taxInvoice {
+                    font-size: 30px;
+                    color: $primary;
+                }
+
+                .deposit {
+                    font-size: 30px;
+                    color: $orange;
+                }
+
+                .pictogram {
+                    @include flex-c-cc;
+                    font-size: 12px;
+
+                    .icon {
+                        font-size: 25px;
+                        margin-bottom: 5px;
+                    }
+
+                    @media (width < 500px) {
+                        font-size: 11px;
+
+                        .icon {
+                            font-size: 18px;
+                        }
+                    }
+                }
+            }
+
+            .user-requester {
+                @include shadowDark;
+                width: 80%;
+                margin: 20px auto 0;
+                padding: 0 15px;
+                border-radius: 5px;
+                border: solid 1px $btnSub;
+                background-color: $inputBg;
+
+                div {
+                    @include flex-sc;
+                    width: 100%;
+                    padding: 10px 0;
+
+                    &:not(:last-of-type) {
+                        border-bottom: 1px dashed $outLine;
+                    }
+
+                    h4 {
+                        @include flex-sc;
+                        font-size: 13px;
+                        font-weight: 400;
+                        color: $textMain;
+                        width: 100px;
+                    }
+
+                    .icon {
+                        font-size: 18px;
+                        margin-right: 10px;
+                        color: $textSub;
+                    }
+
+                    p {
+                        margin-left: 20px;
+                        font-size: 13px;
+                        font-weight: 500;
+                        flex: 1;
+                    }
+                }
+            }
+
+            .list-content {
+                width: 80%;
+                margin: auto;
+                padding: 15px;
+
+                @media (width < 768px) {
+                    width: 85%;
+                }
+
+                @media (width < 500px) {
+                    width: 95%;
+                    padding: 10px;
+                }
+
+                .row {
+                    @include flex-sc;
+                    width: 100%;
+                    padding: 10px 0;
+                    font-size: 13px;
+                    color: $textSub;
+
+                    > div {
+                        @include flex-sc;
+                        font-size: 13px;
+                        width: 100px;
+
+                        @media (width < 500px) {
+                            width: 95px;
+                        }
+
+                        @media (width < 400px) {
+                            font-size: 12px;
+                            width: 95px;
+                        }
+
+                        &::after {
+                            margin-left: 5px;
+                            content: " : ";
+                        }
+
+                        .icon {
+                            color: $primary;
+                            font-size: 10px;
+                            margin-right: 8px;
+
+                            @media (width < 500px) {
+                                font-size: 7px;
+                                margin-right: 5px;
+                            }
+                        }
+                    }
+
+                    > span {
+                        margin-left: 20px;
+                        font-weight: 600;
+                        color: $textMain;
+
+                        @media (width < 768px) {
+                            margin-left: 15px;
+                        }
+
+                        @media (width < 500px) {
+                            font-size: 12px;
+                            margin-left: 5px;
+                        }
+                    }
+
+                    > input {
+                        width: 80%;
+                        margin-left: 20px;
+
+                        @media (width < 500px) {
+                            font-size: 12px;
+                        }
+                    }
+                }
+            }
+
+            .modify-area {
+                @include flex-cc;
+                margin: 15px 0;
+                width: 100%;
+                gap: 25px;
+
+                button {
+                    &.red {
+                        background-color: $red;
+                        box-shadow: 0px 2px 3px $placeHolder;
+
+                        &:hover {
+                            background-color: #ff52c5;
+                        }
+                    }
+
+                    width: 120px;
+                }
+            }
+
+            .agency {
+                @include flex-sc;
+                @include shadowDark;
+                width: 80%;
+                margin: 0 auto;
+                padding: 15px;
+                border: solid 1px $btnSub;
+                border-radius: 10px;
+                background-color: $inputBg;
+                font-size: 12px;
+
+                .icon {
+                    font-size: 50px;
+                    margin-right: 15px;
+                    color: $textMain;
+                }
+
+                .info {
+                    > div {
+                        @include flex-sc;
+                        font-size: 13px;
+                        font-weight: 700;
+                        color: black;
+
+                        p {
+                            margin-right: 5px;
+                            font-size: 13px;
+                            font-weight: 500;
+                            color: $textSub;
+                        }
+
+                        span {
+                            font-size: 18px;
+                            font-weight: bold;
+                            color: $primary;
+                        }
+                    }
+                }
+
+                @media (width < 768px) {
+                    width: 85%;
+
+                    .icon {
+                        font-size: 40px;
+                        margin-right: 10px;
+                    }
+
+                    .info {
+                        > div {
+                            font-size: 12px;
+
+                            p {
+                                font-size: 12px;
+                            }
+
+                            span {
+                                font-size: 16px;
+                            }
+                        }
+                    }
+                }
+
+                @media (width < 500px) {
+                    width: 90%;
+                    padding: 10px;
+
+                    .icon {
+                        font-size: 35px;
+                        margin-right: 7px;
+                    }
+
+                    .info {
+                        > div {
+                            span {
+                                font-size: 14px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .about-point {
+                @include flex-sc;
+                @include shadowDark;
+                width: 80%;
+                margin: -10px auto 30px;
+                padding: 15px;
+                border: solid 1px $btnSub;
+                border-radius: 10px;
+                background-color: $inputBg;
+                font-size: 12px;
+
+                img {
+                    display: block;
+                    width: 35px;
+                    margin: 0 15px 0 8px;
+                }
+
+                h3 {
+                    font-size: 18px;
+                    color: $textSub;
+                    padding: 0 0 3px;
+                }
+
+                div {
+                    margin-left: 15px;
+                    font-size: 20px;
+                    font-weight: 800;
+                    color: $red;
+
+                    span {
+                        font-size: 12px;
+                        color: $textMain;
+                    }
+                }
+
+                .confirm_cancel {
+                    @include flex-sc;
+                    gap: 10px;
+
+                    button {
+                        width: 60px;
+                    }
+                }
+
+                .icon {
+                    margin-left: 30px;
+                    font-size: 30px;
+                    color: $textThird;
+
+                    &:hover {
+                        color: $primary;
+                        cursor: pointer;
+                    }
+                }
+
+                input {
+                    width: 110px;
+                    font-size: 15px;
+                    color: $red;
+                    text-align: right;
+                    padding-right: 10px;
+                }
+
+                button {
+                    width: 100px;
+                    height: 35px;
+                    margin-left: auto;
+                }
+            }
+
+            .tax-deposit {
+                @include shadowDark;
+                width: 80%;
+                margin: 0 auto 30px;
+                padding: 0 15px;
+                border-radius: 8px;
+                border: solid 1px $btnSub;
+                background-color: $inputBg;
+
+                div {
+                    @include flex-sc;
+                    width: 100%;
+                    padding: 10px 0;
+
+                    &:not(:last-of-type) {
+                        border-bottom: 1px dashed $outLine;
+                    }
+
+                    h4 {
+                        @include flex-sc;
+                        padding-left: 15px;
+                        font-size: 13px;
+                        font-weight: 400;
+                        color: $textMain;
+                        width: 140px;
+                    }
+
+                    .taxInvoice {
+                        font-size: 25px;
+                        color: $primary;
+                    }
+
+                    .deposit {
+                        font-size: 25px;
+                        color: $orange;
+                    }
+
+                    p {
+                        font-size: 13px;
+                        font-weight: 500;
+                        flex: 1;
+                    }
+                }
+            }
+
+            .finishImg {
+                width: 80%;
+                margin: 15px auto 0;
+                text-align: center;
+
+                img {
+                    width: 100%;
+                    border-radius: 5px;
+                    border: solid 1px $outLine;
+                    object-fit: contain;
+                }
+            }
+        }
+    }
+}
+
+.cancel-reason {
+    @include flex-c-sc;
+    gap: 8px;
+    width: 80%;
+    margin: 15px auto 0;
+    padding: 15px 15px 20px;
+    color: $textSub;
+    background-color: $bg;
+    border-radius: 10px;
+    border: dashed 1px $outLine;
+
+    .info {
+        @include flex-cc;
+        gap: 16px;
+        width: 80%;
+        color: black;
+        text-align: center;
+        padding-bottom: 10px;
+        border-bottom: 1px solid $outLine;
+        .icon {
+            font-size: 20px;
+            color: $green;
+        }
+    }
+
+    p {
+        width: 100%;
+        text-align: center;
+        font-weight: 700;
+        color: $red;
+    }
+}
+
+.cancel-ok-btn-area {
+    @include flex-cc;
+    margin: 15px 0;
+    width: 100%;
+    gap: 25px;
+
+    button {
+        &.red {
+            background-color: $red;
+            box-shadow: 0px 2px 3px $placeHolder;
+
+            &:hover {
+                background-color: #ff52c5;
+            }
+        }
+
+        width: 120px;
+    }
+}

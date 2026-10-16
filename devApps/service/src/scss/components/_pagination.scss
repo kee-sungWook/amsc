@@ -1,0 +1,17 @@
+@use "@scss/abstract/vars" as *;
+@use "@scss/abstract/mixin" as *;
+
+.pagination {
+    @include flex-cc;
+    padding: 20px 0;
+
+    button {
+        width: 80px;
+    }
+
+    span {
+        margin: 0 30px;
+        font-weight: 700;
+        color: $textMain;
+    }
+}

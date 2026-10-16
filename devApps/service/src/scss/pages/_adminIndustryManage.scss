@@ -1,0 +1,71 @@
+@use "@scss/abstract/vars" as *;
+@use "@scss/abstract/mixin" as *;
+
+.industry-manage {
+    @include flex-c-sc;
+    width: 100%;
+    min-width: 900px;
+    padding: 20px;
+
+    h3 {
+        padding: 5px 0 20px;
+        font-size: 20px;
+    }
+    .content-area {
+        @include flex-cc;
+        width: 100%;
+        gap: 20px;
+
+        .content-table {
+            width: 50%;
+            padding: 0 20px;
+            border: 1px solid $outLine;
+            border-radius: 8px;
+            header {
+                width: 100%;
+                font-size: 16px;
+                font-weight: bold;
+                text-align: center;
+                padding: 10px 0;
+                border-bottom: 1px solid $outLine;
+            }
+            .content-list {
+                @include flex-sc;
+                gap: 20px;
+                padding: 10px;
+                border-bottom: 1px solid $outLine;
+                img {
+                    width: 50px;
+                    height: 50px;
+                }
+                span {
+                    display: inline-block;
+                    flex: 1;
+                    font-size: 13px;
+                    font-weight: bold;
+                    color: $textThird;
+                    text-align: left;
+                }
+                .modify-btn-area {
+                    button {
+                        width: 50px;
+                        font-size: 14px;
+                    }
+                    background-color: aqua;
+                }
+            }
+            footer {
+                @include flex-cc;
+                width: 100%;
+                gap: 20px;
+                padding: 20px 0 30px;
+                button {
+                    width: 100px;
+                    height: 35px;
+                    border: none;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
