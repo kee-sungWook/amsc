@@ -68,11 +68,13 @@ const ServiceApply = () => {
     }, []);
 
     async function getSido() {
-        const res = await fetch(
-            "https://grpc-proxy-server-mkvo6j4wsq-du.a.run.app/v1/regcodes?regcode_pattern=*00000000"
-        );
-        const result = await res.json();
-        setSidoCode(result.regcodes);
+        try {
+            const res = await fetch("/api/region/getSido");
+            const result = await res.json();
+            setSidoCode(result);
+        } catch (err) {
+            console.error("시도 로딩 실패:", err);
+        }
     }
 
     async function getSigungu(e: React.ChangeEvent<HTMLSelectElement>) {
@@ -81,14 +83,14 @@ const ServiceApply = () => {
             setFxRtSidogunguVal({ sido: "0", sigungu: "0" });
             return;
         }
-        const cd = e.target.value.substring(0, 2);
-        const res = await fetch(
-            `https://grpc-proxy-server-mkvo6j4wsq-du.a.run.app/v1/regcodes?regcode_pattern=${cd}*00000`
-        );
-        const result = await res.json();
-        const sigunguData = result.regcodes.splice(1);
-        const sigungus = sigunguData.sort((a: any, b: any) => (a.name < b.name ? -1 : 1));
-        setSigunguCode(sigungus);
+        try {
+            const res = await fetch(`/api/region/getSigungu/${e.target.value}`);
+            const result: { code: string; name: string }[] = await res.json();
+            const sigungus = result.sort((a, b) => (a.name < b.name ? -1 : 1));
+            setSigunguCode(sigungus);
+        } catch (err) {
+            console.error("시군구 로딩 실패:", err);
+        }
     }
 
     function handleBtnFindAddr() {

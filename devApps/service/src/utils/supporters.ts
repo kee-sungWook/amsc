@@ -98,15 +98,16 @@ export function buildUserTree(data: Minion[], rootId: number): TreeNode | null {
 }
 
 export async function getSido() {
-    const res = await fetch("https://grpc-proxy-server-mkvo6j4wsq-du.a.run.app/v1/regcodes?regcode_pattern=*00000000");
-    const result = await res.json();
-    return result.regcodes;
+    const res = await fetch("/api/region/getSido");
+    const result: { code: string, name: string }[] = await res.json();
+    return result;
 }
 
+// cd: 시도코드 앞 2자리 또는 10자리 시도코드
 export async function getSigungu(cd: string) {
-    const res = await fetch(`https://grpc-proxy-server-mkvo6j4wsq-du.a.run.app/v1/regcodes?regcode_pattern=${cd}*00000`);
-    const result = await res.json();
-    const sigunguData = result.regcodes.splice(1);
-    const sigungus = sigunguData.sort((a: any, b: any) => (a.name < b.name ? -1 : 1));
+    const parentCode = `${cd.substring(0, 2)}00000000`;
+    const res = await fetch(`/api/region/getSigungu/${parentCode}`);
+    const result: { code: string, name: string }[] = await res.json();
+    const sigungus = result.sort((a, b) => (a.name < b.name ? -1 : 1));
     return sigungus;
 }
