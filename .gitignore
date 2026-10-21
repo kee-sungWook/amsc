@@ -33,7 +33,7 @@ public/
 uploads/
 fcm_serviceAccountKey.json
 static/
-/generated/prisma
+devApps/server/generated/
 *.sql
 
 .claude/
