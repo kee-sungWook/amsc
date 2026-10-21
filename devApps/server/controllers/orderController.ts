@@ -174,7 +174,6 @@ export async function getOrderForC(req: Request, res: Response) {
             ORDER BY o.wday DESC
         `;
         const orders = await selectQuery<OrderWithWorker[]>(queryStr, [Number(userSeq)]);
-        console.log("orders : ", orders);
         res.json({ success: true, message: orders });
     } catch (error) {
         res.json({ success: false, message: `<api getOrderForC> ${error}` });
@@ -183,7 +182,6 @@ export async function getOrderForC(req: Request, res: Response) {
 
 export async function getOrderForB(req: Request, res: Response) {
     const { bseq, industry, sido, sigungu } = req.params;
-    console.log("getOrderForB : ", bseq, industry, sido, sigungu);
     let queryStr = "";
     let prepared: any[] = [];
     if (industry === "FX") {

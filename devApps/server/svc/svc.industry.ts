@@ -9,7 +9,7 @@ type IndustryInput = { name?: string; code?: string };
 
 const ICON_DIR = path.join(envConfig.ROOT, "uploads", "industry_icon");
 const ICON_URL = "/uploads/industry_icon";
-const ICON_PREFIX = "mem_service";
+const ICON_PREFIX = "mem_industry_";
 
 const validateInput = (location: string, { name, code }: IndustryInput) => {
     const trimName = name?.trim() ?? "";
@@ -31,13 +31,14 @@ const rethrowDuplicate = (err: unknown, location: string, code: string): never =
     throw err;
 };
 
-// 아이콘 파일명: mem_service + 코드 + 원본 확장자
-const iconFileName = (code: string, ext: string) => `${ICON_PREFIX}${code}${ext.toLowerCase()}`;
+// 아이콘 파일명: mem_industry_ + 코드 + 원본 확장자 (예: mem_industry_FX.png)
+const iconBaseName = (code: string) => `${ICON_PREFIX}${code}`;
+const iconFileName = (code: string, ext: string) => `${iconBaseName(code)}${ext.toLowerCase()}`;
 
 // 해당 코드의 기존 아이콘(확장자 무관) 삭제
 const removeIcons = async (code: string) => {
     const files = await fs.readdir(ICON_DIR).catch(() => [] as string[]);
-    const base = `${ICON_PREFIX}${code}`;
+    const base = iconBaseName(code);
     await Promise.all(
         files
             .filter((file) => path.parse(file).name === base)
