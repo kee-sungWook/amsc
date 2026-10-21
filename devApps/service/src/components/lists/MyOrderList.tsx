@@ -321,7 +321,7 @@ const MyOrderList: React.FC<Props> = ({ order, index, selList, handleOpenToggle 
 
                         {order.img && (
                             <section className="finishImg">
-                                <img src={`${import.meta.env.VITE_SITE_URL}${order.img}`} />
+                                <img src={order.img} />
                             </section>
                         )}
                         <br />

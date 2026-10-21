@@ -31,7 +31,7 @@ const CCprevent = () => {
                 <div></div>
             </section>
             <section ref={parentRef}>
-                <iframe ref={iframeRef} src={`${import.meta.env.VITE_SITE_URL}/static/cc/prevent.html`} />
+                <iframe ref={iframeRef} src="/static/cc/prevent.html" />
             </section>
         </article>
     );

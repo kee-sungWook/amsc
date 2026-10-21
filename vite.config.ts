@@ -27,7 +27,9 @@ export default defineConfig({
     server: {
         host: true,
         proxy: {
-            "/api": { target: "http://localhost:45780", changeOrigin: true, secure: false }
+            "/api": { target: "http://localhost:45780", changeOrigin: true, secure: false },
+            "/uploads": { target: "http://localhost:45780", changeOrigin: true, secure: false },
+            "/static": { target: "http://localhost:45780", changeOrigin: true, secure: false }
         }
     }
 });

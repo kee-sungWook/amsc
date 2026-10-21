@@ -7,7 +7,7 @@ const ApkDown: React.FC = () => {
             <SlCloudDownload className="icon" />
             <div className="title">Android 앱 다운로드</div>
             <div className="subtitle">안드로이드 앱을 다운로드하여 사용해보세요</div>
-            <a href={`${import.meta.env.VITE_SITE_URL}/uploads/apk/app-release.apk`} download="app-release.apk">
+            <a href="/uploads/apk/app-release.apk" download="app-release.apk">
                 Android 앱 다운로드
             </a>
         </section>

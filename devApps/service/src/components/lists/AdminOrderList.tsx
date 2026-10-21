@@ -383,7 +383,7 @@ const AdminOrderList: React.FC<Props> = ({
 
                         {order.img && (
                             <section className="finishImg">
-                                <img src={`${import.meta.env.VITE_SITE_URL}${order.img}`} />
+                                <img src={order.img} />
                             </section>
                         )}
                         <br />

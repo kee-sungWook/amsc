@@ -31,7 +31,7 @@ const CCelectric = () => {
                 <div></div>
             </section>
             <section ref={parentRef}>
-                <iframe ref={iframeRef} src={`${import.meta.env.VITE_SITE_URL}/static/cc/electric_00.html`} />
+                <iframe ref={iframeRef} src="/static/cc/electric_00.html" />
             </section>
         </article>
     );

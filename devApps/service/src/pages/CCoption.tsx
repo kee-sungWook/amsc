@@ -31,7 +31,7 @@ const CCoption = () => {
                 <div></div>
             </section>
             <section ref={parentRef} style={{ background: "white" }}>
-                <iframe ref={iframeRef} src={`${import.meta.env.VITE_SITE_URL}/static/op/main.html`} />
+                <iframe ref={iframeRef} src="/static/op/main.html" />
             </section>
         </article>
     );
