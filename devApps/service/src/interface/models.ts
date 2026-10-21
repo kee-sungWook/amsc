@@ -174,3 +174,10 @@ export interface LocalModel {
 }
 
 export type Region = { code: string; name: string };
+
+export interface IndustryModel {
+    seq: number;
+    name: string;
+    code: string;
+    icon: string | null;
+}

@@ -22,3 +22,10 @@ export const uploadModule = multer({
     }),
     limits: { fileSize: 10 * 1024 * 1024 },
 });
+
+// 파일을 메모리로만 받음 (검증/DB 반영 후 svc 에서 직접 저장)
+export const uploadMemoryImage = multer({
+    storage: multer.memoryStorage(),
+    limits: { fileSize: 10 * 1024 * 1024 },
+    fileFilter: (_, file, cb) => cb(null, file.mimetype.startsWith("image/"))
+});

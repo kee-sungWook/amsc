@@ -6,6 +6,7 @@ import memberRouter from "@routes/memberRouter.js";
 import sseRouter from "@routes/sseRouter.js";
 import regionRouter from "@routes/regionRouter.js";
 import ccRouter from "@routes/ccRouter.js";
+import industryRouter from "@routes/industryRouter.js";
 
 const apiRouter = Router();
 
@@ -17,6 +18,7 @@ const routeModules: { path: string, router: Router }[] = [
     { path: "/sse", router: sseRouter },
     { path: "/cc", router: ccRouter },
     { path: "/region", router: regionRouter },
+    { path: "/industry", router: industryRouter },
 ];
 
 routeModules.forEach((route) => apiRouter.use(route.path, route.router))

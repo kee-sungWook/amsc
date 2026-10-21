@@ -230,3 +230,10 @@ model ams_order_cancel {
 
   @@index([order_seq], map: "ams_order_cancel_ams_order_FK")
 }
+
+model ams_industry {
+  seq  Int     @id @default(autoincrement()) @db.UnsignedInt
+  name String  @db.VarChar(30)
+  code String  @unique @db.VarChar(10)
+  icon String? @db.Text
+}
