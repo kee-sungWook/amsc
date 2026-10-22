@@ -6,3 +6,11 @@ export interface Industry extends RowDataPacket {
     code: string;
     icon: string | null;
 }
+
+export interface IndustryService extends RowDataPacket {
+    seq: number;
+    parent_code: string;
+    name: string;
+    code: string;
+    icon: string | null;
+}

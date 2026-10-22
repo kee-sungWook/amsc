@@ -1,3 +1,4 @@
 export const qKeyAdminIndustry = {
-    getIndustries: () => ["getIndustries"]
+    getIndustries: () => ["getIndustries"],
+    getServices: (parentCode: string) => ["getIndustryServices", parentCode]
 };

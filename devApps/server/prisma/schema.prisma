@@ -232,8 +232,20 @@ model ams_order_cancel {
 }
 
 model ams_industry {
-  seq  Int     @id @default(autoincrement()) @db.UnsignedInt
-  name String  @db.VarChar(30)
-  code String  @unique @db.VarChar(10)
-  icon String? @db.Text
+  seq                  Int                    @id @default(autoincrement()) @db.UnsignedInt
+  name                 String                 @db.VarChar(30)
+  code                 String                 @unique @db.VarChar(10)
+  icon                 String?                @db.Text
+  ams_industry_service ams_industry_service[]
+}
+
+model ams_industry_service {
+  seq          Int          @id @default(autoincrement()) @db.UnsignedInt
+  parent_code  String       @db.VarChar(10)
+  name         String       @db.VarChar(30)
+  code         String       @db.VarChar(20)
+  icon         String?      @db.Text
+  ams_industry ams_industry @relation(fields: [parent_code], references: [code], onDelete: Cascade, onUpdate: Cascade, map: "fk_industry_service_parent_code")
+
+  @@unique([parent_code, code], map: "uq_industry_service_parent_code_code")
 }

@@ -181,3 +181,11 @@ export interface IndustryModel {
     code: string;
     icon: string | null;
 }
+
+export interface IndustryServiceModel {
+    seq: number;
+    parent_code: string;
+    name: string;
+    code: string;
+    icon: string | null;
+}
